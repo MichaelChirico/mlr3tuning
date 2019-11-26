@@ -8,13 +8,6 @@
 
 <title>Syntactic Sugar for Tuner and Terminator Construction — tnr • mlr3tuning</title>
 
-<!-- favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -42,6 +35,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Syntactic Sugar for Tuner and Terminator Construction — tnr" />
 <meta property="og:description" content="This function complements mlr_tuners and mlr_terminators with functions in the spirit
@@ -78,17 +73,28 @@ of mlr3::mlr_sugar." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Development version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
+     
+    Reference
+  </a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
+</li>
+<li>
+  <a href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
+     
+    mlr3book
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -155,7 +161,7 @@ Key passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dic
       <th>...</th>
       <td><p>:: named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
 Named arguments passed to the constructor, to be set as parameters in the <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>, or to be set as public field.
-See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html'>mlr3misc::dictionary_sugar_get()</a></code> for more details.</p></td>
+See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html'>mlr3misc::dictionary_sugar()</a></code> for more details.</p></td>
     </tr>
     </table>
 
