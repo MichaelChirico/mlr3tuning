@@ -8,6 +8,13 @@
 
 <title>Terminator that stops when a performance level has been reached — TerminatorPerfReached • mlr3tuning</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,8 +42,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Terminator that stops when a performance level has been reached — TerminatorPerfReached" />
 <meta property="og:description" content="Class to terminate the tuning after a performance level has been hit." />
@@ -72,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
       </span>
     </div>
 
@@ -168,13 +173,15 @@ falls below (respective measure has to be minimized) this value.</p></li>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Terminator: <code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-  <code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-  <code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-  <code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-  <code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-  <code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
-  <code><a href='Terminator.html'>Terminator</a></code>, <code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
+    <div class='dont-index'><p>Other Terminator: 
+<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
+<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
+<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
+<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
+<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
+<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
+<code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>TerminatorPerfReached</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorPerfReached&gt;

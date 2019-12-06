@@ -8,6 +8,13 @@
 
 <title>Dictionary of Tuners — mlr_tuners • mlr3tuning</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,8 +42,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  <script src="../extra.js"></script>
 
 <meta property="og:title" content="Dictionary of Tuners — mlr_tuners" />
 <meta property="og:description" content="A simple mlr3misc::Dictionary storing objects of class Tuner.
@@ -75,7 +80,7 @@ For a more convenient way to retrieve and construct tuner, see tnr()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
       </span>
     </div>
 
@@ -162,9 +167,12 @@ Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Sugar function: <code><a href='tnr.html'>tnr()</a></code></p>
-<p>Other Tuner: <code><a href='TunerDesignPoints.html'>TunerDesignPoints</a></code>,
-  <code><a href='TunerGenSA.html'>TunerGenSA</a></code>, <code><a href='TunerGridSearch.html'>TunerGridSearch</a></code>,
-  <code><a href='TunerRandomSearch.html'>TunerRandomSearch</a></code>, <code><a href='Tuner.html'>Tuner</a></code></p></div>
+<p>Other Tuner: 
+<code><a href='TunerDesignPoints.html'>TunerDesignPoints</a></code>,
+<code><a href='TunerGenSA.html'>TunerGenSA</a></code>,
+<code><a href='TunerGridSearch.html'>TunerGridSearch</a></code>,
+<code><a href='TunerRandomSearch.html'>TunerRandomSearch</a></code>,
+<code><a href='Tuner.html'>Tuner</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"grid_search"</span>)</div><div class='output co'>#&gt; &lt;TunerGridSearch&gt;

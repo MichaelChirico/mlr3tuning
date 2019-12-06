@@ -8,6 +8,13 @@
 
 <title>TuningInstance Class — TuningInstance • mlr3tuning</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,8 +42,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  <script src="../extra.js"></script>
 
 <meta property="og:title" content="TuningInstance Class — TuningInstance" />
 <meta property="og:description" content="Specifies a general tuning scenario, including performance evaluator and archive for Tuners to
@@ -83,7 +88,7 @@ and associated estimated performance values, by calling the method instance$assi
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
       </span>
     </div>
 
@@ -182,7 +187,7 @@ for the parameters the tuner is supposed to optimize, and a termination criterio
 <li><p><code>task</code> :: <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>.</p></li>
 <li><p><code>learner</code> :: <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>.</p></li>
 <li><p><code>resampling</code> :: <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a><br />
-Note that the resampling is instantiated at the beginning so that all configurations
+Note that uninstantiated resamplings are instantiated during construction so that all configurations
 are evaluated on the same data splits.</p></li>
 <li><p><code>measures</code> :: list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>.</p></li>
 <li><p><code>param_set</code> :: <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>.</p></li>
@@ -299,10 +304,10 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "3186eb82-9b93-41ea-bac0-54e65d04684c"
-#&gt; [2] "acf2fa5a-47a6-4e30-bed6-4e293c450a76"
-#&gt; [3] "fa27d2a4-9d88-4af4-9b7b-88ac30c15499"
-#&gt; [4] "07d0f3ca-d186-45d3-9ad9-cdaed18e6db8"
+#&gt; [1] "d4aac1d0-3cd2-4e3d-93c4-b4ae0e6e6b5f"
+#&gt; [2] "ce0ae184-5f5a-43cf-91d6-75d6798616df"
+#&gt; [3] "0c9e96d8-61c1-4664-af1b-fb7d9916027a"
+#&gt; [4] "e6bc56b7-0d69-4b02-a25c-380e9a9af797"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
