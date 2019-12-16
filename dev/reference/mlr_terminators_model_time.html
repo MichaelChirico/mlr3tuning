@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that stops when tuning does not improve — TerminatorStagnation • mlr3tuning</title>
+<title>Terminator that stops after a budget of model evaluation time is depleted — mlr_terminators_model_time • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,9 +43,10 @@
 
 
 
-<meta property="og:title" content="Terminator that stops when tuning does not improve — TerminatorStagnation" />
-<meta property="og:description" content="Class to terminate the tuning after the performance stagnates, i.e. does not improve more than
-threshold over the last iters iterations." />
+<meta property="og:title" content="Terminator that stops after a budget of model evaluation time is depleted — mlr_terminators_model_time" />
+<meta property="og:description" content="Class to terminate the tuning after a given model evaluation budget is exceeded.
+The terminator measures the used time to train and predict all models contained
+in the archive." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -78,7 +79,7 @@ threshold over the last iters iterations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -140,14 +141,15 @@ threshold over the last iters iterations." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that stops when tuning does not improve</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorStagnation.R'><code>R/TerminatorStagnation.R</code></a></small>
-    <div class="hidden name"><code>TerminatorStagnation.Rd</code></div>
+    <h1>Terminator that stops after a budget of model evaluation time is depleted</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorModelTime.R'><code>R/TerminatorModelTime.R</code></a></small>
+    <div class="hidden name"><code>mlr_terminators_model_time.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class to terminate the tuning after the performance stagnates, i.e. does not improve more than
-<code>threshold</code> over the last <code>iters</code> iterations.</p>
+    <p>Class to terminate the tuning after a given model evaluation budget is exceeded.
+The terminator measures the used time to train and predict all models contained
+in the archive.</p>
     </div>
 
 
@@ -158,7 +160,8 @@ threshold over the last iters iterations." />
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>t = TerminatorStagnation$new()
+<pre>TerminatorModelTime$new()
+term("model_time")
 </pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
@@ -166,28 +169,26 @@ threshold over the last iters iterations." />
     
 
 <ul>
-<li><p><code>iters</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
-Number of iterations to evaluate the performance improvement on, default is 10.</p></li>
-<li><p><code>threshold</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
-If the improvement is less than <code>threshold</code>, tuning is stopped, default is <code>0</code>.</p></li>
+<li><p><code>secs</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
+Maximum allowed time, in seconds, default is 0.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
 <code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
+<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
+<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
+<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
+<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
+<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code>,
 <code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>TerminatorStagnation</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorStagnation&gt;
-#&gt; * Parameters: iters=10, threshold=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"stagnation"</span>, <span class='kw'>iters</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>)</div><div class='output co'>#&gt; &lt;TerminatorStagnation&gt;
-#&gt; * Parameters: iters=5, threshold=1e-05</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>TerminatorModelTime</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
+#&gt; * Parameters: secs=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"model_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>10</span> * <span class='fl'>3600</span>)</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
+#&gt; * Parameters: secs=3.6e+04</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

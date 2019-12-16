@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that stops when a performance level has been reached — TerminatorPerfReached • mlr3tuning</title>
+<title>TunerDesignPoints — mlr_tuners_design_points • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,8 +43,14 @@
 
 
 
-<meta property="og:title" content="Terminator that stops when a performance level has been reached — TerminatorPerfReached" />
-<meta property="og:description" content="Class to terminate the tuning after a performance level has been hit." />
+<meta property="og:title" content="TunerDesignPoints — mlr_tuners_design_points" />
+<meta property="og:description" content="Subclass for tuning w.r.t. fixed design points.
+We simply search over a set of points fully specified by the user.
+The points in the design are evaluated in order as given.
+In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size batch_size.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -139,25 +145,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that stops when a performance level has been reached</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorPerfReached.R'><code>R/TerminatorPerfReached.R</code></a></small>
-    <div class="hidden name"><code>TerminatorPerfReached.Rd</code></div>
+    <h1>TunerDesignPoints</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerDesignPoints.R'><code>R/TunerDesignPoints.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_design_points.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class to terminate the tuning after a performance level has been hit.</p>
+    <p>Subclass for tuning w.r.t. fixed design points.</p>
+<p>We simply search over a set of points fully specified by the user.
+The points in the design are evaluated in order as given.</p>
+<p>In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size <code>batch_size</code>.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TerminatorPerfReached$new()
-term("perf_reached")
+<pre>TunerDesignPoints$new()
+tnr("design_points")
 </pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
@@ -165,28 +177,24 @@ term("perf_reached")
     
 
 <ul>
-<li><p><code>level</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
-Performance level that needs to be reached, default is 0.
-Terminates if the performance exceeds (respective measure has to be maximized) or
-falls below (respective measure has to be minimized) this value.</p></li>
+<li><p><code>batch_size</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of configurations to try in a batch.</p></li>
+<li><p><code>design</code> :: <code>[data.table]</code><br />
+Design points to try in search, one per row.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
+    <div class='dont-index'><p>Other Tuner: 
+<code><a href='Tuner.html'>Tuner</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code>,
+<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>TerminatorPerfReached</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorPerfReached&gt;
-#&gt; * Parameters: level=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"perf_reached"</span>)</div><div class='output co'>#&gt; &lt;TerminatorPerfReached&gt;
-#&gt; * Parameters: level=0</div></pre>
+    <pre class="examples"><div class='input'># see ?Tuner
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that never stops. — TerminatorNone • mlr3tuning</title>
+<title>TunerRandomSearch — mlr_tuners_random_search • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,8 +43,13 @@
 
 
 
-<meta property="og:title" content="Terminator that never stops. — TerminatorNone" />
-<meta property="og:description" content="Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself." />
+<meta property="og:title" content="TunerRandomSearch — mlr_tuners_random_search" />
+<meta property="og:description" content="Subclass for random search tuning.
+The random points are sampled by paradox::generate_design_random().
+In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size batch_size.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -139,46 +144,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that never stops.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorNone.R'><code>R/TerminatorNone.R</code></a></small>
-    <div class="hidden name"><code>TerminatorNone.Rd</code></div>
+    <h1>TunerRandomSearch</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerRandomSearch.R'><code>R/TunerRandomSearch.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_random_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself.</p>
+    <p>Subclass for random search tuning.</p>
+<p>The random points are sampled by <code><a href='https://paradox.mlr-org.com/reference/generate_design_random.html'>paradox::generate_design_random()</a></code>.</p>
+<p>In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size <code>batch_size</code>.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>t = TerminatorNone$new()
-term("none")
+<pre>TunerRandomSearch$new(batch_size = 1L)
+tnr("random_search")
 </pre>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+
+<ul>
+<li><p><code>batch_size</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of configurations to try in a batch.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
+    <div class='dont-index'><p>Other Tuner: 
+<code><a href='Tuner.html'>Tuner</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'># see ?Tuner
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#construction">Construction</a></li>
+      <li><a href="#parameters">Parameters</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

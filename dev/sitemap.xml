@@ -10,40 +10,7 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/Terminator.html</loc>
   </url>
   <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorClockTime.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorCombo.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorEvals.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorModelTime.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorNone.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorPerfReached.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TerminatorStagnation.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/Tuner.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TunerDesignPoints.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TunerGenSA.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TunerGridSearch.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TunerRandomSearch.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/TuningInstance.html</loc>
@@ -55,7 +22,40 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators.html</loc>
   </url>
   <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_clock_time.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_combo.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_evals.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_model_time.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_none.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_perf_reached.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_stagnation.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_design_points.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_gensa.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_grid_search.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_random_search.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/tnr.html</loc>
