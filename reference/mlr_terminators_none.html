@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerGenSA — TunerGenSA • mlr3tuning</title>
+<title>Terminator that never stops. — mlr_terminators_none • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,8 +43,8 @@
 
 
 
-<meta property="og:title" content="TunerGenSA — TunerGenSA" />
-<meta property="og:description" content="Subclass for generalized simulated annealing tuning calling GenSA::GenSA() from package GenSA." />
+<meta property="og:title" content="Terminator that never stops. — mlr_terminators_none" />
+<meta property="og:description" content="Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -139,63 +139,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerGenSA</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerGenSA.R'><code>R/TunerGenSA.R</code></a></small>
-    <div class="hidden name"><code>TunerGenSA.Rd</code></div>
+    <h1>Terminator that never stops.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorNone.R'><code>R/TerminatorNone.R</code></a></small>
+    <div class="hidden name"><code>mlr_terminators_none.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Subclass for generalized simulated annealing tuning calling <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code> from package <a href='https://CRAN.R-project.org/package=GenSA'><span class="pkg">GenSA</span></a>.</p>
+    <p>Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TunerGenSA$new()
-tnr("gensa")
+<pre>t = TerminatorNone$new()
+term("none")
 </pre>
 
-    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
-
-    
-
-<ul>
-<li><p><code>smooth</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
-<li><p><code>temperature</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br /></p></li>
-<li><p><code>acceptance.param</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br /></p></li>
-<li><p><code>verbose</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
-<li><p><code>trace.mat</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
-</ul>
-
-<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code>.
-Note that we have removed all control parameters which refer to the termination of the algorithm and
-where our terminators allow to obtain the same behavior.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Tuner: 
-<code><a href='TunerDesignPoints.html'>TunerDesignPoints</a></code>,
-<code><a href='TunerGridSearch.html'>TunerGridSearch</a></code>,
-<code><a href='TunerRandomSearch.html'>TunerRandomSearch</a></code>,
-<code><a href='Tuner.html'>Tuner</a></code>,
-<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
+    <div class='dont-index'><p>Other Terminator: 
+<code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
+<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
+<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
+<code><a href='mlr_terminators_model_time.html'>mlr_terminators_model_time</a></code>,
+<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
+<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code>,
+<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># see ?Tuner
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#construction">Construction</a></li>
-      <li><a href="#parameters">Parameters</a></li>
       <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

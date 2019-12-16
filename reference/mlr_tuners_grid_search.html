@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerRandomSearch — TunerRandomSearch • mlr3tuning</title>
+<title>TunerGridSearch — mlr_tuners_grid_search • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,9 +43,11 @@
 
 
 
-<meta property="og:title" content="TunerRandomSearch — TunerRandomSearch" />
-<meta property="og:description" content="Subclass for random search tuning.
-The random points are sampled by paradox::generate_design_random().
+<meta property="og:title" content="TunerGridSearch — mlr_tuners_grid_search" />
+<meta property="og:description" content="Subclass for grid search tuning.
+The grid is constructed as a Cartesian product over discretized values per parameter,
+see paradox::generate_design_grid().
+The points of the grid are evaluated in a random order.
 In order to support general termination criteria and parallelization,
 we evaluate points in a batch-fashion of size batch_size.
 Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
@@ -144,14 +146,16 @@ of termination criteria." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerRandomSearch</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerRandomSearch.R'><code>R/TunerRandomSearch.R</code></a></small>
-    <div class="hidden name"><code>TunerRandomSearch.Rd</code></div>
+    <h1>TunerGridSearch</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerGridSearch.R'><code>R/TunerGridSearch.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_grid_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Subclass for random search tuning.</p>
-<p>The random points are sampled by <code><a href='https://paradox.mlr-org.com/reference/generate_design_random.html'>paradox::generate_design_random()</a></code>.</p>
+    <p>Subclass for grid search tuning.</p>
+<p>The grid is constructed as a Cartesian product over discretized values per parameter,
+see <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.
+The points of the grid are evaluated in a random order.</p>
 <p>In order to support general termination criteria and parallelization,
 we evaluate points in a batch-fashion of size <code>batch_size</code>.
 Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
@@ -166,8 +170,8 @@ of termination criteria.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TunerRandomSearch$new(batch_size = 1L)
-tnr("random_search")
+<pre>TunerGridSearch$new()
+tnr("grid_search")
 </pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
@@ -175,6 +179,10 @@ tnr("random_search")
     
 
 <ul>
+<li><p><code>resolution</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Resolution of the grid, see <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.</p></li>
+<li><p><code>param_resolutions</code> :: named <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code> <br />
+Resolution per parameter, named by parameter ID, see <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.</p></li>
 <li><p><code>batch_size</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
 Maximum number of configurations to try in a batch.</p></li>
 </ul>
@@ -182,10 +190,10 @@ Maximum number of configurations to try in a batch.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Tuner: 
-<code><a href='TunerDesignPoints.html'>TunerDesignPoints</a></code>,
-<code><a href='TunerGenSA.html'>TunerGenSA</a></code>,
-<code><a href='TunerGridSearch.html'>TunerGridSearch</a></code>,
 <code><a href='Tuner.html'>Tuner</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code>,
 <code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

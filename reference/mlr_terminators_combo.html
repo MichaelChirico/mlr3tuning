@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that stops after a budget of model evaluation time is depleted — TerminatorModelTime • mlr3tuning</title>
+<title>Combine Terminators — mlr_terminators_combo • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,10 +43,8 @@
 
 
 
-<meta property="og:title" content="Terminator that stops after a budget of model evaluation time is depleted — TerminatorModelTime" />
-<meta property="og:description" content="Class to terminate the tuning after a given model evaluation budget is exceeded.
-The terminator measures the used time to train and predict all models contained
-in the archive." />
+<meta property="og:title" content="Combine Terminators — mlr_terminators_combo" />
+<meta property="og:description" content="This class takes multiple Terminators and terminates as soon as one or all of the included terminators are positive." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -141,15 +139,13 @@ in the archive." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that stops after a budget of model evaluation time is depleted</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorModelTime.R'><code>R/TerminatorModelTime.R</code></a></small>
-    <div class="hidden name"><code>TerminatorModelTime.Rd</code></div>
+    <h1>Combine Terminators</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorCombo.R'><code>R/TerminatorCombo.R</code></a></small>
+    <div class="hidden name"><code>mlr_terminators_combo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class to terminate the tuning after a given model evaluation budget is exceeded.
-The terminator measures the used time to train and predict all models contained
-in the archive.</p>
+    <p>This class takes multiple <a href='Terminator.html'>Terminator</a>s and terminates as soon as one or all of the included terminators are positive.</p>
     </div>
 
 
@@ -160,35 +156,41 @@ in the archive.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TerminatorModelTime$new()
-term("model_time")
+<pre>TerminatorCombo$new(terminators = list(TerminatorNone$new()))
+term("combo")
 </pre>
+<ul>
+<li><p><code>terminators</code> :: <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
+List of objects of class <a href='Terminator.html'>Terminator</a>.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
 
 <ul>
-<li><p><code>secs</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
-Maximum allowed time, in seconds, default is 0.</p></li>
+<li><p><code>any</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+Terminate iff any included terminator is positive? (not all), default is `TRUE.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
 <code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
+<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
+<code><a href='mlr_terminators_model_time.html'>mlr_terminators_model_time</a></code>,
+<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
+<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
+<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code>,
 <code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>TerminatorModelTime</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
-#&gt; * Parameters: secs=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"model_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>10</span> * <span class='fl'>3600</span>)</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
-#&gt; * Parameters: secs=3.6e+04</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"combo"</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"model_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>60</span>), <span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>10</span>)),
+  <span class='kw'>any</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; &lt;TerminatorCombo&gt;
+#&gt; * Parameters: any=FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

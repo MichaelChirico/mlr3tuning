@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Combine Terminators — TerminatorCombo • mlr3tuning</title>
+<title>TunerGenSA — mlr_tuners_gensa • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,8 +43,8 @@
 
 
 
-<meta property="og:title" content="Combine Terminators — TerminatorCombo" />
-<meta property="og:description" content="This class takes multiple Terminators and terminates as soon as one or all of the included terminators are positive." />
+<meta property="og:title" content="TunerGenSA — mlr_tuners_gensa" />
+<meta property="og:description" content="Subclass for generalized simulated annealing tuning calling GenSA::GenSA() from package GenSA." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -139,58 +139,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Combine Terminators</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorCombo.R'><code>R/TerminatorCombo.R</code></a></small>
-    <div class="hidden name"><code>TerminatorCombo.Rd</code></div>
+    <h1>TunerGenSA</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerGenSA.R'><code>R/TunerGenSA.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_gensa.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This class takes multiple <a href='Terminator.html'>Terminator</a>s and terminates as soon as one or all of the included terminators are positive.</p>
+    <p>Subclass for generalized simulated annealing tuning calling <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code> from package <a href='https://CRAN.R-project.org/package=GenSA'><span class="pkg">GenSA</span></a>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TerminatorCombo$new(terminators = list(TerminatorNone$new()))
-term("combo")
+<pre>TunerGenSA$new()
+tnr("gensa")
 </pre>
-<ul>
-<li><p><code>terminators</code> :: <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
-List of objects of class <a href='Terminator.html'>Terminator</a>.</p></li>
-</ul>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
 
 <ul>
-<li><p><code>any</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
-Terminate iff any included terminator is positive? (not all), default is `TRUE.</p></li>
+<li><p><code>smooth</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
+<li><p><code>temperature</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br /></p></li>
+<li><p><code>acceptance.param</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br /></p></li>
+<li><p><code>verbose</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
+<li><p><code>trace.mat</code> :: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br /></p></li>
 </ul>
 
+<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code>.
+Note that we have removed all control parameters which refer to the termination of the algorithm and
+where our terminators allow to obtain the same behavior.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
+    <div class='dont-index'><p>Other Tuner: 
+<code><a href='Tuner.html'>Tuner</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code>,
+<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"combo"</span>,
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"model_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>60</span>), <span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>10</span>)),
-  <span class='kw'>any</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; &lt;TerminatorCombo&gt;
-#&gt; * Parameters: any=FALSE</div></pre>
+    <pre class="examples"><div class='input'># see ?Tuner
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

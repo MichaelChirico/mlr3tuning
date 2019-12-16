@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that never stops. — TerminatorNone • mlr3tuning</title>
+<title>Terminator that stops when tuning does not improve — mlr_terminators_stagnation • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,8 +43,9 @@
 
 
 
-<meta property="og:title" content="Terminator that never stops. — TerminatorNone" />
-<meta property="og:description" content="Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself." />
+<meta property="og:title" content="Terminator that stops when tuning does not improve — mlr_terminators_stagnation" />
+<meta property="og:description" content="Class to terminate the tuning after the performance stagnates, i.e. does not improve more than
+threshold over the last iters iterations." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -139,13 +140,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that never stops.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorNone.R'><code>R/TerminatorNone.R</code></a></small>
-    <div class="hidden name"><code>TerminatorNone.Rd</code></div>
+    <h1>Terminator that stops when tuning does not improve</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorStagnation.R'><code>R/TerminatorStagnation.R</code></a></small>
+    <div class="hidden name"><code>mlr_terminators_stagnation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Mainly useful for grid search, or maybe other tuners, where the stopping is inherently controlled by the tuner itself.</p>
+    <p>Class to terminate the tuning after the performance stagnates, i.e. does not improve more than
+<code>threshold</code> over the last <code>iters</code> iterations.</p>
     </div>
 
 
@@ -156,29 +158,45 @@
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>t = TerminatorNone$new()
-term("none")
+<pre>t = TerminatorStagnation$new()
 </pre>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+
+<ul>
+<li><p><code>iters</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Number of iterations to evaluate the performance improvement on, default is 10.</p></li>
+<li><p><code>threshold</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
+If the improvement is less than <code>threshold</code>, tuning is stopped, default is <code>0</code>.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorClockTime.html'>TerminatorClockTime</a></code>,
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
 <code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
+<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
+<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
+<code><a href='mlr_terminators_model_time.html'>mlr_terminators_model_time</a></code>,
+<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
+<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
 <code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>TerminatorStagnation</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorStagnation&gt;
+#&gt; * Parameters: iters=10, threshold=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"stagnation"</span>, <span class='kw'>iters</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>)</div><div class='output co'>#&gt; &lt;TerminatorStagnation&gt;
+#&gt; * Parameters: iters=5, threshold=1e-05</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#construction">Construction</a></li>
+      <li><a href="#parameters">Parameters</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

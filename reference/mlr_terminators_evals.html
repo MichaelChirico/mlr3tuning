@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerDesignPoints — TunerDesignPoints • mlr3tuning</title>
+<title>Terminator that stops after a number of evaluations — mlr_terminators_evals • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,14 +43,9 @@
 
 
 
-<meta property="og:title" content="TunerDesignPoints — TunerDesignPoints" />
-<meta property="og:description" content="Subclass for tuning w.r.t. fixed design points.
-We simply search over a set of points fully specified by the user.
-The points in the design are evaluated in order as given.
-In order to support general termination criteria and parallelization,
-we evaluate points in a batch-fashion of size batch_size.
-Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
-of termination criteria." />
+<meta property="og:title" content="Terminator that stops after a number of evaluations — mlr_terminators_evals" />
+<meta property="og:description" content="Class to terminate the tuning depending on the number of evaluations.
+An evaluation is defined by one resampling of a parameter value." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -145,31 +140,26 @@ of termination criteria." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerDesignPoints</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerDesignPoints.R'><code>R/TunerDesignPoints.R</code></a></small>
-    <div class="hidden name"><code>TunerDesignPoints.Rd</code></div>
+    <h1>Terminator that stops after a number of evaluations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorEvals.R'><code>R/TerminatorEvals.R</code></a></small>
+    <div class="hidden name"><code>mlr_terminators_evals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Subclass for tuning w.r.t. fixed design points.</p>
-<p>We simply search over a set of points fully specified by the user.
-The points in the design are evaluated in order as given.</p>
-<p>In order to support general termination criteria and parallelization,
-we evaluate points in a batch-fashion of size <code>batch_size</code>.
-Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
-of termination criteria.</p>
+    <p>Class to terminate the tuning depending on the number of evaluations.
+An evaluation is defined by one resampling of a parameter value.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TunerDesignPoints$new()
-tnr("design_points")
+<pre>TerminatorEvals$new()
+term("evals")
 </pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
@@ -177,24 +167,26 @@ tnr("design_points")
     
 
 <ul>
-<li><p><code>batch_size</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
-Maximum number of configurations to try in a batch.</p></li>
-<li><p><code>design</code> :: <code>[data.table]</code><br />
-Design points to try in search, one per row.</p></li>
+<li><p><code>n_evals</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Number of allowed evaluations, default is 100L</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Tuner: 
-<code><a href='TunerGenSA.html'>TunerGenSA</a></code>,
-<code><a href='TunerGridSearch.html'>TunerGridSearch</a></code>,
-<code><a href='TunerRandomSearch.html'>TunerRandomSearch</a></code>,
-<code><a href='Tuner.html'>Tuner</a></code>,
-<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
+    <div class='dont-index'><p>Other Terminator: 
+<code><a href='Terminator.html'>Terminator</a></code>,
+<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
+<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
+<code><a href='mlr_terminators_model_time.html'>mlr_terminators_model_time</a></code>,
+<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
+<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
+<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code>,
+<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># see ?Tuner
-</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>TerminatorEvals</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorEvals&gt;
+#&gt; * Parameters: n_evals=100</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='output co'>#&gt; &lt;TerminatorEvals&gt;
+#&gt; * Parameters: n_evals=5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

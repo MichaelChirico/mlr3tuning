@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that stops according to the clock time — TerminatorClockTime • mlr3tuning</title>
+<title>TunerRandomSearch — mlr_tuners_random_search • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,9 +43,13 @@
 
 
 
-<meta property="og:title" content="Terminator that stops according to the clock time — TerminatorClockTime" />
-<meta property="og:description" content="Class to terminate the tuning either after the complete process took a number of seconds on the clock
-or a fixed time point has been reached (as reported by Sys.time())." />
+<meta property="og:title" content="TunerRandomSearch — mlr_tuners_random_search" />
+<meta property="og:description" content="Subclass for random search tuning.
+The random points are sampled by paradox::generate_design_random().
+In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size batch_size.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -140,26 +144,30 @@ or a fixed time point has been reached (as reported by Sys.time())." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that stops according to the clock time</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorClockTime.R'><code>R/TerminatorClockTime.R</code></a></small>
-    <div class="hidden name"><code>TerminatorClockTime.Rd</code></div>
+    <h1>TunerRandomSearch</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerRandomSearch.R'><code>R/TunerRandomSearch.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_random_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class to terminate the tuning either after the complete process took a number of seconds on the clock
-or a fixed time point has been reached (as reported by <code><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time()</a></code>).</p>
+    <p>Subclass for random search tuning.</p>
+<p>The random points are sampled by <code><a href='https://paradox.mlr-org.com/reference/generate_design_random.html'>paradox::generate_design_random()</a></code>.</p>
+<p>In order to support general termination criteria and parallelization,
+we evaluate points in a batch-fashion of size <code>batch_size</code>.
+Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Tuner.html'>Tuner</a>.</p>
     <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
 
     
-<pre>TerminatorClockTime$new()
-term("clock_time")
+<pre>TunerRandomSearch$new(batch_size = 1L)
+tnr("random_search")
 </pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
@@ -167,32 +175,22 @@ term("clock_time")
     
 
 <ul>
-<li><p><code>secs</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
-Maximum allowed time, in seconds, default is 100.
-Mutually exclusive with argument <code>stop_time</code>.</p></li>
-<li><p><code>stop_time</code> :: <code><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct(1)</a></code><br />
-Terminator stops after this point in time.
-Mutually exclusive with argument <code>secs</code>.</p></li>
+<li><p><code>batch_size</code> :: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of configurations to try in a batch.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Terminator: 
-<code><a href='TerminatorCombo.html'>TerminatorCombo</a></code>,
-<code><a href='TerminatorEvals.html'>TerminatorEvals</a></code>,
-<code><a href='TerminatorModelTime.html'>TerminatorModelTime</a></code>,
-<code><a href='TerminatorNone.html'>TerminatorNone</a></code>,
-<code><a href='TerminatorPerfReached.html'>TerminatorPerfReached</a></code>,
-<code><a href='TerminatorStagnation.html'>TerminatorStagnation</a></code>,
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
+    <div class='dont-index'><p>Other Tuner: 
+<code><a href='Tuner.html'>Tuner</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"clock_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>1800</span>)</div><div class='output co'>#&gt; &lt;TerminatorClockTime&gt;
-#&gt; * Parameters: secs=1800</div><div class='input'>
-<span class='no'>stop_time</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='st'>"2030-01-01 00:00:00"</span>)
-<span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"clock_time"</span>, <span class='kw'>stop_time</span> <span class='kw'>=</span> <span class='no'>stop_time</span>)</div><div class='output co'>#&gt; &lt;TerminatorClockTime&gt;
-#&gt; * Parameters: stop_time=&lt;POSIXct&gt;</div></pre>
+    <pre class="examples"><div class='input'># see ?Tuner
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
