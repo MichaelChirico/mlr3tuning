@@ -242,28 +242,19 @@ Short-cut to method from <a href='TuningInstance.html'>TuningInstance</a>.</p></
 #&gt; 
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstance&gt;
+#&gt; * State:  Tuned
 #&gt; * Task: &lt;TaskClassif:iris&gt;
 #&gt; * Learner: &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Measures: classif.ce
 #&gt; * Resampling: &lt;ResamplingHoldout&gt;
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * bm_args: list()
+#&gt; * n_evals: 5
+#&gt; * Result perf: classif.ce=0.06
+#&gt; * Result tune_x: cp=0.045
 #&gt; ParamSet: 
 #&gt;    id    class lower upper levels     default value
 #&gt; 1: cp ParamDbl 0.001   0.1        &lt;NoDefault&gt;      
-#&gt; Archive:
-#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
-#&gt; 1:  1        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 2:  2        2 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 3:  3        3 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 4:  4        4 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 5:  5        5 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0       0.06
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.045
