@@ -50,7 +50,7 @@ that a Tuner has to optimize. It allows the basic operations of querying the obj
 at design points ($eval_batch()), storing the evaluations in an internal archive
 and querying the archive ($archive()).
 Evaluations of hyperparameter configurations are performed in batches by calling mlr3::benchmark() internally.
-Before and after a batch is evaluated, the Terminator is queried for the remaining budget.
+Before a batch is evaluated, the Terminator is queried for the remaining budget.
 If the available budget is exhausted, an exception is raised, and no further evaluations can be performed from this point on.
 A list of measures can be passed to the instance, and they will always be all evaluated.
 However, single-criteria tuners optimize only the first measure.
@@ -89,7 +89,7 @@ and associated estimated performance values, by calling the method instance$assi
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.1.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -160,7 +160,7 @@ that a <a href='Tuner.html'>Tuner</a> has to optimize. It allows the basic opera
 at design points (<code>$eval_batch()</code>), storing the evaluations in an internal archive
 and querying the archive (<code>$archive()</code>).</p>
 <p>Evaluations of hyperparameter configurations are performed in batches by calling <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code> internally.
-Before and after a batch is evaluated, the <a href='Terminator.html'>Terminator</a> is queried for the remaining budget.
+Before a batch is evaluated, the <a href='Terminator.html'>Terminator</a> is queried for the remaining budget.
 If the available budget is exhausted, an exception is raised, and no further evaluations can be performed from this point on.</p>
 <p>A list of measures can be passed to the instance, and they will always be all evaluated.
 However, single-criteria tuners optimize only the first measure.</p>
@@ -238,7 +238,7 @@ Has the same number of rows as <code>dt</code>, and the same number of columns a
 Columns are named with measure-IDs. A cell entry is the (aggregated) performance of that configuration for that measure.</p></li>
 </ul>
 
-<p>Before and after each batch-evaluation, the <a href='Terminator.html'>Terminator</a> is checked, and if it is positive, an exception of class <code>terminated_error</code> is raised.
+<p>Before each batch-evaluation, the <a href='Terminator.html'>Terminator</a> is checked, and if it is positive, an exception of class <code>terminated_error</code> is raised.
 This function should be internally called by the tuner.</p></li>
 <li><p><code>tuner_objective(x)</code><br />
 <code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code> -&gt; <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
@@ -302,10 +302,10 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "07b1e057-43c8-4797-afc1-b16a5ee6ef28"
-#&gt; [2] "ac2579f2-05fe-443f-94c4-1fcd8a32a553"
-#&gt; [3] "3bec720a-64f6-48e8-9b06-676e169428a7"
-#&gt; [4] "19968639-b276-4678-849f-bd6e6da50640"
+#&gt; [1] "bdca46c9-b6c6-447f-a7d3-b3afa0fa9509"
+#&gt; [2] "ad4e2c99-1d10-40eb-a055-f38215a1320e"
+#&gt; [3] "b161d69f-4ee0-40dc-b643-562b3ac76564"
+#&gt; [4] "e5c4b39a-3744-4244-a5ee-f7e3fe152353"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
@@ -331,7 +331,7 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 2
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "76c144bf-7998-42c4-a8e6-252be6093e2d"
+#&gt; [1] "527331d8-d55e-4a3b-a1d1-97204278a7c6"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
@@ -382,11 +382,11 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "2e48e1f1-e515-402a-83d6-3f847718dcae"
-#&gt; [2] "921a57cf-b435-4d78-adbb-4f872f5abf6b"
-#&gt; [3] "e3946cdc-bf3c-4705-b80e-8f4bcc6bb6a7"
-#&gt; [4] "2621a65f-a69e-4494-9134-5d21a82fc40c"
-#&gt; [5] "cbbe960e-08e8-4abd-b2fb-f4761cd4f7d7"
+#&gt; [1] "a5aa1998-7491-4086-88ad-13207662af67"
+#&gt; [2] "bb48efa3-23b5-4aba-ae2e-1ad4325f6d7f"
+#&gt; [3] "741632e1-912a-47dd-8f3f-e00b06307a23"
+#&gt; [4] "0a001a09-5af6-438c-8f3c-6581bf8cd61c"
+#&gt; [5] "2a73caea-ec50-47b6-826b-cbdd255498fb"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce

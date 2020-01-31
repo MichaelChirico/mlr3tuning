@@ -84,7 +84,7 @@ order to store the best selected hyperparameter configuration and its estimated 
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.1.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -225,14 +225,14 @@ See technical details sections.</p></li>
 <li><p>The batch evaluation is requested at the <a href='TuningInstance.html'>TuningInstance</a> object <code>instance</code>,
 so each batch is possibly executed in parallel via <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>,
 and all evaluations are stored inside of <code>instance$bmr</code>.</p></li>
-<li><p>Before and after the batch evaluation, the <a href='Terminator.html'>Terminator</a> is checked, and if it is positive,
+<li><p>Before the batch evaluation, the <a href='Terminator.html'>Terminator</a> is checked, and if it is positive,
 an exception of class <code>"terminated_error"</code> is generated.
 In the later case the current batch of evaluations is still stored in <code>instance</code>,
 but the numeric scores are not sent back to the handling optimizer as it has lost execution control.</p></li>
 <li><p>After such an exception was caught we select the best configuration from <code>instance$bmr</code> and
 return it.</p></li>
 <li><p>Note that therefore more points than specified by the <a href='Terminator.html'>Terminator</a> may be evaluated,
-as the Terminator is only checked before and after a batch evaluation,
+as the Terminator is only checked before a batch evaluation,
 and not in-between evaluation in a batch.
 How many more depends on the setting of the batch size.</p></li>
 <li><p>Overwrite the private super-method <code>assign_result</code> if you want to decide yourself how to estimate
