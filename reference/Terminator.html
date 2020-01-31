@@ -48,7 +48,7 @@
 A terminator is an object that determines when to stop the tuning.
 Termination of tuning works as follows:
 Evaluations in a tuner are performed in batches.
-Before and after each batch evaluation, the Terminator is checked, and if it is positive, we stop.
+Before each batch evaluation, the Terminator is checked, and if it is positive, we stop.
 The tuning algorithm itself might decide not to produce any more points, or even might decide to do a smaller batch in its last evaluation.
 
 
@@ -158,7 +158,7 @@ So it is advised to check the size of the returned archive, in particular if you
 A terminator is an object that determines when to stop the tuning.</p>
 <p>Termination of tuning works as follows:</p><ul>
 <li><p>Evaluations in a tuner are performed in batches.</p></li>
-<li><p>Before and after each batch evaluation, the Terminator is checked, and if it is positive, we stop.</p></li>
+<li><p>Before each batch evaluation, the Terminator is checked, and if it is positive, we stop.</p></li>
 <li><p>The tuning algorithm itself might decide not to produce any more points, or even might decide to do a smaller batch in its last evaluation.</p></li>
 </ul>
 
