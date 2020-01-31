@@ -86,14 +86,14 @@ and associated estimated performance values, by calling the method instance$assi
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mlr3tuning</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
-      </span>
-    </div>
 
+      <div class="navbar-brand-container">
+        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2</small></a>
+      </div>
+    </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -111,8 +111,6 @@ and associated estimated performance values, by calling the method instance$assi
     mlr3book
   </a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mlr-org/mlr3tuning">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -304,32 +302,41 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "5e58311f-8a12-419a-afb1-c713c2550209"
-#&gt; [2] "f659712d-5a11-42be-be3c-26babae2c8c3"
-#&gt; [3] "f935c780-0736-4f86-9365-e1a969f62cca"
-#&gt; [4] "2fea7b16-cf2b-4348-bf42-a395a08e0578"
+#&gt; [1] "a91864be-398c-4d3d-9fe1-281b6c9f2673"
+#&gt; [2] "2813fd30-9f6f-4652-a954-57646c6d605c"
+#&gt; [3] "4086ecea-fbd4-4ac5-8fb5-d5c6bf5d97f0"
+#&gt; [4] "9d3f6d79-b3fb-46fa-8443-66a92ef81857"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
-#&gt; 1:        0.1
-#&gt; 2:        0.1
-#&gt; 3:        0.1
-#&gt; 4:        0.1
+#&gt; 1:       0.02
+#&gt; 2:       0.02
+#&gt; 3:       0.06
+#&gt; 4:       0.06
 #&gt; </div><div class='input'><span class='no'>inst</span>$<span class='fu'>archive</span>()</div><div class='output co'>#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
 #&gt; 1:  1        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 2:  2        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 3:  3        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0        0.1</div><div class='input'>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; <span class='message'>Error: TuningInstance (tsk:iris, lrn:classif.rpart, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
+)</div><div class='output co'>#&gt; $batch_nr
+#&gt; [1] 2
+#&gt; 
+#&gt; $uhashes
+#&gt; [1] "9b941f4b-486f-4211-986c-caefc6352202"
+#&gt; 
+#&gt; $perf
+#&gt;    classif.ce
+#&gt; 1:       0.02
+#&gt; </div><div class='input'>
 <span class='co'># try another point although the budget is now exhausted</span>
 <span class='co'># -&gt; no extra evaluations</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
@@ -343,11 +350,11 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 5:  5        2 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0        0.1</div><div class='input'>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0       0.02</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -371,7 +378,24 @@ The tuner writes the best found list of settings and estimated performance value
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span> / <span class='fl'>5</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; <span class='message'>Error: TuningInstance (tsk:wine, lrn:classif.debug, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
+)</div><div class='output co'>#&gt; $batch_nr
+#&gt; [1] 1
+#&gt; 
+#&gt; $uhashes
+#&gt; [1] "e7e58fcb-c42f-4a41-9405-f37cd4cc0ae7"
+#&gt; [2] "c9ef24fa-c671-44f3-9cbf-343bee931768"
+#&gt; [3] "18317f91-c77d-431c-984a-ee847b986064"
+#&gt; [4] "34fce850-4386-4c2b-a873-ac22a6b1d21c"
+#&gt; [5] "6a5e878b-36d4-4b66-a22a-b4070792a260"
+#&gt; 
+#&gt; $perf
+#&gt;    classif.ce
+#&gt; 1:  0.7694915
+#&gt; 2:  0.6683616
+#&gt; 3:  0.6683616
+#&gt; 4:  0.6909605
+#&gt; 5:  0.7016949
+#&gt; </div><div class='input'>
 <span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='fu'>archive</span>()
 
 <span class='co'># column errors: multiple errors recorded</span>
@@ -382,11 +406,11 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
 #&gt; 5:  5        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      2  0.6851224
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0  0.6073446
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      2  0.6794727
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      2  0.6851224
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.6016949</div></pre>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      1  0.7694915
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      1  0.6909605
+#&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.7016949</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
