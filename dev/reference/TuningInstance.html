@@ -302,32 +302,41 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "dfabde19-4f61-4637-90a2-72a20026e9c1"
-#&gt; [2] "ab887054-131c-4842-96d6-7703fcdb80e7"
-#&gt; [3] "084b40a0-9511-453e-a6bf-012730d0640e"
-#&gt; [4] "04b5db25-be96-42c7-9b6e-7d1363031309"
+#&gt; [1] "07b1e057-43c8-4797-afc1-b16a5ee6ef28"
+#&gt; [2] "ac2579f2-05fe-443f-94c4-1fcd8a32a553"
+#&gt; [3] "3bec720a-64f6-48e8-9b06-676e169428a7"
+#&gt; [4] "19968639-b276-4678-849f-bd6e6da50640"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
-#&gt; 1:        0.1
-#&gt; 2:        0.1
-#&gt; 3:        0.1
-#&gt; 4:        0.1
+#&gt; 1:       0.02
+#&gt; 2:       0.02
+#&gt; 3:       0.06
+#&gt; 4:       0.06
 #&gt; </div><div class='input'><span class='no'>inst</span>$<span class='fu'>archive</span>()</div><div class='output co'>#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
 #&gt; 1:  1        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 2:  2        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 3:  3        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0        0.1</div><div class='input'>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; <span class='message'>Error: TuningInstance (tsk:iris, lrn:classif.rpart, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
+)</div><div class='output co'>#&gt; $batch_nr
+#&gt; [1] 2
+#&gt; 
+#&gt; $uhashes
+#&gt; [1] "76c144bf-7998-42c4-a8e6-252be6093e2d"
+#&gt; 
+#&gt; $perf
+#&gt;    classif.ce
+#&gt; 1:       0.02
+#&gt; </div><div class='input'>
 <span class='co'># try another point although the budget is now exhausted</span>
 <span class='co'># -&gt; no extra evaluations</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
@@ -341,11 +350,11 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt; 5:  5        2 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0        0.1
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0        0.1</div><div class='input'>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06
+#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0       0.02</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -369,7 +378,24 @@ The tuner writes the best found list of settings and estimated performance value
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span> / <span class='fl'>5</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; <span class='message'>Error: TuningInstance (tsk:wine, lrn:classif.debug, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
+)</div><div class='output co'>#&gt; $batch_nr
+#&gt; [1] 1
+#&gt; 
+#&gt; $uhashes
+#&gt; [1] "2e48e1f1-e515-402a-83d6-3f847718dcae"
+#&gt; [2] "921a57cf-b435-4d78-adbb-4f872f5abf6b"
+#&gt; [3] "e3946cdc-bf3c-4705-b80e-8f4bcc6bb6a7"
+#&gt; [4] "2621a65f-a69e-4494-9134-5d21a82fc40c"
+#&gt; [5] "cbbe960e-08e8-4abd-b2fb-f4761cd4f7d7"
+#&gt; 
+#&gt; $perf
+#&gt;    classif.ce
+#&gt; 1:  0.7694915
+#&gt; 2:  0.6683616
+#&gt; 3:  0.6683616
+#&gt; 4:  0.6909605
+#&gt; 5:  0.7016949
+#&gt; </div><div class='input'>
 <span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='fu'>archive</span>()
 
 <span class='co'># column errors: multiple errors recorded</span>
@@ -380,11 +406,11 @@ The tuner writes the best found list of settings and estimated performance value
 #&gt; 4:  4        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
 #&gt; 5:  5        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
 #&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      2  0.6851224
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0  0.6073446
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      2  0.6794727
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      2  0.6851224
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.6016949</div></pre>
+#&gt; 1: &lt;list&gt; &lt;list&gt;        0      1  0.7694915
+#&gt; 2: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
+#&gt; 3: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
+#&gt; 4: &lt;list&gt; &lt;list&gt;        0      1  0.6909605
+#&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.7016949</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
