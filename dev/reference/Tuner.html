@@ -160,47 +160,6 @@ order to store the best selected hyperparameter configuration and its estimated 
 
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object.</p>
-    <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
-
-    
-<pre>tuner = Tuner$new(param_set, param_classes, properties, packages = character())
-</pre>
-<ul>
-<li><p><code>param_set</code> :: <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a><br />
-Set of control parameters for tuner.</p></li>
-<li><p><code>param_classes</code> :: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code><br />
-Supported parameter classes for learner hyperparameters that the tuner can optimize, subclasses of <a href='https://paradox.mlr-org.com/reference/Param.html'>paradox::Param</a>.</p></li>
-<li><p><code>properties</code> :: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code><br />
-Set of properties of the tuner. Must be a subset of <code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$tuner_properties</a></code>.</p></li>
-<li><p><code>packages</code> :: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code><br />
-Set of required packages.
-Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and are not attached.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="fields"><a class="anchor" href="#fields"></a>Fields</h2>
-
-    
-
-<ul>
-<li><p><code>param_set</code> :: <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>; from construction.</p></li>
-<li><p><code>param_classes</code> :: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code><br /></p></li>
-<li><p><code>properties</code> :: `character(); from construction.</p></li>
-<li><p><code>packages</code> :: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>; from construction.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
-
-    
-
-<ul>
-<li><p><code>tune(instance)</code><br />
-<a href='TuningInstance.html'>TuningInstance</a> -&gt; <code>self</code><br />
-Performs the tuning on a <a href='TuningInstance.html'>TuningInstance</a> until termination.</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="private-methods"><a class="anchor" href="#private-methods"></a>Private Methods</h2>
 
     
@@ -235,7 +194,7 @@ return it.</p></li>
 as the Terminator is only checked before a batch evaluation,
 and not in-between evaluation in a batch.
 How many more depends on the setting of the batch size.</p></li>
-<li><p>Overwrite the private super-method <code>assign_result</code> if you want to decide yourself how to estimate
+<li><p>Overwrite the private super-method <code>assign_result()</code> if you want to decide yourself how to estimate
 the final configuration in the instance and its estimated performance.
 The default behavior is: We pick the best resample-experiment, regarding the first measure,
 then assign its configuration and aggregated performance to the instance.</p></li>
@@ -249,6 +208,95 @@ then assign its configuration and aggregated performance to the instance.</p></l
 <code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
 <code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code>,
 <code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
+    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+
+    <p><div class="r6-fields"></p><dl class='dl-horizontal'>
+<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+Set of control parameters for tuner.</p></dd>
+
+<dt><code>param_classes</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Supported parameter classes for learner hyperparameters that the tuner can optimize, subclasses of <a href='https://paradox.mlr-org.com/reference/Param.html'>paradox::Param</a>.</p></dd>
+
+<dt><code>properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Set of properties of the tuner. Must be a subset of <code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$tuner_properties</a></code>.</p></dd>
+
+<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Set of required packages.
+Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and are not attached.</p></dd>
+
+</dl><p></div></p>
+    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
+
+    
+<h3>Public methods</h3>
+
+<ul>
+<li><p><a href='#method-new'><code>Tuner$new()</code></a></p></li>
+<li><p><a href='#method-format'><code>Tuner$format()</code></a></p></li>
+<li><p><a href='#method-print'><code>Tuner$print()</code></a></p></li>
+<li><p><a href='#method-tune'><code>Tuner$tune()</code></a></p></li>
+<li><p><a href='#method-clone'><code>Tuner$clone()</code></a></p></li>
+</ul>
+<p><hr>
+<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
+<p><div class="r"></p><pre>Tuner$new(param_set, param_classes, properties, packages = character())</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl class='dl-horizontal'>
+<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+Set of control parameters for tuner.</p></dd>
+
+<dt><code>param_classes</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Supported parameter classes for learner hyperparameters that the tuner can optimize, subclasses of <a href='https://paradox.mlr-org.com/reference/Param.html'>paradox::Param</a>.</p></dd>
+
+<dt><code>properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Set of properties of the tuner. Must be a subset of <code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$tuner_properties</a></code>.</p></dd>
+
+<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Set of required packages.
+Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and are not attached.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-format"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
+<p>Helper for print outputs.</p><h3>Usage</h3>
+<p><div class="r"></p><pre>Tuner$format()</pre><p></div></p>
+
+<p><hr>
+<a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
+<p>Printer.</p><h3>Usage</h3>
+<p><div class="r"></p><pre>Tuner$print()</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl class='dl-horizontal'>
+<dt><code>...</code></dt><dd><p>(ignored).</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-tune"></a></p><h3>Method <code>tune()</code></h3>
+<p>Performs the tuning on a <a href='TuningInstance.html'>TuningInstance</a> until termination.</p><h3>Usage</h3>
+<p><div class="r"></p><pre>Tuner$tune(instance)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl class='dl-horizontal'>
+<dt><code>instance</code></dt><dd><p>(TuningInstance].</p></dd>
+
+</dl><p></div></p>
+<h3>Returns</h3>
+<p>Modifed <code>self</code>.</p>
+<p><hr>
+<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
+<p><div class="r"></p><pre>Tuner$clone(deep = FALSE)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl class='dl-horizontal'>
+<dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
+
+</dl><p></div></p>
+
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
@@ -295,13 +343,11 @@ then assign its configuration and aggregated performance to the instance.</p></l
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#construction">Construction</a></li>
-      <li><a href="#fields">Fields</a></li>
-      <li><a href="#methods">Methods</a></li>
       <li><a href="#private-methods">Private Methods</a></li>
       <li><a href="#technical-details-and-subclasses">Technical Details and Subclasses</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#public-fields">Public fields</a></li>
+      <li><a href="#methods">Methods</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
