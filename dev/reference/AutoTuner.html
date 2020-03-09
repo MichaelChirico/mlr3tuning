@@ -286,8 +286,61 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 <span class='no'>at</span> <span class='kw'>=</span> <span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>param_set</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)
 <span class='no'>at</span>$<span class='no'>store_tuning_instance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 
-<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)
-<span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
+<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [13:46:59.129] Starting to tune 1 parameters with '&lt;TunerGridSearch&gt;' and '&lt;TerminatorEvals&gt;' 
+#&gt; INFO  [13:46:59.160] Terminator settings: n_evals=5 
+#&gt; INFO  [13:46:59.176] Evaluating 1 configurations 
+#&gt; INFO  [13:46:59.180]     cp 
+#&gt; INFO  [13:46:59.180]  0.056 
+#&gt; INFO  [13:46:59.196] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:46:59.197] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:46:59.225] Finished benchmark 
+#&gt; INFO  [13:46:59.239] Result of batch 1: 
+#&gt; INFO  [13:46:59.246]     cp classif.ce 
+#&gt; INFO  [13:46:59.246]  0.056       0.06 
+#&gt; INFO  [13:46:59.248] 1 configurations evaluated 
+#&gt; INFO  [13:46:59.319] Evaluating 1 configurations 
+#&gt; INFO  [13:46:59.321]     cp 
+#&gt; INFO  [13:46:59.321]  0.045 
+#&gt; INFO  [13:46:59.335] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:46:59.337] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:46:59.351] Finished benchmark 
+#&gt; INFO  [13:46:59.360] Result of batch 2: 
+#&gt; INFO  [13:46:59.363]     cp classif.ce 
+#&gt; INFO  [13:46:59.363]  0.045       0.06 
+#&gt; INFO  [13:46:59.364] 2 configurations evaluated 
+#&gt; INFO  [13:46:59.371] Evaluating 1 configurations 
+#&gt; INFO  [13:46:59.373]     cp 
+#&gt; INFO  [13:46:59.373]  0.023 
+#&gt; INFO  [13:46:59.386] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:46:59.388] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:46:59.402] Finished benchmark 
+#&gt; INFO  [13:46:59.410] Result of batch 3: 
+#&gt; INFO  [13:46:59.413]     cp classif.ce 
+#&gt; INFO  [13:46:59.413]  0.023       0.06 
+#&gt; INFO  [13:46:59.415] 3 configurations evaluated 
+#&gt; INFO  [13:46:59.421] Evaluating 1 configurations 
+#&gt; INFO  [13:46:59.424]     cp 
+#&gt; INFO  [13:46:59.424]  0.012 
+#&gt; INFO  [13:46:59.440] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:46:59.441] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:46:59.455] Finished benchmark 
+#&gt; INFO  [13:46:59.463] Result of batch 4: 
+#&gt; INFO  [13:46:59.466]     cp classif.ce 
+#&gt; INFO  [13:46:59.466]  0.012       0.06 
+#&gt; INFO  [13:46:59.468] 4 configurations evaluated 
+#&gt; INFO  [13:46:59.475] Evaluating 1 configurations 
+#&gt; INFO  [13:46:59.477]     cp 
+#&gt; INFO  [13:46:59.477]  0.089 
+#&gt; INFO  [13:46:59.490] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:46:59.492] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:46:59.508] Finished benchmark 
+#&gt; INFO  [13:46:59.516] Result of batch 5: 
+#&gt; INFO  [13:46:59.519]     cp classif.ce 
+#&gt; INFO  [13:46:59.519]  0.089       0.06 
+#&gt; INFO  [13:46:59.521] 5 configurations evaluated 
+#&gt; INFO  [13:46:59.527] Finished tuning after 5 evals 
+#&gt; INFO  [13:46:59.541] Tuned x: cp=0.045 
+#&gt; INFO  [13:46:59.543] Tuned y: classif.ce=0.06 </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.045
@@ -321,7 +374,7 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 #&gt; * Properties: importance, missings, multiclass, selected_features,
 #&gt;   twoclass, weights</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#super-class">Super class</a></li>
@@ -341,7 +394,7 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

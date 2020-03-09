@@ -409,14 +409,32 @@ Performance score for <code>tune_x</code>.</p></dd>
 
 <span class='co'># first 4 points as cross product</span>
 <span class='no'>design</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.01</span>), <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))
-<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; $batch_nr
+<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; INFO  [13:47:00.991] Evaluating 4 configurations 
+#&gt; INFO  [13:47:00.994]    cp minsplit 
+#&gt; INFO  [13:47:00.994]  0.01        3 
+#&gt; INFO  [13:47:00.994]  0.01        5 
+#&gt; INFO  [13:47:00.994]  0.05        3 
+#&gt; INFO  [13:47:00.994]  0.05        5 
+#&gt; INFO  [13:47:01.032] Benchmark with 4 resampling iterations 
+#&gt; INFO  [13:47:01.034] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:01.050] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:01.068] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:01.080] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:01.096] Finished benchmark 
+#&gt; INFO  [13:47:01.108] Result of batch 1: 
+#&gt; INFO  [13:47:01.111]    cp minsplit classif.ce 
+#&gt; INFO  [13:47:01.111]  0.01        3       0.02 
+#&gt; INFO  [13:47:01.111]  0.01        5       0.02 
+#&gt; INFO  [13:47:01.111]  0.05        3       0.06 
+#&gt; INFO  [13:47:01.111]  0.05        5       0.06 
+#&gt; INFO  [13:47:01.113] 4 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "28e16828-a15a-4841-bcb7-1dc7ed02b179"
-#&gt; [2] "5b81a0ee-b0f3-4afd-b74d-afd4c39ef540"
-#&gt; [3] "1bc7c53b-6464-4925-84ac-740c0b66b381"
-#&gt; [4] "331cf659-d01d-4dd7-af39-b97de7b32fae"
+#&gt; [1] "9462f41f-1c6e-42e4-94ec-627362b460cb"
+#&gt; [2] "9b2b8945-9b5a-4c72-96d2-3797935a39a8"
+#&gt; [3] "36216863-8d7b-4270-801c-e1b4459f1a8d"
+#&gt; [4] "49b94d7a-70a2-4b1d-8f18-74a5d74ba81f"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
@@ -438,11 +456,20 @@ Performance score for <code>tune_x</code>.</p></dd>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; $batch_nr
+)</div><div class='output co'>#&gt; INFO  [13:47:01.143] Evaluating 1 configurations 
+#&gt; INFO  [13:47:01.146]    cp minsplit 
+#&gt; INFO  [13:47:01.146]  0.01        7 
+#&gt; INFO  [13:47:01.158] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:47:01.160] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:01.174] Finished benchmark 
+#&gt; INFO  [13:47:01.182] Result of batch 2: 
+#&gt; INFO  [13:47:01.189]    cp minsplit classif.ce 
+#&gt; INFO  [13:47:01.189]  0.01        7       0.02 
+#&gt; INFO  [13:47:01.191] 5 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
 #&gt; [1] 2
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "2e625c79-306a-46db-9cdb-c8a40ca22107"
+#&gt; [1] "91e8a703-26fd-4fba-914d-07bee21e6fcc"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
@@ -489,15 +516,46 @@ Performance score for <code>tune_x</code>.</p></dd>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span> / <span class='fl'>5</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; $batch_nr
+)</div><div class='output co'>#&gt; INFO  [13:47:01.277] Evaluating 5 configurations 
+#&gt; INFO  [13:47:01.280]    x 
+#&gt; INFO  [13:47:01.280]  0.2 
+#&gt; INFO  [13:47:01.280]  0.4 
+#&gt; INFO  [13:47:01.280]  0.6 
+#&gt; INFO  [13:47:01.280]  0.8 
+#&gt; INFO  [13:47:01.280]  1.0 
+#&gt; INFO  [13:47:01.342] Benchmark with 15 resampling iterations 
+#&gt; INFO  [13:47:01.343] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [13:47:01.365] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [13:47:01.385] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [13:47:01.405] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [13:47:01.443] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [13:47:01.463] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [13:47:01.482] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [13:47:01.503] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [13:47:01.521] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [13:47:01.545] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [13:47:01.564] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [13:47:01.588] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [13:47:01.609] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [13:47:01.630] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [13:47:01.651] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [13:47:01.689] Finished benchmark 
+#&gt; INFO  [13:47:01.705] Result of batch 1: 
+#&gt; INFO  [13:47:01.708]    x classif.ce 
+#&gt; INFO  [13:47:01.708]  0.2  0.7694915 
+#&gt; INFO  [13:47:01.708]  0.4  0.6683616 
+#&gt; INFO  [13:47:01.708]  0.6  0.6683616 
+#&gt; INFO  [13:47:01.708]  0.8  0.6909605 
+#&gt; INFO  [13:47:01.708]  1.0  0.7016949 
+#&gt; INFO  [13:47:01.710] 5 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
 #&gt; [1] 1
 #&gt; 
 #&gt; $uhashes
-#&gt; [1] "98f207fb-a75f-4136-abaf-a4062883246b"
-#&gt; [2] "ebc8e508-a1d1-41d7-a134-b0517e6932e5"
-#&gt; [3] "1f6f9427-3fed-41cb-80c8-098972037a65"
-#&gt; [4] "4ac04a7c-cf53-4327-a3dd-c4bd0ce2fc23"
-#&gt; [5] "45920553-b4c7-4fe5-be92-2cf6ec90ce23"
+#&gt; [1] "4901d171-2329-4f8f-bb2a-930e10fcbee7"
+#&gt; [2] "d0eb8284-d382-4083-8510-e8cfdef5c084"
+#&gt; [3] "0b32d689-6811-4e9a-ac87-e88205fe5fc6"
+#&gt; [4] "7697b0f0-7561-4061-a14e-f2fcdbbc40b1"
+#&gt; [5] "fb15b30a-431a-469e-baa9-995d1ac9fa0c"
 #&gt; 
 #&gt; $perf
 #&gt;    classif.ce
@@ -523,7 +581,7 @@ Performance score for <code>tune_x</code>.</p></dd>
 #&gt; 4: &lt;list&gt; &lt;list&gt;        0      1  0.6909605
 #&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.7016949</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#public-fields">Public fields</a></li>
@@ -542,7 +600,7 @@ Performance score for <code>tune_x</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

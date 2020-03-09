@@ -314,8 +314,41 @@ Note that these packages will be loaded via <code><a href='https://rdrr.io/r/bas
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>) <span class='co'># swap this line to use a different Tuner</span>
-<span class='no'>tt</span>$<span class='fu'>tune</span>(<span class='no'>instance</span>) <span class='co'># modifies the instance by reference</span>
-<span class='no'>instance</span>$<span class='no'>result</span> <span class='co'># returns best configuration and best performance</span></div><div class='output co'>#&gt; $tune_x
+<span class='no'>tt</span>$<span class='fu'>tune</span>(<span class='no'>instance</span>) <span class='co'># modifies the instance by reference</span></div><div class='output co'>#&gt; INFO  [13:47:00.386] Starting to tune 1 parameters with '&lt;TunerRandomSearch&gt;' and '&lt;TerminatorEvals&gt;' 
+#&gt; INFO  [13:47:00.388] Terminator settings: n_evals=3 
+#&gt; INFO  [13:47:00.408] Evaluating 1 configurations 
+#&gt; INFO  [13:47:00.410]          cp 
+#&gt; INFO  [13:47:00.410]  0.08292264 
+#&gt; INFO  [13:47:00.425] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:47:00.426] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:00.440] Finished benchmark 
+#&gt; INFO  [13:47:00.448] Result of batch 1: 
+#&gt; INFO  [13:47:00.451]          cp classif.ce 
+#&gt; INFO  [13:47:00.451]  0.08292264       0.04 
+#&gt; INFO  [13:47:00.452] 1 configurations evaluated 
+#&gt; INFO  [13:47:00.465] Evaluating 1 configurations 
+#&gt; INFO  [13:47:00.467]          cp 
+#&gt; INFO  [13:47:00.467]  0.01362821 
+#&gt; INFO  [13:47:00.485] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:47:00.487] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:00.500] Finished benchmark 
+#&gt; INFO  [13:47:00.508] Result of batch 2: 
+#&gt; INFO  [13:47:00.511]          cp classif.ce 
+#&gt; INFO  [13:47:00.511]  0.01362821       0.04 
+#&gt; INFO  [13:47:00.513] 2 configurations evaluated 
+#&gt; INFO  [13:47:00.525] Evaluating 1 configurations 
+#&gt; INFO  [13:47:00.527]          cp 
+#&gt; INFO  [13:47:00.527]  0.02685743 
+#&gt; INFO  [13:47:00.540] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:47:00.542] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:47:00.555] Finished benchmark 
+#&gt; INFO  [13:47:00.563] Result of batch 3: 
+#&gt; INFO  [13:47:00.566]          cp classif.ce 
+#&gt; INFO  [13:47:00.566]  0.02685743       0.04 
+#&gt; INFO  [13:47:00.568] 3 configurations evaluated 
+#&gt; INFO  [13:47:00.580] Finished tuning after 3 evals 
+#&gt; INFO  [13:47:00.591] Tuned x: cp=0.01363 
+#&gt; INFO  [13:47:00.593] Tuned y: classif.ce=0.04 </div><div class='input'><span class='no'>instance</span>$<span class='no'>result</span> <span class='co'># returns best configuration and best performance</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.01362821
 #&gt; 
@@ -340,7 +373,7 @@ Note that these packages will be loaded via <code><a href='https://rdrr.io/r/bas
 #&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.04
 #&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.04</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#private-methods">Private Methods</a></li>
@@ -361,7 +394,7 @@ Note that these packages will be loaded via <code><a href='https://rdrr.io/r/bas
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>
