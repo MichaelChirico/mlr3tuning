@@ -314,41 +314,41 @@ Note that these packages will be loaded via <code><a href='https://rdrr.io/r/bas
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>) <span class='co'># swap this line to use a different Tuner</span>
-<span class='no'>tt</span>$<span class='fu'>tune</span>(<span class='no'>instance</span>) <span class='co'># modifies the instance by reference</span></div><div class='output co'>#&gt; INFO  [13:47:00.386] Starting to tune 1 parameters with '&lt;TunerRandomSearch&gt;' and '&lt;TerminatorEvals&gt;' 
-#&gt; INFO  [13:47:00.388] Terminator settings: n_evals=3 
-#&gt; INFO  [13:47:00.408] Evaluating 1 configurations 
-#&gt; INFO  [13:47:00.410]          cp 
-#&gt; INFO  [13:47:00.410]  0.08292264 
-#&gt; INFO  [13:47:00.425] Benchmark with 1 resampling iterations 
-#&gt; INFO  [13:47:00.426] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:47:00.440] Finished benchmark 
-#&gt; INFO  [13:47:00.448] Result of batch 1: 
-#&gt; INFO  [13:47:00.451]          cp classif.ce 
-#&gt; INFO  [13:47:00.451]  0.08292264       0.04 
-#&gt; INFO  [13:47:00.452] 1 configurations evaluated 
-#&gt; INFO  [13:47:00.465] Evaluating 1 configurations 
-#&gt; INFO  [13:47:00.467]          cp 
-#&gt; INFO  [13:47:00.467]  0.01362821 
-#&gt; INFO  [13:47:00.485] Benchmark with 1 resampling iterations 
-#&gt; INFO  [13:47:00.487] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:47:00.500] Finished benchmark 
-#&gt; INFO  [13:47:00.508] Result of batch 2: 
-#&gt; INFO  [13:47:00.511]          cp classif.ce 
-#&gt; INFO  [13:47:00.511]  0.01362821       0.04 
-#&gt; INFO  [13:47:00.513] 2 configurations evaluated 
-#&gt; INFO  [13:47:00.525] Evaluating 1 configurations 
-#&gt; INFO  [13:47:00.527]          cp 
-#&gt; INFO  [13:47:00.527]  0.02685743 
-#&gt; INFO  [13:47:00.540] Benchmark with 1 resampling iterations 
-#&gt; INFO  [13:47:00.542] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:47:00.555] Finished benchmark 
-#&gt; INFO  [13:47:00.563] Result of batch 3: 
-#&gt; INFO  [13:47:00.566]          cp classif.ce 
-#&gt; INFO  [13:47:00.566]  0.02685743       0.04 
-#&gt; INFO  [13:47:00.568] 3 configurations evaluated 
-#&gt; INFO  [13:47:00.580] Finished tuning after 3 evals 
-#&gt; INFO  [13:47:00.591] Tuned x: cp=0.01363 
-#&gt; INFO  [13:47:00.593] Tuned y: classif.ce=0.04 </div><div class='input'><span class='no'>instance</span>$<span class='no'>result</span> <span class='co'># returns best configuration and best performance</span></div><div class='output co'>#&gt; $tune_x
+<span class='no'>tt</span>$<span class='fu'>tune</span>(<span class='no'>instance</span>) <span class='co'># modifies the instance by reference</span></div><div class='output co'>#&gt; INFO  [21:03:51.714] Starting to tune 1 parameters with '&lt;TunerRandomSearch&gt;' and '&lt;TerminatorEvals&gt;' 
+#&gt; INFO  [21:03:51.716] Terminator settings: n_evals=3 
+#&gt; INFO  [21:03:51.736] Evaluating 1 configurations 
+#&gt; INFO  [21:03:51.738]          cp 
+#&gt; INFO  [21:03:51.738]  0.08292264 
+#&gt; INFO  [21:03:51.753] Benchmark with 1 resampling iterations 
+#&gt; INFO  [21:03:51.755] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [21:03:51.769] Finished benchmark 
+#&gt; INFO  [21:03:51.777] Result of batch 1: 
+#&gt; INFO  [21:03:51.780]          cp classif.ce 
+#&gt; INFO  [21:03:51.780]  0.08292264       0.04 
+#&gt; INFO  [21:03:51.782] 1 configurations evaluated 
+#&gt; INFO  [21:03:51.799] Evaluating 1 configurations 
+#&gt; INFO  [21:03:51.802]          cp 
+#&gt; INFO  [21:03:51.802]  0.01362821 
+#&gt; INFO  [21:03:51.815] Benchmark with 1 resampling iterations 
+#&gt; INFO  [21:03:51.816] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [21:03:51.831] Finished benchmark 
+#&gt; INFO  [21:03:51.839] Result of batch 2: 
+#&gt; INFO  [21:03:51.841]          cp classif.ce 
+#&gt; INFO  [21:03:51.841]  0.01362821       0.04 
+#&gt; INFO  [21:03:51.843] 2 configurations evaluated 
+#&gt; INFO  [21:03:51.856] Evaluating 1 configurations 
+#&gt; INFO  [21:03:51.858]          cp 
+#&gt; INFO  [21:03:51.858]  0.02685743 
+#&gt; INFO  [21:03:51.871] Benchmark with 1 resampling iterations 
+#&gt; INFO  [21:03:51.873] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [21:03:51.887] Finished benchmark 
+#&gt; INFO  [21:03:51.895] Result of batch 3: 
+#&gt; INFO  [21:03:51.898]          cp classif.ce 
+#&gt; INFO  [21:03:51.898]  0.02685743       0.04 
+#&gt; INFO  [21:03:51.900] 3 configurations evaluated 
+#&gt; INFO  [21:03:51.912] Finished tuning after 3 evals 
+#&gt; INFO  [21:03:51.926] Tuned x: cp=0.01363 
+#&gt; INFO  [21:03:51.928] Tuned y: classif.ce=0.04 </div><div class='input'><span class='no'>instance</span>$<span class='no'>result</span> <span class='co'># returns best configuration and best performance</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.01362821
 #&gt; 
