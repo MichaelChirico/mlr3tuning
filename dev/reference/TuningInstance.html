@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -44,18 +48,22 @@
 
 
 <meta property="og:title" content="TuningInstance Class — TuningInstance" />
-<meta property="og:description" content="Specifies a general tuning scenario, including performance evaluator and archive for Tuners to
-act upon. This class encodes the black box objective function,
-that a Tuner has to optimize. It allows the basic operations of querying the objective
-at design points ($eval_batch()), storing the evaluations in an internal archive
-and querying the archive ($archive()).
-Evaluations of hyperparameter configurations are performed in batches by calling mlr3::benchmark() internally.
-Before a batch is evaluated, the Terminator is queried for the remaining budget.
-If the available budget is exhausted, an exception is raised, and no further evaluations can be performed from this point on.
-A list of measures can be passed to the instance, and they will always be all evaluated.
-However, single-criteria tuners optimize only the first measure.
-The tuner is also supposed to store its final result, consisting of a selected hyperparameter configuration
-and associated estimated performance values, by calling the method instance$assign_result." />
+<meta property="og:description" content="Specifies a general tuning scenario, including objective function
+and archive for Tuners to act upon. This class stores an ObjectiveTuning
+object that encodes the black box objective function which a Tuner has to
+optimize. It allows the basic operations of querying the objective
+at design points ($eval_batch()), storing the evaluations in the internal
+Archive and accessing the final result ($result).
+Evaluations of hyperparameter configurations are performed in batches by
+calling mlr3::benchmark() internally. Before a batch is evaluated, the
+Terminator is queried for the remaining budget. If the available budget is
+exhausted, an exception is raised, and no further evaluations can be
+performed from this point on.
+A list of measures can be passed to the instance, and they will always be all
+evaluated. However, single-criteria tuners optimize only the first measure.
+The tuner is also supposed to store its final result, consisting of a
+selected hyperparameter configuration and associated estimated performance
+values, by calling the method instance$assign_result." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -74,7 +82,7 @@ and associated estimated performance values, by calling the method instance$assi
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -89,7 +97,7 @@ and associated estimated performance values, by calling the method instance$assi
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -112,7 +120,7 @@ and associated estimated performance values, by calling the method instance$assi
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -124,7 +132,7 @@ and associated estimated performance values, by calling the method instance$assi
   </a>
 </li>
 <li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
+  <a href="https://stackoverflow.com/questions/tagged/mlr">
     <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
@@ -154,57 +162,35 @@ and associated estimated performance values, by calling the method instance$assi
     </div>
 
     <div class="ref-description">
-    <p>Specifies a general tuning scenario, including performance evaluator and archive for Tuners to
-act upon. This class encodes the black box objective function,
-that a <a href='Tuner.html'>Tuner</a> has to optimize. It allows the basic operations of querying the objective
-at design points (<code>$eval_batch()</code>), storing the evaluations in an internal archive
-and querying the archive (<code>$archive()</code>).</p>
-<p>Evaluations of hyperparameter configurations are performed in batches by calling <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code> internally.
-Before a batch is evaluated, the <a href='Terminator.html'>Terminator</a> is queried for the remaining budget.
-If the available budget is exhausted, an exception is raised, and no further evaluations can be performed from this point on.</p>
-<p>A list of measures can be passed to the instance, and they will always be all evaluated.
-However, single-criteria tuners optimize only the first measure.</p>
-<p>The tuner is also supposed to store its final result, consisting of a selected hyperparameter configuration
-and associated estimated performance values, by calling the method <code>instance$assign_result</code>.</p>
+    <p>Specifies a general tuning scenario, including objective function
+and archive for Tuners to act upon. This class stores an <code>ObjectiveTuning</code>
+object that encodes the black box objective function which a <a href='Tuner.html'>Tuner</a> has to
+optimize. It allows the basic operations of querying the objective
+at design points (<code>$eval_batch()</code>), storing the evaluations in the internal
+<code>Archive</code> and accessing the final result (<code>$result</code>).</p>
+<p>Evaluations of hyperparameter configurations are performed in batches by
+calling <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code> internally. Before a batch is evaluated, the
+Terminator is queried for the remaining budget. If the available budget is
+exhausted, an exception is raised, and no further evaluations can be
+performed from this point on.</p>
+<p>A list of measures can be passed to the instance, and they will always be all
+evaluated. However, single-criteria tuners optimize only the first measure.</p>
+<p>The tuner is also supposed to store its final result, consisting of a
+selected hyperparameter configuration and associated estimated performance
+values, by calling the method <code>instance$assign_result</code>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><div class="r6-fields"></p><dl class='dl-horizontal'>
-<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
-
-<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
-
-<dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br /></p></dd>
-
-<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>).</p></dd>
-
-<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
-
-<dt><code>terminator</code></dt><dd><p>(<a href='Terminator.html'>Terminator</a>).</p></dd>
-
-<dt><code>bm_args</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.</p></dd>
-
-<dt><code>bmr</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>)<br />
-A benchmark result, container object for all performed <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>s
-when evaluating hyperparameter configurations.</p></dd>
-
-<dt><code>start_time</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct(1)</a></code>)<br />
-Time the tuning was started.
-This is set in the beginning of <code>$tune()</code> of <a href='Tuner.html'>Tuner</a>.</p></dd>
-
-</dl><p></div></p>
+    <p><code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstance.html'>bbotk::OptimInstance</a></code> -&gt; <code>TuningInstance</code></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
-    <p><div class="r6-active-bindings"></p><dl class='dl-horizontal'>
-<dt><code>n_evals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Number of configuration evaluations stored in the container.</p></dd>
-
-<dt><code>result</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Result of the tuning, i.e., the optimal configuration and its estimated performance:</p></dd>
+    <p><div class="r6-active-bindings"></p><dl'>
+<dt><code>result</code></dt><dd><p>named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
+Result of the tuning, i.e., the optimal configuration and its estimated
+performance.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -214,168 +200,73 @@ Result of the tuning, i.e., the optimal configuration and its estimated performa
 
 <ul>
 <li><p><a href='#method-new'><code>TuningInstance$new()</code></a></p></li>
-<li><p><a href='#method-format'><code>TuningInstance$format()</code></a></p></li>
-<li><p><a href='#method-print'><code>TuningInstance$print()</code></a></p></li>
-<li><p><a href='#method-eval_batch'><code>TuningInstance$eval_batch()</code></a></p></li>
-<li><p><a href='#method-tuner_objective'><code>TuningInstance$tuner_objective()</code></a></p></li>
-<li><p><a href='#method-archive'><code>TuningInstance$archive()</code></a></p></li>
-<li><p><a href='#method-best'><code>TuningInstance$best()</code></a></p></li>
 <li><p><a href='#method-assign_result'><code>TuningInstance$assign_result()</code></a></p></li>
 <li><p><a href='#method-clone'><code>TuningInstance$clone()</code></a></p></li>
 </ul>
-<p><hr>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="eval_batch"><a href='../../bbotk/html/OptimInstance.html#method-eval_batch'><code>bbotk::OptimInstance$eval_batch()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="format"><a href='../../bbotk/html/OptimInstance.html#method-format'><code>bbotk::OptimInstance$format()</code></a></span></p></li>
+</ul>
+</details>
+
+<hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p>
-<p>This defines the resampled performance of a learner on a task, a feasibility region
-for the parameters the tuner is supposed to optimize, and a termination criterion.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$new(
-  task,
-  learner,
-  resampling,
-  measures,
-  param_set,
-  terminator,
-  bm_args = list()
+<p>This defines the resampled performance of a learner on a task, a
+feasibility region for the parameters the tuner is supposed to optimize,
+and a termination criterion.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
+  <span class='no'>task</span>,
+  <span class='no'>learner</span>,
+  <span class='no'>resampling</span>,
+  <span class='no'>measures</span>,
+  <span class='no'>search_space</span>,
+  <span class='no'>terminator</span>,
+  <span class='kw'>store_models</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
+<p><div class="arguments"></p><dl'>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)</p></dd>
 
-<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Note that uninstantiated resamplings are instantiated during construction so that all configurations
-are evaluated on the same data splits.</p></dd>
+Note that uninstantiated resamplings are instantiated during construction
+so that all configurations are evaluated on the same data splits.</p></dd>
 
-<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>).</p></dd>
+<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)</p></dd>
 
-<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
+<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)</p></dd>
 
-<dt><code>terminator</code></dt><dd><p>(<a href='Terminator.html'>Terminator</a>).</p></dd>
+<dt><code>terminator</code></dt><dd><p>(Terminator)</p></dd>
 
-<dt><code>bm_args</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.</p></dd>
-
-</dl><p></div></p>
-<p><hr>
-<a id="method-format"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
-<p>Helper for print outputs.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$format()</pre><p></div></p>
-
-<p><hr>
-<a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
-<p>Printer.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$print()</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>...</code></dt><dd><p>(ignored).</p></dd>
+<dt><code>store_models</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code></p></dd>
 
 </dl><p></div></p>
-<p><hr>
-<a id="method-eval_batch"></a></p><h3>Method <code>eval_batch()</code></h3>
-<p>Evaluates all hyperparameter configurations in <code>dt</code> through resampling and updates the internal <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>BenchmarkResult</a> <code>$bmr</code> by reference.</p>
-<p>Before each batch-evaluation, the <a href='Terminator.html'>Terminator</a> is checked, and if it is positive, an exception of class <code>terminated_error</code> is raised.
-This function is intended to be internally called by a <a href='Tuner.html'>Tuner</a>.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$eval_batch(dt)</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>dt</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
-Table of hyperparameter configurations where each configuration is a row, and columns are scalar parameters.</p></dd>
-
-</dl><p></div></p>
-<h3>Returns</h3>
-<p>Named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code> with the following elements:</p><ul>
-<li><p><code>"batch_nr"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>):<br />
-Number of the new batch.
-This number is calculated in an auto-increment fashion and also stored inside the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>BenchmarkResult</a> as column <code>batch_nr</code>.</p></li>
-<li><p><code>"uhashes"</code> (<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>):<br />
-Unique hashes of the added <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>ResampleResult</a>s.</p></li>
-<li><p><code>"perf"</code> (<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>):<br />
-Table of evaluated performances for each row of <code>dt</code>.
-Has the same number of rows as <code>dt</code>, and the same number of columns as length of <code>measures</code>.
-Columns are named with measure-IDs.
-A cell entry is the (aggregated) performance of that configuration for that measure.</p></li>
-</ul>
-
-<p><hr>
-<a id="method-tuner_objective"></a></p><h3>Method <code>tuner_objective()</code></h3>
-<p>Evaluates a (untransformed) hyperparameter configuration of only numeric values, and returns a scalar objective value,
-where the return value is negated if the measure is maximized.
-Internally, <code>$eval_batch()</code> is called with a single row.
-This function serves as a objective function for tuners of numeric spaces - which should always be minimized.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$tuner_objective(x)</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>x</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code>)<br />
-Untransformed hyperparameter configuration.</p></dd>
-
-</dl><p></div></p>
-<h3>Returns</h3>
-<p>Objective value as <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>.</p>
-<p><hr>
-<a id="method-archive"></a></p><h3>Method <code>archive()</code></h3>
-<p>Returns a table of contained resample results, similar to the one returned by <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>'s <code>$aggregate()</code> method.</p>
-<p>Some important columns of this table are:</p><ul>
-<li><p>All evaluated measures are included as numeric columns, named with their measure ID.</p></li>
-<li><p><code>tune_x</code>: A list column that contains the parameter settings the tuner evaluated, without potential <code>trafo</code> applied.</p></li>
-<li><p><code>params</code>: A list column that contains the parameter settings that were actually used in the learner.
-Similar to column <code>tune_x</code>, but with potential <code>trafo</code> applied.
-Also, if the learner had some extra parameters statically set before tuning, these are included here.</p></li>
-<li><p><code>tune_x</code>: A named list of settings of feasible and untransformed parameters from <code>param_set</code>.</p></li>
-</ul>
-<h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$archive(unnest = "no")</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>unnest</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Can have the values <code>"no"</code>, <code>"tune_x"</code> or <code>"params"</code>.
-If it is not set to <code>"no"</code>, settings of the respective list-column are stored in
-separate columns instead of the list-column, and dependent, inactive parameters are encoded with <code>NA</code>.</p></dd>
-
-</dl><p></div></p>
-<h3>Returns</h3>
-<p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
-<p><hr>
-<a id="method-best"></a></p><h3>Method <code>best()</code></h3>
-<p>Queries the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> for the best <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> according to <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a> <code>measure</code> (default is the first measure in <code>$measures</code>).
-In case of ties, one of the tied values is selected randomly.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$best(measure = NULL)</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>measure</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>.</p></dd>
-
-</dl><p></div></p>
-<h3>Returns</h3>
-<p><a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>.</p>
 <p><hr>
 <a id="method-assign_result"></a></p><h3>Method <code>assign_result()</code></h3>
-<p>The tuner writes the best found list of settings and estimated performance values here. For internal use.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$assign_result(tune_x, perf)</pre><p></div></p>
+<p>The tuner writes the best found list of settings and estimated
+performance values here. For internal use.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>assign_result</span>(<span class='no'>tune_x</span>, <span class='no'>perf</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>tune_x</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
+<p><div class="arguments"></p><dl'>
+<dt><code>tune_x</code></dt><dd><p>named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
 Hyperparameter configuration.</p></dd>
 
-<dt><code>perf</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code>)<br />
+<dt><code>perf</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code><br />
 Performance score for <code>tune_x</code>.</p></dd>
 
 </dl><p></div></p>
-<h3>Returns</h3>
-<p>Nothing.</p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TuningInstance$clone(deep = FALSE)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
+<p><div class="arguments"></p><dl'>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -397,102 +288,49 @@ Performance score for <code>tune_x</code>.</p></dd>
   <span class='no'>ParamInt</span>$<span class='fu'>new</span>(<span class='st'>"minsplit"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 )
 
-<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='no'>task</span>,
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='no'>learner</span>,
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='no'>resampling</span>,
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>measures</span>,
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>param_set</span>,
+  <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>param_set</span>,
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
 
 <span class='co'># first 4 points as cross product</span>
 <span class='no'>design</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.01</span>), <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))
-<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; INFO  [09:49:12.495] Evaluating 4 configurations 
-#&gt; INFO  [09:49:12.497]    cp minsplit 
-#&gt; INFO  [09:49:12.497]  0.01        3 
-#&gt; INFO  [09:49:12.497]  0.01        5 
-#&gt; INFO  [09:49:12.497]  0.05        3 
-#&gt; INFO  [09:49:12.497]  0.05        5 
-#&gt; INFO  [09:49:12.538] Benchmark with 4 resampling iterations 
-#&gt; INFO  [09:49:12.540] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:12.556] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:12.571] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:12.587] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:12.606] Finished benchmark 
-#&gt; INFO  [09:49:12.618] Result of batch 1: 
-#&gt; INFO  [09:49:12.621]    cp minsplit classif.ce 
-#&gt; INFO  [09:49:12.621]  0.01        3       0.02 
-#&gt; INFO  [09:49:12.621]  0.01        5       0.02 
-#&gt; INFO  [09:49:12.621]  0.05        3       0.06 
-#&gt; INFO  [09:49:12.621]  0.05        5       0.06 
-#&gt; INFO  [09:49:12.623] 4 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
-#&gt; [1] 1
-#&gt; 
-#&gt; $uhashes
-#&gt; [1] "a6c1b97d-303f-4215-b3f0-8ea510055d95"
-#&gt; [2] "449d53ed-227a-43a2-9687-448d1c84e25e"
-#&gt; [3] "8ce71a66-56a5-4d93-b75f-d53979bd6824"
-#&gt; [4] "18def928-34fc-4d1c-95c5-bfea68d73380"
-#&gt; 
-#&gt; $perf
-#&gt;    classif.ce
-#&gt; 1:       0.02
-#&gt; 2:       0.02
-#&gt; 3:       0.06
-#&gt; 4:       0.06
-#&gt; </div><div class='input'><span class='no'>inst</span>$<span class='fu'>archive</span>()</div><div class='output co'>#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
-#&gt; 1:  1        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 2:  2        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 3:  3        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06</div><div class='input'>
+<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; INFO  [14:13:57.320] Benchmark with 4 resampling iterations 
+#&gt; INFO  [14:13:57.322] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:57.341] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:57.365] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:57.383] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:57.404] Finished benchmark </div><div class='input'><span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
+#&gt;      cp minsplit classif.ce  resample_result  opt_x  timestamp batch_nr
+#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; INFO  [09:49:12.686] Evaluating 1 configurations 
-#&gt; INFO  [09:49:12.689]    cp minsplit 
-#&gt; INFO  [09:49:12.689]  0.01        7 
-#&gt; INFO  [09:49:12.701] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:12.703] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:12.723] Finished benchmark 
-#&gt; INFO  [09:49:12.731] Result of batch 2: 
-#&gt; INFO  [09:49:12.734]    cp minsplit classif.ce 
-#&gt; INFO  [09:49:12.734]  0.01        7       0.02 
-#&gt; INFO  [09:49:12.735] 5 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
-#&gt; [1] 2
-#&gt; 
-#&gt; $uhashes
-#&gt; [1] "ccb7a317-e712-4eb1-b7aa-148ffa41e74b"
-#&gt; 
-#&gt; $perf
-#&gt;    classif.ce
-#&gt; 1:       0.02
-#&gt; </div><div class='input'>
+)</div><div class='output co'>#&gt; INFO  [14:13:57.445] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:57.447] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:57.465] Finished benchmark </div><div class='input'>
 <span class='co'># try another point although the budget is now exhausted</span>
 <span class='co'># -&gt; no extra evaluations</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>9</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; <span class='message'>Error: TuningInstance (tsk:iris, lrn:classif.rpart, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
-<span class='no'>inst</span>$<span class='fu'>archive</span>()</div><div class='output co'>#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
-#&gt; 1:  1        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 2:  2        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 3:  3        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 4:  4        1 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt; 5:  5        2 &lt;ResampleResult&gt;    iris classif.rpart       holdout     1
-#&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      0       0.02
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      0       0.02
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      0       0.06
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      0       0.02</div><div class='input'>
+)</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:feature_selection, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
+<span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
+#&gt;      cp minsplit classif.ce  resample_result  opt_x  timestamp batch_nr
+#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        1
+#&gt; 5: 0.01        7        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1586873637        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -509,98 +347,55 @@ Performance score for <code>tune_x</code>.</p></dd>
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='no'>learner</span>,
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>),
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>param_set</span>,
-  <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+  <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>param_set</span>,
+  <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 )
 
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span> / <span class='fl'>5</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; INFO  [09:49:12.823] Evaluating 5 configurations 
-#&gt; INFO  [09:49:12.825]    x 
-#&gt; INFO  [09:49:12.825]  0.2 
-#&gt; INFO  [09:49:12.825]  0.4 
-#&gt; INFO  [09:49:12.825]  0.6 
-#&gt; INFO  [09:49:12.825]  0.8 
-#&gt; INFO  [09:49:12.825]  1.0 
-#&gt; INFO  [09:49:12.878] Benchmark with 15 resampling iterations 
-#&gt; INFO  [09:49:12.879] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [09:49:12.910] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [09:49:12.935] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [09:49:12.957] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [09:49:12.998] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [09:49:13.022] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [09:49:13.044] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [09:49:13.069] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [09:49:13.091] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [09:49:13.118] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [09:49:13.140] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [09:49:13.163] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [09:49:13.191] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [09:49:13.216] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [09:49:13.244] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [09:49:13.278] Finished benchmark 
-#&gt; INFO  [09:49:13.293] Result of batch 1: 
-#&gt; INFO  [09:49:13.296]    x classif.ce 
-#&gt; INFO  [09:49:13.296]  0.2  0.7694915 
-#&gt; INFO  [09:49:13.296]  0.4  0.6683616 
-#&gt; INFO  [09:49:13.296]  0.6  0.6683616 
-#&gt; INFO  [09:49:13.296]  0.8  0.6909605 
-#&gt; INFO  [09:49:13.296]  1.0  0.7016949 
-#&gt; INFO  [09:49:13.298] 5 configurations evaluated </div><div class='output co'>#&gt; $batch_nr
-#&gt; [1] 1
-#&gt; 
-#&gt; $uhashes
-#&gt; [1] "cb2742fe-3d38-4166-9014-1caf491f0450"
-#&gt; [2] "f0a4b1db-c9bd-4f36-95f1-4266c3b7cbcd"
-#&gt; [3] "80f15f33-9a3d-48b4-9d6c-1640162311ce"
-#&gt; [4] "ebb660b2-9877-414b-a1dd-db849881b092"
-#&gt; [5] "2fdfcd54-56f1-4ee1-bc69-9fc26430af01"
-#&gt; 
-#&gt; $perf
-#&gt;    classif.ce
-#&gt; 1:  0.7694915
-#&gt; 2:  0.6683616
-#&gt; 3:  0.6683616
-#&gt; 4:  0.6909605
-#&gt; 5:  0.7016949
-#&gt; </div><div class='input'>
-<span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='fu'>archive</span>()
+)</div><div class='output co'>#&gt; INFO  [14:13:57.608] Benchmark with 15 resampling iterations 
+#&gt; INFO  [14:13:57.610] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [14:13:57.638] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [14:13:57.686] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [14:13:57.720] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [14:13:57.746] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [14:13:57.772] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [14:13:57.798] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [14:13:57.822] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [14:13:57.848] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [14:13:57.872] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [14:13:57.897] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [14:13:57.927] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [14:13:57.953] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [14:13:57.979] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [14:13:58.005] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [14:13:58.041] Finished benchmark </div><div class='input'>
+<span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='no'>archive</span>$<span class='no'>data</span>
 
 <span class='co'># column errors: multiple errors recorded</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;    nr batch_nr  resample_result task_id    learner_id resampling_id iters
-#&gt; 1:  1        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
-#&gt; 2:  2        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
-#&gt; 3:  3        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
-#&gt; 4:  4        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
-#&gt; 5:  5        1 &lt;ResampleResult&gt;    wine classif.debug            cv     3
-#&gt;    params tune_x warnings errors classif.ce
-#&gt; 1: &lt;list&gt; &lt;list&gt;        0      1  0.7694915
-#&gt; 2: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
-#&gt; 3: &lt;list&gt; &lt;list&gt;        0      2  0.6683616
-#&gt; 4: &lt;list&gt; &lt;list&gt;        0      1  0.6909605
-#&gt; 5: &lt;list&gt; &lt;list&gt;        0      1  0.7016949</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce  resample_result  opt_x  timestamp batch_nr
+#&gt; 1: 0.2  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1586873638        1
+#&gt; 2: 0.4  0.6073446 &lt;ResampleResult&gt; &lt;list&gt; 1586873638        1
+#&gt; 3: 0.6  0.6794727 &lt;ResampleResult&gt; &lt;list&gt; 1586873638        1
+#&gt; 4: 0.8  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1586873638        1
+#&gt; 5: 1.0  0.6016949 &lt;ResampleResult&gt; &lt;list&gt; 1586873638        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#public-fields">Public fields</a></li>
-      <li><a href="#active-bindings">Active bindings</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

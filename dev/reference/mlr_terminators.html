@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dictionary of Terminators — mlr_terminators • mlr3tuning</title>
+<title>Re-export of <code>mlr_terminators</code>
+
+See <a href='https://rdrr.io/pkg/bbotk/man/mlr_terminators.html'>bbotk::mlr_terminators</a>. — mlr_terminators • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -18,6 +20,10 @@
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -43,11 +49,11 @@
 
 
 
-<meta property="og:title" content="Dictionary of Terminators — mlr_terminators" />
-<meta property="og:description" content="A simple mlr3misc::Dictionary storing objects of class Terminator.
-Each terminator has an associated help page, see mlr_terminators_[id].
-This dictionary can get populated with additional terminators by add-on packages.
-For a more convenient way to retrieve and construct terminator, see term()/terms()." />
+<meta property="og:title" content="Re-export of <code>mlr_terminators</code>
+
+See <a href='https://rdrr.io/pkg/bbotk/man/mlr_terminators.html'>bbotk::mlr_terminators</a>. — mlr_terminators" />
+<meta property="og:description" content="Re-export of mlr_terminators
+See bbotk::mlr_terminators." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +72,7 @@ For a more convenient way to retrieve and construct terminator, see term()/terms
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,7 +87,7 @@ For a more convenient way to retrieve and construct terminator, see term()/terms
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -104,7 +110,7 @@ For a more convenient way to retrieve and construct terminator, see term()/terms
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -116,7 +122,7 @@ For a more convenient way to retrieve and construct terminator, see term()/terms
   </a>
 </li>
 <li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
+  <a href="https://stackoverflow.com/questions/tagged/mlr">
     <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
@@ -140,65 +146,37 @@ For a more convenient way to retrieve and construct terminator, see term()/terms
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dictionary of Terminators</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/mlr_terminators.R'><code>R/mlr_terminators.R</code></a></small>
+    <h1>Re-export of <code>mlr_terminators</code>
+
+See <a href='https://rdrr.io/pkg/bbotk/man/mlr_terminators.html'>bbotk::mlr_terminators</a>.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/reexport.R'><code>R/reexport.R</code></a></small>
     <div class="hidden name"><code>mlr_terminators.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class <a href='Terminator.html'>Terminator</a>.
-Each terminator has an associated help page, see <code>mlr_terminators_[id]</code>.</p>
-<p>This dictionary can get populated with additional terminators by add-on packages.</p>
-<p>For a more convenient way to retrieve and construct terminator, see <code><a href='tnr.html'>term()</a></code>/<code><a href='tnr.html'>terms()</a></code>.</p>
+    <p>Re-export of <code>mlr_terminators</code></p>
+<p>See <a href='https://rdrr.io/pkg/bbotk/man/mlr_terminators.html'>bbotk::mlr_terminators</a>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
-    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
-
-    
-
-<p>See <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Sugar functions: <code><a href='tnr.html'>term()</a></code>, <code><a href='tnr.html'>terms()</a></code></p>
-<p>Other Terminator: 
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
-<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
-<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
-<code><a href='mlr_terminators_model_time.html'>mlr_terminators_model_time</a></code>,
-<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
-<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
-<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; &lt;TerminatorEvals&gt;
-#&gt; * Parameters: n_evals=10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

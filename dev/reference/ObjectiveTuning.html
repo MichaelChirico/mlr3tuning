@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dictionary of Tuners — mlr_tuners • mlr3tuning</title>
+<title>ObjectiveTuning — ObjectiveTuning • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,12 +47,10 @@
 
 
 
-<meta property="og:title" content="Dictionary of Tuners — mlr_tuners" />
-<meta property="og:description" content="A simple mlr3misc::Dictionary storing objects of class Tuner.
-Each tuner has an associated help page, see mlr_tuners_[id].
-This dictionary can get populated with additional tuners by add-on packages.
-For a more convenient way to retrieve and construct tuner, see
-tnr()/tnrs()." />
+<meta property="og:title" content="ObjectiveTuning — ObjectiveTuning" />
+<meta property="og:description" content="Stores the objective function that estimates the performance of
+hyperparameter configurations. This class is usually constructed internally
+by the TuningInstance." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -145,44 +143,102 @@ tnr()/tnrs()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dictionary of Tuners</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/mlr_tuners.R'><code>R/mlr_tuners.R</code></a></small>
-    <div class="hidden name"><code>mlr_tuners.Rd</code></div>
+    <h1>ObjectiveTuning</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/ObjectiveTuning.R'><code>R/ObjectiveTuning.R</code></a></small>
+    <div class="hidden name"><code>ObjectiveTuning.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class <a href='Tuner.html'>Tuner</a>.
-Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
-<p>This dictionary can get populated with additional tuners by add-on packages.</p>
-<p>For a more convenient way to retrieve and construct tuner, see
-<code><a href='tnr.html'>tnr()</a></code>/<code><a href='tnr.html'>tnrs()</a></code>.</p>
+    <p>Stores the objective function that estimates the performance of
+hyperparameter configurations. This class is usually constructed internally
+by the <a href='TuningInstance.html'>TuningInstance</a>.</p>
     </div>
 
-    <pre class="usage"><span class='no'>mlr_tuners</span></pre>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
+    <p><code><a href='https://rdrr.io/pkg/bbotk/man/Objective.html'>bbotk::Objective</a></code> -&gt; <code>ObjectiveTuning</code></p>
+    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+
+    <p><div class="r6-fields"></p><dl'>
+<dt><code>task</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a></p></dd>
+
+<dt><code>learner</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></p></dd>
+
+<dt><code>resampling</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a></p></dd>
+
+<dt><code>measures</code></dt><dd><p>list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a></p></dd>
+
+<dt><code>store_models</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code></p></dd>
+
+</dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
+<h3>Public methods</h3>
 
-<p>See <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+<ul>
+<li><p><a href='#method-new'><code>ObjectiveTuning$new()</code></a></p></li>
+<li><p><a href='#method-eval_many'><code>ObjectiveTuning$eval_many()</code></a></p></li>
+<li><p><a href='#method-clone'><code>ObjectiveTuning$clone()</code></a></p></li>
+</ul>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval"><a href='../../bbotk/html/Objective.html#method-eval'><code>bbotk::Objective$eval()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval_checked"><a href='../../bbotk/html/Objective.html#method-eval_checked'><code>bbotk::Objective$eval_checked()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval_many_checked"><a href='../../bbotk/html/Objective.html#method-eval_many_checked'><code>bbotk::Objective$eval_many_checked()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="format"><a href='../../bbotk/html/Objective.html#method-format'><code>bbotk::Objective$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="print"><a href='../../bbotk/html/Objective.html#method-print'><code>bbotk::Objective$print()</code></a></span></p></li>
+</ul>
+</details>
 
-    <div class='dont-index'><p>Sugar functions: <code><a href='tnr.html'>tnr()</a></code>, <code><a href='tnr.html'>tnrs()</a></code></p></div>
+<hr>
+<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"grid_search"</span>)</div><div class='output co'>#&gt; &lt;TunerGridSearch&gt;
-#&gt; * Parameters: resolution=10, batch_size=1
-#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
-#&gt; * Properties: dependencies
-#&gt; * Packages: -</div><div class='input'><span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
-#&gt; * Parameters: batch_size=1
-#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
-#&gt; * Properties: dependencies
-#&gt; * Packages: -</div></pre>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ObjectiveTuning</span>$<span class='fu'>new</span>(<span class='no'>task</span>, <span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='kw'>store_models</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>task</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a></p></dd>
+
+<dt><code>learner</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></p></dd>
+
+<dt><code>resampling</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a></p></dd>
+
+<dt><code>measures</code></dt><dd><p>list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a></p></dd>
+
+<dt><code>store_models</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code></p></dd>
+
+<dt><code>terminator</code></dt><dd><p>Terminator</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-eval_many"></a></p><h3>Method <code>eval_many()</code></h3>
+<p>Evaluates multiple hyperparameter sets on the objective function.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ObjectiveTuning</span>$<span class='fu'>eval_many</span>(<span class='no'>xss</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>xss</code></dt><dd><p><code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
+A list of lists that contains multiple hyperparameter sets.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ObjectiveTuning</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
+
+</dl><p></div></p>
+
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -46,9 +50,9 @@
 <meta property="og:title" content="TunerRandomSearch — mlr_tuners_random_search" />
 <meta property="og:description" content="Subclass for random search tuning.
 The random points are sampled by paradox::generate_design_random().
-In order to support general termination criteria and parallelization,
-we evaluate points in a batch-fashion of size batch_size.
-Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+In order to support general termination criteria and parallelization, we
+evaluate points in a batch-fashion of size batch_size. Larger batches mean
+we can parallelize more, smaller batches imply a more fine-grained checking
 of termination criteria." />
 <meta name="twitter:card" content="summary" />
 
@@ -68,7 +72,7 @@ of termination criteria." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,7 +87,7 @@ of termination criteria." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -106,7 +110,7 @@ of termination criteria." />
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -118,7 +122,7 @@ of termination criteria." />
   </a>
 </li>
 <li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
+  <a href="https://stackoverflow.com/questions/tagged/mlr">
     <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
@@ -150,9 +154,9 @@ of termination criteria." />
     <div class="ref-description">
     <p>Subclass for random search tuning.</p>
 <p>The random points are sampled by <code><a href='https://paradox.mlr-org.com/reference/generate_design_random.html'>paradox::generate_design_random()</a></code>.</p>
-<p>In order to support general termination criteria and parallelization,
-we evaluate points in a batch-fashion of size <code>batch_size</code>.
-Larger batches mean we can parallelize more, smaller batches imply a more fine-grained checking
+<p>In order to support general termination criteria and parallelization, we
+evaluate points in a batch-fashion of size <code>batch_size</code>. Larger batches mean
+we can parallelize more, smaller batches imply a more fine-grained checking
 of termination criteria.</p>
     </div>
 
@@ -162,30 +166,23 @@ of termination criteria.</p>
 
     
 
-<p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> <a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre>mlr_tuners$get("random_search")
-tnr("random_search")
-</pre>
+<p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
+<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"random_search"</span>)
+<span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
 
-<ul>
-<li><p><code>batch_size</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Maximum number of configurations to try in a batch.</p></li>
-</ul>
+<dl'>
+<dt><code>batch_size</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of configurations to try in a batch.</p></dd>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+</dl>
 
-    <div class='dont-index'><p>Other Tuner: 
-<code><a href='Tuner.html'>Tuner</a></code>,
-<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
-<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
-<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
-<code><a href='mlr_tuners.html'>mlr_tuners</a></code></p></div>
-    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
+    <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code>TunerRandomSearch</code></p>
+    <p><code><a href='https://rdrr.io/pkg/bbotk/man/Optimizer.html'>bbotk::Optimizer</a></code> -&gt; <code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code>TunerRandomSearch</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -197,24 +194,24 @@ Maximum number of configurations to try in a batch.</p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
-<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="format"><a href='../../mlr3tuning/html/Tuner.html#method-format'><code>mlr3tuning::Tuner$format()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="print"><a href='../../mlr3tuning/html/Tuner.html#method-print'><code>mlr3tuning::Tuner$print()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="tune"><a href='../../mlr3tuning/html/Tuner.html#method-tune'><code>mlr3tuning::Tuner$tune()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Optimizer" data-id="format"><a href='../../bbotk/html/Optimizer.html#method-format'><code>bbotk::Optimizer$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Optimizer" data-id="print"><a href='../../bbotk/html/Optimizer.html#method-print'><code>bbotk::Optimizer$print()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="optimize"><a href='../../mlr3tuning/html/Tuner.html#method-optimize'><code>mlr3tuning::Tuner$optimize()</code></a></span></p></li>
 </ul>
 </details>
 
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TunerRandomSearch$new()</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>TunerRandomSearch</span>$<span class='fu'>new</span>()</pre><p></div></p>
 
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>TunerRandomSearch$clone(deep = FALSE)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>TunerRandomSearch</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
+<p><div class="arguments"></p><dl'>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -222,31 +219,69 @@ Maximum number of configurations to try in a batch.</p></li>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># see ?Tuner
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>paradox</span>)
+<span class='no'>search_space</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"cp"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
+))
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='no'>instance</span> <span class='kw'>=</span> <span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
+  <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>),
+  <span class='kw'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>),
+  <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>),
+  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
+  <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>search_space</span>,
+  <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
+)
+<span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
+<span class='co'># modifies the instance by reference</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [14:14:00.945] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:14:00.947] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:14:00.967] Finished benchmark 
+#&gt; INFO  [14:14:01.000] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:14:01.002] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:14:01.020] Finished benchmark 
+#&gt; INFO  [14:14:01.062] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:14:01.064] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:14:01.083] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
+#&gt; $tune_x$cp
+#&gt; [1] 0.0706571
+#&gt; 
+#&gt; 
+#&gt; $params
+#&gt; $params$xval
+#&gt; [1] 0
+#&gt; 
+#&gt; $params$cp
+#&gt; [1] 0.0706571
+#&gt; 
+#&gt; 
+#&gt; $perf
+#&gt; classif.ce 
+#&gt;          0 
+#&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+<span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
+#&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
+#&gt; 1: 0.07065710          0 &lt;ResampleResult&gt; &lt;list&gt; 1586873640        1
+#&gt; 2: 0.01557417          0 &lt;ResampleResult&gt; &lt;list&gt; 1586873641        2
+#&gt; 3: 0.07714638          0 &lt;ResampleResult&gt; &lt;list&gt; 1586873641        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#dictionary">Dictionary</a></li>
-      <li><a href="#parameters">Parameters</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#super-class">Super class</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

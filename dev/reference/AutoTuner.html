@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -44,10 +48,12 @@
 
 
 <meta property="og:title" content="AutoTuner — AutoTuner" />
-<meta property="og:description" content="The AutoTuner is a mlr3::Learner which auto-tunes by first tuning the hyperparameters of its encapsulated learner
-on the training data, then setting the optimal configuration in the learner, then finally
-fitting the model on the complete training data.
-This class allows to perform nested resampling by passing an AutoTuner object to mlr3::resample() or mlr3::benchmark()." />
+<meta property="og:description" content="The AutoTuner is a mlr3::Learner which auto-tunes by first tuning the
+hyperparameters of its encapsulated learner on the training data, then
+setting the optimal configuration in the learner, then finally fitting the
+model on the complete training data. This class allows to perform nested
+resampling by passing an AutoTuner object to mlr3::resample() or
+mlr3::benchmark()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +72,7 @@ This class allows to perform nested resampling by passing an AutoTuner object to
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,7 +87,7 @@ This class allows to perform nested resampling by passing an AutoTuner object to
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -104,7 +110,7 @@ This class allows to perform nested resampling by passing an AutoTuner object to
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -116,7 +122,7 @@ This class allows to perform nested resampling by passing an AutoTuner object to
   </a>
 </li>
 <li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
+  <a href="https://stackoverflow.com/questions/tagged/mlr">
     <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
@@ -146,10 +152,12 @@ This class allows to perform nested resampling by passing an AutoTuner object to
     </div>
 
     <div class="ref-description">
-    <p>The <code>AutoTuner</code> is a <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> which auto-tunes by first tuning the hyperparameters of its encapsulated learner
-on the training data, then setting the optimal configuration in the learner, then finally
-fitting the model on the complete training data.
-This class allows to perform nested resampling by passing an AutoTuner object to <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>mlr3::resample()</a></code> or <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.</p>
+    <p>The <code>AutoTuner</code> is a <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> which auto-tunes by first tuning the
+hyperparameters of its encapsulated learner on the training data, then
+setting the optimal configuration in the learner, then finally fitting the
+model on the complete training data. This class allows to perform nested
+resampling by passing an AutoTuner object to <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>mlr3::resample()</a></code> or
+<code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.</p>
     </div>
 
 
@@ -159,19 +167,22 @@ This class allows to perform nested resampling by passing an AutoTuner object to
     <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code>AutoTuner</code></p>
     <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
 
-    <p><div class="r6-fields"></p><dl class='dl-horizontal'>
+    <p><div class="r6-fields"></p><dl'>
 <dt><code>instance_args</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 All arguments from construction to create the <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>).</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), stores the internally created <a href='TuningInstance.html'>TuningInstance</a> with all intermediate results in slot <code>$tuning_instance</code>.</p></dd>
+If <code>TRUE</code> (default), stores the internally created <a href='TuningInstance.html'>TuningInstance</a>
+with all intermediate results in slot <code>$tuning_instance</code>.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
-    <p><div class="r6-active-bindings"></p><dl class='dl-horizontal'>
+    <p><div class="r6-active-bindings"></p><dl'>
+<dt><code>archive</code></dt><dd><p>Returns TuningInstance archive</p></dd>
+
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
 Trained learner</p></dd>
 
@@ -191,7 +202,6 @@ Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstan
 
 <ul>
 <li><p><a href='#method-new'><code>AutoTuner$new()</code></a></p></li>
-<li><p><a href='#method-archive'><code>AutoTuner$archive()</code></a></p></li>
 <li><p><a href='#method-clone'><code>AutoTuner$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
@@ -209,35 +219,26 @@ Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstan
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>AutoTuner$new(
-  learner,
-  resampling,
-  measures,
-  tune_ps,
-  terminator,
-  tuner,
-  bm_args = list()
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
+<p><div class="arguments"></p><dl'>
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
 Learner to tune, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Resampling strategy during tuning, see <a href='TuningInstance.html'>TuningInstance</a>.
-This <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> is meant to be the <strong>inner</strong> resampling, operating on the training set
-of an arbitrary outer resampling.
-For this reason it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> here.</p></dd>
+Resampling strategy during tuning, see <a href='TuningInstance.html'>TuningInstance</a>. This
+<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> is meant to be the <strong>inner</strong> resampling, operating
+on the training set of an arbitrary outer resampling. For this reason
+it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> here.</p></dd>
 
 <dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
-Performance measures.
-The first one is optimized, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+Performance measures. The first one is optimized, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
-<dt><code>tune_ps</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Hyperparameter search space, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
-<dt><code>terminator</code></dt><dd><p>(<a href='Terminator.html'>Terminator</a>)<br />
+<dt><code>terminator</code></dt><dd><p>(Terminator)<br />
 When to stop tuning, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>)<br />
@@ -248,23 +249,12 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-archive"></a></p><h3>Method <code>archive()</code></h3>
-<p>Access the tuning archive (a.k.a. the optimization path).</p><h3>Usage</h3>
-<p><div class="r"></p><pre>AutoTuner$archive(unnest = "no")</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>unnest</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).
-Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance</a>, defaulting to <code>"no"</code>.</p></dd>
-
-</dl><p></div></p>
-<p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>AutoTuner$clone(deep = FALSE)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl class='dl-horizontal'>
+<p><div class="arguments"></p><dl'>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -278,72 +268,34 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 <span class='no'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>)
 <span class='no'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>)
-<span class='no'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(
+<span class='no'>search_space</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(
   <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"cp"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)))
 
-<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>tuner</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"grid_search"</span>)
-<span class='no'>at</span> <span class='kw'>=</span> <span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>param_set</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)
+<span class='no'>at</span> <span class='kw'>=</span> <span class='no'>AutoTuner</span>$<span class='fu'>new</span>(
+  <span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>,
+  <span class='no'>tuner</span>)
 <span class='no'>at</span>$<span class='no'>store_tuning_instance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 
-<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [09:49:10.601] Starting to tune 1 parameters with '&lt;TunerGridSearch&gt;' and '&lt;TerminatorEvals&gt;' 
-#&gt; INFO  [09:49:10.632] Terminator settings: n_evals=5 
-#&gt; INFO  [09:49:10.648] Evaluating 1 configurations 
-#&gt; INFO  [09:49:10.652]     cp 
-#&gt; INFO  [09:49:10.652]  0.056 
-#&gt; INFO  [09:49:10.668] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:10.670] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:10.698] Finished benchmark 
-#&gt; INFO  [09:49:10.710] Result of batch 1: 
-#&gt; INFO  [09:49:10.717]     cp classif.ce 
-#&gt; INFO  [09:49:10.717]  0.056       0.06 
-#&gt; INFO  [09:49:10.719] 1 configurations evaluated 
-#&gt; INFO  [09:49:10.787] Evaluating 1 configurations 
-#&gt; INFO  [09:49:10.789]     cp 
-#&gt; INFO  [09:49:10.789]  0.045 
-#&gt; INFO  [09:49:10.802] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:10.803] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:10.823] Finished benchmark 
-#&gt; INFO  [09:49:10.831] Result of batch 2: 
-#&gt; INFO  [09:49:10.834]     cp classif.ce 
-#&gt; INFO  [09:49:10.834]  0.045       0.06 
-#&gt; INFO  [09:49:10.836] 2 configurations evaluated 
-#&gt; INFO  [09:49:10.842] Evaluating 1 configurations 
-#&gt; INFO  [09:49:10.844]     cp 
-#&gt; INFO  [09:49:10.844]  0.023 
-#&gt; INFO  [09:49:10.857] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:10.859] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:10.875] Finished benchmark 
-#&gt; INFO  [09:49:10.887] Result of batch 3: 
-#&gt; INFO  [09:49:10.889]     cp classif.ce 
-#&gt; INFO  [09:49:10.889]  0.023       0.06 
-#&gt; INFO  [09:49:10.891] 3 configurations evaluated 
-#&gt; INFO  [09:49:10.898] Evaluating 1 configurations 
-#&gt; INFO  [09:49:10.900]     cp 
-#&gt; INFO  [09:49:10.900]  0.012 
-#&gt; INFO  [09:49:10.912] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:10.914] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:10.930] Finished benchmark 
-#&gt; INFO  [09:49:10.938] Result of batch 4: 
-#&gt; INFO  [09:49:10.941]     cp classif.ce 
-#&gt; INFO  [09:49:10.941]  0.012       0.06 
-#&gt; INFO  [09:49:10.943] 4 configurations evaluated 
-#&gt; INFO  [09:49:10.949] Evaluating 1 configurations 
-#&gt; INFO  [09:49:10.951]     cp 
-#&gt; INFO  [09:49:10.951]  0.089 
-#&gt; INFO  [09:49:10.964] Benchmark with 1 resampling iterations 
-#&gt; INFO  [09:49:10.966] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [09:49:10.982] Finished benchmark 
-#&gt; INFO  [09:49:10.990] Result of batch 5: 
-#&gt; INFO  [09:49:10.993]     cp classif.ce 
-#&gt; INFO  [09:49:10.993]  0.089       0.06 
-#&gt; INFO  [09:49:10.995] 5 configurations evaluated 
-#&gt; INFO  [09:49:11.001] Finished tuning after 5 evals 
-#&gt; INFO  [09:49:11.014] Tuned x: cp=0.045 
-#&gt; INFO  [09:49:11.017] Tuned y: classif.ce=0.06 </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
+<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [14:13:55.351] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:55.381] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:55.425] Finished benchmark 
+#&gt; INFO  [14:13:55.479] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:55.481] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:55.500] Finished benchmark 
+#&gt; INFO  [14:13:55.541] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:55.551] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:55.573] Finished benchmark 
+#&gt; INFO  [14:13:55.605] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:55.606] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:55.626] Finished benchmark 
+#&gt; INFO  [14:13:55.658] Benchmark with 1 resampling iterations 
+#&gt; INFO  [14:13:55.659] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [14:13:55.682] Finished benchmark </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.045
+#&gt; * Parameters: xval=0, cp=0.056
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
@@ -352,22 +304,9 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 #&gt; 
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstance&gt;
-#&gt; * State:  Tuned
-#&gt; * Task: &lt;TaskClassif:iris&gt;
-#&gt; * Learner: &lt;LearnerClassifRpart:classif.rpart&gt;
-#&gt; * Measures: classif.ce
-#&gt; * Resampling: &lt;ResamplingHoldout&gt;
-#&gt; * Terminator: &lt;TerminatorEvals&gt;
-#&gt; * bm_args: list()
-#&gt; * n_evals: 5
-#&gt; * Result perf: classif.ce=0.06
-#&gt; * Result tune_x: cp=0.045
-#&gt; ParamSet: 
-#&gt;    id    class lower upper levels     default value
-#&gt; 1: cp ParamDbl 0.001   0.1        &lt;NoDefault&gt;      
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.045
+#&gt; * Parameters: xval=0, cp=0.056
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
@@ -375,26 +314,20 @@ Passed to <code>$archive</code> of <a href='TuningInstance.html'>TuningInstance<
 #&gt;   twoclass, weights</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#super-class">Super class</a></li>
-      <li><a href="#public-fields">Public fields</a></li>
-      <li><a href="#active-bindings">Active bindings</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

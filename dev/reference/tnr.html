@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Syntactic Sugar for Tuner and Terminator Construction — tnr • mlr3tuning</title>
+<title>Syntactic Sugar for Tuner Construction — tnr • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -18,6 +18,10 @@
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -43,8 +47,8 @@
 
 
 
-<meta property="og:title" content="Syntactic Sugar for Tuner and Terminator Construction — tnr" />
-<meta property="og:description" content="This function complements mlr_tuners and mlr_terminators with functions in the spirit
+<meta property="og:title" content="Syntactic Sugar for Tuner Construction — tnr" />
+<meta property="og:description" content="This function complements mlr_tuners with functions in the spirit
 of mlr3::mlr_sugar." />
 <meta name="twitter:card" content="summary" />
 
@@ -64,7 +68,7 @@ of mlr3::mlr_sugar." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -79,7 +83,7 @@ of mlr3::mlr_sugar." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -102,7 +106,7 @@ of mlr3::mlr_sugar." />
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -114,7 +118,7 @@ of mlr3::mlr_sugar." />
   </a>
 </li>
 <li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
+  <a href="https://stackoverflow.com/questions/tagged/mlr">
     <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
@@ -138,23 +142,19 @@ of mlr3::mlr_sugar." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Syntactic Sugar for Tuner and Terminator Construction</h1>
+    <h1>Syntactic Sugar for Tuner Construction</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/sugar.R'><code>R/sugar.R</code></a></small>
     <div class="hidden name"><code>tnr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function complements <a href='mlr_tuners.html'>mlr_tuners</a> and <a href='mlr_terminators.html'>mlr_terminators</a> with functions in the spirit
+    <p>This function complements <a href='mlr_tuners.html'>mlr_tuners</a> with functions in the spirit
 of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tnr</span>(<span class='no'>.key</span>, <span class='no'>...</span>)
 
-<span class='fu'>tnrs</span>(<span class='no'>.keys</span>, <span class='no'>...</span>)
-
-<span class='fu'>term</span>(<span class='no'>.key</span>, <span class='no'>...</span>)
-
-<span class='fu'>terms</span>(<span class='no'>.key</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>tnrs</span>(<span class='no'>.keys</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,37 +183,31 @@ Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Di
 <ul>
 <li><p><a href='Tuner.html'>Tuner</a> for <code>tnr()</code></p></li>
 <li><p>list of <a href='Tuner.html'>Tuner</a> for <code>tnrs()</code></p></li>
-<li><p><a href='Terminator.html'>Terminator</a> for <code>term()</code>.</p></li>
-<li><p>list of <a href='Terminator.html'>Terminator</a> for <code>terms()</code>.</p></li>
 </ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>term</span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; &lt;TerminatorEvals&gt;
-#&gt; * Parameters: n_evals=10</div><div class='input'><span class='fu'>tnr</span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
+    <pre class="examples"><div class='input'><span class='fu'>tnr</span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
 #&gt; * Parameters: batch_size=1
-#&gt; * Packages: -
-#&gt; * Properties: dependencies</div></pre>
+#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
+#&gt; * Properties: dependencies
+#&gt; * Packages: -</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
