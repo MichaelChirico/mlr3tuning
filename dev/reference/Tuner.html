@@ -298,15 +298,15 @@ Set of required packages. Note that these packages will be loaded via
 <span class='co'># swap this line to use a different Tuner</span>
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [14:13:56.751] Benchmark with 1 resampling iterations 
-#&gt; INFO  [14:13:56.753] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [14:13:56.772] Finished benchmark 
-#&gt; INFO  [14:13:56.806] Benchmark with 1 resampling iterations 
-#&gt; INFO  [14:13:56.807] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [14:13:56.826] Finished benchmark 
-#&gt; INFO  [14:13:56.859] Benchmark with 1 resampling iterations 
-#&gt; INFO  [14:13:56.861] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [14:13:56.879] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [15:01:25.013] Benchmark with 1 resampling iterations 
+#&gt; INFO  [15:01:25.015] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [15:01:25.031] Finished benchmark 
+#&gt; INFO  [15:01:25.062] Benchmark with 1 resampling iterations 
+#&gt; INFO  [15:01:25.063] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [15:01:25.080] Finished benchmark 
+#&gt; INFO  [15:01:25.114] Benchmark with 1 resampling iterations 
+#&gt; INFO  [15:01:25.116] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [15:01:25.132] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.02118617
@@ -326,9 +326,9 @@ Set of required packages. Note that these packages will be loaded via
 #&gt; </div><div class='input'><span class='co'># allows access of data.table / benchmark result of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.02118617       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586873636        1
-#&gt; 2: 0.05531055       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586873636        2
-#&gt; 3: 0.08292264       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586873636        3</div></pre>
+#&gt; 1: 0.02118617       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586876485        1
+#&gt; 2: 0.05531055       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586876485        2
+#&gt; 3: 0.08292264       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586876485        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
