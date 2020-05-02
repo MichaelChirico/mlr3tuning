@@ -235,15 +235,15 @@ Maximum number of configurations to try in a batch.</p></dd>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [22:40:33.186] Benchmark with 1 resampling iterations 
-#&gt; INFO  [22:40:33.189] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [22:40:33.228] Finished benchmark 
-#&gt; INFO  [22:40:33.284] Benchmark with 1 resampling iterations 
-#&gt; INFO  [22:40:33.286] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [22:40:33.319] Finished benchmark 
-#&gt; INFO  [22:40:33.405] Benchmark with 1 resampling iterations 
-#&gt; INFO  [22:40:33.408] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [22:40:33.444] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [22:44:11.935] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:44:11.937] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:44:11.965] Finished benchmark 
+#&gt; INFO  [22:44:12.044] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:44:12.046] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:44:12.067] Finished benchmark 
+#&gt; INFO  [22:44:12.148] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:44:12.150] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:44:12.171] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.0706571
@@ -263,9 +263,9 @@ Maximum number of configurations to try in a batch.</p></dd>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.07065710          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459233        1
-#&gt; 2: 0.01557417          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459233        2
-#&gt; 3: 0.07714638          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459233        3</div></pre>
+#&gt; 1: 0.07065710          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459451        1
+#&gt; 2: 0.01557417          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459452        2
+#&gt; 3: 0.07714638          0 &lt;ResampleResult&gt; &lt;list&gt; 1588459452        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
