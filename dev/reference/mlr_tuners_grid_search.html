@@ -178,7 +178,7 @@ of termination criteria.</p>
 
     
 
-<dl'>
+<dl>
 <dt><code>resolution</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
 Resolution of the grid, see <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.</p></dd>
 <dt><code>param_resolutions</code></dt><dd><p>named <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code><br />
@@ -220,7 +220,7 @@ Maximum number of configurations to try in a batch..</p></dd>
 <p><div class="r"></p><pre><span class='no'>TunerGridSearch</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -244,15 +244,15 @@ Maximum number of configurations to try in a batch..</p></dd>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"grid_search"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [15:01:28.385] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.387] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.404] Finished benchmark 
-#&gt; INFO  [15:01:28.429] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.431] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.448] Finished benchmark 
-#&gt; INFO  [15:01:28.481] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.484] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.503] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [22:35:52.600] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:52.601] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:52.630] Finished benchmark 
+#&gt; INFO  [22:35:52.662] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:52.664] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:52.686] Finished benchmark 
+#&gt; INFO  [22:35:52.722] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:52.724] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:52.747] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.023
@@ -272,9 +272,9 @@ Maximum number of configurations to try in a batch..</p></dd>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;       cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.056       0.10 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        1
-#&gt; 2: 0.023       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        2
-#&gt; 3: 0.100       0.10 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        3</div></pre>
+#&gt; 1: 0.056       0.10 &lt;ResampleResult&gt; &lt;list&gt; 1588458952        1
+#&gt; 2: 0.023       0.04 &lt;ResampleResult&gt; &lt;list&gt; 1588458952        2
+#&gt; 3: 0.100       0.10 &lt;ResampleResult&gt; &lt;list&gt; 1588458952        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

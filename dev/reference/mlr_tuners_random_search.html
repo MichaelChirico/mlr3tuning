@@ -174,7 +174,7 @@ of termination criteria.</p>
 
     
 
-<dl'>
+<dl>
 <dt><code>batch_size</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
 Maximum number of configurations to try in a batch.</p></dd>
 
@@ -211,7 +211,7 @@ Maximum number of configurations to try in a batch.</p></dd>
 <p><div class="r"></p><pre><span class='no'>TunerRandomSearch</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -235,15 +235,15 @@ Maximum number of configurations to try in a batch.</p></dd>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [15:01:28.777] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.779] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.796] Finished benchmark 
-#&gt; INFO  [15:01:28.826] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.827] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.844] Finished benchmark 
-#&gt; INFO  [15:01:28.880] Benchmark with 1 resampling iterations 
-#&gt; INFO  [15:01:28.882] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [15:01:28.899] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [22:35:53.075] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:53.077] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:53.100] Finished benchmark 
+#&gt; INFO  [22:35:53.140] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:53.141] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:53.162] Finished benchmark 
+#&gt; INFO  [22:35:53.206] Benchmark with 1 resampling iterations 
+#&gt; INFO  [22:35:53.208] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [22:35:53.229] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.0706571
@@ -263,9 +263,9 @@ Maximum number of configurations to try in a batch.</p></dd>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.07065710          0 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        1
-#&gt; 2: 0.01557417          0 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        2
-#&gt; 3: 0.07714638          0 &lt;ResampleResult&gt; &lt;list&gt; 1586876488        3</div></pre>
+#&gt; 1: 0.07065710          0 &lt;ResampleResult&gt; &lt;list&gt; 1588458953        1
+#&gt; 2: 0.01557417          0 &lt;ResampleResult&gt; &lt;list&gt; 1588458953        2
+#&gt; 3: 0.07714638          0 &lt;ResampleResult&gt; &lt;list&gt; 1588458953        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
