@@ -241,12 +241,12 @@ Design points to try in search, one per row.</p></dd>
 <span class='no'>design</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.1</span>, <span class='fl'>0.3</span>))
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"design_points"</span>, <span class='kw'>design</span> <span class='kw'>=</span> <span class='no'>design</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [23:24:36.413] Benchmark with 1 resampling iterations 
-#&gt; INFO  [23:24:36.415] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [23:24:36.439] Finished benchmark 
-#&gt; INFO  [23:24:36.472] Benchmark with 1 resampling iterations 
-#&gt; INFO  [23:24:36.474] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [23:24:36.497] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [13:38:05.208] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:38:05.210] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:38:05.231] Finished benchmark 
+#&gt; INFO  [13:38:05.260] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:38:05.262] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:38:05.282] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.1
@@ -266,8 +266,8 @@ Design points to try in search, one per row.</p></dd>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;     cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.1       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1588461876        1
-#&gt; 2: 0.3       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1588461876        2</div></pre>
+#&gt; 1: 0.1       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1588599485        1
+#&gt; 2: 0.3       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1588599485        2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -233,15 +233,15 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"gensa"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [23:24:36.949] Benchmark with 1 resampling iterations 
-#&gt; INFO  [23:24:36.952] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [23:24:36.978] Finished benchmark 
-#&gt; INFO  [23:24:37.012] Benchmark with 1 resampling iterations 
-#&gt; INFO  [23:24:37.014] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [23:24:37.038] Finished benchmark 
-#&gt; INFO  [23:24:37.071] Benchmark with 1 resampling iterations 
-#&gt; INFO  [23:24:37.073] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [23:24:37.095] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [13:38:05.668] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:38:05.670] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:38:05.691] Finished benchmark 
+#&gt; INFO  [13:38:05.723] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:38:05.725] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:38:05.746] Finished benchmark 
+#&gt; INFO  [13:38:05.775] Benchmark with 1 resampling iterations 
+#&gt; INFO  [13:38:05.776] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [13:38:05.796] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.05170155
@@ -261,9 +261,9 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.05170155       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588461876        1
-#&gt; 2: 0.01616431       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588461877        2
-#&gt; 3: 0.03117365       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588461877        3</div></pre>
+#&gt; 1: 0.05170155       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588599485        1
+#&gt; 2: 0.01616431       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588599485        2
+#&gt; 3: 0.03117365       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1588599485        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
