@@ -300,24 +300,24 @@ Performance score for <code>tune_x</code>.</p></dd>
 
 <span class='co'># first 4 points as cross product</span>
 <span class='no'>design</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.01</span>), <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))
-<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; INFO  [13:38:03.062] Benchmark with 4 resampling iterations 
-#&gt; INFO  [13:38:03.063] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:38:03.081] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:38:03.104] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:38:03.121] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:38:03.144] Finished benchmark </div><div class='input'><span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
+<span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)</div><div class='output co'>#&gt; INFO  [12:12:34.200] Benchmark with 4 resampling iterations 
+#&gt; INFO  [12:12:34.202] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [12:12:34.227] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [12:12:34.249] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [12:12:34.269] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [12:12:34.300] Finished benchmark </div><div class='input'><span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;      cp minsplit classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1</div><div class='input'>
+#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; INFO  [13:38:03.186] Benchmark with 1 resampling iterations 
-#&gt; INFO  [13:38:03.188] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [13:38:03.208] Finished benchmark </div><div class='input'>
+)</div><div class='output co'>#&gt; INFO  [12:12:34.349] Benchmark with 1 resampling iterations 
+#&gt; INFO  [12:12:34.351] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [12:12:34.380] Finished benchmark </div><div class='input'>
 <span class='co'># try another point although the budget is now exhausted</span>
 <span class='co'># -&gt; no extra evaluations</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
@@ -326,11 +326,11 @@ Performance score for <code>tune_x</code>.</p></dd>
 )</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; Archive:
 #&gt;      cp minsplit classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 5: 0.01        7        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        2</div><div class='input'>
+#&gt; 1: 0.01        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 2: 0.01        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 3: 0.05        3        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 4: 0.05        5        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        1
+#&gt; 5: 0.01        7        0.1 &lt;ResampleResult&gt; &lt;list&gt; 1588853554        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -354,32 +354,32 @@ Performance score for <code>tune_x</code>.</p></dd>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span> / <span class='fl'>5</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
-)</div><div class='output co'>#&gt; INFO  [13:38:03.356] Benchmark with 15 resampling iterations 
-#&gt; INFO  [13:38:03.357] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [13:38:03.385] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [13:38:03.434] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [13:38:03.462] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [13:38:03.492] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [13:38:03.520] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [13:38:03.548] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [13:38:03.577] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [13:38:03.611] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [13:38:03.637] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [13:38:03.664] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [13:38:03.693] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [13:38:03.723] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
-#&gt; INFO  [13:38:03.758] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
-#&gt; INFO  [13:38:03.794] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
-#&gt; INFO  [13:38:03.842] Finished benchmark </div><div class='input'>
+)</div><div class='output co'>#&gt; INFO  [12:12:34.594] Benchmark with 15 resampling iterations 
+#&gt; INFO  [12:12:34.597] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [12:12:34.638] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [12:12:34.713] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [12:12:34.753] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [12:12:34.791] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [12:12:34.827] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [12:12:34.860] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [12:12:34.892] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [12:12:34.935] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [12:12:34.973] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [12:12:35.015] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [12:12:35.055] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [12:12:35.101] Applying learner 'classif.debug' on task 'wine' (iter 1/3) 
+#&gt; INFO  [12:12:35.145] Applying learner 'classif.debug' on task 'wine' (iter 2/3) 
+#&gt; INFO  [12:12:35.192] Applying learner 'classif.debug' on task 'wine' (iter 3/3) 
+#&gt; INFO  [12:12:35.271] Finished benchmark </div><div class='input'>
 <span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='no'>archive</span>$<span class='no'>data</span>
 
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.2  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 2: 0.4  0.6073446 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 3: 0.6  0.6794727 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 4: 0.8  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1
-#&gt; 5: 1.0  0.6016949 &lt;ResampleResult&gt; &lt;list&gt; 1588599483        1</div></pre>
+#&gt; 1: 0.2  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1588853555        1
+#&gt; 2: 0.4  0.6073446 &lt;ResampleResult&gt; &lt;list&gt; 1588853555        1
+#&gt; 3: 0.6  0.6794727 &lt;ResampleResult&gt; &lt;list&gt; 1588853555        1
+#&gt; 4: 0.8  0.6851224 &lt;ResampleResult&gt; &lt;list&gt; 1588853555        1
+#&gt; 5: 1.0  0.6016949 &lt;ResampleResult&gt; &lt;list&gt; 1588853555        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
