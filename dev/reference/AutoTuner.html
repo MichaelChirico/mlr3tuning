@@ -278,21 +278,21 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
   <span class='no'>tuner</span>)
 <span class='no'>at</span>$<span class='no'>store_tuning_instance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 
-<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [12:12:32.160] Benchmark with 1 resampling iterations 
-#&gt; INFO  [12:12:32.194] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [12:12:32.247] Finished benchmark 
-#&gt; INFO  [12:12:32.309] Benchmark with 1 resampling iterations 
-#&gt; INFO  [12:12:32.322] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [12:12:32.345] Finished benchmark 
-#&gt; INFO  [12:12:32.404] Benchmark with 1 resampling iterations 
-#&gt; INFO  [12:12:32.407] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [12:12:32.437] Finished benchmark 
-#&gt; INFO  [12:12:32.475] Benchmark with 1 resampling iterations 
-#&gt; INFO  [12:12:32.477] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [12:12:32.498] Finished benchmark 
-#&gt; INFO  [12:12:32.529] Benchmark with 1 resampling iterations 
-#&gt; INFO  [12:12:32.532] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [12:12:32.564] Finished benchmark </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
+<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [07:08:19.193] Benchmark with 1 resampling iterations 
+#&gt; INFO  [07:08:19.226] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [07:08:19.272] Finished benchmark 
+#&gt; INFO  [07:08:19.328] Benchmark with 1 resampling iterations 
+#&gt; INFO  [07:08:19.330] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [07:08:19.352] Finished benchmark 
+#&gt; INFO  [07:08:19.422] Benchmark with 1 resampling iterations 
+#&gt; INFO  [07:08:19.424] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [07:08:19.446] Finished benchmark 
+#&gt; INFO  [07:08:19.479] Benchmark with 1 resampling iterations 
+#&gt; INFO  [07:08:19.481] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [07:08:19.503] Finished benchmark 
+#&gt; INFO  [07:08:19.536] Benchmark with 1 resampling iterations 
+#&gt; INFO  [07:08:19.538] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
+#&gt; INFO  [07:08:19.560] Finished benchmark </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056
@@ -304,6 +304,34 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 #&gt; 
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstance&gt;
+#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
+#&gt; * Search Space: &lt;ParamSet&gt; Public: add: function (p) add_dep: function
+#&gt;   (id, on, cond) assert: function (xs, .var.name = vname(xs)) check:
+#&gt;   function (xs) class: active binding clone: function (deep = FALSE)
+#&gt;   default: active binding deps: active binding get_values: function
+#&gt;   (class = NULL, is_bounded = NULL, tags = NULL) has_deps: active
+#&gt;   binding has_trafo: active binding ids: function (class = NULL,
+#&gt;   is_bounded = NULL, tags = NULL) initialize: function (params =
+#&gt;   named_list()) is_bounded: active binding is_categ: active binding
+#&gt;   is_empty: active binding is_number: active binding length: active
+#&gt;   binding levels: active binding lower: active binding nlevels: active
+#&gt;   binding params: active binding print: function (..., hide_cols =
+#&gt;   c("nlevels", "is_bounded", "special_vals", set_id: active binding
+#&gt;   special_vals: active binding storage_type: active binding subset:
+#&gt;   function (ids) tags: active binding test: function (xs) trafo: active
+#&gt;   binding upper: active binding values: active binding Private: .deps:
+#&gt;   data.table, data.frame .params: list .set_id: .trafo: NULL .values:
+#&gt;   list deep_clone: function (name, value) get_member_with_idnames:
+#&gt;   function (member, astype)
+#&gt; * Terminator: &lt;TerminatorEvals&gt;
+#&gt; * Terminated: TRUE
+#&gt; &lt;Archive&gt;
+#&gt;       cp classif.ce  resample_result  opt_x  timestamp batch_nr
+#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590044899        1
+#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590044899        2
+#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590044899        3
+#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590044899        4
+#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590044899        5
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056
