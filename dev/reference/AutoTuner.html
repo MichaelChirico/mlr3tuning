@@ -167,7 +167,7 @@ resampling by passing an AutoTuner object to <code><a href='https://mlr3.mlr-org
     <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code>AutoTuner</code></p>
     <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
 
-    <p><div class="r6-fields"></p><dl>
+    <p><div class="r6-fields"></p><dl'>
 <dt><code>instance_args</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 All arguments from construction to create the <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
@@ -180,7 +180,7 @@ with all intermediate results in slot <code>$tuning_instance</code>.</p></dd>
 </dl><p></div></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
-    <p><div class="r6-active-bindings"></p><dl>
+    <p><div class="r6-active-bindings"></p><dl'>
 <dt><code>archive</code></dt><dd><p>Returns TuningInstance archive</p></dd>
 
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
@@ -222,7 +222,7 @@ Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstan
 <p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl>
+<p><div class="arguments"></p><dl'>
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
 Learner to tune, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
 
@@ -254,7 +254,7 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 <p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl>
+<p><div class="arguments"></p><dl'>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -278,21 +278,8 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
   <span class='no'>tuner</span>)
 <span class='no'>at</span>$<span class='no'>store_tuning_instance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 
-<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; INFO  [07:17:18.948] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:18.995] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:19.059] Finished benchmark 
-#&gt; INFO  [07:17:19.135] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:19.138] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:19.170] Finished benchmark 
-#&gt; INFO  [07:17:19.243] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:19.245] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:19.272] Finished benchmark 
-#&gt; INFO  [07:17:19.311] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:19.314] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:19.339] Finished benchmark 
-#&gt; INFO  [07:17:19.376] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:19.378] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:19.402] Finished benchmark </div><div class='input'><span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
+<span class='no'>at</span>$<span class='fu'>train</span>(<span class='no'>task</span>)
+<span class='no'>at</span>$<span class='no'>model</span></div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056
@@ -327,11 +314,11 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 #&gt; * Terminated: TRUE
 #&gt; &lt;Archive&gt;
 #&gt;       cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045439        1
-#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045439        2
-#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045439        3
-#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045439        4
-#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045439        5
+#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046572        1
+#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046572        2
+#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046572        3
+#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046572        4
+#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046572        5
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056
@@ -355,7 +342,7 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -166,7 +166,7 @@ from package <a href='https://CRAN.R-project.org/package=GenSA'><span class="pkg
 
     
 
-<dl>
+<dl'>
 <dt><code>smooth</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code></p></dd>
 <dt><code>temperature</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
 <dt><code>acceptance.param</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
@@ -209,7 +209,7 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 <p><div class="r"></p><pre><span class='no'>TunerGenSA</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
-<p><div class="arguments"></p><dl>
+<p><div class="arguments"></p><dl'>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -233,15 +233,8 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"gensa"</span>)
 <span class='co'># modifies the instance by reference</span>
-<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt; INFO  [07:17:24.407] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:24.409] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:24.432] Finished benchmark 
-#&gt; INFO  [07:17:24.467] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:24.469] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:24.493] Finished benchmark 
-#&gt; INFO  [07:17:24.528] Benchmark with 1 resampling iterations 
-#&gt; INFO  [07:17:24.530] Applying learner 'classif.rpart' on task 'iris' (iter 1/1) 
-#&gt; INFO  [07:17:24.551] Finished benchmark </div><div class='input'><span class='co'># returns best configuration and best performance</span>
+<span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)
+<span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
 #&gt; $tune_x$cp
 #&gt; [1] 0.05170155
@@ -261,9 +254,9 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 #&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.05170155       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045444        1
-#&gt; 2: 0.01616431       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045444        2
-#&gt; 3: 0.03117365       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590045444        3</div></pre>
+#&gt; 1: 0.05170155       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046577        1
+#&gt; 2: 0.01616431       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046577        2
+#&gt; 3: 0.03117365       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1590046577        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -279,7 +272,7 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
