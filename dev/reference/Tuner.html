@@ -54,9 +54,10 @@ optimize the black-box function and its feasible set defined by the
 TuningInstance object.
 A list of measures can be passed to the instance, and they will always be all
 evaluated. However, single-criteria tuners optimize only the first measure.
-A tuner must write its result to the assign_result method of the
-Tuninginstance at the end of its tuning in order to store the best selected
-hyperparameter configuration and its estimated performance vector." />
+A tuner must write its result into the TuningInstance using the
+assign_result method of the bbotk::OptimInstance at the end of its tuning
+in order to store the best selected hyperparameter configuration and its
+estimated performance vector." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -161,9 +162,10 @@ optimize the black-box function and its feasible set defined by the
 <a href='TuningInstance.html'>TuningInstance</a> object.</p>
 <p>A list of measures can be passed to the instance, and they will always be all
 evaluated. However, single-criteria tuners optimize only the first measure.</p>
-<p>A tuner must write its result to the <code>assign_result</code> method of the
-<a href='TuningInstance.html'>Tuninginstance</a> at the end of its tuning in order to store the best selected
-hyperparameter configuration and its estimated performance vector.</p>
+<p>A tuner must write its result into the <a href='TuningInstance.html'>TuningInstance</a> using the
+<code>assign_result</code> method of the <a href='https://rdrr.io/pkg/bbotk/man/OptimInstance.html'>bbotk::OptimInstance</a> at the end of its tuning
+in order to store the best selected hyperparameter configuration and its
+estimated performance vector.</p>
     </div>
 
 
@@ -173,10 +175,10 @@ hyperparameter configuration and its estimated performance vector.</p>
     
 
 <ul>
-<li><p><code>.tune(instance)</code> -&gt; <code>NULL</code><br />
+<li><p><code>.optimize(instance)</code> -&gt; <code>NULL</code><br />
 Abstract base method. Implement to specify tuning of your subclass.
 See technical details sections.</p></li>
-<li><p><code>assign_result(instance)</code> -&gt; <code>NULL</code><br />
+<li><p><code>.assign_result(instance)</code> -&gt; <code>NULL</code><br />
 Abstract base method. Implement to specify how the final configuration is
 selected. See technical details sections.</p></li>
 </ul>
@@ -205,10 +207,10 @@ lost execution control.</p></li>
 evaluated, as the Terminator is only checked before a batch evaluation, and
 not in-between evaluation in a batch. How many more depends on the setting
 of the batch size.</p></li>
-<li><p>Overwrite the private super-method <code>assign_result()</code> if you want to decide
+<li><p>Overwrite the private super-method <code>.assign_result()</code> if you want to decide
 yourself how to estimate the final configuration in the instance and its
 estimated performance. The default behavior is: We pick the best
-resample-experiment, regarding the first measure, then assign its
+resample-experiment, regarding the given measure, then assign its
 configuration and aggregated performance to the instance.</p></li>
 </ul>
 
@@ -291,7 +293,7 @@ Set of required packages. Note that these packages will be loaded via
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>),
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>),
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>),
-  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
+  <span class='kw'>measure</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
   <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>search_space</span>,
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
@@ -300,28 +302,13 @@ Set of required packages. Note that these packages will be loaded via
 <span class='co'># modifies the instance by reference</span>
 <span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)
 <span class='co'># returns best configuration and best performance</span>
-<span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
-#&gt; $tune_x$cp
-#&gt; [1] 0.08292264
-#&gt; 
-#&gt; 
-#&gt; $params
-#&gt; $params$xval
-#&gt; [1] 0
-#&gt; 
-#&gt; $params$cp
-#&gt; [1] 0.08292264
-#&gt; 
-#&gt; 
-#&gt; $perf
-#&gt; classif.ce 
-#&gt;       0.08 
-#&gt; </div><div class='input'><span class='co'># allows access of data.table / benchmark result of full path of all evaluations</span>
+<span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt;            cp learner_param_vals x_domain classif.ce
+#&gt; 1: 0.08292264             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table / benchmark result of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;            cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.08292264       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285442        1
-#&gt; 2: 0.02955329       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285442        2
-#&gt; 3: 0.04199074       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285442        3</div></pre>
+#&gt;            cp classif.ce  resample_result x_domain           timestamp batch_nr
+#&gt; 1: 0.08292264       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:25        1
+#&gt; 2: 0.02955329       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:25        2
+#&gt; 3: 0.04199074       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:25        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

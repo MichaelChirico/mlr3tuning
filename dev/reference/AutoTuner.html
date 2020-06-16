@@ -219,7 +219,7 @@ Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstan
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>AutoTuner</span>$<span class='fu'>new</span>(<span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measure</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>, <span class='no'>tuner</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
@@ -232,8 +232,8 @@ Resampling strategy during tuning, see <a href='TuningInstance.html'>TuningInsta
 on the training set of an arbitrary outer resampling. For this reason
 it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> here.</p></dd>
 
-<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
-Performance measures. The first one is optimized, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+<dt><code>measure</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+Performance measure to optimize.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Hyperparameter search space, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
@@ -267,14 +267,14 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>)
 <span class='no'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>)
-<span class='no'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>)
+<span class='no'>measure</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>)
 <span class='no'>search_space</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(
   <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"cp"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)))
 
 <span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>tuner</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"grid_search"</span>)
 <span class='no'>at</span> <span class='kw'>=</span> <span class='no'>AutoTuner</span>$<span class='fu'>new</span>(
-  <span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measures</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>,
+  <span class='no'>learner</span>, <span class='no'>resampling</span>, <span class='no'>measure</span>, <span class='no'>search_space</span>, <span class='no'>terminator</span>,
   <span class='no'>tuner</span>)
 <span class='no'>at</span>$<span class='no'>store_tuning_instance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 
@@ -292,33 +292,19 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstance&gt;
 #&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
-#&gt; * Search Space: &lt;ParamSet&gt; Public: add: function (p) add_dep: function
-#&gt;   (id, on, cond) assert: function (xs, .var.name = vname(xs)) check:
-#&gt;   function (xs) class: active binding clone: function (deep = FALSE)
-#&gt;   default: active binding deps: active binding get_values: function
-#&gt;   (class = NULL, is_bounded = NULL, tags = NULL) has_deps: active
-#&gt;   binding has_trafo: active binding ids: function (class = NULL,
-#&gt;   is_bounded = NULL, tags = NULL) initialize: function (params =
-#&gt;   named_list()) is_bounded: active binding is_categ: active binding
-#&gt;   is_empty: active binding is_number: active binding length: active
-#&gt;   binding levels: active binding lower: active binding nlevels: active
-#&gt;   binding params: active binding print: function (..., hide_cols =
-#&gt;   c("nlevels", "is_bounded", "special_vals", set_id: active binding
-#&gt;   special_vals: active binding storage_type: active binding subset:
-#&gt;   function (ids) tags: active binding test: function (xs) trafo: active
-#&gt;   binding upper: active binding values: active binding Private: .deps:
-#&gt;   data.table, data.frame .params: list .set_id: .trafo: NULL .values:
-#&gt;   list deep_clone: function (name, value) get_member_with_idnames:
-#&gt;   function (member, astype)
+#&gt; * Search Space:
+#&gt; ParamSet: 
+#&gt;    id    class lower upper levels     default value
+#&gt; 1: cp ParamDbl 0.001   0.1        &lt;NoDefault&gt;      
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * Terminated: TRUE
 #&gt; &lt;Archive&gt;
-#&gt;       cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1592285441        1
-#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1592285441        2
-#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1592285441        3
-#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1592285441        4
-#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt; &lt;list&gt; 1592285441        5
+#&gt;       cp classif.ce  resample_result x_domain           timestamp batch_nr
+#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:24        1
+#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:24        2
+#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:24        3
+#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:24        4
+#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:24        5
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056

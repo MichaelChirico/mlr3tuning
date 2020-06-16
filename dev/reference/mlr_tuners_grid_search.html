@@ -238,7 +238,7 @@ Maximum number of configurations to try in a batch..</p></dd>
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>),
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>),
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>),
-  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
+  <span class='kw'>measure</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
   <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>search_space</span>,
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
@@ -246,28 +246,13 @@ Maximum number of configurations to try in a batch..</p></dd>
 <span class='co'># modifies the instance by reference</span>
 <span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)
 <span class='co'># returns best configuration and best performance</span>
-<span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt; $tune_x
-#&gt; $tune_x$cp
-#&gt; [1] 0.012
-#&gt; 
-#&gt; 
-#&gt; $params
-#&gt; $params$xval
-#&gt; [1] 0
-#&gt; 
-#&gt; $params$cp
-#&gt; [1] 0.012
-#&gt; 
-#&gt; 
-#&gt; $perf
-#&gt; classif.ce 
-#&gt;       0.08 
-#&gt; </div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+<span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt;       cp learner_param_vals x_domain classif.ce
+#&gt; 1: 0.012             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;       cp classif.ce  resample_result  opt_x  timestamp batch_nr
-#&gt; 1: 0.012       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285446        1
-#&gt; 2: 0.001       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285446        2
-#&gt; 3: 0.023       0.08 &lt;ResampleResult&gt; &lt;list&gt; 1592285446        3</div></pre>
+#&gt;       cp classif.ce  resample_result x_domain           timestamp batch_nr
+#&gt; 1: 0.012       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:29        1
+#&gt; 2: 0.001       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:29        2
+#&gt; 3: 0.023       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-16 11:57:29        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
