@@ -169,28 +169,28 @@ resampling by passing an AutoTuner object to <code><a href='https://mlr3.mlr-org
 
     <p><div class="r6-fields"></p><dl'>
 <dt><code>instance_args</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-All arguments from construction to create the <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+All arguments from construction to create the <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>).</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), stores the internally created <a href='TuningInstance.html'>TuningInstance</a>
+If <code>TRUE</code> (default), stores the internally created <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>
 with all intermediate results in slot <code>$tuning_instance</code>.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
     <p><div class="r6-active-bindings"></p><dl'>
-<dt><code>archive</code></dt><dd><p>Returns TuningInstance archive</p></dd>
+<dt><code>archive</code></dt><dd><p>Returns TuningInstanceSingleCrit archive</p></dd>
 
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
 Trained learner</p></dd>
 
-<dt><code>tuning_instance</code></dt><dd><p>(<a href='TuningInstance.html'>TuningInstance</a>)<br />
+<dt><code>tuning_instance</code></dt><dd><p>(<a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>)<br />
 Internally created tuning instance with all intermediate results.</p></dd>
 
 <dt><code>tuning_result</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>param_set</code></dt><dd><p>(paradox::ParamSet].</p></dd>
 
@@ -224,10 +224,10 @@ Short-cut to <code>result</code> from <a href='TuningInstance.html'>TuningInstan
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
-Learner to tune, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+Learner to tune, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Resampling strategy during tuning, see <a href='TuningInstance.html'>TuningInstance</a>. This
+Resampling strategy during tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>. This
 <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> is meant to be the <strong>inner</strong> resampling, operating
 on the training set of an arbitrary outer resampling. For this reason
 it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> here.</p></dd>
@@ -236,16 +236,16 @@ it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/ref
 Performance measure to optimize.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+Hyperparameter search space, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>terminator</code></dt><dd><p>(Terminator)<br />
-When to stop tuning, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+When to stop tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>)<br />
 Tuning algorithm to run.</p></dd>
 
 <dt><code>bm_args</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>, see <a href='TuningInstance.html'>TuningInstance</a>.</p></dd>
+Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -290,21 +290,21 @@ Further arguments for <code><a href='https://mlr3.mlr-org.com/reference/benchmar
 #&gt;   twoclass, weights
 #&gt; 
 #&gt; $tuning_instance
-#&gt; &lt;TuningInstance&gt;
+#&gt; &lt;TuningInstanceSingleCrit&gt;
 #&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
 #&gt; * Search Space:
-#&gt; ParamSet: 
+#&gt; &lt;ParamSet&gt;
 #&gt;    id    class lower upper levels     default value
 #&gt; 1: cp ParamDbl 0.001   0.1        &lt;NoDefault&gt;      
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * Terminated: TRUE
 #&gt; &lt;Archive&gt;
 #&gt;       cp classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:08        1
-#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:08        2
-#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:08        3
-#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:08        4
-#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:08        5
+#&gt; 1: 0.056       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:01        1
+#&gt; 2: 0.045       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:01        2
+#&gt; 3: 0.023       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:01        3
+#&gt; 4: 0.012       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:01        4
+#&gt; 5: 0.089       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:01        5
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TuningInstance — TuningInstance • mlr3tuning</title>
+<title>TuningInstanceSingleCrit — TuningInstanceSingleCrit • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="TuningInstance — TuningInstance" />
+<meta property="og:title" content="TuningInstanceSingleCrit — TuningInstanceSingleCrit" />
 <meta property="og:description" content="Specifies a general tuning scenario, including objective function
 and archive for Tuners to act upon. This class stores an ObjectiveTuning
 object that encodes the black box objective function which a Tuner has to
@@ -154,9 +154,9 @@ values, by calling the method instance$assign_result." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TuningInstance</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TuningInstance.R'><code>R/TuningInstance.R</code></a></small>
-    <div class="hidden name"><code>TuningInstance.Rd</code></div>
+    <h1>TuningInstanceSingleCrit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TuningInstanceSingleCrit.R'><code>R/TuningInstanceSingleCrit.R</code></a></small>
+    <div class="hidden name"><code>TuningInstanceSingleCrit.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -178,9 +178,9 @@ values, by calling the method <code>instance$assign_result</code>.</p>
 
 
 
-    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
+    <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstance.html'>bbotk::OptimInstance</a></code> -&gt; <code>TuningInstance</code></p>
+    <p><code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstance.html'>bbotk::OptimInstance</a></code> -&gt; <code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstanceSingleCrit.html'>bbotk::OptimInstanceSingleCrit</a></code> -&gt; <code>TuningInstanceSingleCrit</code></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
     <p><div class="r6-active-bindings"></p><dl'>
@@ -194,14 +194,15 @@ Param values for the optimal learner call.</p></dd>
 <h3>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>TuningInstance$new()</code></a></p></li>
-<li><p><a href='#method-assign_result'><code>TuningInstance$assign_result()</code></a></p></li>
-<li><p><a href='#method-clone'><code>TuningInstance$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>TuningInstanceSingleCrit$new()</code></a></p></li>
+<li><p><a href='#method-assign_result'><code>TuningInstanceSingleCrit$assign_result()</code></a></p></li>
+<li><p><a href='#method-clone'><code>TuningInstanceSingleCrit$clone()</code></a></p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="eval_batch"><a href='../../bbotk/html/OptimInstance.html#method-eval_batch'><code>bbotk::OptimInstance$eval_batch()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="format"><a href='../../bbotk/html/OptimInstance.html#method-format'><code>bbotk::OptimInstance$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="objective_function"><a href='../../bbotk/html/OptimInstance.html#method-objective_function'><code>bbotk::OptimInstance$objective_function()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="print"><a href='../../bbotk/html/OptimInstance.html#method-print'><code>bbotk::OptimInstance$print()</code></a></span></p></li>
 </ul>
 </details>
@@ -212,7 +213,7 @@ Param values for the optimal learner call.</p></dd>
 <p>This defines the resampled performance of a learner on a task, a
 feasibility region for the parameters the tuner is supposed to optimize,
 and a termination criterion.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
+<p><div class="r"></p><pre><span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='no'>task</span>,
   <span class='no'>learner</span>,
   <span class='no'>resampling</span>,
@@ -246,26 +247,26 @@ Measure to optimize.</p></dd>
 <a id="method-assign_result"></a></p><h3>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found point
 and estimated performance value here. For internal use.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>assign_result</span>(<span class='no'>xdt</span>, <span class='no'>y</span>, <span class='kw'>learner_param_vals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>assign_result</span>(<span class='no'>xdt</span>, <span class='no'>y</span>, <span class='kw'>learner_param_vals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
 <dt><code>xdt</code></dt><dd><p>(<code>data.table</code>)<br />
-x values as <code>data.table</code> with one row.
-Contains the value in the <em>search space</em> of the TuningInstance object.
-Can contain additional columns for extra information.</p></dd>
+x values as <code>data.table</code> with one row. Contains the value in the
+<em>search space</em> of the TuningInstanceSingleCrit object. Can contain
+additional columns for extra information.</p></dd>
 
 <dt><code>y</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
 Optimal outcome.</p></dd>
 
 <dt><code>learner_param_vals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Fixed parameter values of the learner that are neither part of the <em>search space</em> nor the domain.</p></dd>
+Fixed parameter values of the learner that are neither part of the</p></dd>
 
 </dl><p></div></p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>TuningInstance</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
@@ -291,7 +292,7 @@ Fixed parameter values of the learner that are neither part of the <em>search sp
 )
 
 <span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-<span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
+<span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='no'>task</span>,
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='no'>learner</span>,
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='no'>resampling</span>,
@@ -305,10 +306,10 @@ Fixed parameter values of the learner that are neither part of the <em>search sp
 <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 2: 0.01        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 3: 0.05        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 4: 0.05        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
+#&gt; 1: 0.01        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 2: 0.01        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 3: 0.05        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 4: 0.05        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -328,11 +329,11 @@ Fixed parameter values of the learner that are neither part of the <em>search sp
 )</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 2: 0.01        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 3: 0.05        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 4: 0.05        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
-#&gt; 5: 0.01        7       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10
+#&gt; 1: 0.01        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 2: 0.01        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 3: 0.05        3       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 4: 0.05        5       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:03
+#&gt; 5: 0.01        7       0.04 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -350,7 +351,7 @@ Fixed parameter values of the learner that are neither part of the <em>search sp
   <span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"x"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 ))
 
-<span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstance</span>$<span class='fu'>new</span>(
+<span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"wine"</span>),
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='no'>learner</span>,
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>),
@@ -368,11 +369,11 @@ Fixed parameter values of the learner that are neither part of the <em>search sp
 
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.2  0.6401130 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10        1
-#&gt; 2: 0.4  0.6068738 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10        1
-#&gt; 3: 0.6  0.6456685 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10        1
-#&gt; 4: 0.8  0.6068738 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10        1
-#&gt; 5: 1.0  0.6238230 &lt;ResampleResult&gt;   &lt;list&gt; 2020-06-30 04:30:10        1</div></pre>
+#&gt; 1: 0.2  0.6401130 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04        1
+#&gt; 2: 0.4  0.6068738 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04        1
+#&gt; 3: 0.6  0.6456685 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04        1
+#&gt; 4: 0.8  0.6068738 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04        1
+#&gt; 5: 1.0  0.6238230 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-03 07:45:04        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
