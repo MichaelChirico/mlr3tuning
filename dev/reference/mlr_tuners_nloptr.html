@@ -154,6 +154,11 @@ nloptr::nloptr from package nloptr." />
 
 
 
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>Johnson SG (2020).
+&#8220;The NLopt nonlinear-optimization package.&#8221;
+<a href='http://github.com/stevengj/nlopt'>http://github.com/stevengj/nlopt</a>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
@@ -162,9 +167,18 @@ subclasses. The x and function value tolerance termination conditions
 (<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>,
 <code>ftol_rel = 0.0</code> and <code>ftol_abs = 0.0</code>) are still available and implemented with
 their package defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+    <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
+
+    
+
+<p>This Tuner can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
+mlr_tuners or with the associated sugar function <code>tnr()</code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"nloptr"</span>)
+<span class='fu'>tnr</span>(<span class='st'>"nloptr"</span>)</pre>
+
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
+
 
 <dl'>
 <dt><code>algorithm</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code></p></dd>
@@ -179,17 +193,15 @@ their package defaults. To deactivate these conditions, set them to <code>-1</co
 
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> and
 <code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.print.options.html'>nloptr::nloptr.print.options()</a></code>.</p>
-    <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
-
-    
-
-<p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"nloptr"</span>)
-<span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"nloptr"</span>)</pre>
-
+<p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
+<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>
+subclasses. The x and function value tolerance termination conditions
+(<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
+<code>ftol_abs = 0.0</code>) are still available and implemented with their package
+defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerNLoptr</code></p>
+    <p><code>mlr3tuning::Tuner</code> -&gt; <code>mlr3tuning::TunerFromOptimizer</code> -&gt; <code>TunerNLoptr</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -234,7 +246,7 @@ their package defaults. To deactivate these conditions, set them to <code>-1</co
   <span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"cp"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
 ))
 <span class='co'># We use the internal termination criterion xtol_rel</span>
-<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='term.html'>term</a></span>(<span class='st'>"none"</span>)
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'>trm</span>(<span class='st'>"none"</span>)
 <span class='no'>instance</span> <span class='kw'>=</span> <span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>),
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>),
@@ -243,7 +255,7 @@ their package defaults. To deactivate these conditions, set them to <code>-1</co
   <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>search_space</span>,
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
-<span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"nloptr"</span>, <span class='kw'>x0</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>algorithm</span> <span class='kw'>=</span> <span class='st'>"NLOPT_LN_BOBYQA"</span>)
+<span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'>tnr</span>(<span class='st'>"nloptr"</span>, <span class='kw'>x0</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>algorithm</span> <span class='kw'>=</span> <span class='st'>"NLOPT_LN_BOBYQA"</span>)
 <span class='co'># modifies the instance by reference</span>
 <span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)
 <span class='co'># returns best configuration and best performance</span>

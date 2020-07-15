@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TuningInstanceMultiCrit — TuningInstanceMultiCrit • mlr3tuning</title>
+<title>Multi Criteria Tuning Instance — TuningInstanceMultiCrit • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,9 @@
 
 
 
-<meta property="og:title" content="TuningInstanceMultiCrit — TuningInstanceMultiCrit" />
+<meta property="og:title" content="Multi Criteria Tuning Instance — TuningInstanceMultiCrit" />
 <meta property="og:description" content="Specifies a general multi-criteria tuning scenario.
-Inherits from bbotk::OptimInstanceMultiCrit" />
+Inherits from bbotk::OptimInstanceMultiCrit." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,25 +142,25 @@ Inherits from bbotk::OptimInstanceMultiCrit" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TuningInstanceMultiCrit</h1>
+    <h1>Multi Criteria Tuning Instance</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TuningInstanceMulticrit.R'><code>R/TuningInstanceMulticrit.R</code></a></small>
     <div class="hidden name"><code>TuningInstanceMultiCrit.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Specifies a general multi-criteria tuning scenario.
-Inherits from <a href='https://rdrr.io/pkg/bbotk/man/OptimInstanceMultiCrit.html'>bbotk::OptimInstanceMultiCrit</a></p>
+Inherits from <a href='https://bbotk.mlr-org.com/reference/OptimInstanceMultiCrit.html'>bbotk::OptimInstanceMultiCrit</a>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstance.html'>bbotk::OptimInstance</a></code> -&gt; <code><a href='https://rdrr.io/pkg/bbotk/man/OptimInstanceMultiCrit.html'>bbotk::OptimInstanceMultiCrit</a></code> -&gt; <code>TuningInstanceMultiCrit</code></p>
+    <p><code><a href='https://bbotk.mlr-org.com/reference/OptimInstance.html'>bbotk::OptimInstance</a></code> -&gt; <code><a href='https://bbotk.mlr-org.com/reference/OptimInstanceMultiCrit.html'>bbotk::OptimInstanceMultiCrit</a></code> -&gt; <code>TuningInstanceMultiCrit</code></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
     <p><div class="r6-active-bindings"></p><dl'>
-<dt><code>result_learner_param_vals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)
+<dt><code>result_learner_param_vals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 List of param values for the optimal learner call.</p></dd>
 
 </dl><p></div></p>
@@ -202,9 +202,9 @@ and a termination criterion.</p><h3>Usage</h3>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
-<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)</p></dd>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
 
-<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)</p></dd>
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
 Note that uninstantiated resamplings are instantiated during construction
@@ -213,31 +213,31 @@ so that all configurations are evaluated on the same data splits.</p></dd>
 <dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
 Measures to optimize.</p></dd>
 
-<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)</p></dd>
+<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
 
-<dt><code>terminator</code></dt><dd><p>(Terminator)</p></dd>
+<dt><code>terminator</code></dt><dd><p>(Terminator).</p></dd>
 
-<dt><code>store_models</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code></p></dd>
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).</p></dd>
 
-<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)
+<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).
 Should parameters before the evaluation and the results be checked for
 validity?</p></dd>
 
 </dl><p></div></p>
 <p><hr>
 <a id="method-assign_result"></a></p><h3>Method <code>assign_result()</code></h3>
-<p>The <a href='Tuner.html'>Tuner</a> object writes the best found points
+<p>The Tuner object writes the best found points
 and estimated performance values here. For internal use.</p><h3>Usage</h3>
 <p><div class="r"></p><pre><span class='no'>TuningInstanceMultiCrit</span>$<span class='fu'>assign_result</span>(<span class='no'>xdt</span>, <span class='no'>ydt</span>, <span class='kw'>learner_param_vals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
-<dt><code>xdt</code></dt><dd><p>(<code>data.table</code>)<br />
+<dt><code>xdt</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
 x values as <code>data.table</code>. Each row is one point. Contains the value in
 the <em>search space</em> of the TuningInstanceMultiCrit object. Can contain
 additional columns for extra information.</p></dd>
 
-<dt><code>ydt</code></dt><dd><p>(<code>data.table</code>)<br />
+<dt><code>ydt</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
 Optimal outcomes, e.g. the Pareto front.</p></dd>
 
 <dt><code>learner_param_vals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />

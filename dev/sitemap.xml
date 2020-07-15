@@ -46,9 +46,12 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_random_search.html</loc>
   </url>
   <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/term.html</loc>
+    <loc>https://mlr3tuning.mlr-org.com/reference/tnr.html</loc>
   </url>
   <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/tnr.html</loc>
+    <loc>https://mlr3tuning.mlr-org.com/reference/trm.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/trms.html</loc>
   </url>
 </urlset>
