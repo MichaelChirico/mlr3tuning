@@ -162,7 +162,7 @@ values, by calling the method instance$assign_result." />
     <div class="ref-description">
     <p>Specifies a general tuning scenario, including objective function
 and archive for Tuners to act upon. This class stores an <code>ObjectiveTuning</code>
-object that encodes the black box objective function which a Tuner has to
+object that encodes the black box objective function which a <a href='Tuner.html'>Tuner</a> has to
 optimize. It allows the basic operations of querying the objective
 at design points (<code>$eval_batch()</code>), storing the evaluations in the internal
 <code>Archive</code> and accessing the final result (<code>$result</code>).</p>
@@ -250,7 +250,7 @@ validity?</p></dd>
 </dl><p></div></p>
 <p><hr>
 <a id="method-assign_result"></a></p><h3>Method <code>assign_result()</code></h3>
-<p>The Tuner object writes the best found point
+<p>The <a href='Tuner.html'>Tuner</a> object writes the best found point
 and estimated performance value here. For internal use.</p><h3>Usage</h3>
 <p><div class="r"></p><pre><span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>assign_result</span>(<span class='no'>xdt</span>, <span class='no'>y</span>, <span class='kw'>learner_param_vals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
 
@@ -296,7 +296,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
   <span class='no'>ParamInt</span>$<span class='fu'>new</span>(<span class='st'>"minsplit"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 )
 
-<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'>trm</span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='trm.html'>trm</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>inst</span> <span class='kw'>=</span> <span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='no'>task</span>,
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='no'>learner</span>,
@@ -311,10 +311,10 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
+#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -334,11 +334,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 )</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
-#&gt; 5: 0.01        7       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:04
+#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
+#&gt; 5: 0.01        7       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:11
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -362,7 +362,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
   <span class='kw'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>),
   <span class='kw'>measure</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
   <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>param_set</span>,
-  <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='fu'>trm</span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+  <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='trm.html'>trm</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 )
 
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
@@ -374,11 +374,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.2  0.6908663 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:05        1
-#&gt; 2: 0.4  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:05        1
-#&gt; 3: 0.6  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:05        1
-#&gt; 4: 0.8  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:05        1
-#&gt; 5: 1.0  0.6739171 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:05        1</div></pre>
+#&gt; 1: 0.2  0.6908663 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:12        1
+#&gt; 2: 0.4  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:12        1
+#&gt; 3: 0.6  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:12        1
+#&gt; 4: 0.8  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:12        1
+#&gt; 5: 1.0  0.6739171 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:12        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

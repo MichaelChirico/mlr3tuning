@@ -151,11 +151,11 @@ tnr()/tnrs()." />
     </div>
 
     <div class="ref-description">
-    <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class Tuner.
+    <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class <a href='Tuner.html'>Tuner</a>.
 Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
 <p>This dictionary can get populated with additional tuners by add-on packages.</p>
 <p>For a more convenient way to retrieve and construct tuner, see
-<code>tnr()</code>/<code>tnrs()</code>.</p>
+<code><a href='tnr.html'>tnr()</a></code>/<code><a href='tnr.html'>tnrs()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='no'>mlr_tuners</span></pre>
@@ -171,14 +171,14 @@ Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
 <p>See <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Sugar functions: <code>tnr()</code>, <code>tnrs()</code></p></div>
+    <div class='dont-index'><p>Sugar functions: <code><a href='tnr.html'>tnr()</a></code>, <code><a href='tnr.html'>tnrs()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"grid_search"</span>)</div><div class='output co'>#&gt; &lt;TunerGridSearch&gt;
 #&gt; * Parameters: resolution=10, batch_size=1
 #&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
 #&gt; * Properties: dependencies, single-crit, multi-crit
-#&gt; * Packages: -</div><div class='input'><span class='fu'>tnr</span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
+#&gt; * Packages: -</div><div class='input'><span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
 #&gt; * Parameters: batch_size=1
 #&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
 #&gt; * Properties: dependencies, single-crit, multi-crit

@@ -172,9 +172,9 @@ of termination criteria.</p>
 
     
 
-<p>This Tuner can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-mlr_tuners or with the associated sugar function <code>tnr()</code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"random_search"</span>)
-<span class='fu'>tnr</span>(<span class='st'>"random_search"</span>)</pre>
+<p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
+<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"random_search"</span>)
+<span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</pre>
 
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
@@ -202,7 +202,7 @@ subclasses. The x and function value tolerance termination conditions
 defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code>mlr3tuning::Tuner</code> -&gt; <code>mlr3tuning::TunerFromOptimizer</code> -&gt; <code>TunerRandomSearch</code></p>
+    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerRandomSearch</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -244,7 +244,7 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='no'>search_space</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
   <span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"cp"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
 ))
-<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'>trm</span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='no'>terminator</span> <span class='kw'>=</span> <span class='fu'><a href='trm.html'>trm</a></span>(<span class='st'>"evals"</span>, <span class='kw'>n_evals</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 <span class='no'>instance</span> <span class='kw'>=</span> <span class='no'>TuningInstanceSingleCrit</span>$<span class='fu'>new</span>(
   <span class='kw'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>),
   <span class='kw'>learner</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>),
@@ -253,7 +253,7 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
   <span class='kw'>search_space</span> <span class='kw'>=</span> <span class='no'>search_space</span>,
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
-<span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'>tnr</span>(<span class='st'>"random_search"</span>)
+<span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
 <span class='co'># modifies the instance by reference</span>
 <span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt;            cp learner_param_vals x_domain classif.ce
 #&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># returns best configuration and best performance</span>
@@ -261,9 +261,9 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 #&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;            cp classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.06994387       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:08        1
-#&gt; 2: 0.03612574       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:08        2
-#&gt; 3: 0.07555948       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-15 12:28:08        3</div></pre>
+#&gt; 1: 0.06994387       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:14        1
+#&gt; 2: 0.03612574       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:15        2
+#&gt; 3: 0.07555948       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-16 05:52:15        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
