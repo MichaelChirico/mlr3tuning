@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -61,7 +65,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -99,14 +103,14 @@
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://mlr-org.slack.com">
-    <span class="fab fa fab fa-slack"></span>
+  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
@@ -149,25 +153,53 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-black-box-function" class="hasAnchor"><a href="#section-black-box-function" class="anchor"></a>Black Box Function</h2>
+          <h2 id="section-define-the-tuning-problem" class="hasAnchor"><a href="#section-define-the-tuning-problem" class="anchor"></a>Define the Tuning Problem</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="TuningInstance.html">TuningInstance</a></code> </p>
+          <p><code><a href="ObjectiveTuning.html">ObjectiveTuning</a></code> </p>
         </td>
-        <td><p>TuningInstance Class</p></td>
+        <td><p>ObjectiveTuning</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="TuningInstanceMultiCrit.html">TuningInstanceMultiCrit</a></code> </p>
+        </td>
+        <td><p>Multi Criteria Tuning Instance</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="TuningInstanceSingleCrit.html">TuningInstanceSingleCrit</a></code> </p>
+        </td>
+        <td><p>Single Criterion Tuning Instance</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-tuners" class="hasAnchor"><a href="#section-tuners" class="anchor"></a>Tuners</h2>
+          <h2 id="section-define-the-tuners" class="hasAnchor"><a href="#section-define-the-tuners" class="anchor"></a>Define the Tuners</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
+        
+        <td>
+          <p><code><a href="tnr.html">tnr()</a></code> <code><a href="tnr.html">tnrs()</a></code> </p>
+        </td>
+        <td><p>Syntactic Sugar for Tuner Construction</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="Tuner.html">Tuner</a></code> </p>
@@ -200,9 +232,21 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="mlr_tuners_nloptr.html">mlr_tuners_nloptr</a></code> </p>
+        </td>
+        <td><p>TuneNLoptr</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="mlr_tuners_random_search.html">mlr_tuners_random_search</a></code> </p>
         </td>
         <td><p>TunerRandomSearch</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="TunerFromOptimizer.html">TunerFromOptimizer</a></code> </p>
+        </td>
+        <td><p>TunerFromOptimizer</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -211,60 +255,35 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
-        
-        <td>
-          <p><code><a href="Terminator.html">Terminator</a></code> </p>
-        </td>
-        <td><p>Abstract Terminator Class</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="mlr_terminators.html">mlr_terminators</a></code> </p>
         </td>
-        <td><p>Dictionary of Terminators</p></td>
+        <td><p>Re-export of <code>mlr_terminators</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::mlr_terminators</a>.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mlr_terminators_clock_time.html">mlr_terminators_clock_time</a></code> </p>
+          <p><code><a href="trm.html">trm</a></code> </p>
         </td>
-        <td><p>Terminator that stops according to the clock time</p></td>
+        <td><p>Re-export of <code>trm</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mlr_terminators_combo.html">mlr_terminators_combo</a></code> </p>
+          <p><code><a href="trms.html">trms</a></code> </p>
         </td>
-        <td><p>Combine Terminators</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_terminators_evals.html">mlr_terminators_evals</a></code> </p>
-        </td>
-        <td><p>Terminator that stops after a number of evaluations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_terminators_model_time.html">mlr_terminators_model_time</a></code> </p>
-        </td>
-        <td><p>Terminator that stops after a budget of model evaluation time is depleted</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_terminators_none.html">mlr_terminators_none</a></code> </p>
-        </td>
-        <td><p>Terminator that never stops.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_terminators_perf_reached.html">mlr_terminators_perf_reached</a></code> </p>
-        </td>
-        <td><p>Terminator that stops when a performance level has been reached</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_terminators_stagnation.html">mlr_terminators_stagnation</a></code> </p>
-        </td>
-        <td><p>Terminator that stops when tuning does not improve</p></td>
+        <td><p>Re-export of <code>trms</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -273,6 +292,11 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -283,24 +307,15 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-sugar" class="hasAnchor"><a href="#section-sugar" class="anchor"></a>Sugar</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="tnr.html">tnr()</a></code> <code><a href="tnr.html">term()</a></code> </p>
-        </td>
-        <td><p>Syntactic Sugar for Tuner and Terminator Construction</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-general" class="hasAnchor"><a href="#section-general" class="anchor"></a>General</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -312,27 +327,21 @@
     </table>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-black-box-function">Black Box Function</a></li>
-      <li><a href="#section-tuners">Tuners</a></li>
-      <li><a href="#section-terminators">Terminators</a></li>
-      <li><a href="#section-auto-tuned-learner">Auto-tuned Learner</a></li>
-      <li><a href="#section-sugar">Sugar</a></li>
-      <li><a href="#section-general">General</a></li>
-    </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

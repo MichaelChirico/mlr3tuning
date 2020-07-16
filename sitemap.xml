@@ -7,40 +7,25 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/AutoTuner.html</loc>
   </url>
   <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/Terminator.html</loc>
+    <loc>https://mlr3tuning.mlr-org.com/reference/ObjectiveTuning.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/Tuner.html</loc>
   </url>
   <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/TuningInstance.html</loc>
+    <loc>https://mlr3tuning.mlr-org.com/reference/TunerFromOptimizer.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/TuningInstanceMultiCrit.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/TuningInstanceSingleCrit.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr3tuning-package.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_clock_time.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_combo.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_evals.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_model_time.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_none.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_perf_reached.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_terminators_stagnation.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners.html</loc>
@@ -55,9 +40,18 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_grid_search.html</loc>
   </url>
   <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_nloptr.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/mlr_tuners_random_search.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/tnr.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/trm.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/trms.html</loc>
   </url>
 </urlset>

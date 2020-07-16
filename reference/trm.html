@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminator that stops after a budget of model evaluation time is depleted — mlr_terminators_model_time • mlr3tuning</title>
+<title>Re-export of <code>trm</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>. — trm • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -18,6 +20,10 @@
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -43,10 +49,11 @@
 
 
 
-<meta property="og:title" content="Terminator that stops after a budget of model evaluation time is depleted — mlr_terminators_model_time" />
-<meta property="og:description" content="Class to terminate the tuning after a given model evaluation budget is exceeded.
-The terminator measures the used time to train and predict all models contained
-in the archive." />
+<meta property="og:title" content="Re-export of <code>trm</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>. — trm" />
+<meta property="og:description" content="Re-export of trm
+See bbotk::trm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +72,7 @@ in the archive." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +87,7 @@ in the archive." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -103,14 +110,14 @@ in the archive." />
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://mlr-org.slack.com">
-    <span class="fab fa fab fa-slack"></span>
+  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
@@ -139,76 +146,37 @@ in the archive." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terminator that stops after a budget of model evaluation time is depleted</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TerminatorModelTime.R'><code>R/TerminatorModelTime.R</code></a></small>
-    <div class="hidden name"><code>mlr_terminators_model_time.Rd</code></div>
+    <h1>Re-export of <code>trm</code>
+
+See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/reexport.R'><code>R/reexport.R</code></a></small>
+    <div class="hidden name"><code>trm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class to terminate the tuning after a given model evaluation budget is exceeded.
-The terminator measures the used time to train and predict all models contained
-in the archive.</p>
+    <p>Re-export of <code>trm</code></p>
+<p>See <a href='https://bbotk.mlr-org.com/reference/trm.html'>bbotk::trm</a>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> object inheriting from <a href='Terminator.html'>Terminator</a>.</p>
-    <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
-
-    
-<pre>TerminatorModelTime$new()
-term("model_time")
-</pre>
-
-    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
-
-    
-
-<ul>
-<li><p><code>secs</code> :: <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code><br />
-Maximum allowed time, in seconds, default is 0.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Terminator: 
-<code><a href='Terminator.html'>Terminator</a></code>,
-<code><a href='mlr_terminators_clock_time.html'>mlr_terminators_clock_time</a></code>,
-<code><a href='mlr_terminators_combo.html'>mlr_terminators_combo</a></code>,
-<code><a href='mlr_terminators_evals.html'>mlr_terminators_evals</a></code>,
-<code><a href='mlr_terminators_none.html'>mlr_terminators_none</a></code>,
-<code><a href='mlr_terminators_perf_reached.html'>mlr_terminators_perf_reached</a></code>,
-<code><a href='mlr_terminators_stagnation.html'>mlr_terminators_stagnation</a></code>,
-<code><a href='mlr_terminators.html'>mlr_terminators</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>TerminatorModelTime</span>$<span class='fu'>new</span>()</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
-#&gt; * Parameters: secs=0</div><div class='input'><span class='fu'><a href='tnr.html'>term</a></span>(<span class='st'>"model_time"</span>, <span class='kw'>secs</span> <span class='kw'>=</span> <span class='fl'>10</span> * <span class='fl'>3600</span>)</div><div class='output co'>#&gt; &lt;TerminatorModelTime&gt;
-#&gt; * Parameters: secs=3.6e+04</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#construction">Construction</a></li>
-      <li><a href="#parameters">Parameters</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

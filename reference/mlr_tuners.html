@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -47,7 +51,8 @@
 <meta property="og:description" content="A simple mlr3misc::Dictionary storing objects of class Tuner.
 Each tuner has an associated help page, see mlr_tuners_[id].
 This dictionary can get populated with additional tuners by add-on packages.
-For a more convenient way to retrieve and construct tuner, see tnr()." />
+For a more convenient way to retrieve and construct tuner, see
+tnr()/tnrs()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +71,7 @@ For a more convenient way to retrieve and construct tuner, see tnr()." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,7 +86,7 @@ For a more convenient way to retrieve and construct tuner, see tnr()." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -104,14 +109,14 @@ For a more convenient way to retrieve and construct tuner, see tnr()." />
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3tuning">
+  <a href="https://github.com/mlr-org/mlr3tuning/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://mlr-org.slack.com">
-    <span class="fab fa fab fa-slack"></span>
+  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
@@ -149,9 +154,11 @@ For a more convenient way to retrieve and construct tuner, see tnr()." />
     <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class <a href='Tuner.html'>Tuner</a>.
 Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
 <p>This dictionary can get populated with additional tuners by add-on packages.</p>
-<p>For a more convenient way to retrieve and construct tuner, see <code><a href='tnr.html'>tnr()</a></code>.</p>
+<p>For a more convenient way to retrieve and construct tuner, see
+<code><a href='tnr.html'>tnr()</a></code>/<code><a href='tnr.html'>tnrs()</a></code>.</p>
     </div>
 
+    <pre class="usage"><span class='no'>mlr_tuners</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -164,43 +171,34 @@ Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
 <p>See <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Sugar function: <code><a href='tnr.html'>tnr()</a></code></p>
-<p>Other Tuner: 
-<code><a href='Tuner.html'>Tuner</a></code>,
-<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
-<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
-<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
-<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
+    <div class='dont-index'><p>Sugar functions: <code><a href='tnr.html'>tnr()</a></code>, <code><a href='tnr.html'>tnrs()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"grid_search"</span>)</div><div class='output co'>#&gt; &lt;TunerGridSearch&gt;
 #&gt; * Parameters: resolution=10, batch_size=1
-#&gt; * Packages: -
-#&gt; * Properties: dependencies</div><div class='input'><span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
+#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
+#&gt; * Properties: dependencies, single-crit, multi-crit
+#&gt; * Packages: -</div><div class='input'><span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
 #&gt; * Parameters: batch_size=1
-#&gt; * Packages: -
-#&gt; * Properties: dependencies</div></pre>
+#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
+#&gt; * Properties: dependencies, single-crit, multi-crit
+#&gt; * Packages: -</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#methods">Methods</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
+  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

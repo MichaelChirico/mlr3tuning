@@ -6,9 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Re-export of <code>mlr_terminators</code>
-
-See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::mlr_terminators</a>. — mlr_terminators • mlr3tuning</title>
+<title>ObjectiveTuning — ObjectiveTuning • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -49,11 +47,10 @@ See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::ml
 
 
 
-<meta property="og:title" content="Re-export of <code>mlr_terminators</code>
-
-See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::mlr_terminators</a>. — mlr_terminators" />
-<meta property="og:description" content="Re-export of mlr_terminators
-See bbotk::mlr_terminators." />
+<meta property="og:title" content="ObjectiveTuning — ObjectiveTuning" />
+<meta property="og:description" content="Stores the objective function that estimates the performance of
+hyperparameter configurations. This class is usually constructed internally
+by the TuningInstanceSingleCrit / TuningInstanceMultiCrit." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,18 +143,96 @@ See bbotk::mlr_terminators." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Re-export of <code>mlr_terminators</code>
-
-See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::mlr_terminators</a>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/reexport.R'><code>R/reexport.R</code></a></small>
-    <div class="hidden name"><code>mlr_terminators.Rd</code></div>
+    <h1>ObjectiveTuning</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/ObjectiveTuning.R'><code>R/ObjectiveTuning.R</code></a></small>
+    <div class="hidden name"><code>ObjectiveTuning.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Re-export of <code>mlr_terminators</code></p>
-<p>See <a href='https://bbotk.mlr-org.com/reference/mlr_terminators.html'>bbotk::mlr_terminators</a>.</p>
+    <p>Stores the objective function that estimates the performance of
+hyperparameter configurations. This class is usually constructed internally
+by the <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> / <a href='TuningInstanceMultiCrit.html'>TuningInstanceMultiCrit</a>.</p>
     </div>
 
+
+
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
+
+    <p><code><a href='https://bbotk.mlr-org.com/reference/Objective.html'>bbotk::Objective</a></code> -&gt; <code>ObjectiveTuning</code></p>
+    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+
+    <p><div class="r6-fields"></p><dl'>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
+
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
+
+<dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>).</p></dd>
+
+<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>).</p></dd>
+
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).</p></dd>
+
+</dl><p></div></p>
+    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
+
+    
+<h3>Public methods</h3>
+
+<ul>
+<li><p><a href='#method-new'><code>ObjectiveTuning$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>ObjectiveTuning$clone()</code></a></p></li>
+</ul>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval"><a href='../../bbotk/html/Objective.html#method-eval'><code>bbotk::Objective$eval()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval_dt"><a href='../../bbotk/html/Objective.html#method-eval_dt'><code>bbotk::Objective$eval_dt()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="eval_many"><a href='../../bbotk/html/Objective.html#method-eval_many'><code>bbotk::Objective$eval_many()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="format"><a href='../../bbotk/html/Objective.html#method-format'><code>bbotk::Objective$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="print"><a href='../../bbotk/html/Objective.html#method-print'><code>bbotk::Objective$print()</code></a></span></p></li>
+</ul>
+</details>
+
+<hr>
+<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p>
+
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ObjectiveTuning</span>$<span class='fu'>new</span>(
+  <span class='no'>task</span>,
+  <span class='no'>learner</span>,
+  <span class='no'>resampling</span>,
+  <span class='no'>measures</span>,
+  <span class='kw'>store_models</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>check_values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
+
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
+
+<dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>).</p></dd>
+
+<dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>).</p></dd>
+
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).</p></dd>
+
+<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Should parameters before the evaluation and the results be checked for
+validity?</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ObjectiveTuning</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
+
+</dl><p></div></p>
 
 
 
