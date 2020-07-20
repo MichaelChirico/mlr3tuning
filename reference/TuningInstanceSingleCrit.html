@@ -226,12 +226,13 @@ and a termination criterion.</p><h3>Usage</h3>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
-<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>).</p></dd>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
+Task to operate on.</p></dd>
 
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Note that uninstantiated resamplings are instantiated during construction
+Uninstantiated resamplings are instantiated during construction
 so that all configurations are evaluated on the same data splits.</p></dd>
 
 <dt><code>measure</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
@@ -239,12 +240,12 @@ Measure to optimize.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
 
-<dt><code>terminator</code></dt><dd><p>(<a href='https://bbotk.mlr-org.com/reference/Terminator.html'>bbotk::Terminator</a>).</p></dd>
+<dt><code>terminator</code></dt><dd><p>(Terminator).</p></dd>
 
 <dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).</p></dd>
 
-<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)
-Check the parameters before the evaluation and the results for
+<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Should parameters before the evaluation and the results be checked for
 validity?</p></dd>
 
 </dl><p></div></p>
@@ -256,9 +257,9 @@ and estimated performance value here. For internal use.</p><h3>Usage</h3>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
-<dt><code>xdt</code></dt><dd><p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code><br />
-x values as <code>data.table</code> with one row. Contains the value in the
-<em>search space</em> of the TuningInstanceSingleCrit object. Can contain
+<dt><code>xdt</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
+x values as <code>data.table</code>. Each row is one point. Contains the value in
+the <em>search space</em> of the <a href='TuningInstanceMultiCrit.html'>TuningInstanceMultiCrit</a> object. Can contain
 additional columns for extra information.</p></dd>
 
 <dt><code>y</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
@@ -311,10 +312,10 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
+#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -334,11 +335,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 )</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
 <span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;      cp minsplit classif.ce  resample_result x_domain           timestamp
-#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
-#&gt; 5: 0.01        7       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:18
+#&gt; 1: 0.01        3       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 2: 0.01        5       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 3: 0.05        3       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 4: 0.05        5       0.06 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
+#&gt; 5: 0.01        7       0.02 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:46
 #&gt;    batch_nr
 #&gt; 1:        1
 #&gt; 2:        1
@@ -374,11 +375,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.2  0.6908663 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:19        1
-#&gt; 2: 0.4  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:19        1
-#&gt; 3: 0.6  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:19        1
-#&gt; 4: 0.8  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:19        1
-#&gt; 5: 1.0  0.6739171 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:19        1</div></pre>
+#&gt; 1: 0.2  0.6908663 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:48        1
+#&gt; 2: 0.4  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:48        1
+#&gt; 3: 0.6  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:48        1
+#&gt; 4: 0.8  0.6011299 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:48        1
+#&gt; 5: 1.0  0.6739171 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:48        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -49,11 +49,7 @@
 
 <meta property="og:title" content="TunerRandomSearch — mlr_tuners_random_search" />
 <meta property="og:description" content="Subclass for random search tuning.
-The random points are sampled by paradox::generate_design_random().
-In order to support general termination criteria and parallelization, we
-evaluate points in a batch-fashion of size batch_size. Larger batches mean
-we can parallelize more, smaller batches imply a more fine-grained checking
-of termination criteria." />
+The random points are sampled by paradox::generate_design_random()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -154,10 +150,6 @@ of termination criteria." />
     <div class="ref-description">
     <p>Subclass for random search tuning.</p>
 <p>The random points are sampled by <code><a href='https://paradox.mlr-org.com/reference/generate_design_random.html'>paradox::generate_design_random()</a></code>.</p>
-<p>In order to support general termination criteria and parallelization, we
-evaluate points in a batch-fashion of size <code>batch_size</code>. Larger batches mean
-we can parallelize more, smaller batches imply a more fine-grained checking
-of termination criteria.</p>
     </div>
 
 
@@ -176,6 +168,26 @@ of termination criteria.</p>
 <a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"random_search"</span>)
 <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)</pre>
 
+    <h2 class="hasAnchor" id="parallelization"><a class="anchor" href="#parallelization"></a>Parallelization</h2>
+
+    
+
+<p>In order to support general termination criteria and parallelization, we
+evaluate points in a batch-fashion of size <code>batch_size</code>. Larger batches mean
+we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria. A batch contains of <code>batch_size</code> times <code>resampling$iters</code> jobs.
+E.g., if you set a batch size of 10 points and do a 5-fold cross validation, you can
+utilize up to 50 cores.</p>
+<p>Parallelization is supported via package <a href='https://CRAN.R-project.org/package=future'><span class="pkg">future</span></a> (see <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>'s
+section on parallelization for more details).</p>
+    <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+
+    
+
+
+<p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
+<a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
+Use <code><a href='https://rdrr.io/pkg/lgr/man/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
@@ -254,16 +266,19 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
   <span class='kw'>terminator</span> <span class='kw'>=</span> <span class='no'>terminator</span>
 )
 <span class='no'>tt</span> <span class='kw'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"random_search"</span>)
+
 <span class='co'># modifies the instance by reference</span>
 <span class='no'>tt</span>$<span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span>(<span class='no'>instance</span>)</div><div class='output co'>#&gt;            cp learner_param_vals x_domain classif.ce
-#&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># returns best configuration and best performance</span>
+#&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'>
+<span class='co'># returns best configuration and best performance</span>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt;            cp learner_param_vals x_domain classif.ce
-#&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+#&gt; 1: 0.06994387             &lt;list&gt;   &lt;list&gt;       0.08</div><div class='input'>
+<span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
 #&gt;            cp classif.ce  resample_result x_domain           timestamp batch_nr
-#&gt; 1: 0.06994387       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:21        1
-#&gt; 2: 0.03612574       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:21        2
-#&gt; 3: 0.07555948       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:12:21        3</div></pre>
+#&gt; 1: 0.06994387       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:52        1
+#&gt; 2: 0.03612574       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:53        2
+#&gt; 3: 0.07555948       0.08 &lt;ResampleResult&gt;   &lt;list&gt; 2020-07-20 08:43:53        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

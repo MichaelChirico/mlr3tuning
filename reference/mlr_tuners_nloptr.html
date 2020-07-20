@@ -175,6 +175,14 @@ their package defaults. To deactivate these conditions, set them to <code>-1</co
 <a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"nloptr"</span>)
 <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"nloptr"</span>)</pre>
 
+    <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+
+    
+
+
+<p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
+<a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
+Use <code><a href='https://rdrr.io/pkg/lgr/man/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
