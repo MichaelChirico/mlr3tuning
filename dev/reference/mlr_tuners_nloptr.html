@@ -83,7 +83,7 @@ nloptr::nloptr from package nloptr." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.1.2-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -162,7 +162,7 @@ nloptr::nloptr from package nloptr." />
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the Terminator
+<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>bbotk::Terminator</a>
 subclasses. The x and function value tolerance termination conditions
 (<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>,
 <code>ftol_rel = 0.0</code> and <code>ftol_abs = 0.0</code>) are still available and implemented with
@@ -175,6 +175,14 @@ their package defaults. To deactivate these conditions, set them to <code>-1</co
 <a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='no'>mlr_tuners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"nloptr"</span>)
 <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"nloptr"</span>)</pre>
 
+    <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+
+    
+
+
+<p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
+<a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
+Use <code><a href='https://rdrr.io/pkg/lgr/man/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
@@ -274,7 +282,7 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk, Marc Becker.</p>
+  <p>Developed by Marc Becker, Michel Lang, Jakob Richter, Bernd Bischl, Daniel Schalk.</p>
 </div>
 
 <div class="pkgdown">
