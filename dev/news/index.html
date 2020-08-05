@@ -143,6 +143,22 @@
       <small>Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mlr3tuning-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#mlr3tuning-020" class="anchor"></a>mlr3tuning 0.2.0<small> 2020-07-28 </small>
+</h1>
+<ul>
+<li>
+<code>TuningInstance</code> is now <code>TuningInstanceSingleCrit</code>. <code>TuningInstanceMultiCrit</code> is still available for multi-criteria tuning.</li>
+<li>Terminators are now accessible by <code><a href="../reference/trm.html">trm()</a></code> and <code><a href="../reference/trms.html">trms()</a></code> instead of <code>term()</code> and <code><a href="https://rdrr.io/r/stats/terms.html">terms()</a></code>.</li>
+<li>Storing of resample results is optional now by using the <code>store_resample_result</code> flag in <code>TuningInstanceSingleCrit</code> and <code>TuningInstanceMultiCrit</code>
+</li>
+<li>
+<code>TunerNLoptr</code> adds non-linear optimization from the nloptr package.</li>
+<li>Logging is controlled by the <code>bbotk</code> logger now.</li>
+<li>Proposed points and performance values can be checked for validity by activating the <code>check_values</code> flag in <code>TuningInstanceSingleCrit</code> and <code>TuningInstanceMultiCrit</code>.</li>
+</ul>
+</div>
     <div id="mlr3tuning-013" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.3">
 <a href="#mlr3tuning-013" class="anchor"></a>mlr3tuning 0.1.3<small> Unreleased </small>
@@ -152,6 +168,8 @@
 </li>
 <li>
 <code>TuningInstance$param_set</code> becomes <code>TuningInstance$search_space</code> to avoid confusion as the <code>param_set</code> usually contains the parameters that change the behaviour of an object.</li>
+<li>Tuning is triggered by <code>$optimize()</code> instead of <code>$tune()</code>
+</li>
 </ul>
 </div>
     <div id="mlr3tuning-012" class="section level1">
