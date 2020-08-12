@@ -274,15 +274,15 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
 #&gt; 1: 0.0220389          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
-<span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;            cp classif.ce      resample_result  x_domain           timestamp
-#&gt; 1: 0.02203890       0.04 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-12 04:25:34
-#&gt; 2: 0.02563418       0.04 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-12 04:25:34
-#&gt; 3: 0.07505238       0.04 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-12 04:25:34
-#&gt;    batch_nr
-#&gt; 1:        1
-#&gt; 2:        2
-#&gt; 3:        3</div></pre>
+<span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
+#&gt;            cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.02203890       0.04 3386db79-cab6-4f94-84ff-a0462a5b9219 &lt;list[1]&gt;
+#&gt; 2: 0.02563418       0.04 88f600a6-530c-4f7f-9f05-34d2bb431ee4 &lt;list[1]&gt;
+#&gt; 3: 0.07505238       0.04 3e471c84-ab19-4cf3-b6a8-2845e147512e &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2020-08-12 15:00:56        1
+#&gt; 2: 2020-08-12 15:00:56        2
+#&gt; 3: 2020-08-12 15:00:56        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
