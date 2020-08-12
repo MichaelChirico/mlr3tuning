@@ -123,11 +123,7 @@ TuningInstanceSingleCrit = R6Class("TuningInstanceSingleCrit",
           resampling = resampling, measures = list(measure),
           store_models = store_models, check_values = check_values,
           store_resample_results = store_resample_results)
-        if (is.null(search_space)) {
-          search_space = learner$param_set$to_tune_param_set
-          if (is.null(search_space))
-            stopf("search_space=NULL, but learner also has no associated tuning space!")
-        }
+        search_space = assert_search_space(search_space, learner)
         super$initialize(obj, search_space, terminator)
     },
 

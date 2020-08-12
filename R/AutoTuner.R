@@ -98,14 +98,14 @@ AutoTuner = R6Class("AutoTuner",
     #'
     #' @param tuner ([Tuner])\cr
     #' Tuning algorithm to run.
-    initialize = function(learner, resampling, measure, search_space,
+    initialize = function(learner, resampling, measure, search_space = NULL,
       terminator, tuner) {
       ia = list()
       ia$learner = assert_learner(learner)$clone(deep = TRUE)
       ia$resampling = assert_resampling(resampling,
         instantiated = FALSE)$clone()
       ia$measure = assert_measure(as_measure(measure), learner = learner)
-      ia$search_space = assert_param_set(search_space)$clone()
+      ia$search_space = assert_search_space(search_space, learner, clone = TRUE)
       # We create a ParamSetColellection from the tuning ps and learner ps.
       # Without setting the ps id to "", the parameter would be prefixed with
       # the learner id in the ParamSetColellection.
