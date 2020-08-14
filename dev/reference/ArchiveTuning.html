@@ -50,8 +50,10 @@
 <meta property="og:title" content="Logging object for objective function evaluations — ArchiveTuning" />
 <meta property="og:description" content="Container around a data.table::data.table which stores all performed
 function calls of the Objective and the associated mlr3::BenchmarkResult.
-The mlr3::BenchmarkResult is connected to the data.table::data.table via
-the uhashes column." />
+$benchmark_result stores a mlr3::BenchmarkResult which contains the
+mlr3::ResampleResult of all performaned function calls. The
+mlr3::BenchmarkResult is connected to the data.table::data.table via the
+uhash column." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -152,8 +154,10 @@ the uhashes column." />
     <div class="ref-description">
     <p>Container around a <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a> which stores all performed
 function calls of the Objective and the associated <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p>
-<p>The <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> is connected to the <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a> via
-the <code>uhashes</code> column.</p>
+<p><code>$benchmark_result</code> stores a <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> which contains the
+<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> of all performaned function calls. The
+<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> is connected to the <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a> via the
+<code>uhash</code> column.</p>
     </div>
 
 
@@ -185,7 +189,6 @@ Stores benchmark result.</p></dd>
 <h3>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>ArchiveTuning$new()</code></a></p></li>
 <li><p><a href='#method-clone'><code>ArchiveTuning$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
@@ -195,30 +198,12 @@ Stores benchmark result.</p></dd>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="clear"><a href='../../bbotk/html/Archive.html#method-clear'><code>bbotk::Archive$clear()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="data"><a href='../../bbotk/html/Archive.html#method-data'><code>bbotk::Archive$data()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="format"><a href='../../bbotk/html/Archive.html#method-format'><code>bbotk::Archive$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="initialize"><a href='../../bbotk/html/Archive.html#method-initialize'><code>bbotk::Archive$initialize()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="print"><a href='../../bbotk/html/Archive.html#method-print'><code>bbotk::Archive$print()</code></a></span></p></li>
 </ul>
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ArchiveTuning</span>$<span class='fu'>new</span>(<span class='no'>search_space</span>, <span class='no'>codomain</span>, <span class='kw'>check_values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
-<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
-
-<dt><code>codomain</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Specifies codomain of function.
-Most importantly the tags of each output "Parameter" define whether it should
-be minimized or maximized.  The default is to minimize each component.</p></dd>
-
-<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Should parameters before the evaluation and the results be checked for
-validity?</p></dd>
-
-</dl><p></div></p>
-<p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
 <p><div class="r"></p><pre><span class='no'>ArchiveTuning</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
