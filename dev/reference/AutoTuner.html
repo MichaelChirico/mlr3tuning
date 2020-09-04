@@ -332,17 +332,17 @@ Tuning algorithm to run.</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 01333ad4-016e-4578-9095-42134cd5ffbf &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 d02c477b-86b3-4d61-bb27-ee09b574af72 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 bd098912-3a6e-460f-82cf-4224ca52bb6c &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 89270633-75d5-42c5-ad48-b39ad41b8a6d &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 5990d9e6-00c2-4822-9dc6-a41680b48b5a &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 6dc3a3a8-07b6-4e1a-bda8-a06b06b68e3b &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 eeab3d9e-1bb4-4101-8d2d-7f2b9f04df1c &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 aa9dff4e-89a9-49cb-9252-3614f976d084 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 c64962b1-679c-4659-b0a5-767ddfc1225a &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 54c55fa1-da41-42b4-9c34-03c1956aab0a &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-09-04 04:27:49        1
-#&gt; 2: 2020-09-04 04:27:49        2
-#&gt; 3: 2020-09-04 04:27:49        3
-#&gt; 4: 2020-09-04 04:27:49        4
-#&gt; 5: 2020-09-04 04:27:49        5
+#&gt; 1: 2020-09-04 10:24:11        1
+#&gt; 2: 2020-09-04 10:24:11        2
+#&gt; 3: 2020-09-04 10:24:11        3
+#&gt; 4: 2020-09-04 10:24:11        4
+#&gt; 5: 2020-09-04 10:24:11        5
 #&gt; </div><div class='input'><span class='no'>at</span>$<span class='no'>learner</span></div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
 #&gt; * Parameters: xval=0, cp=0.056
@@ -363,7 +363,7 @@ Tuning algorithm to run.</p></dd>
 <span class='no'>rr</span>$<span class='fu'><a href='https://rdrr.io/r/stats/aggregate.html'>aggregate</a></span>()</div><div class='output co'>#&gt; classif.ce 
 #&gt; 0.05333333 </div><div class='input'>
 <span class='co'># Retrieve inner tuning results.</span>
-<span class='no'>rr</span>$<span class='no'>data</span>$<span class='no'>learner</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>tuning_result</span></div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
+<span class='fu'><a href='https://mlr3.mlr-org.com/reference/as.data.table.html'>as.data.table</a></span>(<span class='no'>rr</span>)$<span class='no'>learner</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>tuning_result</span></div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
 #&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
