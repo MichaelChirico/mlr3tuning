@@ -85,7 +85,7 @@ evaluated in a random order." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -265,11 +265,15 @@ Maximum number of points to try in a batch.</p></dd>
 <span class='no'>instance</span>$<span class='no'>result</span></div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
 #&gt; 1: 0.067          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
-<span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;       cp classif.ce      resample_result  x_domain           timestamp batch_nr
-#&gt; 1: 0.067       0.08 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:17        1
-#&gt; 2: 0.089       0.08 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:17        2
-#&gt; 3: 0.034       0.08 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:17        3</div></pre>
+<span class='no'>instance</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
+#&gt;       cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.067       0.08 645d6ca7-d58d-4925-b979-28404a20b935 &lt;list[1]&gt;
+#&gt; 2: 0.089       0.08 a5074b07-8b28-4696-b0f5-f0c77217a547 &lt;list[1]&gt;
+#&gt; 3: 0.034       0.08 fc417e6c-2209-453f-a7e0-2673a31322fb &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2020-09-04 10:36:15        1
+#&gt; 2: 2020-09-04 10:36:15        2
+#&gt; 3: 2020-09-04 10:36:15        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -95,7 +95,7 @@ values, by calling the method instance$assign_result." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -220,9 +220,9 @@ and a termination criterion.</p><h3>Usage</h3>
   <span class='no'>measure</span>,
   <span class='no'>search_space</span>,
   <span class='no'>terminator</span>,
+  <span class='kw'>store_benchmark_result</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>store_models</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>check_values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>store_resample_results</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>check_values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre><p></div></p>
 
 <h3>Arguments</h3>
@@ -243,14 +243,15 @@ Measure to optimize.</p></dd>
 
 <dt><code>terminator</code></dt><dd><p>(Terminator).</p></dd>
 
-<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).</p></dd>
+<dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Store benchmark result in archive?</p></dd>
+
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).
+Store models in benchmark result?</p></dd>
 
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Should parameters before the evaluation and the results be checked for
 validity?</p></dd>
-
-<dt><code>store_resample_results</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Store resample results in archive?</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -314,17 +315,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># first 4 points as cross product</span>
 <span class='no'>design</span> <span class='kw'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.01</span>), <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))
 <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='no'>design</span>)
-<span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;      cp minsplit classif.ce      resample_result  x_domain           timestamp
-#&gt; 1: 0.01        3       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 2: 0.01        5       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt;    batch_nr
-#&gt; 1:        1
-#&gt; 2:        1
-#&gt; 3:        1
-#&gt; 4:        1</div><div class='input'>
+<span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
+#&gt;      cp minsplit classif.ce                                uhash  x_domain
+#&gt; 1: 0.01        3       0.06 9f0f3440-3d9d-48c9-87ab-b082f50cc602 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.06 080f2a59-0ee7-4dba-b93a-35dd34962db3 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 1464dff5-6807-4a5b-a860-d50597001c79 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 336ca3c7-7452-4d92-a38d-1dc08d3d9004 &lt;list[2]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2020-09-04 10:36:12        1
+#&gt; 2: 2020-09-04 10:36:12        1
+#&gt; 3: 2020-09-04 10:36:12        1
+#&gt; 4: 2020-09-04 10:36:12        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>7</span>)),
@@ -337,19 +338,19 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
   <span class='no'>inst</span>$<span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>cp</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>minsplit</span> <span class='kw'>=</span> <span class='fl'>9</span>)),
   <span class='kw'>terminated_error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>e</span>))
 )</div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
-<span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;Archive&gt;
-#&gt;      cp minsplit classif.ce      resample_result  x_domain           timestamp
-#&gt; 1: 0.01        3       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 2: 0.01        5       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 3: 0.05        3       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 4: 0.05        5       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt; 5: 0.01        7       0.06 &lt;ResampleResult[18]&gt; &lt;list[2]&gt; 2020-08-03 04:08:14
-#&gt;    batch_nr
-#&gt; 1:        1
-#&gt; 2:        1
-#&gt; 3:        1
-#&gt; 4:        1
-#&gt; 5:        2</div><div class='input'>
+<span class='no'>inst</span>$<span class='no'>archive</span></div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
+#&gt;      cp minsplit classif.ce                                uhash  x_domain
+#&gt; 1: 0.01        3       0.06 9f0f3440-3d9d-48c9-87ab-b082f50cc602 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.06 080f2a59-0ee7-4dba-b93a-35dd34962db3 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 1464dff5-6807-4a5b-a860-d50597001c79 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 336ca3c7-7452-4d92-a38d-1dc08d3d9004 &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.06 780201e1-a006-4c3c-9ad0-f5095e5760da &lt;list[2]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2020-09-04 10:36:12        1
+#&gt; 2: 2020-09-04 10:36:12        1
+#&gt; 3: 2020-09-04 10:36:12        1
+#&gt; 4: 2020-09-04 10:36:12        1
+#&gt; 5: 2020-09-04 10:36:12        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -378,12 +379,18 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='no'>archive</span> <span class='kw'>=</span> <span class='no'>inst</span>$<span class='no'>archive</span>$<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>()
 
 <span class='co'># column errors: multiple errors recorded</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce      resample_result  x_domain           timestamp batch_nr
-#&gt; 1: 0.2  0.7301318 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:15        1
-#&gt; 2: 0.4  0.6849341 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:15        1
-#&gt; 3: 0.6  0.6849341 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:15        1
-#&gt; 4: 0.8  0.6682674 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:15        1
-#&gt; 5: 1.0  0.6016008 &lt;ResampleResult[18]&gt; &lt;list[1]&gt; 2020-08-03 04:08:15        1</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>archive</span>)</div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
+#&gt; 1: 0.2  0.7301318 7971a17a-0809-4808-9f5b-b2a3e449a170 &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6849341 cf6d2cbd-39a8-4497-bc84-2afe707c308d &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6849341 c7623231-4f6e-41d3-8b03-d6135f3e5ca0 &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6682674 5e0a6647-79b8-4c54-9270-fabef8fd794b &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6016008 a2eef282-f5d2-4ce4-9746-b936e3b8bcdd &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2020-09-04 10:36:13        1
+#&gt; 2: 2020-09-04 10:36:13        1
+#&gt; 3: 2020-09-04 10:36:13        1
+#&gt; 4: 2020-09-04 10:36:13        1
+#&gt; 5: 2020-09-04 10:36:13        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
