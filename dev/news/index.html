@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.2.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -143,15 +143,16 @@
       <small>Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="mlr3tuning-020-9000" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.0-9000">
-<a href="#mlr3tuning-020-9000" class="anchor"></a>mlr3tuning 0.2.0-9000<small> Unreleased </small>
+    <div id="mlr3tuning-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#mlr3tuning-030" class="anchor"></a>mlr3tuning 0.3.0<small> 2020-09-08 </small>
 </h1>
 <ul>
 <li>Compact in-memory representation of R6 objects to save space when saving mlr3 objects via saveRDS(), serialize() etc.</li>
 <li>
 <code>Archive</code> is <code>ArchiveTuning</code> now which stores the benchmark result in <code>$benchmark_result</code>. This change removed the resample results from the archive but they can be still accessed via the benchmark result.</li>
 <li>Warning message if external package for tuning is not installed.</li>
+<li>To retrieve the inner tuning results in nested resampling,<br><code>as.data.table(rr)$learner[[1]]$tuning_result</code> must be used now.</li>
 </ul>
 </div>
     <div id="mlr3tuning-020" class="section level1">
@@ -225,7 +226,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
