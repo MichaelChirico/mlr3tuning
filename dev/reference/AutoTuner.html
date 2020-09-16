@@ -201,11 +201,6 @@ All arguments from construction to create the <a href='TuningInstanceSingleCrit.
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>).</p></dd>
 
-<dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), stores the internally created
-<a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> with all intermediate results in slot
-<code>$tuning_instance</code>.</p></dd>
-
 </dl><p></div></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
@@ -249,7 +244,18 @@ Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>Tu
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span>(<span class='kw'>learner</span>, <span class='kw'>resampling</span>, <span class='kw'>measure</span>, <span class='kw'>search_space</span>, <span class='kw'>terminator</span>, <span class='kw'>tuner</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='kw'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span>(
+  <span class='kw'>learner</span>,
+  <span class='kw'>resampling</span>,
+  <span class='kw'>measure</span>,
+  <span class='kw'>search_space</span>,
+  <span class='kw'>terminator</span>,
+  <span class='kw'>tuner</span>,
+  store_tuning_instance = <span class='fl'>TRUE</span>,
+  store_benchmark_result = <span class='fl'>TRUE</span>,
+  store_models = <span class='fl'>FALSE</span>,
+  check_values = <span class='fl'>FALSE</span>
+)</pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -273,6 +279,21 @@ When to stop tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceS
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>)<br />
 Tuning algorithm to run.</p></dd>
+
+<dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+If <code>TRUE</code> (default), stores the internally created
+<a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> with all intermediate results in slot
+<code>$tuning_instance</code>.</p></dd>
+
+<dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Store benchmark result in archive?</p></dd>
+
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Store models in benchmark result?</p></dd>
+
+<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Should parameters before the evaluation and the results be checked for
+validity?</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -302,8 +323,7 @@ Tuning algorithm to run.</p></dd>
 <span class='kw'>tuner</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span>(<span class='st'>"grid_search"</span>)
 <span class='kw'>at</span> <span class='op'>=</span> <span class='kw'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span>(
   <span class='kw'>learner</span>, <span class='kw'>resampling</span>, <span class='kw'>measure</span>, <span class='kw'>search_space</span>, <span class='kw'>terminator</span>,
-  <span class='kw'>tuner</span>)
-<span class='kw'>at</span><span class='op'>$</span><span class='kw'>store_tuning_instance</span> <span class='op'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>tuner</span>, store_tuning_instance = <span class='fl'>TRUE</span>)
 
 <span class='kw'>at</span><span class='op'>$</span><span class='fu'>train</span>(<span class='kw'>task</span>)
 <span class='kw'>at</span><span class='op'>$</span><span class='kw'>model</span>
@@ -333,17 +353,17 @@ Tuning algorithm to run.</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 f46509a0-aefe-4706-a109-54b80f68c86d &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 d83c0eb4-5928-4627-b2f7-7ae84b7bf7a6 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 e8c676f3-fc5a-4f6c-91c4-985dbfc0ef3d &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 e37cc108-bf10-4938-9aaa-571abf0e3d1b &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 480a0cdc-b806-4d7e-8200-81d8708de65e &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 468c79de-ae14-4616-b52f-bb29f87631d9 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 3a5877e2-dfe9-4320-b5a4-cb2330e2f066 &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 64cc2e1b-2b23-419a-b770-c92b5f846414 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 120edb2e-eea9-4dc3-87d6-2cf0d0aac0dc &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 3948ad0d-8e0e-48ab-bc3a-4a759aba9581 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-09-16 04:29:45        1
-#&gt; 2: 2020-09-16 04:29:45        2
-#&gt; 3: 2020-09-16 04:29:45        3
-#&gt; 4: 2020-09-16 04:29:45        4
-#&gt; 5: 2020-09-16 04:29:45        5
+#&gt; 1: 2020-09-16 11:54:01        1
+#&gt; 2: 2020-09-16 11:54:02        2
+#&gt; 3: 2020-09-16 11:54:02        3
+#&gt; 4: 2020-09-16 11:54:02        4
+#&gt; 5: 2020-09-16 11:54:02        5
 #&gt; </div><div class='input'><span class='kw'>at</span><span class='op'>$</span><span class='kw'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
@@ -355,8 +375,7 @@ Tuning algorithm to run.</p></dd>
 #&gt;   twoclass, weights</div><div class='input'>
 <span class='co'># Nested resampling</span>
 <span class='kw'>at</span> <span class='op'>=</span> <span class='kw'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span>(<span class='kw'>learner</span>, <span class='kw'>resampling</span>, <span class='kw'>measure</span>, <span class='kw'>search_space</span>, <span class='kw'>terminator</span>,
-  <span class='kw'>tuner</span>)
-<span class='kw'>at</span><span class='op'>$</span><span class='kw'>store_tuning_instance</span> <span class='op'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>tuner</span>, store_tuning_instance = <span class='fl'>TRUE</span>)
 
 <span class='kw'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>, folds = <span class='fl'>2</span>)
 <span class='kw'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span>(<span class='kw'>task</span>, <span class='kw'>at</span>, <span class='kw'>resampling_outer</span>, store_models = <span class='fl'>TRUE</span>)
