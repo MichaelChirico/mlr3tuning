@@ -209,21 +209,21 @@ List of param values for the optimal learner call.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p>
+<p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p>
 <p>This defines the resampled performance of a learner on a task, a
 feasibility region for the parameters the tuner is supposed to optimize,
 and a termination criterion.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>new</span>(
-  <span class='kw'>task</span>,
-  <span class='kw'>learner</span>,
-  <span class='kw'>resampling</span>,
-  <span class='kw'>measures</span>,
-  <span class='kw'>search_space</span>,
-  <span class='kw'>terminator</span>,
-  store_models = <span class='fl'>FALSE</span>,
-  check_values = <span class='fl'>FALSE</span>,
-  store_benchmark_result = <span class='fl'>TRUE</span>
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  <span class='va'>task</span>,
+  <span class='va'>learner</span>,
+  <span class='va'>resampling</span>,
+  <span class='va'>measures</span>,
+  <span class='va'>search_space</span>,
+  <span class='va'>terminator</span>,
+  store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  check_values <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -259,7 +259,7 @@ Store benchmark result in archive?</p></dd>
 <a id="method-assign_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found points
 and estimated performance values here. For internal use.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>assign_result</span>(<span class='kw'>xdt</span>, <span class='kw'>ydt</span>, learner_param_vals = <span class='kw'>NULL</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>assign_result</span><span class='op'>(</span><span class='va'>xdt</span>, <span class='va'>ydt</span>, learner_param_vals <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -278,7 +278,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
