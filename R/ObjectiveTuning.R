@@ -83,27 +83,34 @@ ObjectiveTuning = R6Class("ObjectiveTuning",
         return(learner)
       })
 
-      if(is.null(c_hash) || self$archive$n_evals == 0) {
+      if(self$archive$n_evals == 0) {
         # Benchmark without continuable models
         design = benchmark_grid(self$task, learners, self$resampling)
         bmr = benchmark(design, store_models = self$store_models)
       } else {
-        # Benchmark with continuable model
-        archive = self$archive$data()
-        archive = archive[continue_hash %in% c_hash, ]
+        # Benchmark could contain continuable models
+        browser()
+        pars_continue = names(self$domain$get_values(tags = "continue"))
 
-        if(nrow(archive) > 0) {
+        xdt_xss = map_dtr(xss, function(x) {
+          x[pars_continue] = NULL
+          x
+        })
+
+        xdt_archive = map_dtr(self$archive$data()$x_domain, function(x) {
+          x[pars_continue] = NULL
+          x
+        })
+        xdt_archive$uhash = self$archive$data()$uhash
+        xdt_archive$batch_nr = self$archive$data()$batch_nr
+        xdt_archive= xdt_archive[, .SD[which.max(batch_nr)], by = names(xdt_xss)]
+        uhash = merge(xdt_archive, xdt_xss, by = names(xdt_xss), all.x = FALSE, all.y = TRUE)$uhash
+        if(!any(is.na(uhash))) {
           # Continuable models found
-          # Use last model version
-          archive = archive[, .SD[which.max(batch_nr)], by = continue_hash]
-
-          uhash = archive$uhash
           bmr_filtered = self$archive$benchmark_result$clone(deep = TRUE)$filter(uhashes = uhash)
-
           bmr = benchmark_continue(learners, bmr_filtered, self$store_models)
-
         } else {
-          # c_hash matches no continuable models
+          # No continuable models found
           design = benchmark_grid(self$task, learners, self$resampling)
           bmr = benchmark(design, store_models = self$store_models)
         }
