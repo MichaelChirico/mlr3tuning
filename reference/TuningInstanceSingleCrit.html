@@ -95,7 +95,7 @@ values, by calling the method instance$assign_result." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -209,21 +209,21 @@ Param values for the optimal learner call.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p>
+<p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p>
 <p>This defines the resampled performance of a learner on a task, a
 feasibility region for the parameters the tuner is supposed to optimize,
 and a termination criterion.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span>(
-  <span class='kw'>task</span>,
-  <span class='kw'>learner</span>,
-  <span class='kw'>resampling</span>,
-  <span class='kw'>measure</span>,
-  <span class='kw'>search_space</span>,
-  <span class='kw'>terminator</span>,
-  store_benchmark_result = <span class='fl'>TRUE</span>,
-  store_models = <span class='fl'>FALSE</span>,
-  check_values = <span class='fl'>FALSE</span>
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  <span class='va'>task</span>,
+  <span class='va'>learner</span>,
+  <span class='va'>resampling</span>,
+  <span class='va'>measure</span>,
+  <span class='va'>search_space</span>,
+  <span class='va'>terminator</span>,
+  store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  check_values <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -246,7 +246,7 @@ Measure to optimize.</p></dd>
 <dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Store benchmark result in archive?</p></dd>
 
-<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>).
+<dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Store models in benchmark result?</p></dd>
 
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
@@ -258,7 +258,7 @@ validity?</p></dd>
 <a id="method-assign_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found point
 and estimated performance value here. For internal use.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>assign_result</span>(<span class='kw'>xdt</span>, <span class='kw'>y</span>, learner_param_vals = <span class='kw'>NULL</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>assign_result</span><span class='op'>(</span><span class='va'>xdt</span>, <span class='va'>y</span>, learner_param_vals <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -277,7 +277,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -288,113 +288,113 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://r-datatable.com'>data.table</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://paradox.mlr-org.com'>paradox</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://mlr3.mlr-org.com'>mlr3</a></span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://r-datatable.com'>data.table</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 
 <span class='co'># Objects required to define the performance evaluator:</span>
-<span class='kw'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>)
-<span class='kw'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.rpart"</span>)
-<span class='kw'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"holdout"</span>)
-<span class='kw'>measure</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>)
-<span class='kw'>param_set</span> <span class='op'>=</span> <span class='kw'>ParamSet</span><span class='op'>$</span><span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='kw'>ParamDbl</span><span class='op'>$</span><span class='fu'>new</span>(<span class='st'>"cp"</span>, lower = <span class='fl'>0.001</span>, upper = <span class='fl'>0.1</span>),
-  <span class='kw'>ParamInt</span><span class='op'>$</span><span class='fu'>new</span>(<span class='st'>"minsplit"</span>, lower = <span class='fl'>1</span>, upper = <span class='fl'>10</span>))
-)
+<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>
+<span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>
+<span class='va'>measure</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>
+<span class='va'>param_set</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+  <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>,
+  <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamInt.html'>ParamInt</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"minsplit"</span>, lower <span class='op'>=</span> <span class='fl'>1</span>, upper <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='kw'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span>(<span class='st'>"evals"</span>, n_evals = <span class='fl'>5</span>)
-<span class='kw'>inst</span> <span class='op'>=</span> <span class='kw'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span>(
-  task = <span class='kw'>task</span>,
-  learner = <span class='kw'>learner</span>,
-  resampling = <span class='kw'>resampling</span>,
-  measure = <span class='kw'>measure</span>,
-  search_space = <span class='kw'>param_set</span>,
-  terminator = <span class='kw'>terminator</span>
-)
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>inst</span> <span class='op'>=</span> <span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  task <span class='op'>=</span> <span class='va'>task</span>,
+  learner <span class='op'>=</span> <span class='va'>learner</span>,
+  resampling <span class='op'>=</span> <span class='va'>resampling</span>,
+  measure <span class='op'>=</span> <span class='va'>measure</span>,
+  search_space <span class='op'>=</span> <span class='va'>param_set</span>,
+  terminator <span class='op'>=</span> <span class='va'>terminator</span>
+<span class='op'>)</span>
 
 <span class='co'># first 4 points as cross product</span>
-<span class='kw'>design</span> <span class='op'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span>(cp = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.01</span>), minsplit = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))
-<span class='kw'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span>(<span class='kw'>design</span>)
-<span class='kw'>inst</span><span class='op'>$</span><span class='kw'>archive</span>
+<span class='va'>design</span> <span class='op'>=</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>CJ</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.01</span><span class='op'>)</span>, minsplit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='va'>design</span><span class='op'>)</span>
+<span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 a8c20337-f59b-436e-8181-dd18501a61d5 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 1046d57b-727a-4a95-974a-d3d83db2d314 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 3565a6d3-6e07-40c7-b129-7599ede0a4ad &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 ecd6f8c9-5020-45d4-bb6d-9208a43a52ba &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 d16ada6a-4bba-4886-9ce5-72d0ec2dda14 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 75977bd6-8f77-4e5c-92fa-c3bd430a00b8 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 b81f8b3f-a6e4-4072-96fc-6cc66d4bb6d8 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 785fcdc1-097f-4a8f-b63e-40b2a143b602 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-09-10 04:36:58        1
-#&gt; 2: 2020-09-10 04:36:58        1
-#&gt; 3: 2020-09-10 04:36:58        1
-#&gt; 4: 2020-09-10 04:36:58        1</div><div class='input'>
+#&gt; 1: 2020-10-07 20:21:09        1
+#&gt; 2: 2020-10-07 20:21:09        1
+#&gt; 3: 2020-10-07 20:21:09        1
+#&gt; 4: 2020-10-07 20:21:09        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
-<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
-  <span class='kw'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(cp = <span class='fl'>0.01</span>, minsplit = <span class='fl'>7</span>)),
-  terminated_error = <span class='fu'>function</span>(<span class='kw'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>e</span>))
-)
+<span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
+  <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
+  terminated_error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'># try another point although the budget is now exhausted</span>
 <span class='co'># -&gt; no extra evaluations</span>
-<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
-  <span class='kw'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(cp = <span class='fl'>0.01</span>, minsplit = <span class='fl'>9</span>)),
-  terminated_error = <span class='fu'>function</span>(<span class='kw'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>e</span>))
-)
+<span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
+  <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>,
+  terminated_error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Error: Objective (obj:classif.rpart_on_iris, term:&lt;TerminatorEvals&gt;) terminated</span></div><div class='input'>
-<span class='kw'>inst</span><span class='op'>$</span><span class='kw'>archive</span>
+<span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 a8c20337-f59b-436e-8181-dd18501a61d5 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 1046d57b-727a-4a95-974a-d3d83db2d314 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 3565a6d3-6e07-40c7-b129-7599ede0a4ad &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 ecd6f8c9-5020-45d4-bb6d-9208a43a52ba &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.06 438353a5-2a7d-4378-b1e2-2a7fc2f6ace6 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 d16ada6a-4bba-4886-9ce5-72d0ec2dda14 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 75977bd6-8f77-4e5c-92fa-c3bd430a00b8 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 b81f8b3f-a6e4-4072-96fc-6cc66d4bb6d8 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 785fcdc1-097f-4a8f-b63e-40b2a143b602 &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.02 d57a7a94-a774-428f-92b8-686d3f1f5269 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-09-10 04:36:58        1
-#&gt; 2: 2020-09-10 04:36:58        1
-#&gt; 3: 2020-09-10 04:36:58        1
-#&gt; 4: 2020-09-10 04:36:58        1
-#&gt; 5: 2020-09-10 04:36:58        2</div><div class='input'>
+#&gt; 1: 2020-10-07 20:21:09        1
+#&gt; 2: 2020-10-07 20:21:09        1
+#&gt; 3: 2020-10-07 20:21:09        1
+#&gt; 4: 2020-10-07 20:21:09        1
+#&gt; 5: 2020-10-07 20:21:09        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
-<span class='kw'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.debug"</span>, error_train = <span class='fl'>0.5</span>)
-<span class='kw'>learner</span><span class='op'>$</span><span class='kw'>encapsulate</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(train = <span class='st'>"evaluate"</span>, predict = <span class='st'>"evaluate"</span>)
-<span class='kw'>learner</span><span class='op'>$</span><span class='kw'>fallback</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.featureless"</span>)
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.debug"</span>, error_train <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>encapsulate</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>train <span class='op'>=</span> <span class='st'>"evaluate"</span>, predict <span class='op'>=</span> <span class='st'>"evaluate"</span><span class='op'>)</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>fallback</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.featureless"</span><span class='op'>)</span>
 
-<span class='kw'>param_set</span> <span class='op'>=</span> <span class='kw'>ParamSet</span><span class='op'>$</span><span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='kw'>ParamDbl</span><span class='op'>$</span><span class='fu'>new</span>(<span class='st'>"x"</span>, lower = <span class='fl'>0</span>, upper = <span class='fl'>1</span>)
-))
+<span class='va'>param_set</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+  <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"x"</span>, lower <span class='op'>=</span> <span class='fl'>0</span>, upper <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
 
-<span class='kw'>inst</span> <span class='op'>=</span> <span class='kw'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span>(
-  task = <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"wine"</span>),
-  learner = <span class='kw'>learner</span>,
-  resampling = <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>, folds = <span class='fl'>3</span>),
-  measure = <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span>(<span class='st'>"classif.ce"</span>),
-  search_space = <span class='kw'>param_set</span>,
-  terminator = <span class='fu'><a href='trm.html'>trm</a></span>(<span class='st'>"evals"</span>, n_evals = <span class='fl'>5</span>)
-)
+<span class='va'>inst</span> <span class='op'>=</span> <span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"wine"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='va'>learner</span>,
+  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  search_space <span class='op'>=</span> <span class='va'>param_set</span>,
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
-  <span class='kw'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span>(<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(x = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span> <span class='op'>/</span> <span class='fl'>5</span>)),
-  terminated_error = <span class='fu'>function</span>(<span class='kw'>e</span>) <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>e</span>))
-)
+<span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
+  <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span> <span class='op'>/</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>,
+  terminated_error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='kw'>archive</span> <span class='op'>=</span> <span class='kw'>inst</span><span class='op'>$</span><span class='kw'>archive</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>()
+<span class='va'>archive</span> <span class='op'>=</span> <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>$</span><span class='fu'>data</span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='co'># column errors: multiple errors recorded</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>archive</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
-#&gt; 1: 0.2  0.7301318 40529c7e-795f-4cb4-8734-5f13441e8495 &lt;list[1]&gt;
-#&gt; 2: 0.4  0.6849341 22168f57-db0a-4b88-a655-d7d53295882f &lt;list[1]&gt;
-#&gt; 3: 0.6  0.6849341 73dcace3-376c-41f0-9ef6-884af007288b &lt;list[1]&gt;
-#&gt; 4: 0.8  0.6682674 e7477e23-4e8f-46aa-8cda-9d7eb721b6d3 &lt;list[1]&gt;
-#&gt; 5: 1.0  0.6016008 477d70b2-0f30-41de-8625-4e428d2fb873 &lt;list[1]&gt;
+#&gt; 1: 0.2  0.6908663 ce29eaec-dfbf-4f1d-8a29-33e0c79dce1d &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6011299 c84ebff1-2b4a-4013-b47f-4bebfa6c4485 &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6011299 753596a9-24a7-4698-9e12-93f8b50c1714 &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6011299 8124ae35-c615-4695-af6b-488cfbe9a2d0 &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6739171 868a557d-efae-4944-a619-ff400b136fe7 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-09-10 04:36:59        1
-#&gt; 2: 2020-09-10 04:36:59        1
-#&gt; 3: 2020-09-10 04:36:59        1
-#&gt; 4: 2020-09-10 04:36:59        1
-#&gt; 5: 2020-09-10 04:36:59        1</div></pre>
+#&gt; 1: 2020-10-07 20:21:10        1
+#&gt; 2: 2020-10-07 20:21:10        1
+#&gt; 3: 2020-10-07 20:21:10        1
+#&gt; 4: 2020-10-07 20:21:10        1
+#&gt; 5: 2020-10-07 20:21:10        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -410,7 +410,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
