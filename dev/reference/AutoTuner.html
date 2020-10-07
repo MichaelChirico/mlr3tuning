@@ -319,7 +319,7 @@ validity?</p></dd>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 <span class='va'>tuner</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   <span class='va'>learner</span>, <span class='va'>resampling</span>, <span class='va'>measure</span>, <span class='va'>search_space</span>, <span class='va'>terminator</span>,
@@ -353,17 +353,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 0e6d2b2e-acc2-487d-b07e-a21b75544acc &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 33b2383a-1a95-4cb4-9ca9-b03640cda43b &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 6c1c9831-e15d-4402-a587-7615054ea2ab &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 9adb8b74-6aca-4cf4-8d37-242056ed1bee &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 fef77a48-59ef-4f93-974d-762bc87b8ec2 &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 57659140-9138-4796-8e9e-c15b820834e9 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 2edb7227-53f4-4eeb-879b-a01ee4092828 &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 e0f4b701-541f-4345-af99-2c5baa854230 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 ad9363e6-c020-4e98-af55-82b87f8e202c &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 4b5c91b2-5ce0-4f71-9cdd-87c192cea65e &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:06        1
-#&gt; 2: 2020-10-05 19:27:06        2
-#&gt; 3: 2020-10-05 19:27:06        3
-#&gt; 4: 2020-10-05 19:27:06        4
-#&gt; 5: 2020-10-05 19:27:06        5
+#&gt; 1: 2020-10-07 13:04:51        1
+#&gt; 2: 2020-10-07 13:04:51        2
+#&gt; 3: 2020-10-07 13:04:51        3
+#&gt; 4: 2020-10-07 13:04:51        4
+#&gt; 5: 2020-10-07 13:04:51        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart

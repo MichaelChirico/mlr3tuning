@@ -302,7 +302,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamInt.html'>ParamInt</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"minsplit"</span>, lower <span class='op'>=</span> <span class='fl'>1</span>, upper <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 <span class='va'>inst</span> <span class='op'>=</span> <span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='va'>task</span>,
   learner <span class='op'>=</span> <span class='va'>learner</span>,
@@ -318,15 +318,15 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 79d87726-f1e2-4f9e-811e-590da195bcb9 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 0083cca4-1ea3-44f9-bea8-f42b7f522dac &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 d7d06b60-4b7b-4de7-b049-72fa906d0b25 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 d5974752-243d-41bb-9508-7fce9db696e4 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.06 2f8c43f3-7e43-41a5-aa53-324052b37279 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.06 93a5cf27-c6c0-421b-a1ab-7b7b4d7a0982 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 10d482b5-98e1-4d74-82c2-0ef3960d7ef2 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 6e791d22-4bf3-4132-8cae-19d90b3e577f &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:08        1
-#&gt; 2: 2020-10-05 19:27:08        1
-#&gt; 3: 2020-10-05 19:27:08        1
-#&gt; 4: 2020-10-05 19:27:08        1</div><div class='input'>
+#&gt; 1: 2020-10-07 13:04:54        1
+#&gt; 2: 2020-10-07 13:04:54        1
+#&gt; 3: 2020-10-07 13:04:54        1
+#&gt; 4: 2020-10-07 13:04:54        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -343,17 +343,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 79d87726-f1e2-4f9e-811e-590da195bcb9 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 0083cca4-1ea3-44f9-bea8-f42b7f522dac &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 d7d06b60-4b7b-4de7-b049-72fa906d0b25 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 d5974752-243d-41bb-9508-7fce9db696e4 &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.06 3b8bdc01-711b-4125-ae38-99bc54c79122 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.06 2f8c43f3-7e43-41a5-aa53-324052b37279 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.06 93a5cf27-c6c0-421b-a1ab-7b7b4d7a0982 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 10d482b5-98e1-4d74-82c2-0ef3960d7ef2 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 6e791d22-4bf3-4132-8cae-19d90b3e577f &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.06 8411fd7e-b3f2-4931-bb0a-2ca899da2c61 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:08        1
-#&gt; 2: 2020-10-05 19:27:08        1
-#&gt; 3: 2020-10-05 19:27:08        1
-#&gt; 4: 2020-10-05 19:27:08        1
-#&gt; 5: 2020-10-05 19:27:08        2</div><div class='input'>
+#&gt; 1: 2020-10-07 13:04:54        1
+#&gt; 2: 2020-10-07 13:04:54        1
+#&gt; 3: 2020-10-07 13:04:54        1
+#&gt; 4: 2020-10-07 13:04:54        1
+#&gt; 5: 2020-10-07 13:04:54        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -371,7 +371,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
   resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
   measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   search_space <span class='op'>=</span> <span class='va'>param_set</span>,
-  terminator <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
@@ -384,17 +384,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
-#&gt; 1: 0.2  0.7301318 941a24c6-d2db-4b1d-8ce6-4bbe4f110537 &lt;list[1]&gt;
-#&gt; 2: 0.4  0.6849341 79e70bfb-a361-42f1-9c9f-4266268d65bc &lt;list[1]&gt;
-#&gt; 3: 0.6  0.6849341 bc8e2c86-822d-4baf-b1c3-e5ec669508e4 &lt;list[1]&gt;
-#&gt; 4: 0.8  0.6682674 41c5ebc3-d5b8-43c2-99d3-3f053bddb651 &lt;list[1]&gt;
-#&gt; 5: 1.0  0.6016008 27fabdb9-651f-46fd-80f7-0028ffc3fd01 &lt;list[1]&gt;
+#&gt; 1: 0.2  0.7301318 796da5a1-5b61-4b5a-a927-7ff8c5bdfd07 &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6849341 9261af7a-8994-4eaa-b896-0c9dbf97ad1d &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6849341 bb7ba8d5-efa5-4bfd-81f1-5533bf71ea48 &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6682674 9f06307d-93c6-4855-8e91-502cd4ce5879 &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6016008 7bb2850e-acd7-46fa-bad7-4f2fb693e25d &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:09        1
-#&gt; 2: 2020-10-05 19:27:09        1
-#&gt; 3: 2020-10-05 19:27:09        1
-#&gt; 4: 2020-10-05 19:27:09        1
-#&gt; 5: 2020-10-05 19:27:09        1</div></pre>
+#&gt; 1: 2020-10-07 13:04:55        1
+#&gt; 2: 2020-10-07 13:04:55        1
+#&gt; 3: 2020-10-07 13:04:55        1
+#&gt; 4: 2020-10-07 13:04:55        1
+#&gt; 5: 2020-10-07 13:04:55        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -244,7 +244,7 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
   learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
@@ -267,13 +267,13 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.05788167       0.04 1e760b7a-f5d2-49b3-b6f2-8214e8d87752 &lt;list[1]&gt;
-#&gt; 2: 0.02234443       0.04 6b2d3304-9fff-47d9-abdd-3296811107e7 &lt;list[1]&gt;
-#&gt; 3: 0.03735377       0.04 15f519e5-0a20-494d-aeb3-e2adac10a1f4 &lt;list[1]&gt;
+#&gt; 1: 0.05788167       0.04 0aa66259-51d4-4f63-aa6c-b12971709a3c &lt;list[1]&gt;
+#&gt; 2: 0.02234443       0.04 027aee37-0428-47c5-8169-dd301cb09d97 &lt;list[1]&gt;
+#&gt; 3: 0.03735377       0.04 161b4f8c-c8c6-4b5a-aeb7-4a8527b3f8e5 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:11        1
-#&gt; 2: 2020-10-05 19:27:11        2
-#&gt; 3: 2020-10-05 19:27:11        3</div></pre>
+#&gt; 1: 2020-10-07 13:04:57        1
+#&gt; 2: 2020-10-07 13:04:57        2
+#&gt; 3: 2020-10-07 13:04:57        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

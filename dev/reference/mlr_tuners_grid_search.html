@@ -248,7 +248,7 @@ Maximum number of points to try in a batch.</p></dd>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
   learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
@@ -271,13 +271,13 @@ Maximum number of points to try in a batch.</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.067       0.08 dd822ef8-be24-44a9-9397-b17c9a558e3e &lt;list[1]&gt;
-#&gt; 2: 0.089       0.08 858b32db-57e9-44b4-b9d0-808d5987f5ca &lt;list[1]&gt;
-#&gt; 3: 0.034       0.08 e2bbabeb-ba1b-47cd-b860-c4af542604b1 &lt;list[1]&gt;
+#&gt; 1: 0.067       0.08 66cb1aff-a209-4566-bd27-c57c00a019ca &lt;list[1]&gt;
+#&gt; 2: 0.089       0.08 8b053e23-971a-44a2-92f9-4ab8f5421543 &lt;list[1]&gt;
+#&gt; 3: 0.034       0.08 c2cc80be-0df5-428b-a566-15fcb18f0d02 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:11        1
-#&gt; 2: 2020-10-05 19:27:11        2
-#&gt; 3: 2020-10-05 19:27:11        3</div></pre>
+#&gt; 1: 2020-10-07 13:04:57        1
+#&gt; 2: 2020-10-07 13:04:57        2
+#&gt; 3: 2020-10-07 13:04:57        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

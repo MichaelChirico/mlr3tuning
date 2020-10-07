@@ -304,7 +304,7 @@ The result will be written into the instance object.</p><h4 class='hasAnchor' id
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
   learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
@@ -326,13 +326,13 @@ The result will be written into the instance object.</p><h4 class='hasAnchor' id
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.02116277       0.04 90234508-ae56-4f84-9c4b-0ac574aee34b &lt;list[1]&gt;
-#&gt; 2: 0.02644131       0.04 a6ef7301-9fd7-44b6-aad9-67d53d28814f &lt;list[1]&gt;
-#&gt; 3: 0.06178655       0.04 9f5f79ae-1878-4dd7-a446-bfb3bdbc9950 &lt;list[1]&gt;
+#&gt; 1: 0.02116277       0.04 65819366-886a-49f1-a391-b5f92b7207d3 &lt;list[1]&gt;
+#&gt; 2: 0.02644131       0.04 bac3edbb-0b4f-4756-b79d-e98ca4710642 &lt;list[1]&gt;
+#&gt; 3: 0.06178655       0.04 44fbf172-7504-4b5b-9360-9673845580b2 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-05 19:27:07        1
-#&gt; 2: 2020-10-05 19:27:07        2
-#&gt; 3: 2020-10-05 19:27:07        3</div></pre>
+#&gt; 1: 2020-10-07 13:04:53        1
+#&gt; 2: 2020-10-07 13:04:53        2
+#&gt; 3: 2020-10-07 13:04:53        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
