@@ -95,7 +95,7 @@ values, by calling the method instance$assign_result." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -318,15 +318,15 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 2f8c43f3-7e43-41a5-aa53-324052b37279 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 93a5cf27-c6c0-421b-a1ab-7b7b4d7a0982 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 10d482b5-98e1-4d74-82c2-0ef3960d7ef2 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 6e791d22-4bf3-4132-8cae-19d90b3e577f &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 1814ea4c-4062-497a-b9db-6866e3e62fd7 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 e9d677fb-fd4a-408e-bfa0-33ae43f58d07 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 66653880-2a17-440c-9644-bd63c09c8b00 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 26de262e-3c73-4185-9419-fc6f93e3ff2c &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:54        1
-#&gt; 2: 2020-10-07 13:04:54        1
-#&gt; 3: 2020-10-07 13:04:54        1
-#&gt; 4: 2020-10-07 13:04:54        1</div><div class='input'>
+#&gt; 1: 2020-10-08 08:15:31        1
+#&gt; 2: 2020-10-08 08:15:31        1
+#&gt; 3: 2020-10-08 08:15:31        1
+#&gt; 4: 2020-10-08 08:15:31        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -343,17 +343,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.06 2f8c43f3-7e43-41a5-aa53-324052b37279 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.06 93a5cf27-c6c0-421b-a1ab-7b7b4d7a0982 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 10d482b5-98e1-4d74-82c2-0ef3960d7ef2 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 6e791d22-4bf3-4132-8cae-19d90b3e577f &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.06 8411fd7e-b3f2-4931-bb0a-2ca899da2c61 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 1814ea4c-4062-497a-b9db-6866e3e62fd7 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 e9d677fb-fd4a-408e-bfa0-33ae43f58d07 &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 66653880-2a17-440c-9644-bd63c09c8b00 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 26de262e-3c73-4185-9419-fc6f93e3ff2c &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.02 ce2a8028-4d05-4001-ad57-95d4aad15ed4 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:54        1
-#&gt; 2: 2020-10-07 13:04:54        1
-#&gt; 3: 2020-10-07 13:04:54        1
-#&gt; 4: 2020-10-07 13:04:54        1
-#&gt; 5: 2020-10-07 13:04:54        2</div><div class='input'>
+#&gt; 1: 2020-10-08 08:15:31        1
+#&gt; 2: 2020-10-08 08:15:31        1
+#&gt; 3: 2020-10-08 08:15:31        1
+#&gt; 4: 2020-10-08 08:15:31        1
+#&gt; 5: 2020-10-08 08:15:31        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -384,17 +384,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
-#&gt; 1: 0.2  0.7301318 796da5a1-5b61-4b5a-a927-7ff8c5bdfd07 &lt;list[1]&gt;
-#&gt; 2: 0.4  0.6849341 9261af7a-8994-4eaa-b896-0c9dbf97ad1d &lt;list[1]&gt;
-#&gt; 3: 0.6  0.6849341 bb7ba8d5-efa5-4bfd-81f1-5533bf71ea48 &lt;list[1]&gt;
-#&gt; 4: 0.8  0.6682674 9f06307d-93c6-4855-8e91-502cd4ce5879 &lt;list[1]&gt;
-#&gt; 5: 1.0  0.6016008 7bb2850e-acd7-46fa-bad7-4f2fb693e25d &lt;list[1]&gt;
+#&gt; 1: 0.2  0.6908663 4df0e1e3-3f5f-47b2-bfac-56e63424917c &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6011299 cd2aecc6-cb41-4d4d-9049-ab661cf43d12 &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6011299 043b4767-6882-44f0-92ba-dd7f83625b81 &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6011299 b1acbbe5-7f61-4eba-b40b-f947aab68901 &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6739171 35e73b02-aaf4-45c8-a0a2-62cec3dccf15 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:55        1
-#&gt; 2: 2020-10-07 13:04:55        1
-#&gt; 3: 2020-10-07 13:04:55        1
-#&gt; 4: 2020-10-07 13:04:55        1
-#&gt; 5: 2020-10-07 13:04:55        1</div></pre>
+#&gt; 1: 2020-10-08 08:15:32        1
+#&gt; 2: 2020-10-08 08:15:32        1
+#&gt; 3: 2020-10-08 08:15:32        1
+#&gt; 4: 2020-10-08 08:15:32        1
+#&gt; 5: 2020-10-08 08:15:32        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

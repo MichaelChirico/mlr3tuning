@@ -83,7 +83,7 @@ from package GenSA." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -257,23 +257,23 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.05788167          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.003964699          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.05788167          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.003964699          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.05788167       0.04 0aa66259-51d4-4f63-aa6c-b12971709a3c &lt;list[1]&gt;
-#&gt; 2: 0.02234443       0.04 027aee37-0428-47c5-8169-dd301cb09d97 &lt;list[1]&gt;
-#&gt; 3: 0.03735377       0.04 161b4f8c-c8c6-4b5a-aeb7-4a8527b3f8e5 &lt;list[1]&gt;
+#&gt;             cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.003964699       0.08 96c25584-743d-445b-8e11-dd1cae12c6b3 &lt;list[1]&gt;
+#&gt; 2: 0.067427466       0.08 ed25553c-d821-404f-9793-8d970301a9f2 &lt;list[1]&gt;
+#&gt; 3: 0.082436805       0.08 d6539d4b-a865-49f7-a051-9ae4ea90e14e &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:57        1
-#&gt; 2: 2020-10-07 13:04:57        2
-#&gt; 3: 2020-10-07 13:04:57        3</div></pre>
+#&gt; 1: 2020-10-08 08:15:33        1
+#&gt; 2: 2020-10-08 08:15:34        2
+#&gt; 3: 2020-10-08 08:15:34        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

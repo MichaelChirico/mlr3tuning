@@ -89,7 +89,7 @@ selected hyperparameter configuration and its estimated performance vector." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -318,21 +318,21 @@ The result will be written into the instance object.</p><h4 class='hasAnchor' id
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02116277          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'><span class='co'># returns best configuration and best performance</span>
+#&gt; 1: 0.02644131          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02116277          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'><span class='co'># allows access of data.table / benchmark result of full path of all</span>
+#&gt; 1: 0.02644131          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'><span class='co'># allows access of data.table / benchmark result of full path of all</span>
 <span class='co'># evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.02116277       0.04 65819366-886a-49f1-a391-b5f92b7207d3 &lt;list[1]&gt;
-#&gt; 2: 0.02644131       0.04 bac3edbb-0b4f-4756-b79d-e98ca4710642 &lt;list[1]&gt;
-#&gt; 3: 0.06178655       0.04 44fbf172-7504-4b5b-9360-9673845580b2 &lt;list[1]&gt;
+#&gt; 1: 0.02644131       0.06 1fd570c6-d42d-42c4-b39b-ba84abfb0b5d &lt;list[1]&gt;
+#&gt; 2: 0.03224387       0.06 b9a8f015-8566-4378-b5fb-465e7f187b78 &lt;list[1]&gt;
+#&gt; 3: 0.06571624       0.06 c79e582c-6475-4ed2-adeb-6f3611c9ed65 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:53        1
-#&gt; 2: 2020-10-07 13:04:53        2
-#&gt; 3: 2020-10-07 13:04:53        3</div></pre>
+#&gt; 1: 2020-10-08 08:15:30        1
+#&gt; 2: 2020-10-08 08:15:30        2
+#&gt; 3: 2020-10-08 08:15:30        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

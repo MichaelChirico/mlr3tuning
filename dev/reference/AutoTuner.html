@@ -101,7 +101,7 @@ store_models = TRUE (see examples)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.3.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -353,17 +353,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 57659140-9138-4796-8e9e-c15b820834e9 &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 2edb7227-53f4-4eeb-879b-a01ee4092828 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 e0f4b701-541f-4345-af99-2c5baa854230 &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 ad9363e6-c020-4e98-af55-82b87f8e202c &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 4b5c91b2-5ce0-4f71-9cdd-87c192cea65e &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 ee7086fe-0f27-44f2-85f8-510434414751 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 848359d8-6c6a-4406-9be6-191d2146904c &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 8e41fcdb-86cf-45b7-b5b7-4b9009be2380 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 a1da5e95-5c6a-4dad-8a83-a773592316b6 &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 373869e9-c617-4574-94d7-6d42eb929ea1 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-07 13:04:51        1
-#&gt; 2: 2020-10-07 13:04:51        2
-#&gt; 3: 2020-10-07 13:04:51        3
-#&gt; 4: 2020-10-07 13:04:51        4
-#&gt; 5: 2020-10-07 13:04:51        5
+#&gt; 1: 2020-10-08 08:15:27        1
+#&gt; 2: 2020-10-08 08:15:27        2
+#&gt; 3: 2020-10-08 08:15:27        3
+#&gt; 4: 2020-10-08 08:15:27        4
+#&gt; 5: 2020-10-08 08:15:28        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
@@ -383,11 +383,11 @@ validity?</p></dd>
 <span class='co'># Aggregate performance of outer results</span>
 <span class='va'>rr</span><span class='op'>$</span><span class='fu'>aggregate</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; classif.ce 
-#&gt; 0.05333333 </div><div class='input'>
+#&gt; 0.09333333 </div><div class='input'>
 <span class='co'># Retrieve inner tuning results.</span>
-<span class='fu'><a href='https://mlr3.mlr-org.com/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span><span class='op'>$</span><span class='va'>learner</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>tuning_result</span>
+<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span><span class='op'>$</span><span class='va'>learner</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>tuning_result</span>
 </div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div></pre>
+#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
