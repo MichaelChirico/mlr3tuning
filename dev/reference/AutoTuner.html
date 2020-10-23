@@ -219,6 +219,10 @@ Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>Tu
 
 <dt><code>param_set</code></dt><dd><p><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>.</p></dd>
 
+<dt><code>predict_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Stores the currently active predict type, e.g. <code>"response"</code>.
+Must be an element of <code>$predict_types</code>.</p></dd>
+
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
@@ -353,17 +357,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 295bea22-41f7-4e85-9304-f04841dc5f4b &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 5a553b54-c358-4c44-8f0e-1bb1d13f14d5 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 8bd6e148-0228-43fa-b159-078838c47fa7 &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 7ca85758-d1da-4e10-9bcb-77bd70801717 &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 51b88f79-3ae4-49e9-b057-050621b51991 &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 f95dba88-80ea-4484-9543-d915fdf9b8d6 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 f3726421-1919-4032-b208-e71eb59c3309 &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 45f4c645-0f34-4afb-8361-ce6b487813d6 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 55393e54-f744-4d34-8ce2-738a202527f3 &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 fbd79327-8148-4949-a1e7-b60628657f99 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-23 11:15:46        1
-#&gt; 2: 2020-10-23 11:15:46        2
-#&gt; 3: 2020-10-23 11:15:46        3
-#&gt; 4: 2020-10-23 11:15:46        4
-#&gt; 5: 2020-10-23 11:15:46        5
+#&gt; 1: 2020-10-23 11:16:32        1
+#&gt; 2: 2020-10-23 11:16:32        2
+#&gt; 3: 2020-10-23 11:16:32        3
+#&gt; 4: 2020-10-23 11:16:32        4
+#&gt; 5: 2020-10-23 11:16:32        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
