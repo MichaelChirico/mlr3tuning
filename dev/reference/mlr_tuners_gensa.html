@@ -257,23 +257,23 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.003964699          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.09956129          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.003964699          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.09956129          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;             cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.003964699       0.08 2659bead-6e19-44c6-99d9-e435c1de5a89 &lt;list[1]&gt;
-#&gt; 2: 0.067427466       0.08 4fcfffd5-9e8b-4dd5-8756-14138b848759 &lt;list[1]&gt;
-#&gt; 3: 0.082436805       0.08 c183b4e1-75a4-45c2-8727-1cbfe4222fa9 &lt;list[1]&gt;
+#&gt;            cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.09956129       0.06 7e36c149-39d7-44e4-8d28-4dcf5c6dbec0 &lt;list[1]&gt;
+#&gt; 2: 0.06402405       0.06 ea203bd0-92b3-4e3a-add1-b2d33ab29cb3 &lt;list[1]&gt;
+#&gt; 3: 0.07903339       0.06 bf6bd9f1-cd0d-48e6-b476-367978668c81 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-23 11:19:42        1
-#&gt; 2: 2020-10-23 11:19:42        2
-#&gt; 3: 2020-10-23 11:19:42        3</div></pre>
+#&gt; 1: 2020-10-23 11:26:27        1
+#&gt; 2: 2020-10-23 11:26:27        2
+#&gt; 3: 2020-10-23 11:26:27        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
