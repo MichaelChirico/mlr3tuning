@@ -200,6 +200,15 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code>. Note that we
 have removed all control parameters which refer to the termination of the
 algorithm and where our terminators allow to obtain the same behavior.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
+<p>Other Tuner: 
+<code><a href='mlr_tuners_cmaes.html'>mlr_tuners_cmaes</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code>,
+<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerGenSA</code></p>
@@ -267,13 +276,13 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.09956129       0.06 c0d577ca-e0a3-41cd-aea8-06a1f9831d73 &lt;list[1]&gt;
-#&gt; 2: 0.06402405       0.06 342acaf0-6a56-4e0e-b6f8-4583de6b72dd &lt;list[1]&gt;
-#&gt; 3: 0.07903339       0.06 d5af345c-fe89-4960-b5be-106a0dc37b4b &lt;list[1]&gt;
+#&gt; 1: 0.09956129       0.06 b421e66c-fad0-4311-aa4c-0ccac148313c &lt;list[1]&gt;
+#&gt; 2: 0.06402405       0.06 a09f8761-e553-46e0-9b53-333445bfe730 &lt;list[1]&gt;
+#&gt; 3: 0.07903339       0.06 c0ca428b-437e-40e1-b299-2c09b5466b0e &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-27 04:40:25        1
-#&gt; 2: 2020-10-27 04:40:25        2
-#&gt; 3: 2020-10-27 04:40:25        3</div></pre>
+#&gt; 1: 2020-10-27 13:06:52        1
+#&gt; 2: 2020-10-27 13:06:52        2
+#&gt; 3: 2020-10-27 13:06:52        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

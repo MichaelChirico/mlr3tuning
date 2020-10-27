@@ -185,6 +185,15 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/adagio/man/cmaes.html'>adagio::pureCMAES()</a></code>. Note
 that we have removed all control parameters which refer to the termination of
 the algorithm and where our terminators allow to obtain the same behavior.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
+<p>Other Tuner: 
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code>,
+<code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerCmaes</code></p>
@@ -250,27 +259,27 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;             cp classif.ce                                uhash  x_domain
-#&gt;  1: 0.10000000        0.1 620fd728-170d-4b41-ba78-6d00e7c098ca &lt;list[1]&gt;
-#&gt;  2: 0.10000000        0.1 0235eccd-572a-40e9-858c-45853af5e051 &lt;list[1]&gt;
-#&gt;  3: 0.10000000        0.1 32062249-0055-4440-a5b1-f6944e18b5fb &lt;list[1]&gt;
-#&gt;  4: 0.10000000        0.1 1c8771d3-36b4-4d8b-8744-07333114142b &lt;list[1]&gt;
-#&gt;  5: 0.10000000        0.1 5f35e265-040d-4a78-8434-71854b55a02a &lt;list[1]&gt;
-#&gt;  6: 0.09357766        0.1 c4d26535-4dfe-437a-8179-d4c72ca22be7 &lt;list[1]&gt;
-#&gt;  7: 0.08681602        0.1 fe21a7e8-d9b4-4381-81ab-3848eb9ef9f8 &lt;list[1]&gt;
-#&gt;  8: 0.10000000        0.1 8e0cbfe3-2477-46b6-8c69-38409d171c7f &lt;list[1]&gt;
-#&gt;  9: 0.08461986        0.1 cc28cb23-8c0c-4fee-a9c6-7bcf1aa919db &lt;list[1]&gt;
-#&gt; 10: 0.10000000        0.1 81b2d98f-18c6-46fe-b6b0-d93688a482f4 &lt;list[1]&gt;
+#&gt;  1: 0.10000000        0.1 c8220bea-11a3-43cc-b846-af698ac84cba &lt;list[1]&gt;
+#&gt;  2: 0.10000000        0.1 05e3aa63-dabc-4ca8-8a24-39dce4379821 &lt;list[1]&gt;
+#&gt;  3: 0.10000000        0.1 b4ddeb3e-8c7f-4408-a691-83d9cca78901 &lt;list[1]&gt;
+#&gt;  4: 0.10000000        0.1 5df6b25a-8feb-4eb5-822f-27c9b314444d &lt;list[1]&gt;
+#&gt;  5: 0.10000000        0.1 f06829a2-0540-4c92-bb0b-3ea3f95b1b3c &lt;list[1]&gt;
+#&gt;  6: 0.09357766        0.1 6d991750-043d-4624-96e6-28b5b1986b8f &lt;list[1]&gt;
+#&gt;  7: 0.08681602        0.1 43a7dacb-95ae-4139-9870-3b05f2af57e8 &lt;list[1]&gt;
+#&gt;  8: 0.10000000        0.1 48fcda5d-0021-438c-a4b8-dc05c737edfe &lt;list[1]&gt;
+#&gt;  9: 0.08461986        0.1 9e847a98-6df0-43e2-a3d3-175172536ecf &lt;list[1]&gt;
+#&gt; 10: 0.10000000        0.1 9bcfb847-13cc-414e-ac69-887174f2acd0 &lt;list[1]&gt;
 #&gt;               timestamp batch_nr
-#&gt;  1: 2020-10-27 04:40:23        1
-#&gt;  2: 2020-10-27 04:40:23        2
-#&gt;  3: 2020-10-27 04:40:23        3
-#&gt;  4: 2020-10-27 04:40:24        4
-#&gt;  5: 2020-10-27 04:40:24        5
-#&gt;  6: 2020-10-27 04:40:24        6
-#&gt;  7: 2020-10-27 04:40:24        7
-#&gt;  8: 2020-10-27 04:40:24        8
-#&gt;  9: 2020-10-27 04:40:24        9
-#&gt; 10: 2020-10-27 04:40:24       10</div></pre>
+#&gt;  1: 2020-10-27 13:06:50        1
+#&gt;  2: 2020-10-27 13:06:50        2
+#&gt;  3: 2020-10-27 13:06:50        3
+#&gt;  4: 2020-10-27 13:06:50        4
+#&gt;  5: 2020-10-27 13:06:50        5
+#&gt;  6: 2020-10-27 13:06:50        6
+#&gt;  7: 2020-10-27 13:06:50        7
+#&gt;  8: 2020-10-27 13:06:50        8
+#&gt;  9: 2020-10-27 13:06:50        9
+#&gt; 10: 2020-10-27 13:06:50       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

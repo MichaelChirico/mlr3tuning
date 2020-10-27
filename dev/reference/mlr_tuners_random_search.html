@@ -213,6 +213,15 @@ subclasses. The x and function value tolerance termination conditions
 (<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
 <code>ftol_abs = 0.0</code>) are still available and implemented with their package
 defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
+<p>Other Tuner: 
+<code><a href='mlr_tuners_cmaes.html'>mlr_tuners_cmaes</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerRandomSearch</code></p>
@@ -280,13 +289,13 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.02752292       0.06 46c0f710-5146-4932-9461-eefd9f068fef &lt;list[1]&gt;
-#&gt; 2: 0.02205542       0.06 38c1fec1-73b6-41df-9c72-eeb5121fd290 &lt;list[1]&gt;
-#&gt; 3: 0.07970100       0.06 f8708708-0f28-494d-bfd1-68892e2eb680 &lt;list[1]&gt;
+#&gt; 1: 0.02752292       0.06 046d073b-9851-4113-b6d5-59544b9c46d7 &lt;list[1]&gt;
+#&gt; 2: 0.02205542       0.06 565f1a6f-2d79-436e-a773-8c5d5123a9ae &lt;list[1]&gt;
+#&gt; 3: 0.07970100       0.06 f9113df4-9c73-40e1-9a0a-1c34588abc4a &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-27 04:40:27        1
-#&gt; 2: 2020-10-27 04:40:27        2
-#&gt; 3: 2020-10-27 04:40:27        3</div></pre>
+#&gt; 1: 2020-10-27 13:06:53        1
+#&gt; 2: 2020-10-27 13:06:53        2
+#&gt; 3: 2020-10-27 13:06:53        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
