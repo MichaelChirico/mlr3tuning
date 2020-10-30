@@ -318,15 +318,15 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 e4fadc8b-49c1-40c8-89bc-97da64389b78 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 dcaf52d5-7f95-43c1-b2d5-5699c49bee94 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 54822d8d-7217-4982-be48-d090a33ca8f9 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 40be1cb2-5731-48ee-9288-4161923a778a &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 d8f251e6-09b1-45ec-b520-b0598f8defec &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 51edef9f-85ab-48f2-a2e6-4a85ab8b033e &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 32809355-5320-4777-88ba-93da8090cce7 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 c600c0de-b525-4ec2-a88f-06c3e66ca4fb &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-29 04:42:48        1
-#&gt; 2: 2020-10-29 04:42:48        1
-#&gt; 3: 2020-10-29 04:42:48        1
-#&gt; 4: 2020-10-29 04:42:48        1</div><div class='input'>
+#&gt; 1: 2020-10-30 04:28:13        1
+#&gt; 2: 2020-10-30 04:28:13        1
+#&gt; 3: 2020-10-30 04:28:13        1
+#&gt; 4: 2020-10-30 04:28:13        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -343,17 +343,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 e4fadc8b-49c1-40c8-89bc-97da64389b78 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 dcaf52d5-7f95-43c1-b2d5-5699c49bee94 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 54822d8d-7217-4982-be48-d090a33ca8f9 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 40be1cb2-5731-48ee-9288-4161923a778a &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.02 bd482745-8e35-4c81-8522-38711447d1eb &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 d8f251e6-09b1-45ec-b520-b0598f8defec &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 51edef9f-85ab-48f2-a2e6-4a85ab8b033e &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 32809355-5320-4777-88ba-93da8090cce7 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 c600c0de-b525-4ec2-a88f-06c3e66ca4fb &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.02 bcfb4a0b-8e88-44ae-b52b-9fbf5349bfd2 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-29 04:42:48        1
-#&gt; 2: 2020-10-29 04:42:48        1
-#&gt; 3: 2020-10-29 04:42:48        1
-#&gt; 4: 2020-10-29 04:42:48        1
-#&gt; 5: 2020-10-29 04:42:49        2</div><div class='input'>
+#&gt; 1: 2020-10-30 04:28:13        1
+#&gt; 2: 2020-10-30 04:28:13        1
+#&gt; 3: 2020-10-30 04:28:13        1
+#&gt; 4: 2020-10-30 04:28:13        1
+#&gt; 5: 2020-10-30 04:28:13        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -384,17 +384,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
-#&gt; 1: 0.2  0.6908663 e81a1444-28e2-4b2d-be85-2aafe170543f &lt;list[1]&gt;
-#&gt; 2: 0.4  0.6011299 624b3a89-7c6f-49f9-929e-f852f9f29c40 &lt;list[1]&gt;
-#&gt; 3: 0.6  0.6011299 faaf3382-f671-4f84-bd15-f4feb2dc767c &lt;list[1]&gt;
-#&gt; 4: 0.8  0.6011299 6267b6dc-5114-4bd0-8f24-9c03b73155f3 &lt;list[1]&gt;
-#&gt; 5: 1.0  0.6739171 c717a646-5379-40ef-9198-7d7e1d56a1b5 &lt;list[1]&gt;
+#&gt; 1: 0.2  0.6908663 1e4ddbd7-ea0b-4725-b9e3-958e4f2ae1fc &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6011299 b7582426-da35-4681-a584-ccfd02c46b6c &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6011299 d365ed71-01e1-4e1c-9a82-b1fba334f056 &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6011299 f69a5bf1-d840-44b0-8dd3-8e8a73acebf4 &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6739171 8b03a0f3-e422-4852-9b06-df90eee7005d &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-29 04:42:49        1
-#&gt; 2: 2020-10-29 04:42:49        1
-#&gt; 3: 2020-10-29 04:42:49        1
-#&gt; 4: 2020-10-29 04:42:49        1
-#&gt; 5: 2020-10-29 04:42:49        1</div></pre>
+#&gt; 1: 2020-10-30 04:28:14        1
+#&gt; 2: 2020-10-30 04:28:14        1
+#&gt; 3: 2020-10-30 04:28:14        1
+#&gt; 4: 2020-10-30 04:28:14        1
+#&gt; 5: 2020-10-30 04:28:14        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
