@@ -101,7 +101,7 @@ store_models = TRUE (see examples)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -217,7 +217,9 @@ Internally created tuning instance with all intermediate results.</p></dd>
 <dt><code>tuning_result</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
-<dt><code>param_set</code></dt><dd><p><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>.</p></dd>
+<dt><code>predict_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Stores the currently active predict type, e.g. <code>"response"</code>.
+Must be an element of <code>$predict_types</code>.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -248,9 +250,9 @@ Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>Tu
   <span class='va'>learner</span>,
   <span class='va'>resampling</span>,
   <span class='va'>measure</span>,
-  <span class='va'>search_space</span>,
   <span class='va'>terminator</span>,
   <span class='va'>tuner</span>,
+  search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
   store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span>,
   store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>,
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -268,17 +270,17 @@ Resampling strategy during tuning, see <a href='TuningInstanceSingleCrit.html'>T
 on the training set of an arbitrary outer resampling. For this reason
 it is not feasible to pass an instantiated <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> here.</p></dd>
 
-<dt><code>measure</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+<dt><code>measure</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
 Performance measure to optimize.</p></dd>
-
-<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>terminator</code></dt><dd><p>(<a href='https://bbotk.mlr-org.com/reference/Terminator.html'>bbotk::Terminator</a>)<br />
 When to stop tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>tuner</code></dt><dd><p>(<a href='Tuner.html'>Tuner</a>)<br />
 Tuning algorithm to run.</p></dd>
+
+<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+Hyperparameter search space, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), stores the internally created
@@ -312,18 +314,20 @@ validity?</p></dd>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>
-<span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>
-<span class='va'>measure</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>tuner</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>
+<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
+<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  <span class='va'>learner</span>, <span class='va'>resampling</span>, <span class='va'>measure</span>, <span class='va'>search_space</span>, <span class='va'>terminator</span>,
-  <span class='va'>tuner</span>, store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
+  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
+  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='va'>at</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
 <span class='va'>at</span><span class='op'>$</span><span class='va'>model</span>
@@ -353,17 +357,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 b876a739-c703-4d1b-a2b7-4ebc88d20b8f &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 3a0e4af7-f05a-4b71-a834-1da68725a467 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 c9405d3e-2a77-45fd-8164-e4545ad26eaa &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 99a828c5-5021-4d4f-8f40-71676cd22e88 &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 11a5b03b-9357-49ab-970f-815e19a3a9fb &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 1e61d29f-dae4-45a8-b742-11344d73f4f6 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 8618fca3-77c2-48f0-8502-a39134b6901f &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 8800fab2-d7ef-456a-a24c-87e992b465f0 &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 6aba5fef-b1c4-4632-8c06-d229741fba93 &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 779a8614-b36d-4019-86d8-4675e1e44a43 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-08 04:30:37        1
-#&gt; 2: 2020-10-08 04:30:37        2
-#&gt; 3: 2020-10-08 04:30:37        3
-#&gt; 4: 2020-10-08 04:30:37        4
-#&gt; 5: 2020-10-08 04:30:37        5
+#&gt; 1: 2020-12-04 11:46:08        1
+#&gt; 2: 2020-12-04 11:46:08        2
+#&gt; 3: 2020-12-04 11:46:08        3
+#&gt; 4: 2020-12-04 11:46:08        4
+#&gt; 5: 2020-12-04 11:46:08        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
@@ -374,8 +378,14 @@ validity?</p></dd>
 #&gt; * Properties: importance, missings, multiclass, selected_features,
 #&gt;   twoclass, weights</div><div class='input'>
 <span class='co'># Nested resampling</span>
-<span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>learner</span>, <span class='va'>resampling</span>, <span class='va'>measure</span>, <span class='va'>search_space</span>, <span class='va'>terminator</span>,
-  <span class='va'>tuner</span>, store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
+  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
+  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>

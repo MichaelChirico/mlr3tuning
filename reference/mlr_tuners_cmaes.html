@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TuneNLoptr — mlr_tuners_nloptr • mlr3tuning</title>
+<title>TunerCmaes — mlr_tuners_cmaes • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,9 @@
 
 
 
-<meta property="og:title" content="TuneNLoptr — mlr_tuners_nloptr" />
-<meta property="og:description" content="TunerNLoptr class that implements non-linear optimization. Calls
-nloptr::nloptr from package nloptr." />
+<meta property="og:title" content="TunerCmaes — mlr_tuners_cmaes" />
+<meta property="og:description" content="Subclass that implements CMA-ES calling adagio::pureCMAES()
+from package adagio." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,38 +142,25 @@ nloptr::nloptr from package nloptr." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TuneNLoptr</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerNLoptr.R'><code>R/TunerNLoptr.R</code></a></small>
-    <div class="hidden name"><code>mlr_tuners_nloptr.Rd</code></div>
+    <h1>TunerCmaes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerCmaes.R'><code>R/TunerCmaes.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_cmaes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>TunerNLoptr</code> class that implements non-linear optimization. Calls
-<a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr</a> from package <a href='https://CRAN.R-project.org/package=nloptr'><span class="pkg">nloptr</span></a>.</p>
+    <p>Subclass that implements CMA-ES calling <code><a href='https://rdrr.io/pkg/adagio/man/cmaes.html'>adagio::pureCMAES()</a></code>
+from package <a href='https://CRAN.R-project.org/package=adagio'><span class="pkg">adagio</span></a>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>Johnson, G S (2020).
-&#8220;The NLopt nonlinear-optimization package.&#8221;
-<a href='https://github.com/stevengj/nlopt'>https://github.com/stevengj/nlopt</a>.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>bbotk::Terminator</a>
-subclasses. The x and function value tolerance termination conditions
-(<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>,
-<code>ftol_rel = 0.0</code> and <code>ftol_abs = 0.0</code>) are still available and implemented with
-their package defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     
 
 <p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"nloptr"</span><span class='op'>)</span>
-<span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"nloptr"</span><span class='op'>)</span>
+<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
+<span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
@@ -190,44 +177,34 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
 <dl>
-<dt><code>algorithm</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code></p></dd>
-<dt><code>x0</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
-<dt><code>eval_g_ineq</code></dt><dd><p><code>function()</code></p></dd>
-<dt><code>xtol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>xtol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
+<dt><code>par</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
+<dt><code>sigma</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
 
 </dl>
 
-<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> and
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.print.options.html'>nloptr::nloptr.print.options()</a></code>.</p>
-<p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>
-subclasses. The x and function value tolerance termination conditions
-(<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
-<code>ftol_abs = 0.0</code>) are still available and implemented with their package
-defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/adagio/man/cmaes.html'>adagio::pureCMAES()</a></code>. Note
+that we have removed all control parameters which refer to the termination of
+the algorithm and where our terminators allow to obtain the same behavior.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
 <p>Other Tuner: 
-<code><a href='mlr_tuners_cmaes.html'>mlr_tuners_cmaes</a></code>,
 <code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
 <code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
 <code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code>,
 <code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerNLoptr</code></p>
+    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerCmaes</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>TunerNLoptr$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>TunerNLoptr$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>TunerCmaes$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>TunerCmaes$clone()</code></a></p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
@@ -240,12 +217,12 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>TunerNLoptr</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TunerCmaes</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>TunerNLoptr</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TunerCmaes</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -256,15 +233,13 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://r-datatable.com'>data.table</a></span><span class='op'>)</span>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
-<span class='co'># We use the internal termination criterion xtol_rel</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"none"</span><span class='op'>)</span>
+<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 <span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
   learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
@@ -273,15 +248,38 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
   search_space <span class='op'>=</span> <span class='va'>search_space</span>,
   terminator <span class='op'>=</span> <span class='va'>terminator</span>
 <span class='op'>)</span>
-<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"nloptr"</span>, x0 <span class='op'>=</span> <span class='fl'>0.1</span>, algorithm <span class='op'>=</span> <span class='st'>"NLOPT_LN_BOBYQA"</span><span class='op'>)</span>
+<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span>, par <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-<span class='co'># returns best configuration and best performance</span>
+</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-<span class='co'># allows access of data.table of full path of all evaluations</span>
+</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
-<span class='op'>}</span>
-</div></pre>
+</div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
+#&gt;             cp classif.ce                                uhash  x_domain
+#&gt;  1: 0.10000000        0.1 05f73f99-b327-4bae-9da5-8055c62fdf88 &lt;list[1]&gt;
+#&gt;  2: 0.10000000        0.1 48f5cc09-9368-46fc-bbde-465e8fa2cc4d &lt;list[1]&gt;
+#&gt;  3: 0.10000000        0.1 3bfb0ea1-5086-4262-9824-d6d47f2285a6 &lt;list[1]&gt;
+#&gt;  4: 0.10000000        0.1 1f467fe4-62ec-497b-a0c3-139bfd51850d &lt;list[1]&gt;
+#&gt;  5: 0.10000000        0.1 4829a248-3cbc-4005-9692-d059bab71a0c &lt;list[1]&gt;
+#&gt;  6: 0.09357766        0.1 2e8d9c19-68a3-4e98-93e4-e9f17f2cc467 &lt;list[1]&gt;
+#&gt;  7: 0.08681602        0.1 af75b1db-682e-4d44-b9f1-38bec918a71b &lt;list[1]&gt;
+#&gt;  8: 0.10000000        0.1 e895ce5a-4726-48af-bed5-cc436fcdb6a1 &lt;list[1]&gt;
+#&gt;  9: 0.08461986        0.1 af128113-bd37-4638-9d79-526f92cbde13 &lt;list[1]&gt;
+#&gt; 10: 0.10000000        0.1 51fe4527-b276-4529-b28f-b4cd16a384ca &lt;list[1]&gt;
+#&gt;               timestamp batch_nr
+#&gt;  1: 2020-12-04 11:46:14        1
+#&gt;  2: 2020-12-04 11:46:14        2
+#&gt;  3: 2020-12-04 11:46:14        3
+#&gt;  4: 2020-12-04 11:46:14        4
+#&gt;  5: 2020-12-04 11:46:14        5
+#&gt;  6: 2020-12-04 11:46:14        6
+#&gt;  7: 2020-12-04 11:46:14        7
+#&gt;  8: 2020-12-04 11:46:15        8
+#&gt;  9: 2020-12-04 11:46:15        9
+#&gt; 10: 2020-12-04 11:46:15       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

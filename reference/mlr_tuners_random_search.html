@@ -83,7 +83,7 @@ The random points are sampled by paradox::generate_design_random()." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -213,6 +213,15 @@ subclasses. The x and function value tolerance termination conditions
 (<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
 <code>ftol_abs = 0.0</code>) are still available and implemented with their package
 defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
+<p>Other Tuner: 
+<code><a href='mlr_tuners_cmaes.html'>mlr_tuners_cmaes</a></code>,
+<code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
+<code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
+<code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerRandomSearch</code></p>
@@ -271,22 +280,22 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.06994387          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.06994387          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.06994387       0.08 731001cf-bec1-47cb-8ac2-18d730714008 &lt;list[1]&gt;
-#&gt; 2: 0.03612574       0.08 549b4a3e-0d8b-418c-85b8-e265ef0bfe8c &lt;list[1]&gt;
-#&gt; 3: 0.07555948       0.08 cf0bee58-37a4-49e8-99e7-4a82d8b3d6cf &lt;list[1]&gt;
+#&gt; 1: 0.02752292       0.06 8e209aab-a7e6-4a1b-a3d3-ad66ef65c2a9 &lt;list[1]&gt;
+#&gt; 2: 0.02205542       0.06 5ade6fe1-096b-4ccc-acd7-21a6eff3058c &lt;list[1]&gt;
+#&gt; 3: 0.07970100       0.06 2a360afb-efaa-4073-ac06-c6c390dae8b6 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-10-08 04:30:45        1
-#&gt; 2: 2020-10-08 04:30:45        2
-#&gt; 3: 2020-10-08 04:30:45        3</div></pre>
+#&gt; 1: 2020-12-04 11:46:18        1
+#&gt; 2: 2020-12-04 11:46:18        2
+#&gt; 3: 2020-12-04 11:46:18        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
