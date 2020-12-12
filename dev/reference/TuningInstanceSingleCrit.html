@@ -95,7 +95,7 @@ values, by calling the method instance$assign_result." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -288,7 +288,7 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://r-datatable.com'>data.table</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://Rdatatable.gitlab.io/data.table'>data.table</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 
@@ -318,15 +318,15 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 d92dc58a-f826-43c0-8477-4654117358c0 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 7a32bbcb-8d79-414b-9e6f-54941f7a79e6 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 371e09b4-5695-44bd-996c-1d3ebe63a988 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 2770d361-267a-4e52-979a-07c439d86106 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 0264832a-1330-4245-84a3-c9407a0f59ff &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 e247ab50-2728-418b-873b-80725d8e51af &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 d1227634-f094-4b1a-8d13-393c8c2201c9 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 3f71f7ac-f18a-4922-a4a7-a28c3488c397 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-12-04 04:38:17        1
-#&gt; 2: 2020-12-04 04:38:17        1
-#&gt; 3: 2020-12-04 04:38:17        1
-#&gt; 4: 2020-12-04 04:38:17        1</div><div class='input'>
+#&gt; 1: 2020-12-12 10:07:49        1
+#&gt; 2: 2020-12-12 10:07:49        1
+#&gt; 3: 2020-12-12 10:07:49        1
+#&gt; 4: 2020-12-12 10:07:49        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -343,17 +343,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 d92dc58a-f826-43c0-8477-4654117358c0 &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 7a32bbcb-8d79-414b-9e6f-54941f7a79e6 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 371e09b4-5695-44bd-996c-1d3ebe63a988 &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 2770d361-267a-4e52-979a-07c439d86106 &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.02 021583cc-676e-4982-995e-0f603a9d04b4 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 0264832a-1330-4245-84a3-c9407a0f59ff &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 e247ab50-2728-418b-873b-80725d8e51af &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 d1227634-f094-4b1a-8d13-393c8c2201c9 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 3f71f7ac-f18a-4922-a4a7-a28c3488c397 &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.02 696e7104-405f-481f-b38e-e0fd40bcf7d8 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-12-04 04:38:17        1
-#&gt; 2: 2020-12-04 04:38:17        1
-#&gt; 3: 2020-12-04 04:38:17        1
-#&gt; 4: 2020-12-04 04:38:17        1
-#&gt; 5: 2020-12-04 04:38:17        2</div><div class='input'>
+#&gt; 1: 2020-12-12 10:07:49        1
+#&gt; 2: 2020-12-12 10:07:49        1
+#&gt; 3: 2020-12-12 10:07:49        1
+#&gt; 4: 2020-12-12 10:07:49        1
+#&gt; 5: 2020-12-12 10:07:50        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -384,17 +384,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash  x_domain
-#&gt; 1: 0.2  0.6908663 3f2ce4c5-6728-45d0-81db-4c361746e10c &lt;list[1]&gt;
-#&gt; 2: 0.4  0.6011299 738b424c-1eab-4ce6-b844-7e5254e81828 &lt;list[1]&gt;
-#&gt; 3: 0.6  0.6011299 21335210-1fa5-4aba-9a5d-734216047dd9 &lt;list[1]&gt;
-#&gt; 4: 0.8  0.6011299 c7178f8f-68f0-4665-9c81-a5a3e6b57299 &lt;list[1]&gt;
-#&gt; 5: 1.0  0.6739171 02d4a02c-db6a-42df-b405-45995f6bf92b &lt;list[1]&gt;
+#&gt; 1: 0.2  0.6908663 2963e104-bb2f-42e3-87d8-b558a4a41b53 &lt;list[1]&gt;
+#&gt; 2: 0.4  0.6011299 21d06048-1998-43e2-b9cf-b8c90aa1ea49 &lt;list[1]&gt;
+#&gt; 3: 0.6  0.6011299 318e24ee-793f-4f54-bc6d-a5badba987af &lt;list[1]&gt;
+#&gt; 4: 0.8  0.6011299 a7030469-5457-4c50-ac40-d7d37d7d3be2 &lt;list[1]&gt;
+#&gt; 5: 1.0  0.6739171 8a865f62-03b2-4570-9ed7-5fef5e7a1cde &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-12-04 04:38:18        1
-#&gt; 2: 2020-12-04 04:38:18        1
-#&gt; 3: 2020-12-04 04:38:18        1
-#&gt; 4: 2020-12-04 04:38:18        1
-#&gt; 5: 2020-12-04 04:38:18        1</div></pre>
+#&gt; 1: 2020-12-12 10:07:50        1
+#&gt; 2: 2020-12-12 10:07:50        1
+#&gt; 3: 2020-12-12 10:07:50        1
+#&gt; 4: 2020-12-12 10:07:50        1
+#&gt; 5: 2020-12-12 10:07:50        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

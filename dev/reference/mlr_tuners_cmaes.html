@@ -83,7 +83,7 @@ from package adagio." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.4.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -235,7 +235,7 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://r-datatable.com'>data.table</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://Rdatatable.gitlab.io/data.table'>data.table</a></span><span class='op'>)</span>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
@@ -259,27 +259,27 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;             cp classif.ce                                uhash  x_domain
-#&gt;  1: 0.10000000        0.1 33d56b33-c773-43b9-baa0-09d867b5a858 &lt;list[1]&gt;
-#&gt;  2: 0.10000000        0.1 27ad49ce-d36d-40fe-8068-8c8aad7f1cd7 &lt;list[1]&gt;
-#&gt;  3: 0.10000000        0.1 6c4fc9a5-44f5-43ad-a616-2db224a6b326 &lt;list[1]&gt;
-#&gt;  4: 0.10000000        0.1 7fd74194-f765-4ede-90cf-eb9527249ad3 &lt;list[1]&gt;
-#&gt;  5: 0.10000000        0.1 fe4eba1f-b92d-404f-94c6-8631a3299e71 &lt;list[1]&gt;
-#&gt;  6: 0.09357766        0.1 3d26035f-67a2-486d-b8f9-2d6efc64b5c2 &lt;list[1]&gt;
-#&gt;  7: 0.08681602        0.1 a9635d35-bdd3-48d3-a438-a524bf70b70d &lt;list[1]&gt;
-#&gt;  8: 0.10000000        0.1 f8594d6a-3fef-4481-912c-c9c7281b9add &lt;list[1]&gt;
-#&gt;  9: 0.08461986        0.1 d2230c64-997e-4ff8-af50-b312df034e90 &lt;list[1]&gt;
-#&gt; 10: 0.10000000        0.1 4da249d4-ca30-4aba-bad9-352b1e331820 &lt;list[1]&gt;
+#&gt;  1: 0.10000000        0.1 cf36b3e6-fbbc-4736-8fc4-1b2030471864 &lt;list[1]&gt;
+#&gt;  2: 0.10000000        0.1 11466459-c61c-4efb-850d-2b1a56abb8f9 &lt;list[1]&gt;
+#&gt;  3: 0.10000000        0.1 396c8e06-beb7-4b88-bbf0-ee66812162f3 &lt;list[1]&gt;
+#&gt;  4: 0.10000000        0.1 7f50faf4-51a7-422b-b988-7cc5a5a29ced &lt;list[1]&gt;
+#&gt;  5: 0.10000000        0.1 d6d561a4-1124-449e-b17b-cd6cbdb0ee2f &lt;list[1]&gt;
+#&gt;  6: 0.09357766        0.1 f37358b7-7786-4298-acff-81f577f1fbac &lt;list[1]&gt;
+#&gt;  7: 0.08681602        0.1 92375380-a124-458f-b73c-a70daa8d4d44 &lt;list[1]&gt;
+#&gt;  8: 0.10000000        0.1 b4a0f476-f2c9-480c-9139-69bbdcbcdbea &lt;list[1]&gt;
+#&gt;  9: 0.08461986        0.1 34aa7342-6101-4005-b4d8-9e18838b4c38 &lt;list[1]&gt;
+#&gt; 10: 0.10000000        0.1 fb89ca17-f553-43ef-9e7d-480f50258462 &lt;list[1]&gt;
 #&gt;               timestamp batch_nr
-#&gt;  1: 2020-12-04 04:38:19        1
-#&gt;  2: 2020-12-04 04:38:19        2
-#&gt;  3: 2020-12-04 04:38:19        3
-#&gt;  4: 2020-12-04 04:38:19        4
-#&gt;  5: 2020-12-04 04:38:20        5
-#&gt;  6: 2020-12-04 04:38:20        6
-#&gt;  7: 2020-12-04 04:38:20        7
-#&gt;  8: 2020-12-04 04:38:20        8
-#&gt;  9: 2020-12-04 04:38:20        9
-#&gt; 10: 2020-12-04 04:38:20       10</div></pre>
+#&gt;  1: 2020-12-12 10:07:51        1
+#&gt;  2: 2020-12-12 10:07:52        2
+#&gt;  3: 2020-12-12 10:07:52        3
+#&gt;  4: 2020-12-12 10:07:52        4
+#&gt;  5: 2020-12-12 10:07:52        5
+#&gt;  6: 2020-12-12 10:07:52        6
+#&gt;  7: 2020-12-12 10:07:52        7
+#&gt;  8: 2020-12-12 10:07:52        8
+#&gt;  9: 2020-12-12 10:07:52        9
+#&gt; 10: 2020-12-12 10:07:53       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
