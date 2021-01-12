@@ -195,24 +195,12 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
 <dl>
-<dt><code>algorithm</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code></p></dd>
-<dt><code>x0</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
-<dt><code>eval_g_ineq</code></dt><dd><p><code>function()</code></p></dd>
-<dt><code>xtol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>xtol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
+<dt><code>batch_size</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of points to try in a batch.</p></dd>
 
 </dl>
 
-<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> and
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.print.options.html'>nloptr::nloptr.print.options()</a></code>.</p>
-<p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>
-subclasses. The x and function value tolerance termination conditions
-(<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
-<code>ftol_abs = 0.0</code>) are still available and implemented with their package
-defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -280,22 +268,22 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
+#&gt; 1: 0.07018975          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
+#&gt; 1: 0.07018975          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.02752292       0.06 67835c61-0898-442a-9d22-18dae7ab474e &lt;list[1]&gt;
-#&gt; 2: 0.02205542       0.06 d4091e9b-981e-4a0b-a2e9-75f0ae41899b &lt;list[1]&gt;
-#&gt; 3: 0.07970100       0.06 35c5d426-cc0e-4571-9c32-51d2205c804f &lt;list[1]&gt;
+#&gt; 1: 0.07018975       0.06 2bd14773-314e-4078-960b-297ea2c39289 &lt;list[1]&gt;
+#&gt; 2: 0.06094198       0.06 160d21ad-80fb-477f-afab-bef10ec6c1d6 &lt;list[1]&gt;
+#&gt; 3: 0.08205981       0.06 f4a22788-7833-4d09-a6a4-8651e4f09d2c &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-05 04:56:02        1
-#&gt; 2: 2021-01-05 04:56:02        2
-#&gt; 3: 2021-01-05 04:56:03        3</div></pre>
+#&gt; 1: 2021-01-12 09:49:03        1
+#&gt; 2: 2021-01-12 09:49:03        2
+#&gt; 3: 2021-01-12 09:49:03        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

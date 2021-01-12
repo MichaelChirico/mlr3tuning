@@ -177,8 +177,10 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
 <dl>
-<dt><code>par</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
 <dt><code>sigma</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
+<dt><code>start_values</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
+Create <code>random</code> start values or based on <code>center</code> of search space? In the
+latter case, it is the center of the parameters before a trafo is applied.</p></dd>
 
 </dl>
 
@@ -248,38 +250,24 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
   search_space <span class='op'>=</span> <span class='va'>search_space</span>,
   terminator <span class='op'>=</span> <span class='va'>terminator</span>
 <span class='op'>)</span>
-<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span>, par <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># returns best configuration and best performance</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in B %*% diag(D^-1): non-conformable arguments</span></div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;             cp classif.ce                                uhash  x_domain
-#&gt;  1: 0.10000000        0.1 0a30bf4e-2a54-4164-b6fd-b36cd3149e61 &lt;list[1]&gt;
-#&gt;  2: 0.10000000        0.1 3bf7595d-1b4d-487d-9eb7-092c7175b9d0 &lt;list[1]&gt;
-#&gt;  3: 0.10000000        0.1 26102f1d-2e8d-40d0-b65b-805cb11a1027 &lt;list[1]&gt;
-#&gt;  4: 0.10000000        0.1 ead8df98-e9b1-4735-8c03-930d85ae7665 &lt;list[1]&gt;
-#&gt;  5: 0.10000000        0.1 73cdd653-e260-4dc5-8f9f-b2b678a1d841 &lt;list[1]&gt;
-#&gt;  6: 0.09357766        0.1 f4dce486-8ef4-4da5-a2c0-01b102560d73 &lt;list[1]&gt;
-#&gt;  7: 0.08681602        0.1 554bfc92-2bb8-49a2-a01c-dd2b7f86bc70 &lt;list[1]&gt;
-#&gt;  8: 0.10000000        0.1 578fa627-eb08-495e-8f3d-371224be56a4 &lt;list[1]&gt;
-#&gt;  9: 0.08461986        0.1 9ee87ec6-1791-4e9f-8046-611886775917 &lt;list[1]&gt;
-#&gt; 10: 0.10000000        0.1 29f5fbe0-18b4-4b5e-9e91-8689fbf028e2 &lt;list[1]&gt;
-#&gt;               timestamp batch_nr
-#&gt;  1: 2021-01-05 04:55:58        1
-#&gt;  2: 2021-01-05 04:55:58        2
-#&gt;  3: 2021-01-05 04:55:58        3
-#&gt;  4: 2021-01-05 04:55:58        4
-#&gt;  5: 2021-01-05 04:55:59        5
-#&gt;  6: 2021-01-05 04:55:59        6
-#&gt;  7: 2021-01-05 04:55:59        7
-#&gt;  8: 2021-01-05 04:55:59        8
-#&gt;  9: 2021-01-05 04:55:59        9
-#&gt; 10: 2021-01-05 04:55:59       10</div></pre>
+#&gt;            cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.01548638        0.1 2fdbca0f-25e5-4dff-b589-83e856424ba8 &lt;list[1]&gt;
+#&gt; 2: 0.05878707        0.1 2f9e07bb-8969-454d-8639-5e1f9537e20d &lt;list[1]&gt;
+#&gt; 3: 0.10000000        0.1 c2aaad88-98fd-4ff8-ad3b-93949437d183 &lt;list[1]&gt;
+#&gt; 4: 0.06781471        0.1 0974994f-17fc-405a-9f70-5215c9380991 &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2021-01-12 09:48:59        1
+#&gt; 2: 2021-01-12 09:48:59        2
+#&gt; 3: 2021-01-12 09:49:00        3
+#&gt; 4: 2021-01-12 09:49:00        4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
