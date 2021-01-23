@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerCmaes — mlr_tuners_cmaes • mlr3tuning</title>
+<title>Hyperparameter Tuning with Covariance Matrix Adaptation Evolution Strategy — mlr_tuners_cmaes • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="TunerCmaes — mlr_tuners_cmaes" />
+<meta property="og:title" content="Hyperparameter Tuning with Covariance Matrix Adaptation Evolution Strategy — mlr_tuners_cmaes" />
 <meta property="og:description" content="Subclass that implements CMA-ES calling adagio::pureCMAES()
 from package adagio." />
 <meta name="twitter:card" content="summary" />
@@ -83,7 +83,7 @@ from package adagio." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -107,7 +107,7 @@ from package adagio." />
 </li>
         <li>
   <a href="https://github.com/mlr-org/mlr3tuning/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -119,13 +119,13 @@ from package adagio." />
 </li>
 <li>
   <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa fab fa-stack-overflow"></span>
+    <span class="fab fa-stack-overflow"></span>
      
   </a>
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fa fa-rss"></span>
+    <span class="fas fa-rss"></span>
      
   </a>
 </li>
@@ -142,7 +142,7 @@ from package adagio." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerCmaes</h1>
+    <h1>Hyperparameter Tuning with Covariance Matrix Adaptation Evolution Strategy</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerCmaes.R'><code>R/TunerCmaes.R</code></a></small>
     <div class="hidden name"><code>mlr_tuners_cmaes.Rd</code></div>
     </div>
@@ -177,14 +177,25 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
 <dl>
-<dt><code>par</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
 <dt><code>sigma</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
+<dt><code>start_values</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
+Create <code>random</code> start values or based on <code>center</code> of search space? In the
+latter case, it is the center of the parameters before a trafo is applied.</p></dd>
 
 </dl>
 
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/adagio/man/cmaes.html'>adagio::pureCMAES()</a></code>. Note
 that we have removed all control parameters which refer to the termination of
 the algorithm and where our terminators allow to obtain the same behavior.</p>
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -248,38 +259,24 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
   search_space <span class='op'>=</span> <span class='va'>search_space</span>,
   terminator <span class='op'>=</span> <span class='va'>terminator</span>
 <span class='op'>)</span>
-<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span>, par <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># returns best configuration and best performance</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in B %*% diag(D^-1): non-conformable arguments</span></div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;     cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.1          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;             cp classif.ce                                uhash  x_domain
-#&gt;  1: 0.10000000        0.1 a951bac6-b79d-425a-bf79-559c3c2e86c7 &lt;list[1]&gt;
-#&gt;  2: 0.10000000        0.1 03090464-e946-4120-b3d3-597f2401bf27 &lt;list[1]&gt;
-#&gt;  3: 0.10000000        0.1 cb675f29-f017-44a8-8afb-dcf57662cfed &lt;list[1]&gt;
-#&gt;  4: 0.10000000        0.1 fd18ee5a-9786-4508-b719-32afb08a5b91 &lt;list[1]&gt;
-#&gt;  5: 0.10000000        0.1 a292e098-bd79-41e4-b8e6-ad1fb730e752 &lt;list[1]&gt;
-#&gt;  6: 0.09357766        0.1 cd729d0c-c246-43b3-8bc5-ec3633153fee &lt;list[1]&gt;
-#&gt;  7: 0.08681602        0.1 9b514f37-967e-4c76-8d0c-314016a86735 &lt;list[1]&gt;
-#&gt;  8: 0.10000000        0.1 357ddb0a-a312-4190-ab7d-b1c699aead48 &lt;list[1]&gt;
-#&gt;  9: 0.08461986        0.1 e4a75c84-4460-4abe-a962-37c8a6d15ece &lt;list[1]&gt;
-#&gt; 10: 0.10000000        0.1 a5469673-8642-4ced-926e-fa5c9dc3c0b0 &lt;list[1]&gt;
-#&gt;               timestamp batch_nr
-#&gt;  1: 2020-12-10 04:36:37        1
-#&gt;  2: 2020-12-10 04:36:38        2
-#&gt;  3: 2020-12-10 04:36:38        3
-#&gt;  4: 2020-12-10 04:36:38        4
-#&gt;  5: 2020-12-10 04:36:38        5
-#&gt;  6: 2020-12-10 04:36:38        6
-#&gt;  7: 2020-12-10 04:36:38        7
-#&gt;  8: 2020-12-10 04:36:38        8
-#&gt;  9: 2020-12-10 04:36:38        9
-#&gt; 10: 2020-12-10 04:36:38       10</div></pre>
+#&gt;            cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.01548638        0.1 a259c69b-86ba-424c-9322-cec86bc49430 &lt;list[1]&gt;
+#&gt; 2: 0.05878707        0.1 a3dc5f35-5c96-4e45-bd22-09b898a91b07 &lt;list[1]&gt;
+#&gt; 3: 0.10000000        0.1 f304ffac-f525-4f87-8cf9-f9bc404b8dc2 &lt;list[1]&gt;
+#&gt; 4: 0.06781471        0.1 e3e389b3-3dfd-4460-b9c7-663ef81481c5 &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2021-01-23 14:22:44        1
+#&gt; 2: 2021-01-23 14:22:44        2
+#&gt; 3: 2021-01-23 14:22:44        3
+#&gt; 4: 2021-01-23 14:22:44        4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerGridSearch — mlr_tuners_grid_search • mlr3tuning</title>
+<title>Hyperparameter Tuning with Grid Search — mlr_tuners_grid_search • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="TunerGridSearch — mlr_tuners_grid_search" />
+<meta property="og:title" content="Hyperparameter Tuning with Grid Search — mlr_tuners_grid_search" />
 <meta property="og:description" content="Subclass for grid search tuning.
 The grid is constructed as a Cartesian product over discretized values per
 parameter, see paradox::generate_design_grid(). The points of the grid are
@@ -85,7 +85,7 @@ evaluated in a random order." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -109,7 +109,7 @@ evaluated in a random order." />
 </li>
         <li>
   <a href="https://github.com/mlr-org/mlr3tuning/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -121,13 +121,13 @@ evaluated in a random order." />
 </li>
 <li>
   <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa fab fa-stack-overflow"></span>
+    <span class="fab fa-stack-overflow"></span>
      
   </a>
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fa fa-rss"></span>
+    <span class="fas fa-rss"></span>
      
   </a>
 </li>
@@ -144,7 +144,7 @@ evaluated in a random order." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerGridSearch</h1>
+    <h1>Hyperparameter Tuning with Grid Search</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerGridSearch.R'><code>R/TunerGridSearch.R</code></a></small>
     <div class="hidden name"><code>mlr_tuners_grid_search.Rd</code></div>
     </div>
@@ -204,6 +204,15 @@ Maximum number of points to try in a batch.</p></dd>
 </dl>
 
 
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -271,22 +280,22 @@ Maximum number of points to try in a batch.</p></dd>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+#&gt; 1: 0.045          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+#&gt; 1: 0.045          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.04 8cc3a6fe-1a3b-4fb5-9bba-593c31e92309 &lt;list[1]&gt;
-#&gt; 2: 0.012       0.04 a6cf0fe3-82fb-4fa1-96ea-6de37612ec1a &lt;list[1]&gt;
-#&gt; 3: 0.001       0.04 c3d806c4-431d-4397-bf3d-209984a40080 &lt;list[1]&gt;
+#&gt; 1: 0.045       0.08 4ab581d0-533b-4f54-8385-93d7b9782173 &lt;list[1]&gt;
+#&gt; 2: 0.089       0.08 ea688617-e1b3-490a-821b-5130b220e299 &lt;list[1]&gt;
+#&gt; 3: 0.100       0.08 e57c80ac-5435-4162-9b82-e99fd1e85479 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-12-10 04:36:40        1
-#&gt; 2: 2020-12-10 04:36:40        2
-#&gt; 3: 2020-12-10 04:36:40        3</div></pre>
+#&gt; 1: 2021-01-23 14:22:46        1
+#&gt; 2: 2021-01-23 14:22:46        2
+#&gt; 3: 2021-01-23 14:22:46        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

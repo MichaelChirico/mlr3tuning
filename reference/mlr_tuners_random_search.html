@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TunerRandomSearch — mlr_tuners_random_search • mlr3tuning</title>
+<title>Hyperparameter Tuning with Random Search — mlr_tuners_random_search • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="TunerRandomSearch — mlr_tuners_random_search" />
+<meta property="og:title" content="Hyperparameter Tuning with Random Search — mlr_tuners_random_search" />
 <meta property="og:description" content="Subclass for random search tuning.
 The random points are sampled by paradox::generate_design_random()." />
 <meta name="twitter:card" content="summary" />
@@ -83,7 +83,7 @@ The random points are sampled by paradox::generate_design_random()." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -107,7 +107,7 @@ The random points are sampled by paradox::generate_design_random()." />
 </li>
         <li>
   <a href="https://github.com/mlr-org/mlr3tuning/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -119,13 +119,13 @@ The random points are sampled by paradox::generate_design_random()." />
 </li>
 <li>
   <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa fab fa-stack-overflow"></span>
+    <span class="fab fa-stack-overflow"></span>
      
   </a>
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fa fa-rss"></span>
+    <span class="fas fa-rss"></span>
      
   </a>
 </li>
@@ -142,7 +142,7 @@ The random points are sampled by paradox::generate_design_random()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TunerRandomSearch</h1>
+    <h1>Hyperparameter Tuning with Random Search</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerRandomSearch.R'><code>R/TunerRandomSearch.R</code></a></small>
     <div class="hidden name"><code>mlr_tuners_random_search.Rd</code></div>
     </div>
@@ -195,24 +195,21 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
 <dl>
-<dt><code>algorithm</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code></p></dd>
-<dt><code>x0</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code></p></dd>
-<dt><code>eval_g_ineq</code></dt><dd><p><code>function()</code></p></dd>
-<dt><code>xtol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>xtol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_rel</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
-<dt><code>ftol_abs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code></p></dd>
+<dt><code>batch_size</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+Maximum number of points to try in a batch.</p></dd>
 
 </dl>
 
-<p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> and
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.print.options.html'>nloptr::nloptr.print.options()</a></code>.</p>
-<p>The termination conditions <code>stopval</code>, <code>maxtime</code> and <code>maxeval</code> of
-<code><a href='https://rdrr.io/pkg/nloptr/man/nloptr.html'>nloptr::nloptr()</a></code> are deactivated and replaced by the <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>
-subclasses. The x and function value tolerance termination conditions
-(<code>xtol_rel = 10^-4</code>, <code>xtol_abs = rep(0.0, length(x0))</code>, <code>ftol_rel = 0.0</code> and
-<code>ftol_abs = 0.0</code>) are still available and implemented with their package
-defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
+
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -280,22 +277,22 @@ defaults. To deactivate these conditions, set them to <code>-1</code>.</p>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
+#&gt; 1: 0.07018975          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.02752292          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
+#&gt; 1: 0.07018975          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.02752292       0.06 011827e8-afb1-44de-a2aa-60c4723953b2 &lt;list[1]&gt;
-#&gt; 2: 0.02205542       0.06 9770bf49-c20a-457b-b32f-e26af47361b9 &lt;list[1]&gt;
-#&gt; 3: 0.07970100       0.06 f386b5eb-29eb-457e-8bc9-54f07204ce3c &lt;list[1]&gt;
+#&gt; 1: 0.07018975       0.06 77db8c71-096a-4f1b-bd5b-742341c5eb61 &lt;list[1]&gt;
+#&gt; 2: 0.06094198       0.06 827ca479-0faf-4414-bee8-0d52ca7cffa6 &lt;list[1]&gt;
+#&gt; 3: 0.08205981       0.06 a45fe73b-a728-485b-b6f7-69d6e35b90ea &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2020-12-10 04:36:41        1
-#&gt; 2: 2020-12-10 04:36:41        2
-#&gt; 3: 2020-12-10 04:36:41        3</div></pre>
+#&gt; 1: 2021-01-23 14:22:47        1
+#&gt; 2: 2021-01-23 14:22:47        2
+#&gt; 3: 2021-01-23 14:22:47        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
