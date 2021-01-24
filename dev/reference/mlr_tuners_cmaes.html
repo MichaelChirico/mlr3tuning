@@ -83,7 +83,7 @@ from package adagio." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -187,6 +187,15 @@ latter case, it is the center of the parameters before a trafo is applied.</p></
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/adagio/man/cmaes.html'>adagio::pureCMAES()</a></code>. Note
 that we have removed all control parameters which refer to the termination of
 the algorithm and where our terminators allow to obtain the same behavior.</p>
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -259,15 +268,15 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.01548638        0.1 3fb64f51-f7c3-4686-8533-43da80dbe938 &lt;list[1]&gt;
-#&gt; 2: 0.05878707        0.1 f1d17363-29ad-4a41-8bda-9417d11bd7cc &lt;list[1]&gt;
-#&gt; 3: 0.10000000        0.1 b7d8493f-106e-4c01-95d8-de6276f2e109 &lt;list[1]&gt;
-#&gt; 4: 0.06781471        0.1 750c0308-a2de-44df-ade8-73a22541bddf &lt;list[1]&gt;
+#&gt; 1: 0.01548638        0.1 32e6d4b6-a99f-4de0-b425-3a040cc852bd &lt;list[1]&gt;
+#&gt; 2: 0.05878707        0.1 2a9a1a99-d5ce-45d6-a45a-3bea90ef10be &lt;list[1]&gt;
+#&gt; 3: 0.10000000        0.1 642eef64-4917-4e01-a408-f12c96a50953 &lt;list[1]&gt;
+#&gt; 4: 0.06781471        0.1 cf43cddb-e5bd-4f84-9360-cf607178dc4e &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-23 05:08:53        1
-#&gt; 2: 2021-01-23 05:08:53        2
-#&gt; 3: 2021-01-23 05:08:54        3
-#&gt; 4: 2021-01-23 05:08:54        4</div></pre>
+#&gt; 1: 2021-01-24 16:54:47        1
+#&gt; 2: 2021-01-24 16:54:47        2
+#&gt; 3: 2021-01-24 16:54:47        3
+#&gt; 4: 2021-01-24 16:54:47        4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

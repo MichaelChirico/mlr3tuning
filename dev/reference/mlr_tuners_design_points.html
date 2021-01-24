@@ -84,7 +84,7 @@ in the design are evaluated in order as given." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -199,6 +199,15 @@ Design points to try in search, one per row.</p></dd>
 </dl>
 
 
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -274,11 +283,11 @@ Design points to try in search, one per row.</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.10       0.02 a333de46-37ac-4312-a394-2d19a7ebb499 &lt;list[1]&gt;
-#&gt; 2: 0.01       0.04 d75cfd81-1ed7-4d59-865d-c94279ec6d8f &lt;list[1]&gt;
+#&gt; 1: 0.10       0.02 1931e6dc-99d5-4b39-8a1d-995be7cbfc85 &lt;list[1]&gt;
+#&gt; 2: 0.01       0.04 1629c1a9-17bc-46da-9438-b1895ccb9764 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-23 05:08:54        1
-#&gt; 2: 2021-01-23 05:08:54        2</div></pre>
+#&gt; 1: 2021-01-24 16:54:48        1
+#&gt; 2: 2021-01-24 16:54:48        2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

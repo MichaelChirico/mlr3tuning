@@ -85,7 +85,7 @@ evaluated in a random order." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -204,6 +204,15 @@ Maximum number of points to try in a batch.</p></dd>
 </dl>
 
 
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -280,13 +289,13 @@ Maximum number of points to try in a batch.</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.045       0.08 46bed7c0-dd67-4fe5-ba96-1a34ff4b764f &lt;list[1]&gt;
-#&gt; 2: 0.089       0.08 ddbe6fee-a245-4ebd-8728-d8cb9b623bb9 &lt;list[1]&gt;
-#&gt; 3: 0.100       0.08 4d504b8c-3c12-4235-860e-8c3821a4f28d &lt;list[1]&gt;
+#&gt; 1: 0.045       0.08 0ccfd84e-bdda-432a-908d-b8e665e27f1b &lt;list[1]&gt;
+#&gt; 2: 0.089       0.08 f0afef01-d1de-4afc-b607-7f8997876045 &lt;list[1]&gt;
+#&gt; 3: 0.100       0.08 2527a3cc-b346-4900-b7e1-0ad6df7f0f3a &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-23 05:08:56        1
-#&gt; 2: 2021-01-23 05:08:56        2
-#&gt; 3: 2021-01-23 05:08:56        3</div></pre>
+#&gt; 1: 2021-01-24 16:54:49        1
+#&gt; 2: 2021-01-24 16:54:49        2
+#&gt; 3: 2021-01-24 16:54:49        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

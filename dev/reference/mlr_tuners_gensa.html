@@ -83,7 +83,7 @@ from package GenSA." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.5.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -200,6 +200,15 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 <p>For the meaning of the control parameters, see <code><a href='https://rdrr.io/pkg/GenSA/man/GenSA.html'>GenSA::GenSA()</a></code>. Note that we
 have removed all control parameters which refer to the termination of the
 algorithm and where our terminators allow to obtain the same behavior.</p>
+    <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
+
+    
+
+
+<p><code>$optimize()</code> supports progress bars via the package <a href='https://CRAN.R-project.org/package=progressr'><span class="pkg">progressr</span></a>
+combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Terminator</a>. Simply wrap the function in
+<code>progressr::with_progress()</code> to enable them. We recommend to use package
+<a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -276,13 +285,13 @@ algorithm and where our terminators allow to obtain the same behavior.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.01622262       0.08 601b7625-f22f-4998-b6ab-5ed12cb1c529 &lt;list[1]&gt;
-#&gt; 2: 0.07968539       0.08 4b24da02-bdb1-4d76-aa0b-58d99bea7876 &lt;list[1]&gt;
-#&gt; 3: 0.09469473       0.08 e427a73a-147c-4a29-8170-8ee9f564733e &lt;list[1]&gt;
+#&gt; 1: 0.01622262       0.08 3535a0be-e7db-460a-ab31-83d6d36a9b7f &lt;list[1]&gt;
+#&gt; 2: 0.07968539       0.08 68012fd6-f801-4455-8bd1-7dccdc6d1e8b &lt;list[1]&gt;
+#&gt; 3: 0.09469473       0.08 422968c7-9134-427b-ab22-d1ca4cc2875d &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-23 05:08:55        1
-#&gt; 2: 2021-01-23 05:08:55        2
-#&gt; 3: 2021-01-23 05:08:55        3</div></pre>
+#&gt; 1: 2021-01-24 16:54:48        1
+#&gt; 2: 2021-01-24 16:54:48        2
+#&gt; 3: 2021-01-24 16:54:49        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
