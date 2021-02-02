@@ -233,6 +233,7 @@ Must be an element of <code>$predict_types</code>.</p></dd>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="continue"><a href='../../mlr3/html/Learner.html#method-continue'><code>mlr3::Learner$continue()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-format'><code>mlr3::Learner$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-help'><code>mlr3::Learner$help()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-predict'><code>mlr3::Learner$predict()</code></a></span></p></li>
@@ -240,6 +241,7 @@ Must be an element of <code>$predict_types</code>.</p></dd>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-print'><code>mlr3::Learner$print()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-reset'><code>mlr3::Learner$reset()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-train'><code>mlr3::Learner$train()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="update"><a href='../../mlr3/html/Learner.html#method-update'><code>mlr3::Learner$update()</code></a></span></p></li>
 </ul>
 </details>
 
@@ -357,17 +359,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 d09d3d6e-3bd3-4783-99cc-6aaf95c1748f &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 8a81b4e9-418a-499c-bf06-4104e4bb4c6b &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 f34152b3-e4ad-40af-ae22-b2b3f3a84904 &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 5a94bfac-877f-4291-a3e4-762f039cf8cf &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 f64cae7b-aeb2-4eab-bf0d-73cccf4cba8b &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 819a732a-50c8-43f3-93ea-60029bc7547c &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 d463bd17-270f-4ac3-80a5-b5851c97d4c0 &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 84ce75ba-9eab-41a3-af28-1deb3a38355b &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 c8d2fcad-4153-45cf-82d8-bb0f835e1630 &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 4f40ce9b-a423-43f5-80e5-806c34a4847b &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-02-02 04:43:14        1
-#&gt; 2: 2021-02-02 04:43:14        2
-#&gt; 3: 2021-02-02 04:43:14        3
-#&gt; 4: 2021-02-02 04:43:14        4
-#&gt; 5: 2021-02-02 04:43:14        5
+#&gt; 1: 2021-02-02 21:12:18        1
+#&gt; 2: 2021-02-02 21:12:19        2
+#&gt; 3: 2021-02-02 21:12:19        3
+#&gt; 4: 2021-02-02 21:12:19        4
+#&gt; 5: 2021-02-02 21:12:19        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
