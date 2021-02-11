@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Syntactic Sugar for Tuner Construction — tnr • mlr3tuning</title>
+<title>Extract Inner Tuning Results — extract_inner_tuning_results • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,13 @@
 
 
 
-<meta property="og:title" content="Syntactic Sugar for Tuner Construction — tnr" />
-<meta property="og:description" content="This function complements mlr_tuners with functions in the spirit
-of mlr3::mlr_sugar." />
+<meta property="og:title" content="Extract Inner Tuning Results — extract_inner_tuning_results" />
+<meta property="og:description" content="Extract inner tuning results of nested resampling. Implemented for
+mlr3::ResampleResult and mlr3::BenchmarkResult. The function iterates
+over the AutoTuner objects and binds the tuning results to a
+data.table::data.table(). AutoTuner must be initialized with
+store_tuning_instance = TRUE. For mlr3::BenchmarkResult, the number of
+the experiment is added to the table." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,57 +146,58 @@ of mlr3::mlr_sugar." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Syntactic Sugar for Tuner Construction</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/sugar.R'><code>R/sugar.R</code></a></small>
-    <div class="hidden name"><code>tnr.Rd</code></div>
+    <h1>Extract Inner Tuning Results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/helper.R'><code>R/helper.R</code></a></small>
+    <div class="hidden name"><code>extract_inner_tuning_results.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function complements <a href='mlr_tuners.html'>mlr_tuners</a> with functions in the spirit
-of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
+    <p>Extract inner tuning results of nested resampling. Implemented for
+<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> and <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. The function iterates
+over the <a href='AutoTuner.html'>AutoTuner</a> objects and binds the tuning results to a
+<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>. <a href='AutoTuner.html'>AutoTuner</a> must be initialized with
+<code>store_tuning_instance = TRUE</code>. For <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>, the number of
+the <code>experiment</code> is added to the table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tnr</span><span class='op'>(</span><span class='va'>.key</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>tnrs</span><span class='op'>(</span><span class='va'>.keys</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.key</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Key passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> to retrieve the object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Named arguments passed to the constructor, to be set as parameters in the <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>, or to be set as public field.
-See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html'>mlr3misc::dictionary_sugar_get()</a></code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>.keys</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> to retrieve multiple objects.</p></td>
+      <th>x</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> | <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>)<br />
+Must contain an <a href='AutoTuner.html'>AutoTuner</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><a href='Tuner.html'>Tuner</a> for <code>tnr()</code></p></li>
-<li><p>list of <a href='Tuner.html'>Tuner</a> for <code>tnrs()</code></p></li>
-</ul>
-
+    <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tnr</span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
-#&gt; * Parameters: batch_size=1
-#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
-#&gt; * Properties: dependencies, single-crit, multi-crit
-#&gt; * Packages: -</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
+<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>at</span> <span class='op'>=</span> <span class='va'><a href='AutoTuner.html'>AutoTuner</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
+  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
+  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.001          &lt;list[2]&gt; &lt;list[1]&gt;       0.12
+#&gt; 2: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

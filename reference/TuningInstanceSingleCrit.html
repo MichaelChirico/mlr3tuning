@@ -95,7 +95,7 @@ values, by calling the method instance$assign_result." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -200,6 +200,7 @@ Param values for the optimal learner call.</p></dd>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="clear"><a href='../../bbotk/html/OptimInstance.html#method-clear'><code>bbotk::OptimInstance$clear()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="eval_batch"><a href='../../bbotk/html/OptimInstance.html#method-eval_batch'><code>bbotk::OptimInstance$eval_batch()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="format"><a href='../../bbotk/html/OptimInstance.html#method-format'><code>bbotk::OptimInstance$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="objective_function"><a href='../../bbotk/html/OptimInstance.html#method-objective_function'><code>bbotk::OptimInstance$objective_function()</code></a></span></p></li>
@@ -318,15 +319,15 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 240b03e5-d96c-438a-b4e1-1fa25a28eabc &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 f1025b0e-4013-4e54-ab08-c3f77babbd80 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 41bef154-9b4c-499a-901f-9d950b80a4bc &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 bf3dee06-739b-4da8-8aa6-eda94ae78c21 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 35f0feb9-4ecd-471d-be24-6fd3bdcb6161 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 eaa799b1-878f-4590-82a7-58edc651c61f &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 2f87d617-771e-48b3-b497-aea752c985d9 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 8c9b2b66-e08d-417c-8e3c-191ee0507e8d &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-24 16:35:07        1
-#&gt; 2: 2021-01-24 16:35:07        1
-#&gt; 3: 2021-01-24 16:35:07        1
-#&gt; 4: 2021-01-24 16:35:07        1</div><div class='input'>
+#&gt; 1: 2021-02-11 07:41:14        1
+#&gt; 2: 2021-02-11 07:41:14        1
+#&gt; 3: 2021-02-11 07:41:14        1
+#&gt; 4: 2021-02-11 07:41:14        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -343,17 +344,17 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce                                uhash  x_domain
-#&gt; 1: 0.01        3       0.02 240b03e5-d96c-438a-b4e1-1fa25a28eabc &lt;list[2]&gt;
-#&gt; 2: 0.01        5       0.02 f1025b0e-4013-4e54-ab08-c3f77babbd80 &lt;list[2]&gt;
-#&gt; 3: 0.05        3       0.06 41bef154-9b4c-499a-901f-9d950b80a4bc &lt;list[2]&gt;
-#&gt; 4: 0.05        5       0.06 bf3dee06-739b-4da8-8aa6-eda94ae78c21 &lt;list[2]&gt;
-#&gt; 5: 0.01        7       0.02 0302e64a-fbaf-4134-83a6-e2783cb8d726 &lt;list[2]&gt;
+#&gt; 1: 0.01        3       0.02 35f0feb9-4ecd-471d-be24-6fd3bdcb6161 &lt;list[2]&gt;
+#&gt; 2: 0.01        5       0.02 eaa799b1-878f-4590-82a7-58edc651c61f &lt;list[2]&gt;
+#&gt; 3: 0.05        3       0.06 2f87d617-771e-48b3-b497-aea752c985d9 &lt;list[2]&gt;
+#&gt; 4: 0.05        5       0.06 8c9b2b66-e08d-417c-8e3c-191ee0507e8d &lt;list[2]&gt;
+#&gt; 5: 0.01        7       0.02 1536e2bb-65be-4dee-9fc7-cbb0a1f76039 &lt;list[2]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-24 16:35:07        1
-#&gt; 2: 2021-01-24 16:35:07        1
-#&gt; 3: 2021-01-24 16:35:07        1
-#&gt; 4: 2021-01-24 16:35:07        1
-#&gt; 5: 2021-01-24 16:35:07        2</div><div class='input'>
+#&gt; 1: 2021-02-11 07:41:14        1
+#&gt; 2: 2021-02-11 07:41:14        1
+#&gt; 3: 2021-02-11 07:41:14        1
+#&gt; 4: 2021-02-11 07:41:14        1
+#&gt; 5: 2021-02-11 07:41:15        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -384,11 +385,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash           timestamp
-#&gt; 1: 0.2  0.6908663 28abf1d5-d967-4471-96aa-17ea6f26b05a 2021-01-24 16:35:08
-#&gt; 2: 0.4  0.6011299 46d91b54-3bcb-47b9-ba20-27d0d5e44e47 2021-01-24 16:35:08
-#&gt; 3: 0.6  0.6011299 de3242e4-6ab9-4b29-8580-31575f039b8b 2021-01-24 16:35:08
-#&gt; 4: 0.8  0.6011299 f612075e-dd3b-44c2-803b-5f2514d51e71 2021-01-24 16:35:08
-#&gt; 5: 1.0  0.6739171 e6fcc0a1-374f-4af3-9d31-74a0f56b3ad3 2021-01-24 16:35:08
+#&gt; 1: 0.2  0.6908663 a2457b7d-d1c2-4d38-a55c-61fd080bc1c5 2021-02-11 07:41:15
+#&gt; 2: 0.4  0.6011299 d4e12341-9438-462d-a3df-54de5ed389cd 2021-02-11 07:41:15
+#&gt; 3: 0.6  0.6011299 b99eb1d0-8d2e-4287-bd2c-f8cfabb72aa8 2021-02-11 07:41:15
+#&gt; 4: 0.8  0.6011299 bb3e519d-20c8-40a5-824f-d95f786ac808 2021-02-11 07:41:15
+#&gt; 5: 1.0  0.6739171 75eae32b-1e8f-4418-b858-58980e5243ee 2021-02-11 07:41:15
 #&gt;    batch_nr x_domain_x
 #&gt; 1:        1        0.2
 #&gt; 2:        1        0.4

@@ -83,7 +83,7 @@ from package adagio." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -262,21 +262,35 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in B %*% diag(D^-1): non-conformable arguments</span></div><div class='input'><span class='co'># returns best configuration and best performance</span>
+</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.07506129          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.07506129          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.01548638        0.1 b60e06a2-0853-4440-8302-c88e58190adc &lt;list[1]&gt;
-#&gt; 2: 0.05878707        0.1 94656c8e-723d-479a-b47e-fbe8470886a6 &lt;list[1]&gt;
-#&gt; 3: 0.10000000        0.1 f0016b03-c3c6-48d5-a586-a751de255cec &lt;list[1]&gt;
-#&gt; 4: 0.06781471        0.1 9fa09e91-3a7c-477c-9956-2f15c82f64aa &lt;list[1]&gt;
-#&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-24 16:35:09        1
-#&gt; 2: 2021-01-24 16:35:09        2
-#&gt; 3: 2021-01-24 16:35:09        3
-#&gt; 4: 2021-01-24 16:35:09        4</div></pre>
+#&gt;             cp classif.ce                                uhash  x_domain
+#&gt;  1: 0.07506129       0.08 2f69b687-4555-490d-920b-9ee95231873f &lt;list[1]&gt;
+#&gt;  2: 0.10000000       0.08 634aad0e-6134-4cb4-9413-0df7df9286cb &lt;list[1]&gt;
+#&gt;  3: 0.00100000       0.08 0511baca-bc39-42a1-a404-141357bbc761 &lt;list[1]&gt;
+#&gt;  4: 0.10000000       0.08 d9a4da89-2406-4108-a9eb-148503f62064 &lt;list[1]&gt;
+#&gt;  5: 0.10000000       0.08 3afaa300-2a46-42c9-9411-ba4752dabe3d &lt;list[1]&gt;
+#&gt;  6: 0.10000000       0.08 0de3be7a-7074-49d0-aa62-cc7baeb3b27b &lt;list[1]&gt;
+#&gt;  7: 0.06108818       0.08 06be3a6b-8362-4a7c-ade0-e5dcac2afab2 &lt;list[1]&gt;
+#&gt;  8: 0.07880578       0.08 691f429a-9355-4676-b758-7e9fdf9f40d7 &lt;list[1]&gt;
+#&gt;  9: 0.10000000       0.08 a9041fa7-fbbd-4d9f-8aca-5640d644a9f6 &lt;list[1]&gt;
+#&gt; 10: 0.07321209       0.08 0159a378-2e8b-42b2-aed4-fe613fc0dd2b &lt;list[1]&gt;
+#&gt;               timestamp batch_nr
+#&gt;  1: 2021-02-11 07:41:18        1
+#&gt;  2: 2021-02-11 07:41:18        2
+#&gt;  3: 2021-02-11 07:41:18        3
+#&gt;  4: 2021-02-11 07:41:18        4
+#&gt;  5: 2021-02-11 07:41:18        5
+#&gt;  6: 2021-02-11 07:41:19        6
+#&gt;  7: 2021-02-11 07:41:19        7
+#&gt;  8: 2021-02-11 07:41:19        8
+#&gt;  9: 2021-02-11 07:41:19        9
+#&gt; 10: 2021-02-11 07:41:19       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

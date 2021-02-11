@@ -85,7 +85,7 @@ evaluated in a random order." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -280,22 +280,22 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.045          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+#&gt; 1: 0.067          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.045          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
+#&gt; 1: 0.067          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.045       0.08 00704d9a-7a69-48b2-8586-7ff1b917ae6a &lt;list[1]&gt;
-#&gt; 2: 0.089       0.08 56bf32c8-c507-4135-9a03-c1f35cd1506c &lt;list[1]&gt;
-#&gt; 3: 0.100       0.08 f341da29-e59e-40fa-9a83-d6b8946c401a &lt;list[1]&gt;
+#&gt; 1: 0.067       0.04 31302abb-a25e-4613-b33d-1b2ae52fbf14 &lt;list[1]&gt;
+#&gt; 2: 0.056       0.04 f4eaca39-d14c-4ef1-8726-bdf01019132a &lt;list[1]&gt;
+#&gt; 3: 0.089       0.04 d27bfcd9-6586-4dc8-8be5-6dbae94b3570 &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-01-24 16:35:11        1
-#&gt; 2: 2021-01-24 16:35:11        2
-#&gt; 3: 2021-01-24 16:35:11        3</div></pre>
+#&gt; 1: 2021-02-11 07:41:21        1
+#&gt; 2: 2021-02-11 07:41:21        2
+#&gt; 3: 2021-02-11 07:41:21        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

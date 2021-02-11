@@ -48,7 +48,7 @@
 
 
 <meta property="og:title" content="Logging object for objective function evaluations — ArchiveTuning" />
-<meta property="og:description" content="Container around a data.table::data.table which stores all performed
+<meta property="og:description" content="Container around a data.table::data.table() which stores all performed
 function calls of the Objective and the associated mlr3::BenchmarkResult.
 $benchmark_result stores a mlr3::BenchmarkResult which contains the
 mlr3::ResampleResult of all performed function calls. The
@@ -87,7 +87,7 @@ uhash column." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.6.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -152,7 +152,7 @@ uhash column." />
     </div>
 
     <div class="ref-description">
-    <p>Container around a <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a> which stores all performed
+    <p>Container around a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> which stores all performed
 function calls of the Objective and the associated <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p>
 <p><code>$benchmark_result</code> stores a <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> which contains the
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> of all performed function calls. The
@@ -172,12 +172,25 @@ function calls of the Objective and the associated <a href='https://mlr3.mlr-org
 Stores benchmark result.</p></dd>
 
 </dl><p></div></p>
+    <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
+
+    <p><div class="r6-active-bindings"></p><dl>
+<dt><code>extended_archive</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
+Joins each performed function call of the Objective with the
+corresponding <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>.</p></dd>
+
+</dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
+<li><p><a href='#method-learner'><code>ArchiveTuning$learner()</code></a></p></li>
+<li><p><a href='#method-learners'><code>ArchiveTuning$learners()</code></a></p></li>
+<li><p><a href='#method-learner_param_vals'><code>ArchiveTuning$learner_param_vals()</code></a></p></li>
+<li><p><a href='#method-predictions'><code>ArchiveTuning$predictions()</code></a></p></li>
+<li><p><a href='#method-resample_result'><code>ArchiveTuning$resample_result()</code></a></p></li>
 <li><p><a href='#method-clone'><code>ArchiveTuning$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
@@ -192,6 +205,85 @@ Stores benchmark result.</p></dd>
 </details>
 
 <hr>
+<a id="method-learner"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>learner()</code></h3>
+<p>Retrieve <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> of the i-th evaluation, by position
+or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually exclusive.
+Learner does not contain a model. Use <code>$learners()</code> to get learners with
+models.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>learner</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span>, uhash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+The iteration value to filter for.</p></dd>
+
+<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+The <code>uhash</code> value to filter for.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-learners"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>learners()</code></h3>
+<p>Retrieve list of trained <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> objects of the i-th evaluation,
+by position or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually
+exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>learners</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span>, uhash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+The iteration value to filter for.</p></dd>
+
+<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+The <code>uhash</code> value to filter for.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-learner_param_vals"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>learner_param_vals()</code></h3>
+<p>Retrieve param values of the i-th evaluation, by position
+or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>learner_param_vals</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span>, uhash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+The iteration value to filter for.</p></dd>
+
+<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+The <code>uhash</code> value to filter for.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-predictions"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>predictions()</code></h3>
+<p>Retrieve list of <a href='https://mlr3.mlr-org.com/reference/Prediction.html'>mlr3::Prediction</a> objects of the i-th evaluation, by
+position or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually
+exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>predictions</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span>, uhash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+The iteration value to filter for.</p></dd>
+
+<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+The <code>uhash</code> value to filter for.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-resample_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>resample_result()</code></h3>
+<p>Retrieve <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> of the i-th evaluation, by position
+or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>resample_result</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span>, uhash <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+The iteration value to filter for.</p></dd>
+
+<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+The <code>uhash</code> value to filter for.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
