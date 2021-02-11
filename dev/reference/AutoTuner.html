@@ -290,10 +290,13 @@ If <code>TRUE</code> (default), stores the internally created
 <code>$tuning_instance</code>.</p></dd>
 
 <dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Store benchmark result in archive?</p></dd>
+If <code>TRUE</code> (default), stores the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> in archive.</p></dd>
 
 <dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Store models in benchmark result?</p></dd>
+If <code>FALSE</code> (default), the fitted models are not stored in the
+<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. If <code>store_benchmark_result = FALSE</code>, the models are
+only stored temporarily and not accessible after the tuning. This combination
+might be useful for measures that require a model.</p></dd>
 
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Should parameters before the evaluation and the results be checked for
@@ -359,17 +362,17 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 ee113ca6-55b1-4fc5-9736-c75df9ecd749 &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 88ec08a8-adee-4e8e-9d04-1b4624bb34b1 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 236a453d-afd6-4452-af03-4526bc07cd1d &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 e8e62ed1-4bca-489e-b6d2-30d3e112f209 &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 0995e56b-6f5a-4c9a-9046-ff578e792c02 &lt;list[1]&gt;
+#&gt; 1: 0.056       0.06 0ea5598a-3bb2-492d-9f4a-a67fd7221203 &lt;list[1]&gt;
+#&gt; 2: 0.045       0.06 0e0e05ee-881b-4de5-a11f-b39aad12f841 &lt;list[1]&gt;
+#&gt; 3: 0.023       0.06 5e1006e7-0ca5-4cc1-ac3a-348a1ed2380b &lt;list[1]&gt;
+#&gt; 4: 0.012       0.06 b96f598d-8688-497a-83dd-87c9096701b3 &lt;list[1]&gt;
+#&gt; 5: 0.089       0.06 0e6000ad-6088-4249-9492-b4b1d8ff9f3d &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-02-11 09:14:31        1
-#&gt; 2: 2021-02-11 09:14:31        2
-#&gt; 3: 2021-02-11 09:14:31        3
-#&gt; 4: 2021-02-11 09:14:31        4
-#&gt; 5: 2021-02-11 09:14:31        5
+#&gt; 1: 2021-02-11 17:08:01        1
+#&gt; 2: 2021-02-11 17:08:01        2
+#&gt; 3: 2021-02-11 17:08:01        3
+#&gt; 4: 2021-02-11 17:08:01        4
+#&gt; 5: 2021-02-11 17:08:01        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
