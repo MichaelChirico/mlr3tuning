@@ -262,35 +262,29 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.07506129          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'><span class='co'># returns best configuration and best performance</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in B %*% diag(D^-1): non-conformable arguments</span></div><div class='input'><span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.07506129          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
+</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;             cp classif.ce                                uhash  x_domain
-#&gt;  1: 0.07506129       0.08 beedb5db-94b3-4952-a66c-48da01bd794b &lt;list[1]&gt;
-#&gt;  2: 0.10000000       0.08 d4fbdfa7-3fe2-4963-bc54-deee4548c4bf &lt;list[1]&gt;
-#&gt;  3: 0.00100000       0.08 5786fb5e-86a3-4fdd-bd04-807ccb3ea395 &lt;list[1]&gt;
-#&gt;  4: 0.10000000       0.08 6ad2fca7-52a6-490f-acf8-a450db7ea504 &lt;list[1]&gt;
-#&gt;  5: 0.10000000       0.08 683cb658-ef48-4f39-af64-f00a995842d9 &lt;list[1]&gt;
-#&gt;  6: 0.10000000       0.08 72bafbc3-f057-4118-8ff5-d27c20fd941f &lt;list[1]&gt;
-#&gt;  7: 0.06108818       0.08 69e87be3-2110-4547-b35e-5b34d82bdc8e &lt;list[1]&gt;
-#&gt;  8: 0.07880578       0.08 2ded1750-7e7b-4e9f-a9d8-264734a1845a &lt;list[1]&gt;
-#&gt;  9: 0.10000000       0.08 d2c18a72-b718-4ab7-a8f1-a104fb002075 &lt;list[1]&gt;
-#&gt; 10: 0.07321209       0.08 4868a668-9af2-489f-8ebe-a5e461aa423b &lt;list[1]&gt;
-#&gt;               timestamp batch_nr
-#&gt;  1: 2021-02-18 04:37:09        1
-#&gt;  2: 2021-02-18 04:37:09        2
-#&gt;  3: 2021-02-18 04:37:09        3
-#&gt;  4: 2021-02-18 04:37:09        4
-#&gt;  5: 2021-02-18 04:37:09        5
-#&gt;  6: 2021-02-18 04:37:09        6
-#&gt;  7: 2021-02-18 04:37:10        7
-#&gt;  8: 2021-02-18 04:37:10        8
-#&gt;  9: 2021-02-18 04:37:10        9
-#&gt; 10: 2021-02-18 04:37:10       10</div></pre>
+#&gt;            cp classif.ce                                uhash  x_domain
+#&gt; 1: 0.04953805       0.08 38e360a0-36ba-42c9-934a-9e54d415e226 &lt;list[1]&gt;
+#&gt; 2: 0.10000000       0.08 c13d7ce5-af71-44c3-83bf-27390d2ff8be &lt;list[1]&gt;
+#&gt; 3: 0.10000000       0.08 1e344f82-ee54-4814-9034-0d2c23575ce9 &lt;list[1]&gt;
+#&gt; 4: 0.10000000       0.08 3cf0dc69-9230-4b00-a31e-f979bf47aa5c &lt;list[1]&gt;
+#&gt; 5: 0.00100000       0.08 0b865999-24f6-48ba-aaf6-2e8b8eff80f5 &lt;list[1]&gt;
+#&gt; 6: 0.09398802       0.08 26d778a6-96d8-4c81-896e-3c4e69b9180f &lt;list[1]&gt;
+#&gt; 7: 0.10000000       0.08 58ac0e40-ac79-4a8a-a7c5-ea75ba312edf &lt;list[1]&gt;
+#&gt; 8: 0.10000000       0.08 1127e24a-3a8a-4ce7-852a-9ca78f5e9709 &lt;list[1]&gt;
+#&gt;              timestamp batch_nr
+#&gt; 1: 2021-02-18 12:08:49        1
+#&gt; 2: 2021-02-18 12:08:50        2
+#&gt; 3: 2021-02-18 12:08:50        3
+#&gt; 4: 2021-02-18 12:08:50        4
+#&gt; 5: 2021-02-18 12:08:50        5
+#&gt; 6: 2021-02-18 12:08:50        6
+#&gt; 7: 2021-02-18 12:08:50        7
+#&gt; 8: 2021-02-18 12:08:50        8</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

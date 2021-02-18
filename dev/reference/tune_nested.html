@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract Inner Tuning Results — extract_inner_tuning_results • mlr3tuning</title>
+<title>Function for Nested Resampling — tune_nested • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,13 +47,8 @@
 
 
 
-<meta property="og:title" content="Extract Inner Tuning Results — extract_inner_tuning_results" />
-<meta property="og:description" content="Extract inner tuning results of nested resampling. Implemented for
-mlr3::ResampleResult and mlr3::BenchmarkResult. The function iterates
-over the AutoTuner objects and binds the tuning results to a
-data.table::data.table(). AutoTuner must be initialized with
-store_tuning_instance = TRUE. For mlr3::BenchmarkResult, the number of
-the experiment is added to the table." />
+<meta property="og:title" content="Function for Nested Resampling — tune_nested" />
+<meta property="og:description" content="Function to conduct nested resampling." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,58 +141,109 @@ the experiment is added to the table." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract Inner Tuning Results</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/helper.R'><code>R/helper.R</code></a></small>
-    <div class="hidden name"><code>extract_inner_tuning_results.Rd</code></div>
+    <h1>Function for Nested Resampling</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/sugar.R'><code>R/sugar.R</code></a></small>
+    <div class="hidden name"><code>tune_nested.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Extract inner tuning results of nested resampling. Implemented for
-<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> and <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. The function iterates
-over the <a href='AutoTuner.html'>AutoTuner</a> objects and binds the tuning results to a
-<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>. <a href='AutoTuner.html'>AutoTuner</a> must be initialized with
-<code>store_tuning_instance = TRUE</code>. For <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>, the number of
-the <code>experiment</code> is added to the table.</p>
+    <p>Function to conduct nested resampling.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tune_nested</span><span class='op'>(</span>
+  <span class='va'>method</span>,
+  <span class='va'>task</span>,
+  <span class='va'>learner</span>,
+  <span class='va'>inner_resampling</span>,
+  <span class='va'>outer_resampling</span>,
+  <span class='va'>measure</span>,
+  term_evals <span class='op'>=</span> <span class='cn'>NULL</span>,
+  term_time <span class='op'>=</span> <span class='cn'>NULL</span>,
+  search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>(<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> | <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>)<br />
-Must contain an <a href='AutoTuner.html'>AutoTuner</a>.</p></td>
+      <th>method</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Key to retrieve tuner from <a href='mlr_tuners.html'>mlr_tuners</a> dictionary.</p></td>
+    </tr>
+    <tr>
+      <th>task</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
+Task to operate on.</p></td>
+    </tr>
+    <tr>
+      <th>learner</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></td>
+    </tr>
+    <tr>
+      <th>inner_resampling</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
+Resampling used for the inner loop.</p></td>
+    </tr>
+    <tr>
+      <th>outer_resampling</th>
+      <td><p><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
+Resampling used for the outer loop.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+Measure to optimize.</p></td>
+    </tr>
+    <tr>
+      <th>term_evals</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Number of allowed evaluations.</p></td>
+    </tr>
+    <tr>
+      <th>term_time</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Maximum allowed time in seconds.</p></td>
+    </tr>
+    <tr>
+      <th>search_space</th>
+      <td><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
+Named arguments to be set as parameters of the tuner.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
+    <p><a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span><span class='op'>$</span><span class='va'>minsplit</span> <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>
 
-<span class='va'>at</span> <span class='op'>=</span> <span class='va'><a href='AutoTuner.html'>AutoTuner</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'>tune_nested</span><span class='op'>(</span>
+  method <span class='op'>=</span> <span class='st'>"random_search"</span>,
+  task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='va'>learner</span>, 
+  inner_resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span> <span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  outer_resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>, 
   measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  term_evals <span class='op'>=</span> <span class='fl'>50</span>,
+  batch_size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 
-<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.023          &lt;list[2]&gt; &lt;list[1]&gt;       0.04
-#&gt; 2: 0.023          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div></pre>
+<span class='co'># check the inner results</span>
+<span class='fu'><a href='extract_inner_tuning_results.html'>extract_inner_tuning_results</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    minsplit learner_param_vals  x_domain classif.ce
+#&gt; 1:        7          &lt;list[2]&gt; &lt;list[1]&gt;  0.2280702
+#&gt; 2:        7          &lt;list[2]&gt; &lt;list[1]&gt;  0.2280702
+#&gt; 3:       10          &lt;list[2]&gt; &lt;list[1]&gt;  0.2514620</div><div class='input'>
+<span class='co'># aggregate performance of outer results</span>
+<span class='va'>rr</span><span class='op'>$</span><span class='fu'>aggregate</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; classif.ce 
+#&gt;  0.2617188 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -25,6 +25,9 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/TuningInstanceSingleCrit.html</loc>
   </url>
   <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/auto_tuner.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/extract_inner_tuning_results.html</loc>
   </url>
   <url>
@@ -56,5 +59,11 @@
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/tnr.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/tune.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/tune_nested.html</loc>
   </url>
 </urlset>
