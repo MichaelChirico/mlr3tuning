@@ -246,7 +246,7 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://Rdatatable.gitlab.io/data.table'>data.table</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-datatable.com'>data.table</a></span><span class='op'>)</span>
 <span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
   <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>)</span><span class='op'>)</span>
@@ -268,23 +268,23 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;            cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.04953805       0.08 cdfecc6a-5e0a-4ae9-8586-df318d2d6a10 &lt;list[1]&gt;
-#&gt; 2: 0.10000000       0.08 1f1fb14d-23ee-48a1-b5bd-b59bd6785d48 &lt;list[1]&gt;
-#&gt; 3: 0.10000000       0.08 101829ad-0349-450a-89ef-ee0a0c67161f &lt;list[1]&gt;
-#&gt; 4: 0.10000000       0.08 6e86a057-b3b4-477c-81cb-77ef1d21f117 &lt;list[1]&gt;
-#&gt; 5: 0.00100000       0.08 89083a08-c6d5-4e4e-ad21-b3489cb65210 &lt;list[1]&gt;
-#&gt; 6: 0.09398802       0.08 34cdef8d-d5fe-4630-b9ac-3d6de49f1a58 &lt;list[1]&gt;
-#&gt; 7: 0.10000000       0.08 e7302541-cec0-43f7-b32f-c2669463112e &lt;list[1]&gt;
-#&gt; 8: 0.10000000       0.08 1744022c-5a95-4373-9e83-164f3f23ddfe &lt;list[1]&gt;
+#&gt; 1: 0.04953805       0.08 9e5c4fa8-c4f3-40d5-81b2-7103ec7ae099 &lt;list[1]&gt;
+#&gt; 2: 0.10000000       0.08 bb557a5e-5270-4409-a3fd-4f5f55cbf37d &lt;list[1]&gt;
+#&gt; 3: 0.10000000       0.08 7b2acb5e-fefe-4bca-8f05-874b9455cad4 &lt;list[1]&gt;
+#&gt; 4: 0.10000000       0.08 f7fd5a65-d408-4f70-993a-e563c8b28f02 &lt;list[1]&gt;
+#&gt; 5: 0.00100000       0.08 a934897e-7ff2-4a8c-8c99-110dbb189512 &lt;list[1]&gt;
+#&gt; 6: 0.09398802       0.08 71bb3027-cb2e-47ae-97a4-59ad517adde1 &lt;list[1]&gt;
+#&gt; 7: 0.10000000       0.08 148f8260-2fdd-4973-b785-5b23e9fe80be &lt;list[1]&gt;
+#&gt; 8: 0.10000000       0.08 4e48e2f2-ce5d-47f2-b0dd-6a28e3f434ff &lt;list[1]&gt;
 #&gt;              timestamp batch_nr
-#&gt; 1: 2021-02-21 04:39:53        1
-#&gt; 2: 2021-02-21 04:39:53        2
-#&gt; 3: 2021-02-21 04:39:53        3
-#&gt; 4: 2021-02-21 04:39:53        4
-#&gt; 5: 2021-02-21 04:39:53        5
-#&gt; 6: 2021-02-21 04:39:53        6
-#&gt; 7: 2021-02-21 04:39:54        7
-#&gt; 8: 2021-02-21 04:39:54        8</div></pre>
+#&gt; 1: 2021-02-22 04:41:15        1
+#&gt; 2: 2021-02-22 04:41:15        2
+#&gt; 3: 2021-02-22 04:41:15        3
+#&gt; 4: 2021-02-22 04:41:15        4
+#&gt; 5: 2021-02-22 04:41:16        5
+#&gt; 6: 2021-02-22 04:41:16        6
+#&gt; 7: 2021-02-22 04:41:16        7
+#&gt; 8: 2021-02-22 04:41:16        8</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
