@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dictionary of Tuners — mlr_tuners • mlr3tuning</title>
+<title>Function for Tuning — tune • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,12 +47,8 @@
 
 
 
-<meta property="og:title" content="Dictionary of Tuners — mlr_tuners" />
-<meta property="og:description" content="A simple mlr3misc::Dictionary storing objects of class Tuner.
-Each tuner has an associated help page, see mlr_tuners_[id].
-This dictionary can get populated with additional tuners by add-on packages.
-For a more convenient way to retrieve and construct tuner, see
-tnr()/tnrs()." />
+<meta property="og:title" content="Function for Tuning — tune" />
+<meta property="og:description" content="Function to tune a mlr3::Learner." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -145,46 +141,96 @@ tnr()/tnrs()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dictionary of Tuners</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/mlr_tuners.R'><code>R/mlr_tuners.R</code></a></small>
-    <div class="hidden name"><code>mlr_tuners.Rd</code></div>
+    <h1>Function for Tuning</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/sugar.R'><code>R/sugar.R</code></a></small>
+    <div class="hidden name"><code>tune.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A simple <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a> storing objects of class <a href='Tuner.html'>Tuner</a>.
-Each tuner has an associated help page, see <code>mlr_tuners_[id]</code>.</p>
-<p>This dictionary can get populated with additional tuners by add-on packages.</p>
-<p>For a more convenient way to retrieve and construct tuner, see
-<code><a href='tnr.html'>tnr()</a></code>/<code><a href='tnr.html'>tnrs()</a></code>.</p>
+    <p>Function to tune a <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>.</p>
     </div>
 
-    <pre class="usage"><span class='va'>mlr_tuners</span></pre>
+    <pre class="usage"><span class='fu'>tune</span><span class='op'>(</span>
+  <span class='va'>method</span>,
+  <span class='va'>task</span>,
+  <span class='va'>learner</span>,
+  <span class='va'>resampling</span>,
+  <span class='va'>measure</span>,
+  term_evals <span class='op'>=</span> <span class='cn'>NULL</span>,
+  term_time <span class='op'>=</span> <span class='cn'>NULL</span>,
+  search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>method</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Key to retrieve tuner from <a href='mlr_tuners.html'>mlr_tuners</a> dictionary.</p></td>
+    </tr>
+    <tr>
+      <th>task</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
+Task to operate on.</p></td>
+    </tr>
+    <tr>
+      <th>learner</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></td>
+    </tr>
+    <tr>
+      <th>resampling</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
+Uninstantiated resamplings are instantiated during construction
+so that all configurations are evaluated on the same data splits.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+Measure to optimize.</p></td>
+    </tr>
+    <tr>
+      <th>term_evals</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Number of allowed evaluations.</p></td>
+    </tr>
+    <tr>
+      <th>term_time</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Maximum allowed time in seconds.</p></td>
+    </tr>
+    <tr>
+      <th>search_space</th>
+      <td><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
+Named arguments to be set as parameters of the tuner.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6Class</a> object inheriting from <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
-    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
-
-    
-
-<p>See <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>mlr3misc::Dictionary</a>.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Sugar functions: <code><a href='tnr.html'>tnr()</a></code>, <code><a href='tnr.html'>tnrs()</a></code></p></div>
+    <p><code>TuningInstanceSingleCrit</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;TunerGridSearch&gt;
-#&gt; * Parameters: resolution=10, batch_size=1
-#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
-#&gt; * Properties: dependencies, single-crit, multi-crit
-#&gt; * Packages: -</div><div class='input'><span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;TunerRandomSearch&gt;
-#&gt; * Parameters: batch_size=1
-#&gt; * Parameter classes: ParamLgl, ParamInt, ParamDbl, ParamFct
-#&gt; * Properties: dependencies, single-crit, multi-crit
-#&gt; * Packages: -</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span><span class='op'>$</span><span class='va'>minsplit</span> <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>
+
+<span class='va'>instance</span> <span class='op'>=</span> <span class='fu'>tune</span><span class='op'>(</span>
+  method <span class='op'>=</span> <span class='st'>"random_search"</span>, 
+  task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>, 
+  learner <span class='op'>=</span> <span class='va'>learner</span>, 
+  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span> <span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>, 
+  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>, 
+  term_evals <span class='op'>=</span> <span class='fl'>50</span>, 
+  batch_size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> 
+
+<span class='co'># Apply hyperparameter values to learner</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

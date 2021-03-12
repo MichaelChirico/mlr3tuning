@@ -101,7 +101,7 @@ store_models = TRUE (see examples)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.8.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -233,13 +233,14 @@ Must be an element of <code>$predict_types</code>.</p></dd>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="continue"><a href='../../mlr3/html/Learner.html#method-continue'><code>mlr3::Learner$continue()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-format'><code>mlr3::Learner$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-help'><code>mlr3::Learner$help()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="is_retrainable"><a href='../../mlr3/html/Learner.html#method-is_retrainable'><code>mlr3::Learner$is_retrainable()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-predict'><code>mlr3::Learner$predict()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-print'><code>mlr3::Learner$print()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-reset'><code>mlr3::Learner$reset()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="retrain"><a href='../../mlr3/html/Learner.html#method-retrain'><code>mlr3::Learner$retrain()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-train'><code>mlr3::Learner$train()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="update"><a href='../../mlr3/html/Learner.html#method-update'><code>mlr3::Learner$update()</code></a></span></p></li>
 </ul>
@@ -290,10 +291,13 @@ If <code>TRUE</code> (default), stores the internally created
 <code>$tuning_instance</code>.</p></dd>
 
 <dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Store benchmark result in archive?</p></dd>
+If <code>TRUE</code> (default), stores the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> in archive.</p></dd>
 
 <dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-Store models in benchmark result?</p></dd>
+If <code>FALSE</code> (default), the fitted models are not stored in the
+<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. If <code>store_benchmark_result = FALSE</code>, the models are
+only stored temporarily and not accessible after the tuning. This combination
+might be useful for measures that require a model.</p></dd>
 
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Should parameters before the evaluation and the results be checked for
@@ -349,8 +353,8 @@ validity?</p></dd>
 #&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
 #&gt; * Search Space:
 #&gt; &lt;ParamSet&gt;
-#&gt;    id    class lower upper levels        default value
-#&gt; 1: cp ParamDbl 0.001   0.1        &lt;NoDefault[3]&gt;      
+#&gt;    id    class lower upper nlevels        default value
+#&gt; 1: cp ParamDbl 0.001   0.1     Inf &lt;NoDefault[3]&gt;      
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * Terminated: TRUE
 #&gt; * Result:
@@ -358,18 +362,12 @@ validity?</p></dd>
 #&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.06
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
-#&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 1fc47977-0f74-4970-b8b4-e8390cffc1d0 &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 000c7094-2578-42c9-a7ac-ea0f37a5ac75 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 898151b7-a718-4271-8532-67eccd17de41 &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 0280582d-bcc8-4f45-ada1-5146ba8a3502 &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 52d61a2c-55ac-45df-b1e5-6e00f825f8cf &lt;list[1]&gt;
-#&gt;              timestamp batch_nr
-#&gt; 1: 2021-02-11 07:56:56        1
-#&gt; 2: 2021-02-11 07:56:56        2
-#&gt; 3: 2021-02-11 07:56:56        3
-#&gt; 4: 2021-02-11 07:56:56        4
-#&gt; 5: 2021-02-11 07:56:57        5
+#&gt;       cp classif.ce           timestamp batch_nr
+#&gt; 1: 0.056       0.06 2021-03-12 12:03:28        1
+#&gt; 2: 0.045       0.06 2021-03-12 12:03:28        2
+#&gt; 3: 0.023       0.06 2021-03-12 12:03:28        3
+#&gt; 4: 0.012       0.06 2021-03-12 12:03:28        4
+#&gt; 5: 0.089       0.06 2021-03-12 12:03:28        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
