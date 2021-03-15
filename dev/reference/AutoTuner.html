@@ -101,7 +101,7 @@ store_models = TRUE (see examples)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.7.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.8.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -233,13 +233,14 @@ Must be an element of <code>$predict_types</code>.</p></dd>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="continue"><a href='../../mlr3/html/Learner.html#method-continue'><code>mlr3::Learner$continue()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-format'><code>mlr3::Learner$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-help'><code>mlr3::Learner$help()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="is_retrainable"><a href='../../mlr3/html/Learner.html#method-is_retrainable'><code>mlr3::Learner$is_retrainable()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-predict'><code>mlr3::Learner$predict()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-print'><code>mlr3::Learner$print()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-reset'><code>mlr3::Learner$reset()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="retrain"><a href='../../mlr3/html/Learner.html#method-retrain'><code>mlr3::Learner$retrain()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-train'><code>mlr3::Learner$train()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="update"><a href='../../mlr3/html/Learner.html#method-update'><code>mlr3::Learner$update()</code></a></span></p></li>
 </ul>
@@ -361,18 +362,12 @@ validity?</p></dd>
 #&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.06
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
-#&gt;       cp classif.ce                                uhash  x_domain
-#&gt; 1: 0.056       0.06 69404704-1c85-43f2-91c2-f692ec0dbf0c &lt;list[1]&gt;
-#&gt; 2: 0.045       0.06 8e3ae481-eff6-4e15-9a3b-20622b8a8ad9 &lt;list[1]&gt;
-#&gt; 3: 0.023       0.06 b59c8d45-6fd2-40c0-a125-dbf617600d9f &lt;list[1]&gt;
-#&gt; 4: 0.012       0.06 84a83dc2-6bce-4be2-9fe0-571f07f6edc1 &lt;list[1]&gt;
-#&gt; 5: 0.089       0.06 214f3b34-30e1-48da-abc5-1c8b3e73080c &lt;list[1]&gt;
-#&gt;              timestamp batch_nr
-#&gt; 1: 2021-03-12 04:43:36        1
-#&gt; 2: 2021-03-12 04:43:36        2
-#&gt; 3: 2021-03-12 04:43:36        3
-#&gt; 4: 2021-03-12 04:43:36        4
-#&gt; 5: 2021-03-12 04:43:36        5
+#&gt;       cp classif.ce           timestamp batch_nr
+#&gt; 1: 0.056       0.06 2021-03-15 09:12:25        1
+#&gt; 2: 0.045       0.06 2021-03-15 09:12:25        2
+#&gt; 3: 0.023       0.06 2021-03-15 09:12:25        3
+#&gt; 4: 0.012       0.06 2021-03-15 09:12:25        4
+#&gt; 5: 0.089       0.06 2021-03-15 09:12:25        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
