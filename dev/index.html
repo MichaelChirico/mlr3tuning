@@ -109,14 +109,24 @@
 <p>Package website: <a href="https://mlr3tuning.mlr-org.com/">release</a> | <a href="https://mlr3tuning.mlr-org.com/dev/">dev</a></p>
 <!-- badges: start -->
 <p><a href="https://github.com/mlr-org/mlr3tuning/actions"><img src="https://github.com/mlr-org/mlr3tuning/workflows/tic/badge.svg?branch=main" alt="tic"></a> <a href="https://cran.r-project.org/package=mlr3tuning"><img src="https://www.r-pkg.org/badges/version-ago/mlr3tuning" alt="CRAN Status"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3tuning"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3tuning/badge" alt="CodeFactor"></a> <!-- badges: end --></p>
-<p>This package provides hyperparameter tuning for <a href="https://mlr3.mlr-org.com">mlr3</a>. It offers various tuning methods e.g. grid search, random search and generalized simulated annealing and different termination criteria can be set and combined. ‘AutoTuner’ provides a convenient way to perform nested resampling in combination with ‘mlr3’. The package is build on <a href="https://github.com/mlr-org/bbotk">bbotk</a> which provides a common framework for optimization.</p>
+<p>This package provides hyperparameter tuning for <a href="https://mlr3.mlr-org.com">mlr3</a>. It offers various tuning methods e.g. grid search, random search and generalized simulated annealing and different termination criteria can be set and combined. <code>AutoTuner</code> provides a convenient way to perform nested resampling in combination with <code>mlr3</code>. The package is build on <a href="https://github.com/mlr-org/bbotk">bbotk</a> which provides a common framework for optimization.</p>
+<div id="resources" class="section level2">
+<h2 class="hasAnchor">
+<a href="#resources" class="anchor"></a>Resources</h2>
+<ul>
+<li>mlr3book chapters on <a href="https://mlr3book.mlr-org.com/searchspace.html">tuning search spaces</a>, <a href="https://mlr3book.mlr-org.com/tuning.html">hyperparameter tuning</a> and <a href="https://mlr3book.mlr-org.com/nested-resampling.html">nested resampling</a>.</li>
+<li>mlr3gallery <a href="https://mlr3gallery.mlr-org.com/#category:mlr3tuning">posts</a>
+</li>
+<li><a href="https://cheatsheets.mlr-org.com/mlr3tuning.pdf">cheatsheet</a></li>
+</ul>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>CRAN version</p>
+<p>Install the last release from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"mlr3tuning"</span><span class="op">)</span></code></pre></div>
-<p>Development version</p>
+<p>Install the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3tuning"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -134,35 +144,27 @@
 <span class="va">measure</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>
 
 <span class="co"># Create the search space with lower and upper bounds</span>
-<span class="va">search_space</span> <span class="op">=</span> <span class="va"><a href="https://paradox.mlr-org.com/reference/ParamSet.html">ParamSet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  <span class="va"><a href="https://paradox.mlr-org.com/reference/ParamDbl.html">ParamDbl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="st">"cp"</span>, lower <span class="op">=</span> <span class="fl">0.001</span>, upper <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,
-  <span class="va"><a href="https://paradox.mlr-org.com/reference/ParamInt.html">ParamInt</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="st">"minsplit"</span>, lower <span class="op">=</span> <span class="fl">1</span>, upper <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
-<span class="op">)</span><span class="op">)</span>
+<span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">cp</span> <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.1</span><span class="op">)</span>
+<span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">minsplit</span> <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span> 
 
 <span class="co"># Define termination criterion</span>
 <span class="va">terminator</span> <span class="op">=</span> <span class="fu"><a href="https://bbotk.mlr-org.com/reference/trm.html">trm</a></span><span class="op">(</span><span class="st">"evals"</span>, n_evals <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 
 <span class="co"># Create tuning instance</span>
-<span class="va">instance</span> <span class="op">=</span> <span class="va"><a href="reference/TuningInstanceSingleCrit.html">TuningInstanceSingleCrit</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>task <span class="op">=</span> <span class="va">task</span>,
+<span class="va">instance</span> <span class="op">=</span> <span class="va"><a href="reference/TuningInstanceSingleCrit.html">TuningInstanceSingleCrit</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
+  task <span class="op">=</span> <span class="va">task</span>,
   learner <span class="op">=</span> <span class="va">learner</span>,
   resampling <span class="op">=</span> <span class="va">resampling</span>,
   measure <span class="op">=</span> <span class="va">measure</span>,
-  terminator <span class="op">=</span> <span class="va">terminator</span>,
-  search_space <span class="op">=</span> <span class="va">search_space</span><span class="op">)</span>
+  terminator <span class="op">=</span> <span class="va">terminator</span><span class="op">)</span>
 
 <span class="co"># Load tuner</span>
 <span class="va">tuner</span> <span class="op">=</span> <span class="fu"><a href="reference/tnr.html">tnr</a></span><span class="op">(</span><span class="st">"grid_search"</span>, resolution <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 
 <span class="co"># Trigger optimization</span>
-<span class="va">tuner</span><span class="op">$</span><span class="fu">optimize</span><span class="op">(</span><span class="va">instance</span><span class="op">)</span>
-
-<span class="co"># View results</span>
-<span class="va">instance</span><span class="op">$</span><span class="va">result</span></code></pre></div>
-</div>
-<div id="resources" class="section level2">
-<h2 class="hasAnchor">
-<a href="#resources" class="anchor"></a>Resources</h2>
-<p>Further documentation can be found in the <a href="https://mlr3book.mlr-org.com/tuning.html">mlr3book</a> and the <a href="https://cheatsheets.mlr-org.com/mlr3tuning.pdf">mlr3tuning cheatsheet</a>. Tutorials are available in the <a href="https://mlr3gallery.mlr-org.com/">mlr3gallery</a>.</p>
+<span class="va">tuner</span><span class="op">$</span><span class="fu">optimize</span><span class="op">(</span><span class="va">instance</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##        cp minsplit learner_param_vals  x_domain classif.ce</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1: 0.0505       10          &lt;list[3]&gt; &lt;list[2]&gt;  0.1953125</span></span></code></pre></div>
 </div>
 </div>
   </div>
