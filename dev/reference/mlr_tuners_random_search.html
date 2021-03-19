@@ -165,7 +165,8 @@ The random points are sampled by paradox::generate_design_random()." />
     
 
 <p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span>
+<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>TunerRandomSearch</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span>
 <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span>
 </pre>
 
@@ -218,6 +219,7 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
 <code><a href='mlr_tuners_gensa.html'>mlr_tuners_gensa</a></code>,
 <code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_irace.html'>mlr_tuners_irace</a></code>,
 <code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
@@ -276,19 +278,19 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.01364851          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.008283161          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.01364851          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
+</div><div class='output co'>#&gt;             cp learner_param_vals  x_domain classif.ce
+#&gt; 1: 0.008283161          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;       cp classif.ce           timestamp batch_nr
-#&gt; 1: 0.014       0.04 2021-03-19 04:41:29        1
-#&gt; 2: 0.020       0.04 2021-03-19 04:41:29        2
-#&gt; 3: 0.056       0.04 2021-03-19 04:41:29        3</div></pre>
+#&gt;        cp classif.ce           timestamp batch_nr
+#&gt; 1: 0.0083       0.04 2021-03-19 13:54:32        1
+#&gt; 2: 0.0208       0.04 2021-03-19 13:54:32        2
+#&gt; 3: 0.0211       0.04 2021-03-19 13:54:32        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

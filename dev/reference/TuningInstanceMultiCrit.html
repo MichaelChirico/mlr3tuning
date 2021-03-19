@@ -235,7 +235,9 @@ Task to operate on.</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
 Uninstantiated resamplings are instantiated during construction
-so that all configurations are evaluated on the same data splits.</p></dd>
+so that all configurations are evaluated on the same data splits. If a new
+resampling is passed, it is instantiated with new data splits. Already
+instantiated resamplings are kept unchanged.</p></dd>
 
 <dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
 Measures to optimize.
