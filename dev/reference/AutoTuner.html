@@ -62,7 +62,8 @@ parametrized wrapped learner.
 
 
 During $predict() the AutoTuner just calls the predict method of the
-wrapped (inner) learner.
+wrapped (inner) learner. A set timeout is disabled while fitting the final
+model.
 Note that this approach allows to perform nested resampling by passing an
 AutoTuner object to mlr3::resample() or mlr3::benchmark().
 To access the inner resampling results, set store_tuning_instance = TRUE
@@ -180,7 +181,8 @@ parametrized wrapped learner.</p></li>
 </ol>
 
 <p>During <code>$predict()</code> the <code>AutoTuner</code> just calls the predict method of the
-wrapped (inner) learner.</p>
+wrapped (inner) learner. A set timeout is disabled while fitting the final
+model.</p>
 <p>Note that this approach allows to perform nested resampling by passing an
 AutoTuner object to <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>mlr3::resample()</a></code> or <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.
 To access the inner resampling results, set <code>store_tuning_instance = TRUE</code>
@@ -363,11 +365,11 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce           timestamp batch_nr
-#&gt; 1: 0.056       0.06 2021-03-21 04:42:20        1
-#&gt; 2: 0.045       0.06 2021-03-21 04:42:21        2
-#&gt; 3: 0.023       0.06 2021-03-21 04:42:21        3
-#&gt; 4: 0.012       0.06 2021-03-21 04:42:21        4
-#&gt; 5: 0.089       0.06 2021-03-21 04:42:21        5
+#&gt; 1: 0.056       0.06 2021-03-21 20:31:19        1
+#&gt; 2: 0.045       0.06 2021-03-21 20:31:19        2
+#&gt; 3: 0.023       0.06 2021-03-21 20:31:19        3
+#&gt; 4: 0.012       0.06 2021-03-21 20:31:19        4
+#&gt; 5: 0.089       0.06 2021-03-21 20:31:19        5
 #&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
