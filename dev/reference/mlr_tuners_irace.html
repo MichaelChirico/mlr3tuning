@@ -252,7 +252,7 @@ TerminatorRunTime budget for stability reasons.</p>
 
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-04-15 04:27:50 UTC: Initialization
+</div><div class='output co'>#&gt; # 2021-04-16 04:29:23 UTC: Initialization
 #&gt; # Elitist race
 #&gt; # Elitist new instances: 1
 #&gt; # Elitist limit: 2
@@ -265,7 +265,7 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; # mu: 5
 #&gt; # deterministic: FALSE
 #&gt; 
-#&gt; # 2021-04-15 04:27:50 UTC: Iteration 1 of 2
+#&gt; # 2021-04-16 04:29:23 UTC: Iteration 1 of 2
 #&gt; # experimentsUsedSoFar: 0
 #&gt; # remainingBudget: 42
 #&gt; # currentBudget: 21
@@ -294,11 +294,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.     cp .PARENT.
 #&gt; 1    1 0.0519       NA
 #&gt; 
-#&gt; # 2021-04-15 04:27:52 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-04-16 04:29:25 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;       cp
 #&gt; 1 0.0519
 #&gt; 2 0.0368
-#&gt; # 2021-04-15 04:27:52 UTC: Iteration 2 of 2
+#&gt; # 2021-04-16 04:29:25 UTC: Iteration 2 of 2
 #&gt; # experimentsUsedSoFar: 21
 #&gt; # remainingBudget: 21
 #&gt; # currentBudget: 21
@@ -328,11 +328,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.     cp .PARENT.
 #&gt; 1    1 0.0519       NA
 #&gt; 
-#&gt; # 2021-04-15 04:27:54 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-04-16 04:29:27 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;       cp
 #&gt; 1 0.0519
 #&gt; 2 0.0368
-#&gt; # 2021-04-15 04:27:54 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
+#&gt; # 2021-04-16 04:29:27 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
 #&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
 #&gt; # Iteration: 3
 #&gt; # nbIterations: 3
@@ -351,45 +351,45 @@ TerminatorRunTime budget for stability reasons.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;        cp id_configuration id_instance classif.ce           timestamp batch_nr
-#&gt;  1: 0.052                1           7       0.02 2021-04-15 04:27:50        1
-#&gt;  2: 0.037                2           7       0.02 2021-04-15 04:27:51        2
-#&gt;  3: 0.040                3           7       0.02 2021-04-15 04:27:51        3
-#&gt;  4: 0.052                1           2       0.06 2021-04-15 04:27:51        4
-#&gt;  5: 0.037                2           2       0.06 2021-04-15 04:27:51        5
-#&gt;  6: 0.040                3           2       0.06 2021-04-15 04:27:51        6
-#&gt;  7: 0.052                1           4       0.02 2021-04-15 04:27:51        7
-#&gt;  8: 0.037                2           4       0.02 2021-04-15 04:27:51        8
-#&gt;  9: 0.040                3           4       0.02 2021-04-15 04:27:51        9
-#&gt; 10: 0.052                1           9       0.04 2021-04-15 04:27:51       10
-#&gt; 11: 0.037                2           9       0.04 2021-04-15 04:27:51       11
-#&gt; 12: 0.040                3           9       0.04 2021-04-15 04:27:51       12
-#&gt; 13: 0.052                1           8       0.04 2021-04-15 04:27:52       13
-#&gt; 14: 0.037                2           8       0.04 2021-04-15 04:27:52       14
-#&gt; 15: 0.040                3           8       0.04 2021-04-15 04:27:52       15
-#&gt; 16: 0.052                1           6       0.10 2021-04-15 04:27:52       16
-#&gt; 17: 0.037                2           6       0.10 2021-04-15 04:27:52       17
-#&gt; 18: 0.040                3           6       0.10 2021-04-15 04:27:52       18
-#&gt; 19: 0.052                1           5       0.06 2021-04-15 04:27:52       19
-#&gt; 20: 0.037                2           5       0.06 2021-04-15 04:27:52       20
-#&gt; 21: 0.040                3           5       0.06 2021-04-15 04:27:52       21
-#&gt; 22: 0.052                1           1       0.06 2021-04-15 04:27:52       22
-#&gt; 23: 0.037                2           1       0.06 2021-04-15 04:27:53       23
-#&gt; 24: 0.038                4           1       0.06 2021-04-15 04:27:53       24
-#&gt; 25: 0.051                5           1       0.06 2021-04-15 04:27:53       25
-#&gt; 26: 0.038                4           4       0.02 2021-04-15 04:27:53       26
-#&gt; 27: 0.051                5           4       0.02 2021-04-15 04:27:53       27
-#&gt; 28: 0.038                4           5       0.06 2021-04-15 04:27:53       28
-#&gt; 29: 0.051                5           5       0.06 2021-04-15 04:27:53       29
-#&gt; 30: 0.038                4           7       0.02 2021-04-15 04:27:53       30
-#&gt; 31: 0.051                5           7       0.02 2021-04-15 04:27:53       31
-#&gt; 32: 0.038                4           9       0.04 2021-04-15 04:27:53       32
-#&gt; 33: 0.051                5           9       0.04 2021-04-15 04:27:53       33
-#&gt; 34: 0.038                4           8       0.04 2021-04-15 04:27:54       34
-#&gt; 35: 0.051                5           8       0.04 2021-04-15 04:27:54       35
-#&gt; 36: 0.038                4           6       0.10 2021-04-15 04:27:54       36
-#&gt; 37: 0.051                5           6       0.10 2021-04-15 04:27:54       37
-#&gt; 38: 0.038                4           2       0.06 2021-04-15 04:27:54       38
-#&gt; 39: 0.051                5           2       0.06 2021-04-15 04:27:54       39
+#&gt;  1: 0.052                1           7       0.02 2021-04-16 04:29:23        1
+#&gt;  2: 0.037                2           7       0.02 2021-04-16 04:29:23        2
+#&gt;  3: 0.040                3           7       0.02 2021-04-16 04:29:23        3
+#&gt;  4: 0.052                1           2       0.06 2021-04-16 04:29:23        4
+#&gt;  5: 0.037                2           2       0.06 2021-04-16 04:29:24        5
+#&gt;  6: 0.040                3           2       0.06 2021-04-16 04:29:24        6
+#&gt;  7: 0.052                1           4       0.02 2021-04-16 04:29:24        7
+#&gt;  8: 0.037                2           4       0.02 2021-04-16 04:29:24        8
+#&gt;  9: 0.040                3           4       0.02 2021-04-16 04:29:24        9
+#&gt; 10: 0.052                1           9       0.04 2021-04-16 04:29:24       10
+#&gt; 11: 0.037                2           9       0.04 2021-04-16 04:29:24       11
+#&gt; 12: 0.040                3           9       0.04 2021-04-16 04:29:24       12
+#&gt; 13: 0.052                1           8       0.04 2021-04-16 04:29:24       13
+#&gt; 14: 0.037                2           8       0.04 2021-04-16 04:29:24       14
+#&gt; 15: 0.040                3           8       0.04 2021-04-16 04:29:24       15
+#&gt; 16: 0.052                1           6       0.10 2021-04-16 04:29:25       16
+#&gt; 17: 0.037                2           6       0.10 2021-04-16 04:29:25       17
+#&gt; 18: 0.040                3           6       0.10 2021-04-16 04:29:25       18
+#&gt; 19: 0.052                1           5       0.06 2021-04-16 04:29:25       19
+#&gt; 20: 0.037                2           5       0.06 2021-04-16 04:29:25       20
+#&gt; 21: 0.040                3           5       0.06 2021-04-16 04:29:25       21
+#&gt; 22: 0.052                1           1       0.06 2021-04-16 04:29:25       22
+#&gt; 23: 0.037                2           1       0.06 2021-04-16 04:29:25       23
+#&gt; 24: 0.038                4           1       0.06 2021-04-16 04:29:25       24
+#&gt; 25: 0.051                5           1       0.06 2021-04-16 04:29:25       25
+#&gt; 26: 0.038                4           4       0.02 2021-04-16 04:29:25       26
+#&gt; 27: 0.051                5           4       0.02 2021-04-16 04:29:26       27
+#&gt; 28: 0.038                4           5       0.06 2021-04-16 04:29:26       28
+#&gt; 29: 0.051                5           5       0.06 2021-04-16 04:29:26       29
+#&gt; 30: 0.038                4           7       0.02 2021-04-16 04:29:26       30
+#&gt; 31: 0.051                5           7       0.02 2021-04-16 04:29:26       31
+#&gt; 32: 0.038                4           9       0.04 2021-04-16 04:29:26       32
+#&gt; 33: 0.051                5           9       0.04 2021-04-16 04:29:26       33
+#&gt; 34: 0.038                4           8       0.04 2021-04-16 04:29:26       34
+#&gt; 35: 0.051                5           8       0.04 2021-04-16 04:29:26       35
+#&gt; 36: 0.038                4           6       0.10 2021-04-16 04:29:26       36
+#&gt; 37: 0.051                5           6       0.10 2021-04-16 04:29:26       37
+#&gt; 38: 0.038                4           2       0.06 2021-04-16 04:29:27       38
+#&gt; 39: 0.051                5           2       0.06 2021-04-16 04:29:27       39
 #&gt;        cp id_configuration id_instance classif.ce           timestamp batch_nr</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
