@@ -324,10 +324,10 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce           timestamp batch_nr
-#&gt; 1: 0.01        3       0.02 2021-05-10 04:44:00        1
-#&gt; 2: 0.01        5       0.02 2021-05-10 04:44:00        1
-#&gt; 3: 0.05        3       0.06 2021-05-10 04:44:00        1
-#&gt; 4: 0.05        5       0.06 2021-05-10 04:44:00        1</div><div class='input'>
+#&gt; 1: 0.01        3       0.02 2021-05-11 04:44:28        1
+#&gt; 2: 0.01        5       0.02 2021-05-11 04:44:28        1
+#&gt; 3: 0.05        3       0.06 2021-05-11 04:44:28        1
+#&gt; 4: 0.05        5       0.06 2021-05-11 04:44:28        1</div><div class='input'>
 <span class='co'># try more points, catch the raised terminated message</span>
 <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
   <span class='va'>inst</span><span class='op'>$</span><span class='fu'>eval_batch</span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fl'>0.01</span>, minsplit <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
@@ -344,11 +344,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>inst</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce           timestamp batch_nr
-#&gt; 1: 0.01        3       0.02 2021-05-10 04:44:00        1
-#&gt; 2: 0.01        5       0.02 2021-05-10 04:44:00        1
-#&gt; 3: 0.05        3       0.06 2021-05-10 04:44:00        1
-#&gt; 4: 0.05        5       0.06 2021-05-10 04:44:00        1
-#&gt; 5: 0.01        7       0.02 2021-05-10 04:44:00        2</div><div class='input'>
+#&gt; 1: 0.01        3       0.02 2021-05-11 04:44:28        1
+#&gt; 2: 0.01        5       0.02 2021-05-11 04:44:28        1
+#&gt; 3: 0.05        3       0.06 2021-05-11 04:44:28        1
+#&gt; 4: 0.05        5       0.06 2021-05-11 04:44:28        1
+#&gt; 5: 0.01        7       0.02 2021-05-11 04:44:28        2</div><div class='input'>
 <span class='co'>### Error handling</span>
 <span class='co'># get a learner which breaks with 50% probability</span>
 <span class='co'># set encapsulation + fallback</span>
@@ -379,11 +379,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># column errors: multiple errors recorded</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      x classif.ce                                uhash           timestamp
-#&gt; 1: 0.2  0.6908663 11e50b4b-8301-4caa-a338-dd7214dc9401 2021-05-10 04:44:01
-#&gt; 2: 0.4  0.6011299 5e6677e1-d2a7-4afc-b637-48a711e8a533 2021-05-10 04:44:01
-#&gt; 3: 0.6  0.6011299 c12fd7c9-5016-461e-bedb-ea918d0c0274 2021-05-10 04:44:01
-#&gt; 4: 0.8  0.6011299 cb06b47a-8968-4bc5-90d0-29f4dfc8597b 2021-05-10 04:44:01
-#&gt; 5: 1.0  0.6739171 d98c959b-7657-41ed-88e9-3de0b68071bd 2021-05-10 04:44:01
+#&gt; 1: 0.2  0.6908663 d4f582f1-fb25-4e05-b25c-39d2b8cfedd0 2021-05-11 04:44:29
+#&gt; 2: 0.4  0.6011299 e2dd5d78-1d07-4216-9005-f0e3c6c004ba 2021-05-11 04:44:29
+#&gt; 3: 0.6  0.6011299 74168370-5a30-47ae-b05c-2d6c1bb35f3d 2021-05-11 04:44:29
+#&gt; 4: 0.8  0.6011299 b8fb9c90-dfc1-4623-8097-c01a6e248baa 2021-05-11 04:44:29
+#&gt; 5: 1.0  0.6739171 5e3ba960-19b8-4827-9d77-d3f10fe8c719 2021-05-11 04:44:29
 #&gt;    batch_nr x_domain_x
 #&gt; 1:        1        0.2
 #&gt; 2:        1        0.4
