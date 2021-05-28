@@ -317,29 +317,41 @@ validity?</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
+<span class='va'>train_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span>, <span class='fl'>0.8</span> <span class='op'>*</span> <span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>
+<span class='va'>test_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>, <span class='va'>train_set</span><span class='op'>)</span>
 
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
   resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
   measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>at</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+<span class='co'># tune hyperparameters and fit final model</span>
+<span class='va'>at</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span>, row_ids <span class='op'>=</span> <span class='va'>train_set</span><span class='op'>)</span>
+
+<span class='co'># predict with final model</span>
+<span class='va'>at</span><span class='op'>$</span><span class='fu'>predict</span><span class='op'>(</span><span class='va'>task</span>, row_ids <span class='op'>=</span> <span class='va'>test_set</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;PredictionClassif&gt; for 154 observations:
+#&gt;     row_ids truth response
+#&gt;           2   neg      neg
+#&gt;           3   pos      pos
+#&gt;           9   pos      pos
+#&gt; ---                       
+#&gt;         763   neg      neg
+#&gt;         764   neg      neg
+#&gt;         768   neg      neg</div><div class='input'>
+<span class='co'># show tuning result</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>tuning_result</span>
+</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122</div><div class='input'>
+<span class='co'># model slot contains trained learner and tuning instance</span>
 <span class='va'>at</span><span class='op'>$</span><span class='va'>model</span>
 </div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.056
+#&gt; * Parameters: xval=0, cp=0.01754
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
@@ -349,54 +361,96 @@ validity?</p></dd>
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstanceSingleCrit&gt;
 #&gt; * State:  Optimized
-#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
+#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_pima&gt;
 #&gt; * Search Space:
 #&gt; &lt;ParamSet&gt;
-#&gt;    id    class lower upper nlevels        default value
-#&gt; 1: cp ParamDbl 0.001   0.1     Inf &lt;NoDefault[3]&gt;      
+#&gt;    id    class    lower     upper nlevels        default value
+#&gt; 1: cp ParamDbl -9.21034 -2.302585     Inf &lt;NoDefault[3]&gt;      
+#&gt; Trafo is set.
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * Terminated: TRUE
 #&gt; * Result:
-#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.06
+#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
-#&gt;       cp classif.ce           timestamp batch_nr
-#&gt; 1: 0.056       0.06 2021-05-28 05:49:38        1
-#&gt; 2: 0.045       0.06 2021-05-28 05:49:38        2
-#&gt; 3: 0.023       0.06 2021-05-28 05:49:38        3
-#&gt; 4: 0.012       0.06 2021-05-28 05:49:38        4
-#&gt; 5: 0.089       0.06 2021-05-28 05:49:38        5
-#&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
+#&gt;      cp classif.ce           timestamp batch_nr
+#&gt; 1: -4.0       0.22 2021-05-28 13:42:58        1
+#&gt; 2: -4.0       0.22 2021-05-28 13:42:58        2
+#&gt; 3: -8.8       0.26 2021-05-28 13:42:58        3
+#&gt; 4: -6.5       0.26 2021-05-28 13:42:58        4
+#&gt; 5: -4.8       0.22 2021-05-28 13:42:58        5
+#&gt; </div><div class='input'>
+<span class='co'># shortcut trained learner</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.056
+#&gt; * Parameters: xval=0, cp=0.01754
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
 #&gt; * Properties: importance, missings, multiclass, selected_features,
 #&gt;   twoclass, weights</div><div class='input'>
-<span class='co'># Nested resampling</span>
+<span class='co'># shortcut tuning instance</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>tuning_instance</span>
+</div><div class='output co'>#&gt; &lt;TuningInstanceSingleCrit&gt;
+#&gt; * State:  Optimized
+#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_pima&gt;
+#&gt; * Search Space:
+#&gt; &lt;ParamSet&gt;
+#&gt;    id    class    lower     upper nlevels        default value
+#&gt; 1: cp ParamDbl -9.21034 -2.302585     Inf &lt;NoDefault[3]&gt;      
+#&gt; Trafo is set.
+#&gt; * Terminator: &lt;TerminatorEvals&gt;
+#&gt; * Terminated: TRUE
+#&gt; * Result:
+#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122
+#&gt; * Archive:
+#&gt; &lt;ArchiveTuning&gt;
+#&gt;      cp classif.ce           timestamp batch_nr
+#&gt; 1: -4.0       0.22 2021-05-28 13:42:58        1
+#&gt; 2: -4.0       0.22 2021-05-28 13:42:58        2
+#&gt; 3: -8.8       0.26 2021-05-28 13:42:58        3
+#&gt; 4: -6.5       0.26 2021-05-28 13:42:58        4
+#&gt; 5: -4.8       0.22 2021-05-28 13:42:58        5</div><div class='input'>
+
+<span class='co'>### nested resampling</span>
+
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
   resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
   measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='co'># Aggregate performance of outer results</span>
+<span class='co'># retrieve inner tuning results.</span>
+<span class='fu'><a href='extract_inner_tuning_results.html'>extract_inner_tuning_results</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.391337          &lt;list[2]&gt; &lt;list[1]&gt;  0.2046784
+#&gt; 2: -3.448134          &lt;list[2]&gt; &lt;list[1]&gt;  0.2865497
+#&gt; 3: -3.998172          &lt;list[2]&gt; &lt;list[1]&gt;  0.2046784</div><div class='input'>
+<span class='co'># performance scores estimated on the outer resampling</span>
+<span class='va'>rr</span><span class='op'>$</span><span class='fu'>score</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                 task task_id         learner          learner_id
+#&gt; 1: &lt;TaskClassif[46]&gt;    pima &lt;AutoTuner[38]&gt; classif.rpart.tuned
+#&gt; 2: &lt;TaskClassif[46]&gt;    pima &lt;AutoTuner[38]&gt; classif.rpart.tuned
+#&gt; 3: &lt;TaskClassif[46]&gt;    pima &lt;AutoTuner[38]&gt; classif.rpart.tuned
+#&gt;            resampling resampling_id iteration              prediction
+#&gt; 1: &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[19]&gt;
+#&gt; 2: &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[19]&gt;
+#&gt; 3: &lt;ResamplingCV[19]&gt;            cv         3 &lt;PredictionClassif[19]&gt;
+#&gt;    classif.ce
+#&gt; 1:  0.2500000
+#&gt; 2:  0.2656250
+#&gt; 3:  0.2148438</div><div class='input'>
+<span class='co'># unbiased performance of the final model trained on the full data set</span>
 <span class='va'>rr</span><span class='op'>$</span><span class='fu'>aggregate</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; classif.ce 
-#&gt; 0.09333333 </div><div class='input'>
-<span class='co'># Retrieve inner tuning results.</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span><span class='op'>$</span><span class='va'>learner</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>tuning_result</span>
-</div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div></pre>
+#&gt;  0.2434896 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

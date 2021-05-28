@@ -234,38 +234,32 @@ TerminatorRunTime budget for stability reasons.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>42</span><span class='op'>)</span>
-<span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
   task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
   resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
   measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  terminator <span class='op'>=</span> <span class='va'>terminator</span>
+  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>42</span><span class='op'>)</span>
 <span class='op'>)</span>
-<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"irace"</span><span class='op'>)</span>
+<span class='va'>tuner</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"irace"</span><span class='op'>)</span>
 
+<span class='co'># optimize hyperparameter</span>
 <span class='co'># modifies the instance by reference</span>
-<span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-05-28 05:49:52 UTC: Initialization
+<span class='va'>tuner</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; # 2021-05-28 13:43:15 UTC: Initialization
 #&gt; # Elitist race
 #&gt; # Elitist new instances: 1
 #&gt; # Elitist limit: 2
 #&gt; # nbIterations: 2
 #&gt; # minNbSurvival: 2
 #&gt; # nbParameters: 1
-#&gt; # seed: 962396134
+#&gt; # seed: 1437803240
 #&gt; # confidence level: 0.95
 #&gt; # budget: 42
 #&gt; # mu: 5
 #&gt; # deterministic: FALSE
 #&gt; 
-#&gt; # 2021-05-28 05:49:52 UTC: Iteration 1 of 2
+#&gt; # 2021-05-28 13:43:15 UTC: Iteration 1 of 2
 #&gt; # experimentsUsedSoFar: 0
 #&gt; # remainingBudget: 42
 #&gt; # currentBudget: 21
@@ -281,24 +275,24 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
 #&gt; | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; |x|          1|          3|          1|  0.02000000000|          3|00:00:00|   NA|  NA|    NA|
-#&gt; |x|          2|          3|          1|  0.04000000000|          6|00:00:00|+1.00|1.00|0.0000|
-#&gt; |x|          3|          3|          1|  0.03333333333|          9|00:00:00|+1.00|1.00|0.0000|
-#&gt; |x|          4|          3|          1|  0.03500000000|         12|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          5|          3|          1|  0.03600000000|         15|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          6|          3|          1|  0.04666666667|         18|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          7|          3|          1|  0.04857142857|         21|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          1|          3|          1|  0.08000000000|          3|00:00:00|   NA|  NA|    NA|
+#&gt; |x|          2|          3|          1|  0.07000000000|          6|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          3|          3|          1|  0.07333333333|          9|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          4|          3|          1|  0.08000000000|         12|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          5|          3|          1|  0.07600000000|         15|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          6|          3|          1|  0.07666666667|         18|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          7|          3|          1|  0.08000000000|         21|00:00:00|+1.00|1.00|0.0000|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; Best-so-far configuration:           1    mean value:   0.04857142857
+#&gt; Best-so-far configuration:           1    mean value:   0.08000000000
 #&gt; Description of the best-so-far configuration:
-#&gt;   .ID.     cp .PARENT.
-#&gt; 1    1 0.0519       NA
+#&gt;   .ID.      cp .PARENT.
+#&gt; 1    1 -8.9279       NA
 #&gt; 
-#&gt; # 2021-05-28 05:49:54 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
-#&gt;       cp
-#&gt; 1 0.0519
-#&gt; 2 0.0368
-#&gt; # 2021-05-28 05:49:54 UTC: Iteration 2 of 2
+#&gt; # 2021-05-28 13:43:17 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt;        cp
+#&gt; 1 -8.9279
+#&gt; 2 -5.7228
+#&gt; # 2021-05-28 13:43:17 UTC: Iteration 2 of 2
 #&gt; # experimentsUsedSoFar: 21
 #&gt; # remainingBudget: 21
 #&gt; # currentBudget: 21
@@ -314,25 +308,25 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
 #&gt; | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; |x|          8|          4|          1|  0.06000000000|          4|00:00:00|   NA|  NA|    NA|
-#&gt; |x|          3|          4|          1|  0.04000000000|          6|00:00:00|+1.00|1.00|0.0000|
-#&gt; |x|          7|          4|          1|  0.04666666667|          8|00:00:00|+1.00|1.00|0.0000|
-#&gt; |x|          1|          4|          1|  0.04000000000|         10|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          4|          4|          1|  0.04000000000|         12|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          5|          4|          1|  0.04000000000|         14|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          6|          4|          1|  0.04857142857|         16|00:00:00|+1.00|1.00|0.0000|
-#&gt; |=|          2|          4|          1|  0.05000000000|         18|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          8|          4|          1|  0.08000000000|          4|00:00:00|   NA|  NA|    NA|
+#&gt; |x|          7|          4|          1|  0.09000000000|          6|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          1|          4|          1|  0.08666666667|          8|00:00:00|+1.00|1.00|0.0000|
+#&gt; |x|          3|          4|          1|  0.08500000000|         10|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          4|          4|          1|  0.08800000000|         12|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          6|          4|          1|  0.08666666667|         14|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          5|          4|          1|  0.08285714286|         16|00:00:00|+1.00|1.00|0.0000|
+#&gt; |=|          2|          4|          1|  0.08000000000|         18|00:00:00|+1.00|1.00|0.0000|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; Best-so-far configuration:           1    mean value:   0.05000000000
+#&gt; Best-so-far configuration:           1    mean value:   0.08000000000
 #&gt; Description of the best-so-far configuration:
-#&gt;   .ID.     cp .PARENT.
-#&gt; 1    1 0.0519       NA
+#&gt;   .ID.      cp .PARENT.
+#&gt; 1    1 -8.9279       NA
 #&gt; 
-#&gt; # 2021-05-28 05:49:56 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
-#&gt;       cp
-#&gt; 1 0.0519
-#&gt; 2 0.0368
-#&gt; # 2021-05-28 05:49:56 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
+#&gt; # 2021-05-28 13:43:19 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt;        cp
+#&gt; 1 -8.9279
+#&gt; 2 -5.7228
+#&gt; # 2021-05-28 13:43:19 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
 #&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
 #&gt; # Iteration: 3
 #&gt; # nbIterations: 3
@@ -341,56 +335,56 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; # remainingBudget: 3
 #&gt; # currentBudget: 3
 #&gt; # number of elites: 2
-#&gt; # nbConfigurations: 2</div><div class='output co'>#&gt;        cp id_configuration learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.0519                1          &lt;list[2]&gt; &lt;list[1]&gt;       0.05</div><div class='input'>
+#&gt; # nbConfigurations: 2</div><div class='output co'>#&gt;         cp id_configuration learner_param_vals  x_domain classif.ce
+#&gt; 1: -8.9279                1          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># returns best configuration and best performance</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;        cp id_configuration learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.0519                1          &lt;list[2]&gt; &lt;list[1]&gt;       0.05</div><div class='input'>
+</div><div class='output co'>#&gt;         cp id_configuration learner_param_vals  x_domain classif.ce
+#&gt; 1: -8.9279                1          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</div><div class='input'>
 <span class='co'># allows access of data.table of full path of all evaluations</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;        cp id_configuration id_instance classif.ce           timestamp batch_nr
-#&gt;  1: 0.052                1           7       0.02 2021-05-28 05:49:52        1
-#&gt;  2: 0.037                2           7       0.02 2021-05-28 05:49:52        2
-#&gt;  3: 0.040                3           7       0.02 2021-05-28 05:49:52        3
-#&gt;  4: 0.052                1           2       0.06 2021-05-28 05:49:52        4
-#&gt;  5: 0.037                2           2       0.06 2021-05-28 05:49:53        5
-#&gt;  6: 0.040                3           2       0.06 2021-05-28 05:49:53        6
-#&gt;  7: 0.052                1           4       0.02 2021-05-28 05:49:53        7
-#&gt;  8: 0.037                2           4       0.02 2021-05-28 05:49:53        8
-#&gt;  9: 0.040                3           4       0.02 2021-05-28 05:49:53        9
-#&gt; 10: 0.052                1           9       0.04 2021-05-28 05:49:53       10
-#&gt; 11: 0.037                2           9       0.04 2021-05-28 05:49:53       11
-#&gt; 12: 0.040                3           9       0.04 2021-05-28 05:49:53       12
-#&gt; 13: 0.052                1           8       0.04 2021-05-28 05:49:53       13
-#&gt; 14: 0.037                2           8       0.04 2021-05-28 05:49:53       14
-#&gt; 15: 0.040                3           8       0.04 2021-05-28 05:49:53       15
-#&gt; 16: 0.052                1           6       0.10 2021-05-28 05:49:54       16
-#&gt; 17: 0.037                2           6       0.10 2021-05-28 05:49:54       17
-#&gt; 18: 0.040                3           6       0.10 2021-05-28 05:49:54       18
-#&gt; 19: 0.052                1           5       0.06 2021-05-28 05:49:54       19
-#&gt; 20: 0.037                2           5       0.06 2021-05-28 05:49:54       20
-#&gt; 21: 0.040                3           5       0.06 2021-05-28 05:49:54       21
-#&gt; 22: 0.052                1           1       0.06 2021-05-28 05:49:54       22
-#&gt; 23: 0.037                2           1       0.06 2021-05-28 05:49:54       23
-#&gt; 24: 0.038                4           1       0.06 2021-05-28 05:49:54       24
-#&gt; 25: 0.051                5           1       0.06 2021-05-28 05:49:54       25
-#&gt; 26: 0.038                4           4       0.02 2021-05-28 05:49:55       26
-#&gt; 27: 0.051                5           4       0.02 2021-05-28 05:49:55       27
-#&gt; 28: 0.038                4           5       0.06 2021-05-28 05:49:55       28
-#&gt; 29: 0.051                5           5       0.06 2021-05-28 05:49:55       29
-#&gt; 30: 0.038                4           7       0.02 2021-05-28 05:49:55       30
-#&gt; 31: 0.051                5           7       0.02 2021-05-28 05:49:55       31
-#&gt; 32: 0.038                4           9       0.04 2021-05-28 05:49:55       32
-#&gt; 33: 0.051                5           9       0.04 2021-05-28 05:49:55       33
-#&gt; 34: 0.038                4           8       0.04 2021-05-28 05:49:55       34
-#&gt; 35: 0.051                5           8       0.04 2021-05-28 05:49:55       35
-#&gt; 36: 0.038                4           6       0.10 2021-05-28 05:49:55       36
-#&gt; 37: 0.051                5           6       0.10 2021-05-28 05:49:56       37
-#&gt; 38: 0.038                4           2       0.06 2021-05-28 05:49:56       38
-#&gt; 39: 0.051                5           2       0.06 2021-05-28 05:49:56       39
-#&gt;        cp id_configuration id_instance classif.ce           timestamp batch_nr</div></pre>
+#&gt;       cp id_configuration id_instance classif.ce           timestamp batch_nr
+#&gt;  1: -8.9                1           9       0.08 2021-05-28 13:43:15        1
+#&gt;  2: -5.7                2           9       0.08 2021-05-28 13:43:15        2
+#&gt;  3: -8.9                3           9       0.08 2021-05-28 13:43:15        3
+#&gt;  4: -8.9                1           6       0.06 2021-05-28 13:43:16        4
+#&gt;  5: -5.7                2           6       0.06 2021-05-28 13:43:16        5
+#&gt;  6: -8.9                3           6       0.06 2021-05-28 13:43:16        6
+#&gt;  7: -8.9                1           2       0.08 2021-05-28 13:43:16        7
+#&gt;  8: -5.7                2           2       0.08 2021-05-28 13:43:16        8
+#&gt;  9: -8.9                3           2       0.08 2021-05-28 13:43:16        9
+#&gt; 10: -8.9                1           3       0.10 2021-05-28 13:43:16       10
+#&gt; 11: -5.7                2           3       0.10 2021-05-28 13:43:16       11
+#&gt; 12: -8.9                3           3       0.10 2021-05-28 13:43:16       12
+#&gt; 13: -8.9                1           5       0.06 2021-05-28 13:43:17       13
+#&gt; 14: -5.7                2           5       0.06 2021-05-28 13:43:17       14
+#&gt; 15: -8.9                3           5       0.06 2021-05-28 13:43:17       15
+#&gt; 16: -8.9                1           4       0.08 2021-05-28 13:43:17       16
+#&gt; 17: -5.7                2           4       0.08 2021-05-28 13:43:17       17
+#&gt; 18: -8.9                3           4       0.08 2021-05-28 13:43:17       18
+#&gt; 19: -8.9                1           1       0.10 2021-05-28 13:43:17       19
+#&gt; 20: -5.7                2           1       0.10 2021-05-28 13:43:17       20
+#&gt; 21: -8.9                3           1       0.10 2021-05-28 13:43:17       21
+#&gt; 22: -8.9                1          10       0.08 2021-05-28 13:43:18       22
+#&gt; 23: -5.7                2          10       0.08 2021-05-28 13:43:18       23
+#&gt; 24: -5.8                4          10       0.08 2021-05-28 13:43:18       24
+#&gt; 25: -7.6                5          10       0.08 2021-05-28 13:43:18       25
+#&gt; 26: -5.8                4           1       0.10 2021-05-28 13:43:18       26
+#&gt; 27: -7.6                5           1       0.10 2021-05-28 13:43:18       27
+#&gt; 28: -5.8                4           9       0.08 2021-05-28 13:43:18       28
+#&gt; 29: -7.6                5           9       0.08 2021-05-28 13:43:18       29
+#&gt; 30: -5.8                4           2       0.08 2021-05-28 13:43:18       30
+#&gt; 31: -7.6                5           2       0.08 2021-05-28 13:43:18       31
+#&gt; 32: -5.8                4           3       0.10 2021-05-28 13:43:19       32
+#&gt; 33: -7.6                5           3       0.10 2021-05-28 13:43:19       33
+#&gt; 34: -5.8                4           4       0.08 2021-05-28 13:43:19       34
+#&gt; 35: -7.6                5           4       0.08 2021-05-28 13:43:19       35
+#&gt; 36: -5.8                4           5       0.06 2021-05-28 13:43:19       36
+#&gt; 37: -7.6                5           5       0.06 2021-05-28 13:43:19       37
+#&gt; 38: -5.8                4           6       0.06 2021-05-28 13:43:19       38
+#&gt; 39: -7.6                5           6       0.06 2021-05-28 13:43:19       39
+#&gt;       cp id_configuration id_instance classif.ce           timestamp batch_nr</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
