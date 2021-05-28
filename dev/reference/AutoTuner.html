@@ -282,7 +282,8 @@ When to stop tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceS
 Tuning algorithm to run.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
+Hyperparameter search space. If <code>NULL</code>, the search space is constructed
+from the <a href='https://paradox.mlr-org.com/reference/to_tune.html'>TuneToken</a> in the <code>ParamSet</code> of the learner.</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), stores the internally created
@@ -375,11 +376,11 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp classif.ce           timestamp batch_nr
-#&gt; 1: -4.0       0.22 2021-05-28 13:42:58        1
-#&gt; 2: -4.0       0.22 2021-05-28 13:42:58        2
-#&gt; 3: -8.8       0.26 2021-05-28 13:42:58        3
-#&gt; 4: -6.5       0.26 2021-05-28 13:42:58        4
-#&gt; 5: -4.8       0.22 2021-05-28 13:42:58        5
+#&gt; 1: -4.0       0.22 2021-05-28 14:05:27        1
+#&gt; 2: -4.0       0.22 2021-05-28 14:05:27        2
+#&gt; 3: -8.8       0.26 2021-05-28 14:05:27        3
+#&gt; 4: -6.5       0.26 2021-05-28 14:05:27        4
+#&gt; 5: -4.8       0.22 2021-05-28 14:05:27        5
 #&gt; </div><div class='input'>
 <span class='co'># shortcut trained learner</span>
 <span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
@@ -409,11 +410,11 @@ validity?</p></dd>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp classif.ce           timestamp batch_nr
-#&gt; 1: -4.0       0.22 2021-05-28 13:42:58        1
-#&gt; 2: -4.0       0.22 2021-05-28 13:42:58        2
-#&gt; 3: -8.8       0.26 2021-05-28 13:42:58        3
-#&gt; 4: -6.5       0.26 2021-05-28 13:42:58        4
-#&gt; 5: -4.8       0.22 2021-05-28 13:42:58        5</div><div class='input'>
+#&gt; 1: -4.0       0.22 2021-05-28 14:05:27        1
+#&gt; 2: -4.0       0.22 2021-05-28 14:05:27        2
+#&gt; 3: -8.8       0.26 2021-05-28 14:05:27        3
+#&gt; 4: -6.5       0.26 2021-05-28 14:05:27        4
+#&gt; 5: -4.8       0.22 2021-05-28 14:05:27        5</div><div class='input'>
 
 <span class='co'>### nested resampling</span>
 

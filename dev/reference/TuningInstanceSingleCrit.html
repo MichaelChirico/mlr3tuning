@@ -244,7 +244,9 @@ Measure to optimize.</p></dd>
 
 <dt><code>terminator</code></dt><dd><p>(Terminator).</p></dd>
 
-<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>).</p></dd>
+<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+Hyperparameter search space. If <code>NULL</code>, the search space is constructed from
+the <a href='https://paradox.mlr-org.com/reference/to_tune.html'>TuneToken</a> in the <code>ParamSet</code> of the learner.</p></dd>
 
 <dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), stores the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> in archive.</p></dd>
@@ -322,8 +324,8 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce           timestamp batch_nr
-#&gt; 1: 0.05        5       0.06 2021-05-28 13:43:03        1
-#&gt; 2: 0.01        3       0.04 2021-05-28 13:43:03        1</div><div class='input'>
+#&gt; 1: 0.05        5       0.06 2021-05-28 14:05:31        1
+#&gt; 2: 0.01        3       0.04 2021-05-28 14:05:31        1</div><div class='input'>
 <span class='co'>### error handling</span>
 
 <span class='co'># get a learner which breaks with 50% probability</span>
