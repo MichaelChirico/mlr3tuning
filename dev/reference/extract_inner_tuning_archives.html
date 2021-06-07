@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract Inner Tuning Results — extract_inner_tuning_results • mlr3tuning</title>
+<title>Extract Inner Tuning Archives — extract_inner_tuning_archives • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,10 +47,10 @@
 
 
 
-<meta property="og:title" content="Extract Inner Tuning Results — extract_inner_tuning_results" />
-<meta property="og:description" content="Extract inner tuning results of nested resampling. Implemented for
+<meta property="og:title" content="Extract Inner Tuning Archives — extract_inner_tuning_archives" />
+<meta property="og:description" content="Extract inner tuning archives of nested resampling. Implemented for
 mlr3::ResampleResult and mlr3::BenchmarkResult. The function iterates
-over the AutoTuner objects and binds the tuning results to a
+over the AutoTuner objects and binds the tuning archives to a
 data.table::data.table(). AutoTuner must be initialized with
 store_tuning_instance = TRUE and resample() or benchmark() must be
 called with store_models = TRUE." />
@@ -146,21 +146,25 @@ called with store_models = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract Inner Tuning Results</h1>
+    <h1>Extract Inner Tuning Archives</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/nested_resampling.R'><code>R/nested_resampling.R</code></a></small>
-    <div class="hidden name"><code>extract_inner_tuning_results.Rd</code></div>
+    <div class="hidden name"><code>extract_inner_tuning_archives.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Extract inner tuning results of nested resampling. Implemented for
+    <p>Extract inner tuning archives of nested resampling. Implemented for
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> and <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. The function iterates
-over the <a href='AutoTuner.html'>AutoTuner</a> objects and binds the tuning results to a
+over the <a href='AutoTuner.html'>AutoTuner</a> objects and binds the tuning archives to a
 <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>. <a href='AutoTuner.html'>AutoTuner</a> must be initialized with
 <code>store_tuning_instance = TRUE</code> and <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample()</a></code> or <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>benchmark()</a></code> must be
 called with <code>store_models = TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>extract_inner_tuning_archives</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  unnest <span class='op'>=</span> <span class='st'>"x_domain"</span>,
+  exclude_columns <span class='op'>=</span> <span class='st'>"uhash"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,6 +172,18 @@ called with <code>store_models = TRUE</code>.</p>
     <tr>
       <th>x</th>
       <td><p>(<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> | <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>).</p></td>
+    </tr>
+    <tr>
+      <th>unnest</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Transforms list columns to separate columns. By default, <code>x_domain</code> is
+unnested. Set to <code>NULL</code> if no column should be unnested.</p></td>
+    </tr>
+    <tr>
+      <th>exclude_columns</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Exclude columns from result table. Set to <code>NULL</code> if no column should be
+excluded.</p></td>
     </tr>
     </table>
 
@@ -186,11 +202,22 @@ Index, giving the according row number in the original benchmark grid.</p></li>
 Iteration of the outer resampling.</p></li>
 <li><p>One column for each hyperparameter of the search spaces.</p></li>
 <li><p>One column for each performance measure.</p></li>
-<li><p><code>learner_param_vals</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Hyperparameter values used by the learner. Includes fixed and proposed
-hyperparameter values.</p></li>
+<li><p><code>runtime_learners</code> (<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Sum of training and predict times logged in learners per
+<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> / evaluation. This does not include potential
+overhead time.</p></li>
+<li><p><code>timestamp</code> (<code>POSIXct</code>)<br />
+Time stamp when the evaluation was logged into the archive.</p></li>
+<li><p><code>batch_nr</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Hyperparameters are evaluated in batches. Each batch has a unique batch
+number.</p></li>
 <li><p><code>x_domain</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-List of transformed hyperparameter values.</p></li>
+List of transformed hyperparameter values. By default this column is
+unnested.</p></li>
+<li><p><code>x_domain_*</code> (<code>any</code>)<br />
+Separate column for each transformed hyperparameter.</p></li>
+<li><p><code>resample_result</code> (<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>)<br />
+Resample result of the inner resampling.</p></li>
 <li><p><code>task_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
 <li><p><code>learner_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
 <li><p><code>resampling_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
@@ -211,15 +238,71 @@ List of transformed hyperparameter values.</p></li>
 <span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>extract_inner_tuning_results</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    iteration    cp classif.ce learner_param_vals  x_domain task_id
-#&gt; 1:         1 0.056 0.12121212          &lt;list[2]&gt; &lt;list[1]&gt;    iris
-#&gt; 2:         2 0.023 0.03030303          &lt;list[2]&gt; &lt;list[1]&gt;    iris
-#&gt; 3:         3 0.089 0.06060606          &lt;list[2]&gt; &lt;list[1]&gt;    iris
-#&gt;             learner_id resampling_id
-#&gt; 1: classif.rpart.tuned            cv
-#&gt; 2: classif.rpart.tuned            cv
-#&gt; 3: classif.rpart.tuned            cv</div></pre>
+<span class='fu'>extract_inner_tuning_archives</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     iteration    cp classif.ce runtime_learners           timestamp batch_nr
+#&gt;  1:         1 0.001 0.06060606            0.013 2021-06-07 15:04:38        1
+#&gt;  2:         1 0.023 0.06060606            0.009 2021-06-07 15:04:39        7
+#&gt;  3:         1 0.089 0.06060606            0.009 2021-06-07 15:04:39        9
+#&gt;  4:         1 0.056 0.06060606            0.009 2021-06-07 15:04:39       10
+#&gt;  5:         1 0.034 0.06060606            0.009 2021-06-07 15:04:38        6
+#&gt;  6:         1 0.045 0.06060606            0.010 2021-06-07 15:04:38        5
+#&gt;  7:         1 0.100 0.06060606            0.010 2021-06-07 15:04:38        2
+#&gt;  8:         1 0.078 0.06060606            0.008 2021-06-07 15:04:39        8
+#&gt;  9:         1 0.012 0.06060606            0.010 2021-06-07 15:04:38        3
+#&gt; 10:         1 0.067 0.06060606            0.010 2021-06-07 15:04:38        4
+#&gt; 11:         2 0.078 0.06060606            0.010 2021-06-07 15:04:35        3
+#&gt; 12:         2 0.045 0.06060606            0.010 2021-06-07 15:04:36        7
+#&gt; 13:         2 0.056 0.06060606            0.010 2021-06-07 15:04:35        1
+#&gt; 14:         2 0.034 0.06060606            0.009 2021-06-07 15:04:35        2
+#&gt; 15:         2 0.012 0.06060606            0.010 2021-06-07 15:04:36       10
+#&gt; 16:         2 0.001 0.06060606            0.009 2021-06-07 15:04:36        9
+#&gt; 17:         2 0.067 0.06060606            0.017 2021-06-07 15:04:36        6
+#&gt; 18:         2 0.089 0.06060606            0.008 2021-06-07 15:04:35        4
+#&gt; 19:         2 0.100 0.06060606            0.011 2021-06-07 15:04:36        8
+#&gt; 20:         2 0.023 0.06060606            0.011 2021-06-07 15:04:35        5
+#&gt; 21:         3 0.012 0.09090909            0.011 2021-06-07 15:04:36        2
+#&gt; 22:         3 0.089 0.09090909            0.011 2021-06-07 15:04:37       10
+#&gt; 23:         3 0.045 0.09090909            0.008 2021-06-07 15:04:36        3
+#&gt; 24:         3 0.067 0.09090909            0.009 2021-06-07 15:04:37        6
+#&gt; 25:         3 0.100 0.09090909            0.009 2021-06-07 15:04:37        9
+#&gt; 26:         3 0.056 0.09090909            0.017 2021-06-07 15:04:37        8
+#&gt; 27:         3 0.034 0.09090909            0.010 2021-06-07 15:04:36        1
+#&gt; 28:         3 0.023 0.09090909            0.009 2021-06-07 15:04:37        7
+#&gt; 29:         3 0.001 0.09090909            0.010 2021-06-07 15:04:37        5
+#&gt; 30:         3 0.078 0.09090909            0.008 2021-06-07 15:04:37        4
+#&gt;     iteration    cp classif.ce runtime_learners           timestamp batch_nr
+#&gt;     x_domain_cp      resample_result task_id          learner_id resampling_id
+#&gt;  1:       0.001 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  2:       0.023 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  3:       0.089 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  4:       0.056 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  5:       0.034 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  6:       0.045 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  7:       0.100 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  8:       0.078 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;  9:       0.012 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 10:       0.067 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 11:       0.078 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 12:       0.045 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 13:       0.056 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 14:       0.034 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 15:       0.012 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 16:       0.001 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 17:       0.067 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 18:       0.089 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 19:       0.100 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 20:       0.023 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 21:       0.012 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 22:       0.089 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 23:       0.045 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 24:       0.067 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 25:       0.100 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 26:       0.056 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 27:       0.034 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 28:       0.023 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 29:       0.001 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt; 30:       0.078 &lt;ResampleResult[20]&gt;    iris classif.rpart.tuned            cv
+#&gt;     x_domain_cp      resample_result task_id          learner_id resampling_id</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

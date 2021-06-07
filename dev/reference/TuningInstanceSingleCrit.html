@@ -323,9 +323,12 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='co'># show archive</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;      cp minsplit classif.ce           timestamp batch_nr
-#&gt; 1: 0.05        5       0.06 2021-06-07 08:46:24        1
-#&gt; 2: 0.01        3       0.04 2021-06-07 08:46:24        1</div><div class='input'>
+#&gt;      cp minsplit classif.ce runtime_learners           timestamp batch_nr
+#&gt; 1: 0.01        3       0.04            0.009 2021-06-07 15:04:29        1
+#&gt; 2: 0.05        5       0.06            0.011 2021-06-07 15:04:29        1
+#&gt;         resample_result
+#&gt; 1: &lt;ResampleResult[20]&gt;
+#&gt; 2: &lt;ResampleResult[20]&gt;</div><div class='input'>
 <span class='co'>### error handling</span>
 
 <span class='co'># get a learner which breaks with 50% probability</span>

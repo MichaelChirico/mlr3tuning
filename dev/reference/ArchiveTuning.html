@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Logging object for objective function evaluations — ArchiveTuning • mlr3tuning</title>
+<title>Logging Object for Evaluated Hyperparameter Configurations — ArchiveTuning • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,13 +47,9 @@
 
 
 
-<meta property="og:title" content="Logging object for objective function evaluations — ArchiveTuning" />
-<meta property="og:description" content="Container around a data.table::data.table() which stores all performed
-function calls of the Objective and the associated mlr3::BenchmarkResult.
-$benchmark_result stores a mlr3::BenchmarkResult which contains the
-mlr3::ResampleResult of all performed function calls. The
-mlr3::BenchmarkResult is connected to the data.table::data.table via the
-uhash column." />
+<meta property="og:title" content="Logging Object for Evaluated Hyperparameter Configurations — ArchiveTuning" />
+<meta property="og:description" content="Container around a data.table::data.table() which stores all evaluated
+hyperparameter configurations and performance scores." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,21 +142,83 @@ uhash column." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Logging object for objective function evaluations</h1>
+    <h1>Logging Object for Evaluated Hyperparameter Configurations</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/ArchiveTuning.R'><code>R/ArchiveTuning.R</code></a></small>
     <div class="hidden name"><code>ArchiveTuning.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Container around a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> which stores all performed
-function calls of the Objective and the associated <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p>
-<p><code>$benchmark_result</code> stores a <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> which contains the
-<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> of all performed function calls. The
-<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> is connected to the <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a> via the
-<code>uhash</code> column.</p>
+    <p>Container around a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> which stores all evaluated
+hyperparameter configurations and performance scores.</p>
     </div>
 
 
+
+    <h2 class="hasAnchor" id="data-structure"><a class="anchor" href="#data-structure"></a>Data structure</h2>
+
+    
+
+
+<p>The table (<code>$data</code>) has the following columns:</p><ul>
+<li><p>One column for each hyperparameter of the search space (<code>$search_space</code>).</p></li>
+<li><p>One column for each performance measure (<code>$codomain</code>).</p></li>
+<li><p><code>x_domain</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
+Lists of transformed hyperparameter values that are passed to the learner.</p></li>
+<li><p><code>runtime_learners</code> (<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Sum of training and predict times logged in learners per
+<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> / evaluation. This does not include potential
+overhead time.</p></li>
+<li><p><code>timestamp</code> (<code>POSIXct</code>)<br />
+Time stamp when the evaluation was logged into the archive.</p></li>
+<li><p><code>batch_nr</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Hyperparameters are evaluated in batches. Each batch has a unique batch
+number.</p></li>
+<li><p><code>uhash</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Connects each hyperparameter configuration to the resampling experiment
+stored in the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p></li>
+</ul>
+
+<p>Each row corresponds to a single evaluation of a hyperparameter configuration.</p>
+<p>The archive stores additionally a <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>
+(<code>$benchmark_result</code>) that records the resampling experiments. Each
+experiment corresponds to to a single evaluation of a hyperparameter
+configuration. The table (<code>$data</code>) and the benchmark result
+(<code>$benchmark_result</code>) are linked by the <code>uhash</code> column. If the results are
+viewed with <code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>, both are joined automatically.</p>
+    <h2 class="hasAnchor" id="analysis"><a class="anchor" href="#analysis"></a>Analysis</h2>
+
+    
+
+
+<p>For analyzing the tuning results, it is recommended to pass the archive to
+<code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>. The returned data table is joined with the benchmark result
+which adds the <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> for each hyperparameter evaluation.</p>
+<p>The archive provides various getters (e.g. <code>$learners()</code>) to ease the access.
+All getters extract by position (<code>i</code>) or unique hash (<code>uhash</code>). For a
+complete list of all getters see the methods section.</p>
+<p>The benchmark result (<code>$benchmark_result</code>) allows to score the hyperparameter
+configurations again on a different measure. Alternatively, measures can be
+supplied to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>.</p>
+<p>The <a href='https://CRAN.R-project.org/package=mlr3viz'><span class="pkg">mlr3viz</span></a> package provides visualizations for tuning results.</p>
+    <h2 class="hasAnchor" id="s-methods"><a class="anchor" href="#s-methods"></a>S3 Methods</h2>
+
+    
+
+<ul>
+<li><p><code>as.data.table.ArchiveTuning(x, unnest = "x_domain", exclude_columns = "uhash", measures = NULL)</code><br />
+Returns a tabular view of all evaluated hyperparameter configurations.<br />
+ArchiveTuning -&gt; <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code><br /></p><ul>
+<li><p><code>x</code> (ArchiveTuning)</p></li>
+<li><p><code>unnest</code> (<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Transforms list columns to separate columns. Set to <code>NULL</code> if no column
+should be unnested.</p></li>
+<li><p><code>exclude_columns</code> (<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Exclude columns from table. Set to <code>NULL</code> if no column should be
+excluded.</p></li>
+<li><p><code>measures</code> (list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+Score hyperparameter configurations on additional measures.</p></li>
+</ul></li>
+</ul>
 
     <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
@@ -170,14 +228,6 @@ function calls of the Objective and the associated <a href='https://mlr3.mlr-org
     <p><div class="r6-fields"></p><dl>
 <dt><code>benchmark_result</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>)<br />
 Stores benchmark result.</p></dd>
-
-</dl><p></div></p>
-    <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
-
-    <p><div class="r6-active-bindings"></p><dl>
-<dt><code>extended_archive</code></dt><dd><p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>)<br />
-Joins each performed function call of the Objective with the
-corresponding <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
