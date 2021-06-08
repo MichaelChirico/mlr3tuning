@@ -284,7 +284,7 @@ Tuning algorithm to run.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Hyperparameter search space. If <code>NULL</code>, the search space is constructed
-from the <a href='https://paradox.mlr-org.com/reference/to_tune.html'>TuneToken</a> in the <code>ParamSet</code> of the learner.</p></dd>
+from the TuneToken in the <code>ParamSet</code> of the learner.</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), stores the internally created
@@ -319,7 +319,7 @@ Depth of recursion for multiple nested objects.</p></dd>
 
 </dl><p></div></p>
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p><a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learner</a>.
+<p>Learner.
 Printer.</p>
 <p><hr>
 <a id="method-print"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
@@ -346,14 +346,14 @@ Printer.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
 <span class='va'>train_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span>, <span class='fl'>0.8</span> <span class='op'>*</span> <span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>
 <span class='va'>test_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>, <span class='va'>train_set</span><span class='op'>)</span>
 
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
   tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
@@ -404,11 +404,11 @@ Printer.</p>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp classif.ce runtime_learners           timestamp batch_nr
-#&gt; 1: -4.0       0.22            0.025 2021-06-08 11:30:34        1
-#&gt; 2: -4.8       0.22            0.011 2021-06-08 11:30:35        5
-#&gt; 3: -8.8       0.26            0.010 2021-06-08 11:30:34        3
-#&gt; 4: -4.0       0.22            0.011 2021-06-08 11:30:34        2
-#&gt; 5: -6.5       0.26            0.012 2021-06-08 11:30:34        4
+#&gt; 1: -4.8       0.22            0.011 2021-06-08 11:54:28        5
+#&gt; 2: -8.8       0.26            0.012 2021-06-08 11:54:27        3
+#&gt; 3: -4.0       0.22            0.021 2021-06-08 11:54:27        1
+#&gt; 4: -4.0       0.22            0.023 2021-06-08 11:54:27        2
+#&gt; 5: -6.5       0.26            0.011 2021-06-08 11:54:28        4
 #&gt;         resample_result
 #&gt; 1: &lt;ResampleResult[20]&gt;
 #&gt; 2: &lt;ResampleResult[20]&gt;
@@ -444,11 +444,11 @@ Printer.</p>
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp classif.ce runtime_learners           timestamp batch_nr
-#&gt; 1: -4.0       0.22            0.025 2021-06-08 11:30:34        1
-#&gt; 2: -4.8       0.22            0.011 2021-06-08 11:30:35        5
-#&gt; 3: -8.8       0.26            0.010 2021-06-08 11:30:34        3
-#&gt; 4: -4.0       0.22            0.011 2021-06-08 11:30:34        2
-#&gt; 5: -6.5       0.26            0.012 2021-06-08 11:30:34        4
+#&gt; 1: -4.8       0.22            0.011 2021-06-08 11:54:28        5
+#&gt; 2: -8.8       0.26            0.012 2021-06-08 11:54:27        3
+#&gt; 3: -4.0       0.22            0.021 2021-06-08 11:54:27        1
+#&gt; 4: -4.0       0.22            0.023 2021-06-08 11:54:27        2
+#&gt; 5: -6.5       0.26            0.011 2021-06-08 11:54:28        4
 #&gt;         resample_result
 #&gt; 1: &lt;ResampleResult[20]&gt;
 #&gt; 2: &lt;ResampleResult[20]&gt;
@@ -459,14 +459,14 @@ Printer.</p>
 <span class='co'>### nested resampling</span>
 
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
   tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'>resample</span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># retrieve inner tuning results.</span>
 <span class='fu'><a href='extract_inner_tuning_results.html'>extract_inner_tuning_results</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>

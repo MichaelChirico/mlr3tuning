@@ -134,39 +134,40 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com">"mlr3"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3tuning.mlr-org.com">"mlr3tuning"</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## Loading required package: paradox</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://paradox.mlr-org.com">"paradox"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3tuning.mlr-org.com">"mlr3tuning"</a></span><span class="op">)</span>
 
-<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
-<span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span><span class="op">)</span>
-<span class="va">resampling</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"holdout"</span><span class="op">)</span>
-<span class="va">measure</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>
+<span class="co"># load learner and set search space</span>
+<span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># Create the search space with lower and upper bounds</span>
-<span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">cp</span> <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.1</span><span class="op">)</span>
-<span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">minsplit</span> <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span> 
-
-<span class="co"># Define termination criterion</span>
-<span class="va">terminator</span> <span class="op">=</span> <span class="fu"><a href="https://bbotk.mlr-org.com/reference/trm.html">trm</a></span><span class="op">(</span><span class="st">"evals"</span>, n_evals <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
-
-<span class="co"># Create tuning instance</span>
-<span class="va">instance</span> <span class="op">=</span> <span class="va"><a href="reference/TuningInstanceSingleCrit.html">TuningInstanceSingleCrit</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  task <span class="op">=</span> <span class="va">task</span>,
+<span class="co"># hyperparameter tuning on the pima indians diabetes data set</span>
+<span class="va">instance</span> <span class="op">=</span> <span class="fu"><a href="reference/tune.html">tune</a></span><span class="op">(</span>
+  method <span class="op">=</span> <span class="st">"random_search"</span>,
+  task <span class="op">=</span>  <span class="fu">tsk</span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>,
   learner <span class="op">=</span> <span class="va">learner</span>,
-  resampling <span class="op">=</span> <span class="va">resampling</span>,
-  measure <span class="op">=</span> <span class="va">measure</span>,
-  terminator <span class="op">=</span> <span class="va">terminator</span><span class="op">)</span>
+  resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"holdout"</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu">msr</span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
+  term_evals <span class="op">=</span> <span class="fl">10</span>,
+  batch_size <span class="op">=</span> <span class="fl">5</span>
+<span class="op">)</span>
 
-<span class="co"># Load tuner</span>
-<span class="va">tuner</span> <span class="op">=</span> <span class="fu"><a href="reference/tnr.html">tnr</a></span><span class="op">(</span><span class="st">"grid_search"</span>, resolution <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-
-<span class="co"># Trigger optimization</span>
-<span class="va">tuner</span><span class="op">$</span><span class="fu">optimize</span><span class="op">(</span><span class="va">instance</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">##        cp minsplit learner_param_vals  x_domain classif.ce</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">## 1: 0.0505       10          &lt;list[3]&gt; &lt;list[2]&gt;  0.1953125</span></span></code></pre></div>
+<span class="co"># best performing feature set</span>
+<span class="va">instance</span><span class="op">$</span><span class="va">result</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##           cp learner_param_vals  x_domain classif.ce</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1: -3.438787          &lt;list[2]&gt; &lt;list[1]&gt;  0.1953125</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># all evaluated feature sets</span>
+<span class="fu">as.data.table</span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">##            cp classif.ce runtime_learners           timestamp batch_nr  x_domain_cp      resample_result</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">##  1: -7.655174  0.2109375            0.010 2021-06-08 13:40:53        2 0.0004735875 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">##  2: -8.371245  0.2109375            0.009 2021-06-08 13:40:52        1 0.0002314272 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">##  3: -2.977903  0.1953125            0.008 2021-06-08 13:40:52        1 0.0508994680 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">##  4: -6.157045  0.1992188            0.010 2021-06-08 13:40:53        2 0.0021185043 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">##  5: -2.571322  0.1953125            0.011 2021-06-08 13:40:53        2 0.0764343975 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">##  6: -6.206153  0.1992188            0.011 2021-06-08 13:40:53        2 0.0020169813 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">##  7: -4.542023  0.1953125            0.008 2021-06-08 13:40:52        1 0.0106518336 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">##  8: -5.779360  0.1992188            0.010 2021-06-08 13:40:52        1 0.0030906915 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">##  9: -7.881995  0.2109375            0.011 2021-06-08 13:40:53        2 0.0003774793 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">## 10: -3.438787  0.1953125            0.009 2021-06-08 13:40:52        1 0.0321036084 &lt;ResampleResult[20]&gt;</span></span></code></pre></div>
 </div>
 </div>
   </div>
