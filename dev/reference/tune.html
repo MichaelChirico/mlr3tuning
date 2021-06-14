@@ -159,6 +159,7 @@
   term_evals <span class='op'>=</span> <span class='cn'>NULL</span>,
   term_time <span class='op'>=</span> <span class='cn'>NULL</span>,
   search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
+  store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -207,6 +208,14 @@ Maximum allowed time in seconds.</p></td>
       <td><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Hyperparameter search space. If <code>NULL</code>, the search space is constructed from
 the <a href='https://paradox.mlr-org.com/reference/to_tune.html'>TuneToken</a> in the <code>ParamSet</code> of the learner.</p></td>
+    </tr>
+    <tr>
+      <th>store_models</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+If <code>FALSE</code> (default), the fitted models are not stored in the
+<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. If <code>store_benchmark_result = FALSE</code>, the models are
+only stored temporarily and not accessible after the tuning. This combination
+might be useful for measures that require a model.</p></td>
     </tr>
     <tr>
       <th>...</th>
