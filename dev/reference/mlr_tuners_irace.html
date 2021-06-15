@@ -246,7 +246,7 @@ TerminatorRunTime budget for stability reasons.</p>
 <span class='co'># optimize hyperparameter</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tuner</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-06-14 09:07:27 UTC: Initialization
+</div><div class='output co'>#&gt; # 2021-06-15 04:39:12 UTC: Initialization
 #&gt; # Elitist race
 #&gt; # Elitist new instances: 1
 #&gt; # Elitist limit: 2
@@ -259,7 +259,7 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; # mu: 5
 #&gt; # deterministic: FALSE
 #&gt; 
-#&gt; # 2021-06-14 09:07:27 UTC: Iteration 1 of 2
+#&gt; # 2021-06-15 04:39:12 UTC: Iteration 1 of 2
 #&gt; # experimentsUsedSoFar: 0
 #&gt; # remainingBudget: 42
 #&gt; # currentBudget: 21
@@ -288,11 +288,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.      cp .PARENT.
 #&gt; 1    1 -5.7461       NA
 #&gt; 
-#&gt; # 2021-06-14 09:07:29 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-06-15 04:39:14 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;        cp
 #&gt; 1 -5.7461
 #&gt; 2 -9.0054
-#&gt; # 2021-06-14 09:07:29 UTC: Iteration 2 of 2
+#&gt; # 2021-06-15 04:39:14 UTC: Iteration 2 of 2
 #&gt; # experimentsUsedSoFar: 21
 #&gt; # remainingBudget: 21
 #&gt; # currentBudget: 21
@@ -322,11 +322,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.      cp .PARENT.
 #&gt; 1    1 -5.7461       NA
 #&gt; 
-#&gt; # 2021-06-14 09:07:31 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-06-15 04:39:16 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;        cp
 #&gt; 1 -5.7461
 #&gt; 2 -9.0054
-#&gt; # 2021-06-14 09:07:31 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
+#&gt; # 2021-06-15 04:39:16 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
 #&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
 #&gt; # Iteration: 3
 #&gt; # nbIterations: 3
@@ -345,86 +345,86 @@ TerminatorRunTime budget for stability reasons.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce runtime_learners           timestamp batch_nr
-#&gt;  1: -7.1       0.06            0.007 2021-06-14 09:07:31       38
-#&gt;  2: -5.4       0.08            0.011 2021-06-14 09:07:30       35
-#&gt;  3: -9.0       0.08            0.007 2021-06-14 09:07:27        2
-#&gt;  4: -7.1       0.10            0.007 2021-06-14 09:07:29       24
-#&gt;  5: -5.7       0.08            0.007 2021-06-14 09:07:27        1
-#&gt;  6: -5.4       0.08            0.007 2021-06-14 09:07:30       33
-#&gt;  7: -5.7       0.06            0.007 2021-06-14 09:07:28        7
-#&gt;  8: -9.0       0.08            0.007 2021-06-14 09:07:28        5
-#&gt;  9: -5.4       0.04            0.007 2021-06-14 09:07:30       31
-#&gt; 10: -5.7       0.10            0.006 2021-06-14 09:07:29       22
-#&gt; 11: -9.1       0.06            0.007 2021-06-14 09:07:28       12
-#&gt; 12: -5.7       0.04            0.007 2021-06-14 09:07:28       13
-#&gt; 13: -7.1       0.08            0.006 2021-06-14 09:07:30       34
-#&gt; 14: -7.1       0.06            0.007 2021-06-14 09:07:30       26
-#&gt; 15: -7.1       0.02            0.007 2021-06-14 09:07:30       28
-#&gt; 16: -9.0       0.06            0.006 2021-06-14 09:07:29       20
-#&gt; 17: -7.1       0.08            0.007 2021-06-14 09:07:30       32
-#&gt; 18: -9.0       0.10            0.007 2021-06-14 09:07:29       23
-#&gt; 19: -5.4       0.06            0.007 2021-06-14 09:07:30       37
-#&gt; 20: -5.4       0.02            0.007 2021-06-14 09:07:30       29
-#&gt; 21: -9.1       0.08            0.007 2021-06-14 09:07:27        3
-#&gt; 22: -9.1       0.04            0.006 2021-06-14 09:07:29       15
-#&gt; 23: -7.1       0.04            0.006 2021-06-14 09:07:30       30
-#&gt; 24: -5.7       0.06            0.007 2021-06-14 09:07:28       10
-#&gt; 25: -9.1       0.06            0.007 2021-06-14 09:07:28        9
-#&gt; 26: -9.1       0.02            0.007 2021-06-14 09:07:29       18
-#&gt; 27: -9.0       0.02            0.007 2021-06-14 09:07:29       17
-#&gt; 28: -9.0       0.06            0.007 2021-06-14 09:07:28        8
-#&gt; 29: -9.0       0.04            0.007 2021-06-14 09:07:28       14
-#&gt; 30: -5.4       0.06            0.007 2021-06-14 09:07:30       27
-#&gt; 31: -9.1       0.06            0.007 2021-06-14 09:07:29       21
-#&gt; 32: -5.7       0.02            0.006 2021-06-14 09:07:29       16
-#&gt; 33: -7.1       0.06            0.007 2021-06-14 09:07:30       36
-#&gt; 34: -5.4       0.10            0.007 2021-06-14 09:07:29       25
-#&gt; 35: -5.4       0.06            0.006 2021-06-14 09:07:31       39
-#&gt; 36: -5.7       0.08            0.014 2021-06-14 09:07:27        4
-#&gt; 37: -5.7       0.06            0.007 2021-06-14 09:07:29       19
-#&gt; 38: -9.0       0.06            0.007 2021-06-14 09:07:28       11
-#&gt; 39: -9.1       0.08            0.007 2021-06-14 09:07:28        6
+#&gt;  1: -9.1       0.06            0.007 2021-06-15 04:39:13        9
+#&gt;  2: -9.0       0.08            0.007 2021-06-15 04:39:12        2
+#&gt;  3: -5.7       0.02            0.007 2021-06-15 04:39:13       16
+#&gt;  4: -5.7       0.06            0.007 2021-06-15 04:39:13        7
+#&gt;  5: -5.4       0.10            0.007 2021-06-15 04:39:14       25
+#&gt;  6: -9.1       0.02            0.007 2021-06-15 04:39:14       18
+#&gt;  7: -9.0       0.10            0.007 2021-06-15 04:39:14       23
+#&gt;  8: -5.7       0.04            0.011 2021-06-15 04:39:13       13
+#&gt;  9: -9.0       0.04            0.007 2021-06-15 04:39:13       14
+#&gt; 10: -5.7       0.08            0.007 2021-06-15 04:39:12        4
+#&gt; 11: -5.7       0.08            0.007 2021-06-15 04:39:12        1
+#&gt; 12: -5.4       0.04            0.007 2021-06-15 04:39:15       31
+#&gt; 13: -9.0       0.06            0.007 2021-06-15 04:39:14       20
+#&gt; 14: -9.1       0.08            0.007 2021-06-15 04:39:12        3
+#&gt; 15: -7.1       0.04            0.007 2021-06-15 04:39:15       30
+#&gt; 16: -7.1       0.08            0.007 2021-06-15 04:39:15       34
+#&gt; 17: -5.7       0.06            0.007 2021-06-15 04:39:13       10
+#&gt; 18: -7.1       0.06            0.007 2021-06-15 04:39:15       38
+#&gt; 19: -7.1       0.06            0.006 2021-06-15 04:39:15       36
+#&gt; 20: -5.4       0.06            0.006 2021-06-15 04:39:15       39
+#&gt; 21: -5.4       0.02            0.006 2021-06-15 04:39:15       29
+#&gt; 22: -9.1       0.06            0.007 2021-06-15 04:39:13       12
+#&gt; 23: -5.7       0.10            0.007 2021-06-15 04:39:14       22
+#&gt; 24: -7.1       0.06            0.007 2021-06-15 04:39:14       26
+#&gt; 25: -9.1       0.08            0.007 2021-06-15 04:39:12        6
+#&gt; 26: -5.4       0.08            0.007 2021-06-15 04:39:15       33
+#&gt; 27: -7.1       0.08            0.006 2021-06-15 04:39:15       32
+#&gt; 28: -5.7       0.06            0.007 2021-06-15 04:39:14       19
+#&gt; 29: -5.4       0.08            0.007 2021-06-15 04:39:15       35
+#&gt; 30: -7.1       0.10            0.007 2021-06-15 04:39:14       24
+#&gt; 31: -5.4       0.06            0.007 2021-06-15 04:39:15       37
+#&gt; 32: -9.0       0.06            0.007 2021-06-15 04:39:13        8
+#&gt; 33: -9.1       0.06            0.007 2021-06-15 04:39:14       21
+#&gt; 34: -7.1       0.02            0.006 2021-06-15 04:39:14       28
+#&gt; 35: -9.0       0.02            0.006 2021-06-15 04:39:13       17
+#&gt; 36: -5.4       0.06            0.007 2021-06-15 04:39:14       27
+#&gt; 37: -9.0       0.08            0.006 2021-06-15 04:39:12        5
+#&gt; 38: -9.0       0.06            0.007 2021-06-15 04:39:13       11
+#&gt; 39: -9.1       0.04            0.006 2021-06-15 04:39:13       15
 #&gt;       cp classif.ce runtime_learners           timestamp batch_nr
 #&gt;     id_configuration id_instance      resample_result
-#&gt;  1:                4           1 &lt;ResampleResult[20]&gt;
-#&gt;  2:                5           3 &lt;ResampleResult[20]&gt;
-#&gt;  3:                2           3 &lt;ResampleResult[20]&gt;
-#&gt;  4:                4           5 &lt;ResampleResult[20]&gt;
-#&gt;  5:                1           3 &lt;ResampleResult[20]&gt;
-#&gt;  6:                5          10 &lt;ResampleResult[20]&gt;
-#&gt;  7:                1           1 &lt;ResampleResult[20]&gt;
-#&gt;  8:                2          10 &lt;ResampleResult[20]&gt;
-#&gt;  9:                5           8 &lt;ResampleResult[20]&gt;
-#&gt; 10:                1           5 &lt;ResampleResult[20]&gt;
-#&gt; 11:                3           2 &lt;ResampleResult[20]&gt;
-#&gt; 12:                1           8 &lt;ResampleResult[20]&gt;
-#&gt; 13:                4           3 &lt;ResampleResult[20]&gt;
-#&gt; 14:                4           4 &lt;ResampleResult[20]&gt;
-#&gt; 15:                4           7 &lt;ResampleResult[20]&gt;
-#&gt; 16:                2           4 &lt;ResampleResult[20]&gt;
-#&gt; 17:                4          10 &lt;ResampleResult[20]&gt;
-#&gt; 18:                2           5 &lt;ResampleResult[20]&gt;
-#&gt; 19:                5           2 &lt;ResampleResult[20]&gt;
-#&gt; 20:                5           7 &lt;ResampleResult[20]&gt;
-#&gt; 21:                3           3 &lt;ResampleResult[20]&gt;
-#&gt; 22:                3           8 &lt;ResampleResult[20]&gt;
-#&gt; 23:                4           8 &lt;ResampleResult[20]&gt;
-#&gt; 24:                1           2 &lt;ResampleResult[20]&gt;
-#&gt; 25:                3           1 &lt;ResampleResult[20]&gt;
-#&gt; 26:                3           7 &lt;ResampleResult[20]&gt;
-#&gt; 27:                2           7 &lt;ResampleResult[20]&gt;
-#&gt; 28:                2           1 &lt;ResampleResult[20]&gt;
-#&gt; 29:                2           8 &lt;ResampleResult[20]&gt;
-#&gt; 30:                5           4 &lt;ResampleResult[20]&gt;
-#&gt; 31:                3           4 &lt;ResampleResult[20]&gt;
-#&gt; 32:                1           7 &lt;ResampleResult[20]&gt;
-#&gt; 33:                4           2 &lt;ResampleResult[20]&gt;
-#&gt; 34:                5           5 &lt;ResampleResult[20]&gt;
-#&gt; 35:                5           1 &lt;ResampleResult[20]&gt;
-#&gt; 36:                1          10 &lt;ResampleResult[20]&gt;
-#&gt; 37:                1           4 &lt;ResampleResult[20]&gt;
+#&gt;  1:                3           1 &lt;ResampleResult[20]&gt;
+#&gt;  2:                2           3 &lt;ResampleResult[20]&gt;
+#&gt;  3:                1           7 &lt;ResampleResult[20]&gt;
+#&gt;  4:                1           1 &lt;ResampleResult[20]&gt;
+#&gt;  5:                5           5 &lt;ResampleResult[20]&gt;
+#&gt;  6:                3           7 &lt;ResampleResult[20]&gt;
+#&gt;  7:                2           5 &lt;ResampleResult[20]&gt;
+#&gt;  8:                1           8 &lt;ResampleResult[20]&gt;
+#&gt;  9:                2           8 &lt;ResampleResult[20]&gt;
+#&gt; 10:                1          10 &lt;ResampleResult[20]&gt;
+#&gt; 11:                1           3 &lt;ResampleResult[20]&gt;
+#&gt; 12:                5           8 &lt;ResampleResult[20]&gt;
+#&gt; 13:                2           4 &lt;ResampleResult[20]&gt;
+#&gt; 14:                3           3 &lt;ResampleResult[20]&gt;
+#&gt; 15:                4           8 &lt;ResampleResult[20]&gt;
+#&gt; 16:                4           3 &lt;ResampleResult[20]&gt;
+#&gt; 17:                1           2 &lt;ResampleResult[20]&gt;
+#&gt; 18:                4           1 &lt;ResampleResult[20]&gt;
+#&gt; 19:                4           2 &lt;ResampleResult[20]&gt;
+#&gt; 20:                5           1 &lt;ResampleResult[20]&gt;
+#&gt; 21:                5           7 &lt;ResampleResult[20]&gt;
+#&gt; 22:                3           2 &lt;ResampleResult[20]&gt;
+#&gt; 23:                1           5 &lt;ResampleResult[20]&gt;
+#&gt; 24:                4           4 &lt;ResampleResult[20]&gt;
+#&gt; 25:                3          10 &lt;ResampleResult[20]&gt;
+#&gt; 26:                5          10 &lt;ResampleResult[20]&gt;
+#&gt; 27:                4          10 &lt;ResampleResult[20]&gt;
+#&gt; 28:                1           4 &lt;ResampleResult[20]&gt;
+#&gt; 29:                5           3 &lt;ResampleResult[20]&gt;
+#&gt; 30:                4           5 &lt;ResampleResult[20]&gt;
+#&gt; 31:                5           2 &lt;ResampleResult[20]&gt;
+#&gt; 32:                2           1 &lt;ResampleResult[20]&gt;
+#&gt; 33:                3           4 &lt;ResampleResult[20]&gt;
+#&gt; 34:                4           7 &lt;ResampleResult[20]&gt;
+#&gt; 35:                2           7 &lt;ResampleResult[20]&gt;
+#&gt; 36:                5           4 &lt;ResampleResult[20]&gt;
+#&gt; 37:                2          10 &lt;ResampleResult[20]&gt;
 #&gt; 38:                2           2 &lt;ResampleResult[20]&gt;
-#&gt; 39:                3          10 &lt;ResampleResult[20]&gt;
+#&gt; 39:                3           8 &lt;ResampleResult[20]&gt;
 #&gt;     id_configuration id_instance      resample_result</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
