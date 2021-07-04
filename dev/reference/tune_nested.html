@@ -235,9 +235,9 @@ Named arguments to be set as parameters of the tuner.</p></td>
 
 <span class='co'># retrieve inner tuning results.</span>
 <span class='fu'><a href='extract_inner_tuning_results.html'>extract_inner_tuning_results</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    iteration       cp classif.ce learner_param_vals  x_domain task_id
-#&gt; 1:         1 -7.39984   0.265625          &lt;list[2]&gt; &lt;list[1]&gt;    pima
-#&gt; 2:         2 -2.53706   0.312500          &lt;list[2]&gt; &lt;list[1]&gt;    pima
+</div><div class='output co'>#&gt;    iteration        cp classif.ce learner_param_vals  x_domain task_id
+#&gt; 1:         1 -2.464762  0.2734375          &lt;list[2]&gt; &lt;list[1]&gt;    pima
+#&gt; 2:         2 -5.740041  0.2578125          &lt;list[2]&gt; &lt;list[1]&gt;    pima
 #&gt;             learner_id resampling_id
 #&gt; 1: classif.rpart.tuned            cv
 #&gt; 2: classif.rpart.tuned            cv</div><div class='input'>
@@ -250,12 +250,12 @@ Named arguments to be set as parameters of the tuner.</p></td>
 #&gt; 1: &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[19]&gt;
 #&gt; 2: &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[19]&gt;
 #&gt;    classif.ce
-#&gt; 1:  0.2421875
-#&gt; 2:  0.2708333</div><div class='input'>
+#&gt; 1:  0.2526042
+#&gt; 2:  0.2838542</div><div class='input'>
 <span class='co'># unbiased performance of the final model trained on the full data set</span>
 <span class='va'>rr</span><span class='op'>$</span><span class='fu'>aggregate</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; classif.ce 
-#&gt;  0.2565104 </div></pre>
+#&gt;  0.2682292 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
