@@ -246,7 +246,7 @@ TerminatorRunTime budget for stability reasons.</p>
 <span class='co'># optimize hyperparameter</span>
 <span class='co'># modifies the instance by reference</span>
 <span class='va'>tuner</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-07-04 05:11:52 UTC: Initialization
+</div><div class='output co'>#&gt; # 2021-07-05 04:54:14 UTC: Initialization
 #&gt; # Elitist race
 #&gt; # Elitist new instances: 1
 #&gt; # Elitist limit: 2
@@ -259,7 +259,7 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt; # mu: 5
 #&gt; # deterministic: FALSE
 #&gt; 
-#&gt; # 2021-07-04 05:11:52 UTC: Iteration 1 of 2
+#&gt; # 2021-07-05 04:54:14 UTC: Iteration 1 of 2
 #&gt; # experimentsUsedSoFar: 0
 #&gt; # remainingBudget: 42
 #&gt; # currentBudget: 21
@@ -288,11 +288,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.      cp .PARENT.
 #&gt; 1    1 -5.7461       NA
 #&gt; 
-#&gt; # 2021-07-04 05:11:54 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-07-05 04:54:17 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;        cp
 #&gt; 1 -5.7461
 #&gt; 2 -9.0054
-#&gt; # 2021-07-04 05:11:54 UTC: Iteration 2 of 2
+#&gt; # 2021-07-05 04:54:17 UTC: Iteration 2 of 2
 #&gt; # experimentsUsedSoFar: 21
 #&gt; # remainingBudget: 21
 #&gt; # currentBudget: 21
@@ -322,11 +322,11 @@ TerminatorRunTime budget for stability reasons.</p>
 #&gt;   .ID.      cp .PARENT.
 #&gt; 1    1 -5.7461       NA
 #&gt; 
-#&gt; # 2021-07-04 05:11:56 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-07-05 04:54:19 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;        cp
 #&gt; 1 -5.7461
 #&gt; 2 -9.0054
-#&gt; # 2021-07-04 05:11:56 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
+#&gt; # 2021-07-05 04:54:19 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
 #&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
 #&gt; # Iteration: 3
 #&gt; # nbIterations: 3
@@ -345,45 +345,45 @@ TerminatorRunTime budget for stability reasons.</p>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;       cp classif.ce runtime_learners           timestamp batch_nr
-#&gt;  1: -5.7       0.08            0.009 2021-07-04 05:11:52        1
-#&gt;  2: -9.0       0.08            0.009 2021-07-04 05:11:52        2
-#&gt;  3: -9.1       0.08            0.009 2021-07-04 05:11:52        3
-#&gt;  4: -5.7       0.08            0.011 2021-07-04 05:11:52        4
-#&gt;  5: -9.0       0.08            0.010 2021-07-04 05:11:52        5
-#&gt;  6: -9.1       0.08            0.009 2021-07-04 05:11:53        6
-#&gt;  7: -5.7       0.06            0.009 2021-07-04 05:11:53        7
-#&gt;  8: -9.0       0.06            0.007 2021-07-04 05:11:53        8
-#&gt;  9: -9.1       0.06            0.007 2021-07-04 05:11:53        9
-#&gt; 10: -5.7       0.06            0.008 2021-07-04 05:11:53       10
-#&gt; 11: -9.0       0.06            0.007 2021-07-04 05:11:53       11
-#&gt; 12: -9.1       0.06            0.008 2021-07-04 05:11:53       12
-#&gt; 13: -5.7       0.04            0.009 2021-07-04 05:11:53       13
-#&gt; 14: -9.0       0.04            0.008 2021-07-04 05:11:54       14
-#&gt; 15: -9.1       0.04            0.010 2021-07-04 05:11:54       15
-#&gt; 16: -5.7       0.02            0.008 2021-07-04 05:11:54       16
-#&gt; 17: -9.0       0.02            0.009 2021-07-04 05:11:54       17
-#&gt; 18: -9.1       0.02            0.009 2021-07-04 05:11:54       18
-#&gt; 19: -5.7       0.06            0.008 2021-07-04 05:11:54       19
-#&gt; 20: -9.0       0.06            0.009 2021-07-04 05:11:54       20
-#&gt; 21: -9.1       0.06            0.008 2021-07-04 05:11:54       21
-#&gt; 22: -5.7       0.10            0.008 2021-07-04 05:11:55       22
-#&gt; 23: -9.0       0.10            0.010 2021-07-04 05:11:55       23
-#&gt; 24: -7.1       0.10            0.007 2021-07-04 05:11:55       24
-#&gt; 25: -5.4       0.10            0.008 2021-07-04 05:11:55       25
-#&gt; 26: -7.1       0.06            0.009 2021-07-04 05:11:55       26
-#&gt; 27: -5.4       0.06            0.008 2021-07-04 05:11:55       27
-#&gt; 28: -7.1       0.02            0.008 2021-07-04 05:11:55       28
-#&gt; 29: -5.4       0.02            0.009 2021-07-04 05:11:55       29
-#&gt; 30: -7.1       0.04            0.008 2021-07-04 05:11:55       30
-#&gt; 31: -5.4       0.04            0.009 2021-07-04 05:11:56       31
-#&gt; 32: -7.1       0.08            0.008 2021-07-04 05:11:56       32
-#&gt; 33: -5.4       0.08            0.010 2021-07-04 05:11:56       33
-#&gt; 34: -7.1       0.08            0.008 2021-07-04 05:11:56       34
-#&gt; 35: -5.4       0.08            0.010 2021-07-04 05:11:56       35
-#&gt; 36: -7.1       0.06            0.007 2021-07-04 05:11:56       36
-#&gt; 37: -5.4       0.06            0.009 2021-07-04 05:11:56       37
-#&gt; 38: -7.1       0.06            0.008 2021-07-04 05:11:56       38
-#&gt; 39: -5.4       0.06            0.009 2021-07-04 05:11:56       39
+#&gt;  1: -5.7       0.08            0.009 2021-07-05 04:54:15        1
+#&gt;  2: -9.0       0.08            0.009 2021-07-05 04:54:15        2
+#&gt;  3: -9.1       0.08            0.008 2021-07-05 04:54:15        3
+#&gt;  4: -5.7       0.08            0.015 2021-07-05 04:54:15        4
+#&gt;  5: -9.0       0.08            0.010 2021-07-05 04:54:15        5
+#&gt;  6: -9.1       0.08            0.009 2021-07-05 04:54:15        6
+#&gt;  7: -5.7       0.06            0.008 2021-07-05 04:54:15        7
+#&gt;  8: -9.0       0.06            0.009 2021-07-05 04:54:16        8
+#&gt;  9: -9.1       0.06            0.009 2021-07-05 04:54:16        9
+#&gt; 10: -5.7       0.06            0.007 2021-07-05 04:54:16       10
+#&gt; 11: -9.0       0.06            0.008 2021-07-05 04:54:16       11
+#&gt; 12: -9.1       0.06            0.009 2021-07-05 04:54:16       12
+#&gt; 13: -5.7       0.04            0.007 2021-07-05 04:54:16       13
+#&gt; 14: -9.0       0.04            0.009 2021-07-05 04:54:16       14
+#&gt; 15: -9.1       0.04            0.008 2021-07-05 04:54:16       15
+#&gt; 16: -5.7       0.02            0.009 2021-07-05 04:54:16       16
+#&gt; 17: -9.0       0.02            0.009 2021-07-05 04:54:17       17
+#&gt; 18: -9.1       0.02            0.007 2021-07-05 04:54:17       18
+#&gt; 19: -5.7       0.06            0.010 2021-07-05 04:54:17       19
+#&gt; 20: -9.0       0.06            0.008 2021-07-05 04:54:17       20
+#&gt; 21: -9.1       0.06            0.008 2021-07-05 04:54:17       21
+#&gt; 22: -5.7       0.10            0.008 2021-07-05 04:54:17       22
+#&gt; 23: -9.0       0.10            0.009 2021-07-05 04:54:17       23
+#&gt; 24: -7.1       0.10            0.009 2021-07-05 04:54:17       24
+#&gt; 25: -5.4       0.10            0.007 2021-07-05 04:54:18       25
+#&gt; 26: -7.1       0.06            0.008 2021-07-05 04:54:18       26
+#&gt; 27: -5.4       0.06            0.009 2021-07-05 04:54:18       27
+#&gt; 28: -7.1       0.02            0.008 2021-07-05 04:54:18       28
+#&gt; 29: -5.4       0.02            0.009 2021-07-05 04:54:18       29
+#&gt; 30: -7.1       0.04            0.008 2021-07-05 04:54:18       30
+#&gt; 31: -5.4       0.04            0.007 2021-07-05 04:54:18       31
+#&gt; 32: -7.1       0.08            0.008 2021-07-05 04:54:18       32
+#&gt; 33: -5.4       0.08            0.009 2021-07-05 04:54:18       33
+#&gt; 34: -7.1       0.08            0.009 2021-07-05 04:54:19       34
+#&gt; 35: -5.4       0.08            0.009 2021-07-05 04:54:19       35
+#&gt; 36: -7.1       0.06            0.008 2021-07-05 04:54:19       36
+#&gt; 37: -5.4       0.06            0.008 2021-07-05 04:54:19       37
+#&gt; 38: -7.1       0.06            0.009 2021-07-05 04:54:19       38
+#&gt; 39: -5.4       0.06            0.008 2021-07-05 04:54:19       39
 #&gt;       cp classif.ce runtime_learners           timestamp batch_nr
 #&gt;     id_configuration id_instance      resample_result
 #&gt;  1:                1           3 &lt;ResampleResult[20]&gt;
