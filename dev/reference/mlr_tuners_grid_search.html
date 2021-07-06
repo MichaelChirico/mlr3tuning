@@ -263,35 +263,54 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='va'>tuner</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># retrieve task</span>
+<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
 
-<span class='co'># optimize hyperparameter</span>
-<span class='co'># modifies the instance by reference</span>
-<span class='va'>tuner</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
-#&gt; 1: -7.675284          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
-<span class='co'># returns best configuration and best performance</span>
+<span class='co'># load learner and set search space</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># hyperparameter tuning on the pima indians diabetes data set</span>
+<span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span>
+  method <span class='op'>=</span> <span class='st'>"grid_search"</span>,
+  task <span class='op'>=</span> <span class='va'>task</span>,
+  learner <span class='op'>=</span> <span class='va'>learner</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  term_evals <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+
+<span class='co'># best performing hyperparameter configuration</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
 </div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
-#&gt; 1: -7.675284          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</div><div class='input'>
-<span class='co'># allows access of data.table of full path of all evaluations</span>
-<span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
-</div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;      cp classif.ce runtime_learners           timestamp batch_nr
-#&gt; 1: -7.7       0.06            0.009 2021-07-06 05:13:27        1
-#&gt; 2: -9.2       0.06            0.011 2021-07-06 05:13:27        2
-#&gt; 3: -6.9       0.06            0.010 2021-07-06 05:13:27        3
-#&gt;         resample_result
-#&gt; 1: &lt;ResampleResult[20]&gt;
-#&gt; 2: &lt;ResampleResult[20]&gt;
-#&gt; 3: &lt;ResampleResult[20]&gt;</div></pre>
+#&gt; 1: -2.302585          &lt;list[2]&gt; &lt;list[1]&gt;  0.2578125</div><div class='input'>
+<span class='co'># all evaluated hyperparameter configuration</span>
+<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
+#&gt;  1: -5.372699  0.3164062 0.0046415888            0.011 2021-07-06 12:16:46
+#&gt;  2: -7.675284  0.3203125 0.0004641589            0.012 2021-07-06 12:16:46
+#&gt;  3: -2.302585  0.2578125 0.1000000000            0.012 2021-07-06 12:16:46
+#&gt;  4: -3.837642  0.2695312 0.0215443469            0.010 2021-07-06 12:16:47
+#&gt;  5: -9.210340  0.3203125 0.0001000000            0.012 2021-07-06 12:16:47
+#&gt;  6: -6.140227  0.3164062 0.0021544347            0.011 2021-07-06 12:16:47
+#&gt;  7: -6.907755  0.3203125 0.0010000000            0.012 2021-07-06 12:16:47
+#&gt;  8: -8.442812  0.3203125 0.0002154435            0.010 2021-07-06 12:16:47
+#&gt;  9: -3.070113  0.2578125 0.0464158883            0.012 2021-07-06 12:16:47
+#&gt; 10: -4.605170  0.2968750 0.0100000000            0.011 2021-07-06 12:16:47
+#&gt;     batch_nr      resample_result
+#&gt;  1:        1 &lt;ResampleResult[20]&gt;
+#&gt;  2:        2 &lt;ResampleResult[20]&gt;
+#&gt;  3:        3 &lt;ResampleResult[20]&gt;
+#&gt;  4:        4 &lt;ResampleResult[20]&gt;
+#&gt;  5:        5 &lt;ResampleResult[20]&gt;
+#&gt;  6:        6 &lt;ResampleResult[20]&gt;
+#&gt;  7:        7 &lt;ResampleResult[20]&gt;
+#&gt;  8:        8 &lt;ResampleResult[20]&gt;
+#&gt;  9:        9 &lt;ResampleResult[20]&gt;
+#&gt; 10:       10 &lt;ResampleResult[20]&gt;</div><div class='input'>
+<span class='co'># fit final model on complete data set</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
