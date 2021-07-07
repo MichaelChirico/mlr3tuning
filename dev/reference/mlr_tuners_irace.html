@@ -171,13 +171,6 @@ doi: <a href='https://doi.org/10.1016/j.orp.2016.09.002'>10.1016/j.orp.2016.09.0
 <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"irace"</span><span class='op'>)</span>
 </pre>
 
-
-<p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>TunerIrace</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"irace"</span><span class='op'>)</span>
-<span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"irace"</span><span class='op'>)</span>
-</pre>
-
     <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
 
     
@@ -198,8 +191,9 @@ Number of resampling instances.</p></dd>
 
 <p>For the meaning of all other parameters, see <code><a href='https://rdrr.io/pkg/irace/man/defaultScenario.html'>irace::defaultScenario()</a></code>. Note
 that we have removed all control parameters which refer to the termination of
-the algorithm. Use TerminatorEvals instead. Other terminators do not work
-with <code>TunerIrace</code>.</p>
+the algorithm. Use TerminatorRunTime or TerminatorEvals instead. Other
+terminators do not work with <code>TunerIrace</code>. We substract 5 seconds from the
+TerminatorRunTime budget for stability reasons.</p>
     <h2 class="hasAnchor" id="progress-bars"><a class="anchor" href="#progress-bars"></a>Progress Bars</h2>
 
     
@@ -208,28 +202,6 @@ with <code>TunerIrace</code>.</p>
 combined with a Terminator. Simply wrap the function in
 <code>progressr::with_progress()</code> to enable them. We recommend to use package
 <a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
-    <h2 class="hasAnchor" id="archive"><a class="anchor" href="#archive"></a>Archive</h2>
-
-    
-
-<p>The <a href='ArchiveTuning.html'>ArchiveTuning</a> holds the following additional columns:</p><ul>
-<li><p><code>"race"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Race iteration.</p></li>
-<li><p><code>"step"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Step number of race.</p></li>
-<li><p><code>"instance"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Identifies resampling instances across races and steps.</p></li>
-<li><p><code>"configuration"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
-Identifies configurations across races and steps.</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="result"><a class="anchor" href="#result"></a>Result</h2>
-
-    
-
-<p>The tuning result (<code>instance$result</code>) is the best performing elite of
-the final race. The reported performance is the average performance estimated
-on all used instances.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Tuner: 
@@ -239,9 +211,9 @@ on all used instances.</p>
 <code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
 <code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code>,
 <code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
-    <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerIrace</code></p>
+    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code>TunerIrace</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -249,12 +221,12 @@ on all used instances.</p>
 
 <ul>
 <li><p><a href='#method-new'><code>TunerIrace$new()</code></a></p></li>
-<li><p><a href='#method-optimize'><code>TunerIrace$optimize()</code></a></p></li>
 <li><p><a href='#method-clone'><code>TunerIrace$clone()</code></a></p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
 <li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="format"><a href='../../mlr3tuning/html/Tuner.html#method-format'><code>mlr3tuning::Tuner$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="optimize"><a href='../../mlr3tuning/html/Tuner.html#method-optimize'><code>mlr3tuning::Tuner$optimize()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="print"><a href='../../mlr3tuning/html/Tuner.html#method-print'><code>mlr3tuning::Tuner$print()</code></a></span></p></li>
 </ul>
 </details>
@@ -264,21 +236,6 @@ on all used instances.</p>
 <p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>TunerIrace</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
-<p><hr>
-<a id="method-optimize"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/stats/optimize.html'>optimize()</a></code></h3>
-<p>Performs the tuning on a <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> until termination.
-The single evaluations and the final results will be written into the
-<a href='ArchiveTuning.html'>ArchiveTuning</a> that resides in the <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>. The final
-result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>TunerIrace</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>inst</span><span class='op'>)</span></pre><p></div></p>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
-<p><div class="arguments"></p><dl>
-<dt><code>inst</code></dt><dd><p>(<a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>).</p></dd>
-
-</dl><p></div></p>
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a>.</p>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -308,7 +265,7 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
   measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   term_evals <span class='op'>=</span> <span class='fl'>42</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-07-07 11:44:22 UTC: Initialization
+</div><div class='output co'>#&gt; # 2021-07-07 11:46:20 UTC: Initialization
 #&gt; # Elitist race
 #&gt; # Elitist new instances: 1
 #&gt; # Elitist limit: 2
@@ -321,7 +278,7 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
 #&gt; # mu: 5
 #&gt; # deterministic: FALSE
 #&gt; 
-#&gt; # 2021-07-07 11:44:22 UTC: Iteration 1 of 2
+#&gt; # 2021-07-07 11:46:20 UTC: Iteration 1 of 2
 #&gt; # experimentsUsedSoFar: 0
 #&gt; # remainingBudget: 42
 #&gt; # currentBudget: 21
@@ -348,10 +305,10 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
 #&gt;   .ID.     cp .PARENT.
 #&gt; 3    3 -3.696       NA
 #&gt; 
-#&gt; # 2021-07-07 11:44:24 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-07-07 11:46:21 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;       cp
 #&gt; 3 -3.696
-#&gt; # 2021-07-07 11:44:24 UTC: Iteration 2 of 2
+#&gt; # 2021-07-07 11:46:22 UTC: Iteration 2 of 2
 #&gt; # experimentsUsedSoFar: 15
 #&gt; # remainingBudget: 27
 #&gt; # currentBudget: 27
@@ -367,24 +324,24 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
 #&gt; | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; |x|          6|          4|          3|   0.2812500000|          4|00:00:00|   NA|  NA|    NA|
-#&gt; |x|          1|          4|          3|   0.2695312500|          7|00:00:00|+0.00|0.50|0.3750|
-#&gt; |x|          5|          4|          3|   0.2486979167|         10|00:00:00|+0.50|0.67|0.2500|
-#&gt; |x|          4|          4|          3|   0.2509765625|         13|00:00:00|+0.33|0.50|0.2500|
-#&gt; |=|          2|          4|          4|   0.2507812500|         16|00:00:00|+0.06|0.24|0.4250|
-#&gt; |=|          3|          4|          4|   0.2460937500|         19|00:00:00|+0.04|0.20|0.3583|
-#&gt; |=|          7|          4|          3|   0.2522321429|         23|00:00:00|+0.00|0.14|0.4286|
+#&gt; |x|          6|          4|          6|   0.2734375000|          4|00:00:00|   NA|  NA|    NA|
+#&gt; |x|          3|          4|          3|   0.2519531250|          7|00:00:00|-1.00|0.00|1.5000|
+#&gt; |x|          2|          4|          4|   0.2513020833|         10|00:00:00|-0.33|0.11|1.0000|
+#&gt; |x|          5|          4|          4|   0.2402343750|         13|00:00:00|-0.02|0.24|0.7893|
+#&gt; |=|          1|          4|          4|   0.2429687500|         16|00:00:00|+0.11|0.29|0.6560|
+#&gt; |=|          4|          4|          4|   0.2454427083|         19|00:00:00|-0.09|0.09|0.8005|
+#&gt; |=|          7|          4|          4|   0.2516741071|         23|00:00:00|-0.15|0.01|0.8571|
 #&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; Best-so-far configuration:           3    mean value:    0.2522321429
+#&gt; Best-so-far configuration:           4    mean value:    0.2516741071
 #&gt; Description of the best-so-far configuration:
-#&gt;   .ID.     cp .PARENT.
-#&gt; 3    3 -3.696       NA
+#&gt;   .ID.      cp .PARENT.
+#&gt; 4    4 -2.7744        3
 #&gt; 
-#&gt; # 2021-07-07 11:44:26 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+#&gt; # 2021-07-07 11:46:24 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
 #&gt;        cp
+#&gt; 4 -2.7744
 #&gt; 3 -3.6960
-#&gt; 4 -3.2257
-#&gt; # 2021-07-07 11:44:26 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
+#&gt; # 2021-07-07 11:46:24 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
 #&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
 #&gt; # Iteration: 3
 #&gt; # nbIterations: 3
@@ -396,90 +353,90 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
 #&gt; # nbConfigurations: 2</div><div class='input'>
 <span class='co'># best performing hyperparameter configuration</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;        cp configuration learner_param_vals  x_domain classif.ce
-#&gt; 1: -3.696             3          &lt;list[2]&gt; &lt;list[1]&gt;  0.2522321</div><div class='input'>
+</div><div class='output co'>#&gt;         cp id_configuration learner_param_vals  x_domain classif.ce
+#&gt; 1: -2.7744                4          &lt;list[2]&gt; &lt;list[1]&gt;  0.2516741</div><div class='input'>
 <span class='co'># all evaluated hyperparameter configuration</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;          cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -7.2126  0.2617188 0.0007372378            0.009 2021-07-07 11:44:23
-#&gt;  2: -5.1415  0.2617188 0.0058489098            0.011 2021-07-07 11:44:23
-#&gt;  3: -3.6960  0.2578125 0.0248226186            0.010 2021-07-07 11:44:23
-#&gt;  4: -7.2126  0.2851562 0.0007372378            0.010 2021-07-07 11:44:23
-#&gt;  5: -5.1415  0.2773438 0.0058489098            0.009 2021-07-07 11:44:23
-#&gt;  6: -3.6960  0.2734375 0.0248226186            0.010 2021-07-07 11:44:23
-#&gt;  7: -7.2126  0.2695312 0.0007372378            0.010 2021-07-07 11:44:23
-#&gt;  8: -5.1415  0.2695312 0.0058489098            0.011 2021-07-07 11:44:23
-#&gt;  9: -3.6960  0.2226562 0.0248226186            0.011 2021-07-07 11:44:23
-#&gt; 10: -7.2126  0.2851562 0.0007372378            0.010 2021-07-07 11:44:24
-#&gt; 11: -5.1415  0.2656250 0.0058489098            0.010 2021-07-07 11:44:24
-#&gt; 12: -3.6960  0.2578125 0.0248226186            0.012 2021-07-07 11:44:24
-#&gt; 13: -7.2126  0.2539062 0.0007372378            0.012 2021-07-07 11:44:24
-#&gt; 14: -5.1415  0.2343750 0.0058489098            0.010 2021-07-07 11:44:24
-#&gt; 15: -3.6960  0.2070312 0.0248226186            0.012 2021-07-07 11:44:24
-#&gt; 16: -3.6960  0.2812500 0.0248226186            0.010 2021-07-07 11:44:24
-#&gt; 17: -3.2257  0.2812500 0.0397279623            0.010 2021-07-07 11:44:24
-#&gt; 18: -2.5684  0.2812500 0.0766581003            0.010 2021-07-07 11:44:24
-#&gt; 19: -3.3355  0.2812500 0.0355967834            0.010 2021-07-07 11:44:24
-#&gt; 20: -3.2257  0.2578125 0.0397279623            0.011 2021-07-07 11:44:24
-#&gt; 21: -2.5684  0.3085938 0.0766581003            0.010 2021-07-07 11:44:24
-#&gt; 22: -3.3355  0.2578125 0.0355967834            0.010 2021-07-07 11:44:24
-#&gt; 23: -3.2257  0.2070312 0.0397279623            0.011 2021-07-07 11:44:25
-#&gt; 24: -2.5684  0.2656250 0.0766581003            0.010 2021-07-07 11:44:25
-#&gt; 25: -3.3355  0.2070312 0.0355967834            0.018 2021-07-07 11:44:25
-#&gt; 26: -3.2257  0.2578125 0.0397279623            0.011 2021-07-07 11:44:25
-#&gt; 27: -2.5684  0.2578125 0.0766581003            0.013 2021-07-07 11:44:25
-#&gt; 28: -3.3355  0.2578125 0.0355967834            0.015 2021-07-07 11:44:25
-#&gt; 29: -3.2257  0.2500000 0.0397279623            0.010 2021-07-07 11:44:25
-#&gt; 30: -2.5684  0.2500000 0.0766581003            0.010 2021-07-07 11:44:25
-#&gt; 31: -3.3355  0.2500000 0.0355967834            0.009 2021-07-07 11:44:25
-#&gt; 32: -3.2257  0.2226562 0.0397279623            0.010 2021-07-07 11:44:26
-#&gt; 33: -2.5684  0.2226562 0.0766581003            0.009 2021-07-07 11:44:26
-#&gt; 34: -3.3355  0.2226562 0.0355967834            0.010 2021-07-07 11:44:26
-#&gt; 35: -3.6960  0.2656250 0.0248226186            0.010 2021-07-07 11:44:26
-#&gt; 36: -3.2257  0.2890625 0.0397279623            0.011 2021-07-07 11:44:26
-#&gt; 37: -2.5684  0.2890625 0.0766581003            0.010 2021-07-07 11:44:26
-#&gt; 38: -3.3355  0.2890625 0.0355967834            0.010 2021-07-07 11:44:26
+#&gt;  1: -7.2126  0.2617188 0.0007372378            0.011 2021-07-07 11:46:20
+#&gt;  2: -5.1415  0.2617188 0.0058489098            0.012 2021-07-07 11:46:20
+#&gt;  3: -3.6960  0.2578125 0.0248226186            0.010 2021-07-07 11:46:20
+#&gt;  4: -7.2126  0.2851562 0.0007372378            0.013 2021-07-07 11:46:20
+#&gt;  5: -5.1415  0.2773438 0.0058489098            0.009 2021-07-07 11:46:20
+#&gt;  6: -3.6960  0.2734375 0.0248226186            0.012 2021-07-07 11:46:20
+#&gt;  7: -7.2126  0.2695312 0.0007372378            0.015 2021-07-07 11:46:21
+#&gt;  8: -5.1415  0.2695312 0.0058489098            0.010 2021-07-07 11:46:21
+#&gt;  9: -3.6960  0.2226562 0.0248226186            0.009 2021-07-07 11:46:21
+#&gt; 10: -7.2126  0.2851562 0.0007372378            0.010 2021-07-07 11:46:21
+#&gt; 11: -5.1415  0.2656250 0.0058489098            0.010 2021-07-07 11:46:21
+#&gt; 12: -3.6960  0.2578125 0.0248226186            0.015 2021-07-07 11:46:21
+#&gt; 13: -7.2126  0.2539062 0.0007372378            0.011 2021-07-07 11:46:21
+#&gt; 14: -5.1415  0.2343750 0.0058489098            0.008 2021-07-07 11:46:21
+#&gt; 15: -3.6960  0.2070312 0.0248226186            0.010 2021-07-07 11:46:21
+#&gt; 16: -3.6960  0.2812500 0.0248226186            0.009 2021-07-07 11:46:22
+#&gt; 17: -2.7744  0.2812500 0.0623868976            0.010 2021-07-07 11:46:22
+#&gt; 18: -4.0180  0.2773438 0.0179889068            0.010 2021-07-07 11:46:22
+#&gt; 19: -4.0939  0.2734375 0.0166740777            0.010 2021-07-07 11:46:22
+#&gt; 20: -2.7744  0.2226562 0.0623868976            0.010 2021-07-07 11:46:22
+#&gt; 21: -4.0180  0.2421875 0.0179889068            0.010 2021-07-07 11:46:22
+#&gt; 22: -4.0939  0.2617188 0.0166740777            0.010 2021-07-07 11:46:22
+#&gt; 23: -2.7744  0.2500000 0.0623868976            0.010 2021-07-07 11:46:22
+#&gt; 24: -4.0180  0.2773438 0.0179889068            0.012 2021-07-07 11:46:23
+#&gt; 25: -4.0939  0.2773438 0.0166740777            0.011 2021-07-07 11:46:23
+#&gt; 26: -2.7744  0.2070312 0.0623868976            0.010 2021-07-07 11:46:23
+#&gt; 27: -4.0180  0.2343750 0.0179889068            0.010 2021-07-07 11:46:23
+#&gt; 28: -4.0939  0.2343750 0.0166740777            0.010 2021-07-07 11:46:23
+#&gt; 29: -2.7744  0.2539062 0.0623868976            0.010 2021-07-07 11:46:23
+#&gt; 30: -4.0180  0.2578125 0.0179889068            0.011 2021-07-07 11:46:23
+#&gt; 31: -4.0939  0.2578125 0.0166740777            0.011 2021-07-07 11:46:23
+#&gt; 32: -2.7744  0.2578125 0.0623868976            0.010 2021-07-07 11:46:23
+#&gt; 33: -4.0180  0.2343750 0.0179889068            0.012 2021-07-07 11:46:24
+#&gt; 34: -4.0939  0.2343750 0.0166740777            0.010 2021-07-07 11:46:24
+#&gt; 35: -3.6960  0.2656250 0.0248226186            0.010 2021-07-07 11:46:24
+#&gt; 36: -2.7744  0.2890625 0.0623868976            0.009 2021-07-07 11:46:24
+#&gt; 37: -4.0180  0.2617188 0.0179889068            0.010 2021-07-07 11:46:24
+#&gt; 38: -4.0939  0.2617188 0.0166740777            0.011 2021-07-07 11:46:24
 #&gt;          cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;     batch_nr race step instance configuration      resample_result
-#&gt;  1:        1    1    1        8             1 &lt;ResampleResult[20]&gt;
-#&gt;  2:        1    1    1        8             2 &lt;ResampleResult[20]&gt;
-#&gt;  3:        1    1    1        8             3 &lt;ResampleResult[20]&gt;
-#&gt;  4:        2    1    1        2             1 &lt;ResampleResult[20]&gt;
-#&gt;  5:        2    1    1        2             2 &lt;ResampleResult[20]&gt;
-#&gt;  6:        2    1    1        2             3 &lt;ResampleResult[20]&gt;
-#&gt;  7:        3    1    1        3             1 &lt;ResampleResult[20]&gt;
-#&gt;  8:        3    1    1        3             2 &lt;ResampleResult[20]&gt;
-#&gt;  9:        3    1    1        3             3 &lt;ResampleResult[20]&gt;
-#&gt; 10:        4    1    1        5             1 &lt;ResampleResult[20]&gt;
-#&gt; 11:        4    1    1        5             2 &lt;ResampleResult[20]&gt;
-#&gt; 12:        4    1    1        5             3 &lt;ResampleResult[20]&gt;
-#&gt; 13:        5    1    1        6             1 &lt;ResampleResult[20]&gt;
-#&gt; 14:        5    1    1        6             2 &lt;ResampleResult[20]&gt;
-#&gt; 15:        5    1    1        6             3 &lt;ResampleResult[20]&gt;
-#&gt; 16:        6    2    1        1             3 &lt;ResampleResult[20]&gt;
-#&gt; 17:        6    2    1        1             4 &lt;ResampleResult[20]&gt;
-#&gt; 18:        6    2    1        1             5 &lt;ResampleResult[20]&gt;
-#&gt; 19:        6    2    1        1             6 &lt;ResampleResult[20]&gt;
-#&gt; 20:        7    2    1        8             4 &lt;ResampleResult[20]&gt;
-#&gt; 21:        7    2    1        8             5 &lt;ResampleResult[20]&gt;
-#&gt; 22:        7    2    1        8             6 &lt;ResampleResult[20]&gt;
-#&gt; 23:        8    2    1        6             4 &lt;ResampleResult[20]&gt;
-#&gt; 24:        8    2    1        6             5 &lt;ResampleResult[20]&gt;
-#&gt; 25:        8    2    1        6             6 &lt;ResampleResult[20]&gt;
-#&gt; 26:        9    2    1        5             4 &lt;ResampleResult[20]&gt;
-#&gt; 27:        9    2    1        5             5 &lt;ResampleResult[20]&gt;
-#&gt; 28:        9    2    1        5             6 &lt;ResampleResult[20]&gt;
-#&gt; 29:       10    2    1        2             4 &lt;ResampleResult[20]&gt;
-#&gt; 30:       10    2    1        2             5 &lt;ResampleResult[20]&gt;
-#&gt; 31:       10    2    1        2             6 &lt;ResampleResult[20]&gt;
-#&gt; 32:       11    2    1        3             4 &lt;ResampleResult[20]&gt;
-#&gt; 33:       11    2    1        3             5 &lt;ResampleResult[20]&gt;
-#&gt; 34:       11    2    1        3             6 &lt;ResampleResult[20]&gt;
-#&gt; 35:       12    2    1        7             3 &lt;ResampleResult[20]&gt;
-#&gt; 36:       12    2    1        7             4 &lt;ResampleResult[20]&gt;
-#&gt; 37:       12    2    1        7             5 &lt;ResampleResult[20]&gt;
-#&gt; 38:       12    2    1        7             6 &lt;ResampleResult[20]&gt;
-#&gt;     batch_nr race step instance configuration      resample_result</div><div class='input'>
+#&gt;     batch_nr id_configuration id_instance      resample_result
+#&gt;  1:        1                1           8 &lt;ResampleResult[20]&gt;
+#&gt;  2:        2                2           8 &lt;ResampleResult[20]&gt;
+#&gt;  3:        3                3           8 &lt;ResampleResult[20]&gt;
+#&gt;  4:        4                1           2 &lt;ResampleResult[20]&gt;
+#&gt;  5:        5                2           2 &lt;ResampleResult[20]&gt;
+#&gt;  6:        6                3           2 &lt;ResampleResult[20]&gt;
+#&gt;  7:        7                1           3 &lt;ResampleResult[20]&gt;
+#&gt;  8:        8                2           3 &lt;ResampleResult[20]&gt;
+#&gt;  9:        9                3           3 &lt;ResampleResult[20]&gt;
+#&gt; 10:       10                1           5 &lt;ResampleResult[20]&gt;
+#&gt; 11:       11                2           5 &lt;ResampleResult[20]&gt;
+#&gt; 12:       12                3           5 &lt;ResampleResult[20]&gt;
+#&gt; 13:       13                1           6 &lt;ResampleResult[20]&gt;
+#&gt; 14:       14                2           6 &lt;ResampleResult[20]&gt;
+#&gt; 15:       15                3           6 &lt;ResampleResult[20]&gt;
+#&gt; 16:       16                3           1 &lt;ResampleResult[20]&gt;
+#&gt; 17:       17                4           1 &lt;ResampleResult[20]&gt;
+#&gt; 18:       18                5           1 &lt;ResampleResult[20]&gt;
+#&gt; 19:       19                6           1 &lt;ResampleResult[20]&gt;
+#&gt; 20:       20                4           3 &lt;ResampleResult[20]&gt;
+#&gt; 21:       21                5           3 &lt;ResampleResult[20]&gt;
+#&gt; 22:       22                6           3 &lt;ResampleResult[20]&gt;
+#&gt; 23:       23                4           2 &lt;ResampleResult[20]&gt;
+#&gt; 24:       24                5           2 &lt;ResampleResult[20]&gt;
+#&gt; 25:       25                6           2 &lt;ResampleResult[20]&gt;
+#&gt; 26:       26                4           6 &lt;ResampleResult[20]&gt;
+#&gt; 27:       27                5           6 &lt;ResampleResult[20]&gt;
+#&gt; 28:       28                6           6 &lt;ResampleResult[20]&gt;
+#&gt; 29:       29                4           8 &lt;ResampleResult[20]&gt;
+#&gt; 30:       30                5           8 &lt;ResampleResult[20]&gt;
+#&gt; 31:       31                6           8 &lt;ResampleResult[20]&gt;
+#&gt; 32:       32                4           5 &lt;ResampleResult[20]&gt;
+#&gt; 33:       33                5           5 &lt;ResampleResult[20]&gt;
+#&gt; 34:       34                6           5 &lt;ResampleResult[20]&gt;
+#&gt; 35:       35                3           7 &lt;ResampleResult[20]&gt;
+#&gt; 36:       36                4           7 &lt;ResampleResult[20]&gt;
+#&gt; 37:       37                5           7 &lt;ResampleResult[20]&gt;
+#&gt; 38:       38                6           7 &lt;ResampleResult[20]&gt;
+#&gt;     batch_nr id_configuration id_instance      resample_result</div><div class='input'>
 <span class='co'># fit final model on complete data set</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
