@@ -176,10 +176,13 @@ Key to retrieve tuner from <a href='mlr_tuners.html'>mlr_tuners</a> dictionary.<
     <tr>
       <th>resampling</th>
       <td><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Uninstantiated resamplings are instantiated during construction
-so that all configurations are evaluated on the same data splits. If a new
-resampling is passed, it is instantiated with new data splits. Already
-instantiated resamplings are kept unchanged.</p></td>
+Resampling that is used to evaluated the performance of the hyperparameter
+configurations. Uninstantiated resamplings are instantiated during
+construction so that all configurations are evaluated on the same data
+splits. Already instantiated resamplings are kept unchanged. Specialized
+<a href='Tuner.html'>Tuner</a> change the resampling e.g. to evaluate a hyperparameter configuration
+on different data splits. This field, however, always returns the resampling
+passed in construction.</p></td>
     </tr>
     <tr>
       <th>measure</th>

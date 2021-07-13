@@ -234,10 +234,13 @@ Task to operate on.</p></dd>
 <dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></dd>
 
 <dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
-Uninstantiated resamplings are instantiated during construction
-so that all configurations are evaluated on the same data splits. If a new
-resampling is passed, it is instantiated with new data splits. Already
-instantiated resamplings are kept unchanged.</p></dd>
+Resampling that is used to evaluated the performance of the hyperparameter
+configurations. Uninstantiated resamplings are instantiated during
+construction so that all configurations are evaluated on the same data
+splits. Already instantiated resamplings are kept unchanged. Specialized
+<a href='Tuner.html'>Tuner</a> change the resampling e.g. to evaluate a hyperparameter configuration
+on different data splits. This field, however, always returns the resampling
+passed in construction.</p></dd>
 
 <dt><code>measures</code></dt><dd><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
 Measures to optimize.
@@ -325,8 +328,8 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce classif.acc runtime_learners           timestamp
-#&gt; 1: 0.05        5        0.1         0.9            0.008 2021-07-13 13:19:50
-#&gt; 2: 0.01        3        0.1         0.9            0.013 2021-07-13 13:19:50
+#&gt; 1: 0.05        5        0.1         0.9            0.008 2021-07-13 13:22:50
+#&gt; 2: 0.01        3        0.1         0.9            0.009 2021-07-13 13:22:50
 #&gt;    batch_nr      resample_result
 #&gt; 1:        1 &lt;ResampleResult[20]&gt;
 #&gt; 2:        1 &lt;ResampleResult[20]&gt;</div></pre>
