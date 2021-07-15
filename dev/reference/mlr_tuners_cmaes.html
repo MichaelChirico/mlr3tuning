@@ -154,6 +154,11 @@ from package <a href='https://CRAN.R-project.org/package=adagio'><span class="pk
 
 
 
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>Hansen N (2016).
+&#8220;The CMA Evolution Strategy: A Tutorial.&#8221;
+1604.00772.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     
@@ -164,14 +169,6 @@ from package <a href='https://CRAN.R-project.org/package=adagio'><span class="pk
 <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"cmaes"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
-
-    
-
-
-<p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
-<a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
-Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
 
     
@@ -195,6 +192,14 @@ the algorithm and where our terminators allow to obtain the same behavior.</p>
 combined with a Terminator. Simply wrap the function in
 <code>progressr::with_progress()</code> to enable them. We recommend to use package
 <a href='https://CRAN.R-project.org/package=progress'><span class="pkg">progress</span></a> as backend; enable with <code>progressr::handlers("progress")</code>.</p>
+    <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+
+    
+
+
+<p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
+<a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
+Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -283,16 +288,16 @@ combined with a Terminator. Simply wrap the function in
 #&gt;  9: -9.210340   2.00000  55.84191  0.2265625 0.0001000000                 2
 #&gt; 10: -9.210340  56.06075  43.25456  0.2343750 0.0001000000                56
 #&gt;     x_domain_minbucket runtime_learners           timestamp batch_nr
-#&gt;  1:                 30            0.010 2021-07-15 05:08:42        1
-#&gt;  2:                 38            0.010 2021-07-15 05:08:42        2
-#&gt;  3:                 57            0.009 2021-07-15 05:08:42        3
-#&gt;  4:                 64            0.009 2021-07-15 05:08:42        4
-#&gt;  5:                 46            0.010 2021-07-15 05:08:42        5
-#&gt;  6:                 48            0.011 2021-07-15 05:08:43        6
-#&gt;  7:                 41            0.009 2021-07-15 05:08:43        7
-#&gt;  8:                 12            0.009 2021-07-15 05:08:43        8
-#&gt;  9:                 55            0.009 2021-07-15 05:08:43        9
-#&gt; 10:                 43            0.009 2021-07-15 05:08:43       10
+#&gt;  1:                 30            0.019 2021-07-15 17:28:03        1
+#&gt;  2:                 38            0.010 2021-07-15 17:28:03        2
+#&gt;  3:                 57            0.010 2021-07-15 17:28:03        3
+#&gt;  4:                 64            0.011 2021-07-15 17:28:03        4
+#&gt;  5:                 46            0.011 2021-07-15 17:28:03        5
+#&gt;  6:                 48            0.011 2021-07-15 17:28:03        6
+#&gt;  7:                 41            0.011 2021-07-15 17:28:04        7
+#&gt;  8:                 12            0.012 2021-07-15 17:28:04        8
+#&gt;  9:                 55            0.015 2021-07-15 17:28:04        9
+#&gt; 10:                 43            0.011 2021-07-15 17:28:04       10
 #&gt;          resample_result
 #&gt;  1: &lt;ResampleResult[20]&gt;
 #&gt;  2: &lt;ResampleResult[20]&gt;
