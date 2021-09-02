@@ -114,7 +114,7 @@
 <h2 class="hasAnchor">
 <a href="#resources" class="anchor"></a>Resources</h2>
 <ul>
-<li>mlr3book chapters on <a href="https://mlr3book.mlr-org.com/searchspace.html">tuning search spaces</a>, <a href="https://mlr3book.mlr-org.com/tuning.html">hyperparameter tuning</a> and <a href="https://mlr3book.mlr-org.com/nested-resampling.html">nested resampling</a>.</li>
+<li>mlr3book chapters on <a href="https://mlr3book.mlr-org.com/optimization.html#searchspace">tuning search spaces</a>, <a href="https://mlr3book.mlr-org.com/optimization.html#tuning">hyperparameter tuning</a> and <a href="https://mlr3book.mlr-org.com/optimization.html#nested-resampling">nested resampling</a>.</li>
 <li>mlr3gallery <a href="https://mlr3gallery.mlr-org.com/#category:mlr3tuning">posts</a>
 </li>
 <li><a href="https://cheatsheets.mlr-org.com/mlr3tuning.pdf">cheatsheet</a></li>
@@ -164,16 +164,16 @@
 <code class="sourceCode R"><span class="co"># all evaluated hyperparameter configuration</span>
 <span class="fu">as.data.table</span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">##            cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">##  1: -6.355096  0.2786458 0.0017378683            0.040 2021-07-13 16:10:19        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">##  2: -5.937751  0.2799479 0.0026379549            0.033 2021-07-13 16:10:19        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">##  3: -4.280177  0.2734375 0.0138402055            0.032 2021-07-13 16:10:19        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">##  4: -7.539553  0.2786458 0.0005316351            0.040 2021-07-13 16:10:19        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">##  5: -7.140496  0.2786458 0.0007923588            0.036 2021-07-13 16:10:19        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">##  6: -9.114735  0.2786458 0.0001100325            0.023 2021-07-13 16:10:20        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">##  7: -5.401998  0.2695312 0.0045075636            0.024 2021-07-13 16:10:20        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">##  8: -4.703298  0.2773438 0.0090653290            0.024 2021-07-13 16:10:20        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">##  9: -2.774656  0.2617188 0.0623709163            0.022 2021-07-13 16:10:20        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">## 10: -4.441283  0.2734375 0.0117808090            0.023 2021-07-13 16:10:20        2 &lt;ResampleResult[20]&gt;</span></span></code></pre></div>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">##  1: -6.355096  0.2786458 0.0017378683            0.024 2021-09-02 13:45:24        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">##  2: -5.937751  0.2799479 0.0026379549            0.025 2021-09-02 13:45:24        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">##  3: -4.280177  0.2734375 0.0138402055            0.023 2021-09-02 13:45:24        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">##  4: -7.539553  0.2786458 0.0005316351            0.053 2021-09-02 13:45:24        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">##  5: -7.140496  0.2786458 0.0007923588            0.027 2021-09-02 13:45:24        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">##  6: -9.114735  0.2786458 0.0001100325            0.021 2021-09-02 13:45:25        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">##  7: -5.401998  0.2695312 0.0045075636            0.022 2021-09-02 13:45:25        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">##  8: -4.703298  0.2773438 0.0090653290            0.022 2021-09-02 13:45:25        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">##  9: -2.774656  0.2617188 0.0623709163            0.022 2021-09-02 13:45:25        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">## 10: -4.441283  0.2734375 0.0117808090            0.024 2021-09-02 13:45:25        2 &lt;ResampleResult[20]&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># fit final model on complete data set</span>
 <span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="va">instance</span><span class="op">$</span><span class="va">result_learner_param_vals</span>
@@ -211,16 +211,16 @@
 <code class="sourceCode R"><span class="co"># all evaluated hyperparameter configuration</span>
 <span class="fu">as.data.table</span><span class="op">(</span><span class="va">at</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">##            cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co">##  1: -6.469604  0.2671051 0.0015498397            0.022 2021-07-13 16:10:20        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">##  2: -5.975552  0.2671051 0.0025400997            0.023 2021-07-13 16:10:20        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">##  3: -6.304555  0.2671051 0.0018279594            0.022 2021-07-13 16:10:20        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">##  4: -2.885359  0.2703730 0.0558347447            0.021 2021-07-13 16:10:20        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">##  5: -5.878631  0.2671051 0.0027986148            0.029 2021-07-13 16:10:20        1 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">##  6: -5.316384  0.2671051 0.0049104786            0.022 2021-07-13 16:10:21        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">##  7: -4.159136  0.2590228 0.0156210471            0.023 2021-07-13 16:10:21        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co">##  8: -9.206399  0.2671051 0.0001003949            0.023 2021-07-13 16:10:21        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="co">##  9: -4.869814  0.2785350 0.0076747945            0.022 2021-07-13 16:10:21        2 &lt;ResampleResult[20]&gt;</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">## 10: -6.649454  0.2671051 0.0012947286            0.027 2021-07-13 16:10:21        2 &lt;ResampleResult[20]&gt;</span></span></code></pre></div>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">##  1: -6.469604  0.2671051 0.0015498397            0.022 2021-09-02 13:45:26        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">##  2: -5.975552  0.2671051 0.0025400997            0.022 2021-09-02 13:45:26        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">##  3: -6.304555  0.2671051 0.0018279594            0.022 2021-09-02 13:45:26        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">##  4: -2.885359  0.2703730 0.0558347447            0.022 2021-09-02 13:45:26        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">##  5: -5.878631  0.2671051 0.0027986148            0.038 2021-09-02 13:45:26        1 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">##  6: -5.316384  0.2671051 0.0049104786            0.022 2021-09-02 13:45:26        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">##  7: -4.159136  0.2590228 0.0156210471            0.021 2021-09-02 13:45:26        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">##  8: -9.206399  0.2671051 0.0001003949            0.024 2021-09-02 13:45:26        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">##  9: -4.869814  0.2785350 0.0076747945            0.023 2021-09-02 13:45:26        2 &lt;ResampleResult[20]&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">## 10: -6.649454  0.2671051 0.0012947286            0.022 2021-09-02 13:45:26        2 &lt;ResampleResult[20]&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># predict new data with model trained on the complete data set and optimized hyperparameters</span>
 <span class="va">at</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">test_set</span><span class="op">)</span></code></pre></div>
@@ -264,9 +264,9 @@
 <code class="sourceCode R"><span class="co"># performance scores of the outer resampling</span>
 <span class="va">rr</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">##                 task task_id         learner          learner_id         resampling resampling_id iteration              prediction classif.ce</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="co">## 1: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[39]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[19]&gt;  0.2187500</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co">## 2: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[39]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[19]&gt;  0.2500000</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co">## 3: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[39]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         3 &lt;PredictionClassif[19]&gt;  0.2734375</span></span></code></pre></div>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">## 1: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[19]&gt;  0.2187500</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">## 2: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[19]&gt;  0.2500000</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">## 3: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned &lt;ResamplingCV[19]&gt;            cv         3 &lt;PredictionClassif[19]&gt;  0.2734375</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># inner resampling results</span>
 <span class="fu"><a href="reference/extract_inner_tuning_results.html">extract_inner_tuning_results</a></span><span class="op">(</span><span class="va">rr</span><span class="op">)</span></code></pre></div>
@@ -278,36 +278,36 @@
 <code class="sourceCode R"><span class="co"># inner resampling archives</span>
 <span class="fu"><a href="reference/extract_inner_tuning_archives.html">extract_inner_tuning_archives</a></span><span class="op">(</span><span class="va">rr</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">##     iteration        cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result task_id          learner_id resampling_id</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co">##  1:         1 -4.539772  0.2748538 0.0106758449            0.007 2021-07-13 16:10:21        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co">##  2:         1 -7.559936  0.2631579 0.0005209086            0.008 2021-07-13 16:10:21        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="co">##  3:         1 -8.648543  0.2631579 0.0001753822            0.008 2021-07-13 16:10:21        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="co">##  4:         1 -6.297959  0.2631579 0.0018400560            0.008 2021-07-13 16:10:21        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="co">##  5:         1 -8.947182  0.2631579 0.0001301033            0.007 2021-07-13 16:10:21        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="co">##  6:         1 -8.067483  0.2631579 0.0003135715            0.007 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##  7:         1 -8.350241  0.2631579 0.0002363396            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##  8:         1 -5.913481  0.2631579 0.0027027622            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="co">##  9:         1 -8.752513  0.2631579 0.0001580636            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## 10:         1 -2.768620  0.2573099 0.0627485302            0.007 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## 11:         2 -3.286175  0.2105263 0.0373966171            0.007 2021-07-13 16:10:22        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## 12:         2 -4.124071  0.2456140 0.0161785202            0.008 2021-07-13 16:10:22        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## 13:         2 -2.385855  0.2105263 0.0920102553            0.012 2021-07-13 16:10:22        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-15"><a href="#cb21-15"></a><span class="co">## 14:         2 -3.880799  0.2046784 0.0206343371            0.007 2021-07-13 16:10:22        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-16"><a href="#cb21-16"></a><span class="co">## 15:         2 -4.328644  0.2456140 0.0131854101            0.007 2021-07-13 16:10:22        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-17"><a href="#cb21-17"></a><span class="co">## 16:         2 -4.394274  0.2456140 0.0123478454            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-18"><a href="#cb21-18"></a><span class="co">## 17:         2 -5.922306  0.2690058 0.0026790151            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-19"><a href="#cb21-19"></a><span class="co">## 18:         2 -7.331236  0.2690058 0.0006547636            0.008 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-20"><a href="#cb21-20"></a><span class="co">## 19:         2 -4.992721  0.2690058 0.0067871745            0.009 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-21"><a href="#cb21-21"></a><span class="co">## 20:         2 -3.362562  0.2105263 0.0346463879            0.007 2021-07-13 16:10:22        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-22"><a href="#cb21-22"></a><span class="co">## 21:         3 -8.862942  0.2748538 0.0001415380            0.010 2021-07-13 16:10:23        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-23"><a href="#cb21-23"></a><span class="co">## 22:         3 -7.347079  0.2748538 0.0006444723            0.010 2021-07-13 16:10:23        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-24"><a href="#cb21-24"></a><span class="co">## 23:         3 -7.067612  0.2748538 0.0008522663            0.010 2021-07-13 16:10:23        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-25"><a href="#cb21-25"></a><span class="co">## 24:         3 -8.044845  0.2748538 0.0003207512            0.009 2021-07-13 16:10:23        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-26"><a href="#cb21-26"></a><span class="co">## 25:         3 -6.697964  0.2748538 0.0012334207            0.010 2021-07-13 16:10:23        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-27"><a href="#cb21-27"></a><span class="co">## 26:         3 -6.530743  0.2748538 0.0014579225            0.009 2021-07-13 16:10:23        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-28"><a href="#cb21-28"></a><span class="co">## 27:         3 -4.267553  0.2982456 0.0140160370            0.010 2021-07-13 16:10:23        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-29"><a href="#cb21-29"></a><span class="co">## 28:         3 -6.352161  0.2748538 0.0017429764            0.010 2021-07-13 16:10:23        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-30"><a href="#cb21-30"></a><span class="co">## 29:         3 -6.222573  0.2748538 0.0019841342            0.010 2021-07-13 16:10:23        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
-<span id="cb21-31"><a href="#cb21-31"></a><span class="co">## 30:         3 -3.570023  0.2865497 0.0281551963            0.009 2021-07-13 16:10:23        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">##  1:         1 -4.539772  0.2748538 0.0106758449            0.008 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">##  2:         1 -7.559936  0.2631579 0.0005209086            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">##  3:         1 -8.648543  0.2631579 0.0001753822            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co">##  4:         1 -6.297959  0.2631579 0.0018400560            0.008 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co">##  5:         1 -8.947182  0.2631579 0.0001301033            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="co">##  6:         1 -8.067483  0.2631579 0.0003135715            0.008 2021-09-02 13:45:27        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="co">##  7:         1 -8.350241  0.2631579 0.0002363396            0.007 2021-09-02 13:45:27        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="co">##  8:         1 -5.913481  0.2631579 0.0027027622            0.007 2021-09-02 13:45:27        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">##  9:         1 -8.752513  0.2631579 0.0001580636            0.008 2021-09-02 13:45:27        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="co">## 10:         1 -2.768620  0.2573099 0.0627485302            0.008 2021-09-02 13:45:27        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">## 11:         2 -3.286175  0.2105263 0.0373966171            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co">## 12:         2 -4.124071  0.2456140 0.0161785202            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="co">## 13:         2 -2.385855  0.2105263 0.0920102553            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="co">## 14:         2 -3.880799  0.2046784 0.0206343371            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="co">## 15:         2 -4.328644  0.2456140 0.0131854101            0.007 2021-09-02 13:45:27        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="co">## 16:         2 -4.394274  0.2456140 0.0123478454            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="co">## 17:         2 -5.922306  0.2690058 0.0026790151            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a><span class="co">## 18:         2 -7.331236  0.2690058 0.0006547636            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="co">## 19:         2 -4.992721  0.2690058 0.0067871745            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a><span class="co">## 20:         2 -3.362562  0.2105263 0.0346463879            0.008 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-22"><a href="#cb21-22"></a><span class="co">## 21:         3 -8.862942  0.2748538 0.0001415380            0.007 2021-09-02 13:45:28        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a><span class="co">## 22:         3 -7.347079  0.2748538 0.0006444723            0.007 2021-09-02 13:45:28        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a><span class="co">## 23:         3 -7.067612  0.2748538 0.0008522663            0.007 2021-09-02 13:45:28        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-25"><a href="#cb21-25"></a><span class="co">## 24:         3 -8.044845  0.2748538 0.0003207512            0.006 2021-09-02 13:45:28        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-26"><a href="#cb21-26"></a><span class="co">## 25:         3 -6.697964  0.2748538 0.0012334207            0.007 2021-09-02 13:45:28        1 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-27"><a href="#cb21-27"></a><span class="co">## 26:         3 -6.530743  0.2748538 0.0014579225            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-28"><a href="#cb21-28"></a><span class="co">## 27:         3 -4.267553  0.2982456 0.0140160370            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-29"><a href="#cb21-29"></a><span class="co">## 28:         3 -6.352161  0.2748538 0.0017429764            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-30"><a href="#cb21-30"></a><span class="co">## 29:         3 -6.222573  0.2748538 0.0019841342            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
+<span id="cb21-31"><a href="#cb21-31"></a><span class="co">## 30:         3 -3.570023  0.2865497 0.0281551963            0.007 2021-09-02 13:45:28        2 &lt;ResampleResult[20]&gt;    pima classif.rpart.tuned            cv</span></span>
 <span id="cb21-32"><a href="#cb21-32"></a><span class="co">##     iteration        cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result task_id          learner_id resampling_id</span></span></code></pre></div>
 </div>
 </div>
