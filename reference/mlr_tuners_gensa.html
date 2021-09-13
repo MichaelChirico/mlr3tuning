@@ -83,14 +83,14 @@ from package GenSA." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.8.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.9.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa fa fa-file-alt"></span>
+    <span class="fa fa-file-alt"></span>
      
     Reference
   </a>
@@ -100,7 +100,7 @@ from package GenSA." />
 </li>
 <li>
   <a href="https://mlr3book.mlr-org.com">
-    <span class="fa fa fa fa-link"></span>
+    <span class="fa fa-link"></span>
      
     mlr3book
   </a>
@@ -113,7 +113,7 @@ from package GenSA." />
 </li>
 <li>
   <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
-    <span class="fa fa fa fa-comments"></span>
+    <span class="fa fa-comments"></span>
      
   </a>
 </li>
@@ -125,7 +125,7 @@ from package GenSA." />
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fas fa-rss"></span>
+    <span class="fa fa-rss"></span>
      
   </a>
 </li>
@@ -171,10 +171,23 @@ doi: <a href='https://doi.org/10.32614/rj-2013-002'>10.32614/rj-2013-002</a>
     
 
 <p>This <a href='Tuner.html'>Tuner</a> can be instantiated via the <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a>
-<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"gensa"</span><span class='op'>)</span>
+<a href='mlr_tuners.html'>mlr_tuners</a> or with the associated sugar function <code><a href='tnr.html'>tnr()</a></code>:</p><pre><span class='va'>TunerGenSA</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>mlr_tuners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"gensa"</span><span class='op'>)</span>
 <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"gensa"</span><span class='op'>)</span>
 </pre>
 
+    <h2 class="hasAnchor" id="parallelization"><a class="anchor" href="#parallelization"></a>Parallelization</h2>
+
+    
+
+<p>In order to support general termination criteria and parallelization, we
+evaluate points in a batch-fashion of size <code>batch_size</code>. Larger batches mean
+we can parallelize more, smaller batches imply a more fine-grained checking
+of termination criteria. A batch contains of <code>batch_size</code> times <code>resampling$iters</code> jobs.
+E.g., if you set a batch size of 10 points and do a 5-fold cross validation, you can
+utilize up to 50 cores.</p>
+<p>Parallelization is supported via package <a href='https://CRAN.R-project.org/package=future'><span class="pkg">future</span></a> (see <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>'s
+section on parallelization for more details).</p>
     <h2 class="hasAnchor" id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
 
     
@@ -216,6 +229,7 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <code><a href='mlr_tuners_cmaes.html'>mlr_tuners_cmaes</a></code>,
 <code><a href='mlr_tuners_design_points.html'>mlr_tuners_design_points</a></code>,
 <code><a href='mlr_tuners_grid_search.html'>mlr_tuners_grid_search</a></code>,
+<code><a href='mlr_tuners_irace.html'>mlr_tuners_irace</a></code>,
 <code><a href='mlr_tuners_nloptr.html'>mlr_tuners_nloptr</a></code>,
 <code><a href='mlr_tuners_random_search.html'>mlr_tuners_random_search</a></code></p></div>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
@@ -257,37 +271,54 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span>
-<span class='va'>terminator</span> <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>instance</span> <span class='op'>=</span> <span class='va'><a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  task <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>,
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  terminator <span class='op'>=</span> <span class='va'>terminator</span>
-<span class='op'>)</span>
-<span class='va'>tt</span> <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"gensa"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># retrieve task</span>
+<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
 
-<span class='co'># modifies the instance by reference</span>
-<span class='va'>tt</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.03673619          &lt;list[2]&gt; &lt;list[1]&gt;       0.02</div><div class='input'>
-<span class='co'># returns best configuration and best performance</span>
+<span class='co'># load learner and set search space</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># hyperparameter tuning on the pima indians diabetes data set</span>
+<span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span>
+  method <span class='op'>=</span> <span class='st'>"gensa"</span>,
+  task <span class='op'>=</span> <span class='va'>task</span>,
+  learner <span class='op'>=</span> <span class='va'>learner</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  term_evals <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+
+<span class='co'># best performing hyperparameter configuration</span>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;            cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.03673619          &lt;list[2]&gt; &lt;list[1]&gt;       0.02</div><div class='input'>
-<span class='co'># allows access of data.table of full path of all evaluations</span>
-<span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
-</div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
-#&gt;        cp classif.ce           timestamp batch_nr
-#&gt; 1: 0.0367       0.02 2021-03-15 04:41:46        1
-#&gt; 2: 0.0012       0.02 2021-03-15 04:41:47        2
-#&gt; 3: 0.0162       0.02 2021-03-15 04:41:47        3</div></pre>
+</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.930703          &lt;list[2]&gt; &lt;list[1]&gt;  0.2851562</div><div class='input'>
+<span class='co'># all evaluated hyperparameter configuration</span>
+<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
+#&gt;  1: -5.550318  0.3046875 0.0038862207            0.015 2021-09-13 16:37:54
+#&gt;  2: -2.679990  0.3164062 0.0685638304            0.012 2021-09-13 16:37:54
+#&gt;  3: -7.398271  0.3242188 0.0006123106            0.014 2021-09-13 16:37:54
+#&gt;  4: -5.550318  0.3046875 0.0038862207            0.014 2021-09-13 16:37:54
+#&gt;  5: -5.550317  0.3046875 0.0038862246            0.011 2021-09-13 16:37:54
+#&gt;  6: -5.550319  0.3046875 0.0038862168            0.013 2021-09-13 16:37:54
+#&gt;  7: -4.930703  0.2851562 0.0072214248            0.013 2021-09-13 16:37:54
+#&gt;  8: -4.090849  0.2890625 0.0167250258            0.013 2021-09-13 16:37:55
+#&gt;  9: -4.930703  0.2851562 0.0072214248            0.013 2021-09-13 16:37:55
+#&gt; 10: -4.930702  0.2851562 0.0072214320            0.013 2021-09-13 16:37:55
+#&gt;     batch_nr      resample_result
+#&gt;  1:        1 &lt;ResampleResult[20]&gt;
+#&gt;  2:        2 &lt;ResampleResult[20]&gt;
+#&gt;  3:        3 &lt;ResampleResult[20]&gt;
+#&gt;  4:        4 &lt;ResampleResult[20]&gt;
+#&gt;  5:        5 &lt;ResampleResult[20]&gt;
+#&gt;  6:        6 &lt;ResampleResult[20]&gt;
+#&gt;  7:        7 &lt;ResampleResult[20]&gt;
+#&gt;  8:        8 &lt;ResampleResult[20]&gt;
+#&gt;  9:        9 &lt;ResampleResult[20]&gt;
+#&gt; 10:       10 &lt;ResampleResult[20]&gt;</div><div class='input'>
+<span class='co'># fit final model on complete data set</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
+<span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

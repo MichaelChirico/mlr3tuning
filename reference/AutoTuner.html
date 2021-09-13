@@ -56,13 +56,16 @@ The tuning can be specified by providing a Tuner, a bbotk::Terminator,
 a search space as paradox::ParamSet, a mlr3::Resampling and a
 mlr3::Measure.
 The best found hyperparameter configuration is set as hyperparameters
-for the wrapped (inner) learner.
+for the wrapped (inner) learner stored in at$learner. Access the tuned
+hyperparameters via at$learner$param_set$values.
 A final model is fit on the complete training data using the now
-parametrized wrapped learner.
+parametrized wrapped learner. The respective model is available via field
+at$learner$model.
 
 
 During $predict() the AutoTuner just calls the predict method of the
-wrapped (inner) learner.
+wrapped (inner) learner. A set timeout is disabled while fitting the final
+model.
 Note that this approach allows to perform nested resampling by passing an
 AutoTuner object to mlr3::resample() or mlr3::benchmark().
 To access the inner resampling results, set store_tuning_instance = TRUE
@@ -101,14 +104,14 @@ store_models = TRUE (see examples)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.8.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3tuning <small>v0.9.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa fa fa-file-alt"></span>
+    <span class="fa fa-file-alt"></span>
      
     Reference
   </a>
@@ -118,7 +121,7 @@ store_models = TRUE (see examples)." />
 </li>
 <li>
   <a href="https://mlr3book.mlr-org.com">
-    <span class="fa fa fa fa-link"></span>
+    <span class="fa fa-link"></span>
      
     mlr3book
   </a>
@@ -131,7 +134,7 @@ store_models = TRUE (see examples)." />
 </li>
 <li>
   <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
-    <span class="fa fa fa fa-comments"></span>
+    <span class="fa fa-comments"></span>
      
   </a>
 </li>
@@ -143,7 +146,7 @@ store_models = TRUE (see examples)." />
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fas fa-rss"></span>
+    <span class="fa fa-rss"></span>
      
   </a>
 </li>
@@ -174,13 +177,16 @@ The tuning can be specified by providing a <a href='Tuner.html'>Tuner</a>, a <a 
 a search space as <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>, a <a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> and a
 <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>.</p></li>
 <li><p>The best found hyperparameter configuration is set as hyperparameters
-for the wrapped (inner) learner.</p></li>
+for the wrapped (inner) learner stored in <code>at$learner</code>. Access the tuned
+hyperparameters via <code>at$learner$param_set$values</code>.</p></li>
 <li><p>A final model is fit on the complete training data using the now
-parametrized wrapped learner.</p></li>
+parametrized wrapped learner. The respective model is available via field
+<code>at$learner$model</code>.</p></li>
 </ol>
 
 <p>During <code>$predict()</code> the <code>AutoTuner</code> just calls the predict method of the
-wrapped (inner) learner.</p>
+wrapped (inner) learner. A set timeout is disabled while fitting the final
+model.</p>
 <p>Note that this approach allows to perform nested resampling by passing an
 AutoTuner object to <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>mlr3::resample()</a></code> or <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>mlr3::benchmark()</a></code>.
 To access the inner resampling results, set <code>store_tuning_instance = TRUE</code>
@@ -214,12 +220,15 @@ Trained learner</p></dd>
 <dt><code>tuning_instance</code></dt><dd><p>(<a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>)<br />
 Internally created tuning instance with all intermediate results.</p></dd>
 
-<dt><code>tuning_result</code></dt><dd><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
+<dt><code>tuning_result</code></dt><dd><p>(<a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table</a>)<br />
 Short-cut to <code>result</code> from <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
 
 <dt><code>predict_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Stores the currently active predict type, e.g. <code>"response"</code>.
 Must be an element of <code>$predict_types</code>.</p></dd>
+
+<dt><code>hash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Hash (unique identifier) for this object.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -229,20 +238,18 @@ Must be an element of <code>$predict_types</code>.</p></dd>
 
 <ul>
 <li><p><a href='#method-new'><code>AutoTuner$new()</code></a></p></li>
+<li><p><a href='#method-base_learner'><code>AutoTuner$base_learner()</code></a></p></li>
+<li><p><a href='#method-print'><code>AutoTuner$print()</code></a></p></li>
 <li><p><a href='#method-clone'><code>AutoTuner$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-format'><code>mlr3::Learner$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-help'><code>mlr3::Learner$help()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="is_retrainable"><a href='../../mlr3/html/Learner.html#method-is_retrainable'><code>mlr3::Learner$is_retrainable()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-predict'><code>mlr3::Learner$predict()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-print'><code>mlr3::Learner$print()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-reset'><code>mlr3::Learner$reset()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="retrain"><a href='../../mlr3/html/Learner.html#method-retrain'><code>mlr3::Learner$retrain()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-train'><code>mlr3::Learner$train()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="update"><a href='../../mlr3/html/Learner.html#method-update'><code>mlr3::Learner$update()</code></a></span></p></li>
 </ul>
 </details>
 
@@ -283,7 +290,8 @@ When to stop tuning, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceS
 Tuning algorithm to run.</p></dd>
 
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space, see <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a>.</p></dd>
+Hyperparameter search space. If <code>NULL</code>, the search space is constructed
+from the TuneToken in the <code>ParamSet</code> of the learner.</p></dd>
 
 <dt><code>store_tuning_instance</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), stores the internally created
@@ -305,6 +313,33 @@ validity?</p></dd>
 
 </dl><p></div></p>
 <p><hr>
+<a id="method-base_learner"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>base_learner()</code></h3>
+<p>Extracts the base learner from nested learner objects like
+<code>GraphLearner</code> in <a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a>. If <code>recursive = 0</code>, the (tuned)
+learner is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>base_learner</span><span class='op'>(</span>recursive <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>recursive</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+Depth of recursion for multiple nested objects.</p></dd>
+
+</dl><p></div></p>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>Learner.
+Printer.</p>
+<p><hr>
+<a id="method-print"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>print</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>...</code></dt><dd><p>(ignored).</p></dd>
+
+</dl><p></div></p>
+<p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
@@ -318,29 +353,41 @@ validity?</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com'>paradox</a></span><span class='op'>)</span>
-
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
-<span class='va'>search_space</span> <span class='op'>=</span> <span class='va'><a href='https://paradox.mlr-org.com/reference/ParamSet.html'>ParamSet</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'><a href='https://paradox.mlr-org.com/reference/ParamDbl.html'>ParamDbl</a></span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"cp"</span>, lower <span class='op'>=</span> <span class='fl'>0.001</span>, upper <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
+<span class='va'>train_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span>, <span class='fl'>0.8</span> <span class='op'>*</span> <span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>
+<span class='va'>test_set</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='va'>task</span><span class='op'>$</span><span class='va'>nrow</span><span class='op'>)</span>, <span class='va'>train_set</span><span class='op'>)</span>
 
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>at</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+<span class='co'># tune hyperparameters and fit final model</span>
+<span class='va'>at</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span>, row_ids <span class='op'>=</span> <span class='va'>train_set</span><span class='op'>)</span>
+
+<span class='co'># predict with final model</span>
+<span class='va'>at</span><span class='op'>$</span><span class='fu'>predict</span><span class='op'>(</span><span class='va'>task</span>, row_ids <span class='op'>=</span> <span class='va'>test_set</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;PredictionClassif&gt; for 154 observations:
+#&gt;     row_ids truth response
+#&gt;           2   neg      neg
+#&gt;           3   pos      pos
+#&gt;           9   pos      pos
+#&gt; ---                       
+#&gt;         763   neg      neg
+#&gt;         764   neg      neg
+#&gt;         768   neg      neg</div><div class='input'>
+<span class='co'># show tuning result</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>tuning_result</span>
+</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122</div><div class='input'>
+<span class='co'># model slot contains trained learner and tuning instance</span>
 <span class='va'>at</span><span class='op'>$</span><span class='va'>model</span>
 </div><div class='output co'>#&gt; $learner
 #&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.056
+#&gt; * Parameters: xval=0, cp=0.01754
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
@@ -350,54 +397,112 @@ validity?</p></dd>
 #&gt; $tuning_instance
 #&gt; &lt;TuningInstanceSingleCrit&gt;
 #&gt; * State:  Optimized
-#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_iris&gt;
+#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_pima&gt;
 #&gt; * Search Space:
 #&gt; &lt;ParamSet&gt;
-#&gt;    id    class lower upper nlevels        default value
-#&gt; 1: cp ParamDbl 0.001   0.1     Inf &lt;NoDefault[3]&gt;      
+#&gt;    id    class    lower     upper nlevels        default value
+#&gt; 1: cp ParamDbl -9.21034 -2.302585     Inf &lt;NoDefault[3]&gt;      
+#&gt; Trafo is set.
 #&gt; * Terminator: &lt;TerminatorEvals&gt;
 #&gt; * Terminated: TRUE
 #&gt; * Result:
-#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.06
+#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122
 #&gt; * Archive:
 #&gt; &lt;ArchiveTuning&gt;
-#&gt;       cp classif.ce           timestamp batch_nr
-#&gt; 1: 0.056       0.06 2021-03-15 04:41:34        1
-#&gt; 2: 0.045       0.06 2021-03-15 04:41:34        2
-#&gt; 3: 0.023       0.06 2021-03-15 04:41:34        3
-#&gt; 4: 0.012       0.06 2021-03-15 04:41:35        4
-#&gt; 5: 0.089       0.06 2021-03-15 04:41:35        5
-#&gt; </div><div class='input'><span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
+#&gt;      cp classif.ce runtime_learners           timestamp batch_nr
+#&gt; 1: -4.0       0.22            0.025 2021-09-13 16:37:38        1
+#&gt; 2: -4.0       0.22            0.013 2021-09-13 16:37:38        2
+#&gt; 3: -8.8       0.26            0.012 2021-09-13 16:37:38        3
+#&gt; 4: -6.5       0.26            0.012 2021-09-13 16:37:38        4
+#&gt; 5: -4.8       0.22            0.013 2021-09-13 16:37:38        5
+#&gt;         resample_result
+#&gt; 1: &lt;ResampleResult[20]&gt;
+#&gt; 2: &lt;ResampleResult[20]&gt;
+#&gt; 3: &lt;ResampleResult[20]&gt;
+#&gt; 4: &lt;ResampleResult[20]&gt;
+#&gt; 5: &lt;ResampleResult[20]&gt;
+#&gt; </div><div class='input'>
+<span class='co'># shortcut trained learner</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>learner</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifRpart:classif.rpart&gt;
 #&gt; * Model: rpart
-#&gt; * Parameters: xval=0, cp=0.056
+#&gt; * Parameters: xval=0, cp=0.01754
 #&gt; * Packages: rpart
 #&gt; * Predict Type: response
 #&gt; * Feature types: logical, integer, numeric, factor, ordered
 #&gt; * Properties: importance, missings, multiclass, selected_features,
 #&gt;   twoclass, weights</div><div class='input'>
-<span class='co'># Nested resampling</span>
+<span class='co'># shortcut tuning instance</span>
+<span class='va'>at</span><span class='op'>$</span><span class='va'>tuning_instance</span>
+</div><div class='output co'>#&gt; &lt;TuningInstanceSingleCrit&gt;
+#&gt; * State:  Optimized
+#&gt; * Objective: &lt;ObjectiveTuning:classif.rpart_on_pima&gt;
+#&gt; * Search Space:
+#&gt; &lt;ParamSet&gt;
+#&gt;    id    class    lower     upper nlevels        default value
+#&gt; 1: cp ParamDbl -9.21034 -2.302585     Inf &lt;NoDefault[3]&gt;      
+#&gt; Trafo is set.
+#&gt; * Terminator: &lt;TerminatorEvals&gt;
+#&gt; * Terminated: TRUE
+#&gt; * Result:
+#&gt;           cp learner_param_vals  x_domain classif.ce
+#&gt; 1: -4.043313          &lt;list[2]&gt; &lt;list[1]&gt;  0.2195122
+#&gt; * Archive:
+#&gt; &lt;ArchiveTuning&gt;
+#&gt;      cp classif.ce runtime_learners           timestamp batch_nr
+#&gt; 1: -4.0       0.22            0.025 2021-09-13 16:37:38        1
+#&gt; 2: -4.0       0.22            0.013 2021-09-13 16:37:38        2
+#&gt; 3: -8.8       0.26            0.012 2021-09-13 16:37:38        3
+#&gt; 4: -6.5       0.26            0.012 2021-09-13 16:37:38        4
+#&gt; 5: -4.8       0.22            0.013 2021-09-13 16:37:38        5
+#&gt;         resample_result
+#&gt; 1: &lt;ResampleResult[20]&gt;
+#&gt; 2: &lt;ResampleResult[20]&gt;
+#&gt; 3: &lt;ResampleResult[20]&gt;
+#&gt; 4: &lt;ResampleResult[20]&gt;
+#&gt; 5: &lt;ResampleResult[20]&gt;</div><div class='input'>
+
+<span class='co'>### nested resampling</span>
+
 <span class='va'>at</span> <span class='op'>=</span> <span class='va'>AutoTuner</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  learner <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
-  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
+  learner <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
   terminator <span class='op'>=</span> <span class='fu'><a href='https://bbotk.mlr-org.com/reference/trm.html'>trm</a></span><span class='op'>(</span><span class='st'>"evals"</span>, n_evals <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"grid_search"</span><span class='op'>)</span>,
-  search_space <span class='op'>=</span> <span class='va'>search_space</span>,
-  store_tuning_instance <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  tuner <span class='op'>=</span> <span class='fu'><a href='tnr.html'>tnr</a></span><span class='op'>(</span><span class='st'>"random_search"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'>resample</span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='co'># Aggregate performance of outer results</span>
+<span class='co'># retrieve inner tuning results.</span>
+<span class='fu'><a href='extract_inner_tuning_results.html'>extract_inner_tuning_results</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    iteration        cp classif.ce learner_param_vals  x_domain task_id
+#&gt; 1:         1 -4.391337  0.2046784          &lt;list[2]&gt; &lt;list[1]&gt;    pima
+#&gt; 2:         2 -3.448134  0.2865497          &lt;list[2]&gt; &lt;list[1]&gt;    pima
+#&gt; 3:         3 -3.998172  0.2046784          &lt;list[2]&gt; &lt;list[1]&gt;    pima
+#&gt;             learner_id resampling_id
+#&gt; 1: classif.rpart.tuned            cv
+#&gt; 2: classif.rpart.tuned            cv
+#&gt; 3: classif.rpart.tuned            cv</div><div class='input'>
+<span class='co'># performance scores estimated on the outer resampling</span>
+<span class='va'>rr</span><span class='op'>$</span><span class='fu'>score</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                 task task_id         learner          learner_id
+#&gt; 1: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned
+#&gt; 2: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned
+#&gt; 3: &lt;TaskClassif[47]&gt;    pima &lt;AutoTuner[40]&gt; classif.rpart.tuned
+#&gt;            resampling resampling_id iteration              prediction
+#&gt; 1: &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[19]&gt;
+#&gt; 2: &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[19]&gt;
+#&gt; 3: &lt;ResamplingCV[19]&gt;            cv         3 &lt;PredictionClassif[19]&gt;
+#&gt;    classif.ce
+#&gt; 1:  0.2500000
+#&gt; 2:  0.2656250
+#&gt; 3:  0.2148438</div><div class='input'>
+<span class='co'># unbiased performance of the final model trained on the full data set</span>
 <span class='va'>rr</span><span class='op'>$</span><span class='fu'>aggregate</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; classif.ce 
-#&gt; 0.09333333 </div><div class='input'>
-<span class='co'># Retrieve inner tuning results.</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span><span class='op'>$</span><span class='va'>learner</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>tuning_result</span>
-</div><div class='output co'>#&gt;       cp learner_param_vals  x_domain classif.ce
-#&gt; 1: 0.056          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</div></pre>
+#&gt;  0.2434896 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
