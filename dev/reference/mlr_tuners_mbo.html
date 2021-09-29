@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • mlr3tuning</title>
+<title>TunerMbo — mlr_tuners_mbo • mlr3tuning</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,11 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="TunerMbo — mlr_tuners_mbo" />
+<meta property="og:description" content="Tune hyperparameters using Bayesian Optimization.
+This is a minimal interface internally passing on to mlr3mbo::OptimizerMbo.
+For additional information and documentation see mlr3mbo::OptimizerMbo." />
+<meta name="twitter:card" content="summary" />
 
 
 <meta name="robots" content="noindex">
@@ -66,7 +70,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -137,183 +141,65 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>TunerMbo</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3tuning/blob/master/R/TunerMbo.R'><code>R/TunerMbo.R</code></a></small>
+    <div class="hidden name"><code>mlr_tuners_mbo.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Tune hyperparameters using Bayesian Optimization.
+This is a minimal interface internally passing on to <a href='https://mlr3mbo.mlr-org.com/reference/mlr_optimizers_mbo.html'>mlr3mbo::OptimizerMbo</a>.
+For additional information and documentation see <a href='https://mlr3mbo.mlr-org.com/reference/mlr_optimizers_mbo.html'>mlr3mbo::OptimizerMbo</a>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-tuning-instances" class="hasAnchor"><a href="#section-tuning-instances" class="anchor"></a>Tuning Instances</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="TuningInstanceMultiCrit.html">TuningInstanceMultiCrit</a></code> </p>
-        </td>
-        <td><p>Multi Criteria Tuning Instance</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="TuningInstanceSingleCrit.html">TuningInstanceSingleCrit</a></code> </p>
-        </td>
-        <td><p>Single Criterion Tuning Instance</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-tuners" class="hasAnchor"><a href="#section-tuners" class="anchor"></a>Tuners</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="AutoTuner.html">AutoTuner</a></code> </p>
-        </td>
-        <td><p>AutoTuner</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Tuner.html">Tuner</a></code> </p>
-        </td>
-        <td><p>Tuner</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="TunerFromOptimizer.html">TunerFromOptimizer</a></code> </p>
-        </td>
-        <td><p>TunerFromOptimizer</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners.html">mlr_tuners</a></code> </p>
-        </td>
-        <td><p>Dictionary of Tuners</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_cmaes.html">mlr_tuners_cmaes</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with Covariance Matrix Adaptation Evolution Strategy</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_design_points.html">mlr_tuners_design_points</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with via Design Points</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_gensa.html">mlr_tuners_gensa</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with Generalized Simulated Annealing</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_grid_search.html">mlr_tuners_grid_search</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with Grid Search</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_irace.html">mlr_tuners_irace</a></code> </p>
-        </td>
-        <td><p>Tuning via Iterated Racing.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_mbo.html">mlr_tuners_mbo</a></code> </p>
-        </td>
-        <td><p>TunerMbo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_nloptr.html">mlr_tuners_nloptr</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with Non-linear Optimization</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr_tuners_random_search.html">mlr_tuners_random_search</a></code> </p>
-        </td>
-        <td><p>Hyperparameter Tuning with Random Search</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tnr.html">tnr()</a></code> <code><a href="tnr.html">tnrs()</a></code> </p>
-        </td>
-        <td><p>Syntactic Sugar for Tuner Construction</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-terminators" class="hasAnchor"><a href="#section-terminators" class="anchor"></a>Terminators</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="reexports.html">reexports</a></code> </p>
-        </td>
-        <td><p>Objects exported from other packages</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-misc" class="hasAnchor"><a href="#section-misc" class="anchor"></a>Misc</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="ObjectiveTuning.html">ObjectiveTuning</a></code> </p>
-        </td>
-        <td><p>ObjectiveTuning</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mlr3tuning-package.html">mlr3tuning-package</a></code> </p>
-        </td>
-        <td><p>mlr3tuning: Tuning for 'mlr3'</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
+
+    <p><code><a href='Tuner.html'>mlr3tuning::Tuner</a></code> -&gt; <code><a href='TunerFromOptimizer.html'>mlr3tuning::TunerFromOptimizer</a></code> -&gt; <code>TunerMbo</code></p>
+    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
+
+    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
+
+<ul>
+<li><p><a href='#method-new'><code>TunerMbo$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>TunerMbo$clone()</code></a></p></li>
+</ul>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="format"><a href='../../mlr3tuning/html/Tuner.html#method-format'><code>mlr3tuning::Tuner$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="Tuner" data-id="print"><a href='../../mlr3tuning/html/Tuner.html#method-print'><code>mlr3tuning::Tuner$print()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3tuning" data-topic="TunerFromOptimizer" data-id="optimize"><a href='../../mlr3tuning/html/TunerFromOptimizer.html#method-optimize'><code>mlr3tuning::TunerFromOptimizer$optimize()</code></a></span></p></li>
+</ul>
+</details>
+
+<hr>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>TunerMbo</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>...</code></dt><dd><p>Parameters passed to <a href='https://mlr3mbo.mlr-org.com/reference/mlr_optimizers_mbo.html'>mlr3mbo::OptimizerMbo</a>.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>TunerMbo</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
+
+</dl><p></div></p>
+
+
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
