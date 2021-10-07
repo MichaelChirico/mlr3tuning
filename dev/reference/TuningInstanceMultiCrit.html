@@ -221,9 +221,10 @@ and a termination criterion.</p><h4 class='hasAnchor' id='arguments'><a class='a
   <span class='va'>measures</span>,
   <span class='va'>terminator</span>,
   search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
+  store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>,
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
   check_values <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>
+  allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
@@ -252,6 +253,9 @@ If <code>NULL</code>, <a href='https://CRAN.R-project.org/package=mlr3'><span cl
 Hyperparameter search space. If <code>NULL</code>, the search space is constructed from
 the TuneToken in the <code>ParamSet</code> of the learner.</p></dd>
 
+<dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+If <code>TRUE</code> (default), stores the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> in archive.</p></dd>
+
 <dt><code>store_models</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>FALSE</code> (default), the fitted models are not stored in the
 <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. If <code>store_benchmark_result = FALSE</code>, the models are
@@ -262,8 +266,9 @@ might be useful for measures that require a model.</p></dd>
 Should parameters before the evaluation and the results be checked for
 validity?</p></dd>
 
-<dt><code>store_benchmark_result</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), stores the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a> in archive.</p></dd>
+<dt><code>allow_hotstart</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Allow to hot start learners with previously fitted models. See also
+<a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a>. Sets <code>store_models = TRUE</code>.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -328,11 +333,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce classif.acc runtime_learners           timestamp
-#&gt; 1: 0.05        5        0.1         0.9            0.005 2021-10-07 04:23:07
-#&gt; 2: 0.01        3        0.1         0.9            0.006 2021-10-07 04:23:07
+#&gt; 1: 0.05        5        0.1         0.9            0.006 2021-10-07 15:06:27
+#&gt; 2: 0.01        3        0.1         0.9            0.005 2021-10-07 15:06:27
 #&gt;    batch_nr      resample_result
-#&gt; 1:        1 &lt;ResampleResult[20]&gt;
-#&gt; 2:        1 &lt;ResampleResult[20]&gt;</div></pre>
+#&gt; 1:        1 &lt;ResampleResult[22]&gt;
+#&gt; 2:        1 &lt;ResampleResult[22]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
