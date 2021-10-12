@@ -223,7 +223,8 @@ and a termination criterion.</p><h4 class='hasAnchor' id='arguments'><a class='a
   search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
   store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>,
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  check_values <span class='op'>=</span> <span class='cn'>FALSE</span>
+  check_values <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
@@ -263,6 +264,10 @@ might be useful for measures that require a model.</p></dd>
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Should parameters before the evaluation and the results be checked for
 validity?</p></dd>
+
+<dt><code>allow_hotstart</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+Allow to hot start learners with previously fitted models. See also
+<a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a>. Sets <code>store_models = TRUE</code>.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -327,11 +332,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce runtime_learners           timestamp batch_nr
-#&gt; 1: 0.05        5       0.06            0.008 2021-10-12 04:21:29        1
-#&gt; 2: 0.01        3       0.04            0.008 2021-10-12 04:21:29        1
+#&gt; 1: 0.05        5       0.06            0.008 2021-10-12 10:53:43        1
+#&gt; 2: 0.01        3       0.04            0.007 2021-10-12 10:53:43        1
 #&gt;         resample_result
-#&gt; 1: &lt;ResampleResult[20]&gt;
-#&gt; 2: &lt;ResampleResult[20]&gt;</div><div class='input'>
+#&gt; 1: &lt;ResampleResult[22]&gt;
+#&gt; 2: &lt;ResampleResult[22]&gt;</div><div class='input'>
 <span class='co'>### error handling</span>
 
 <span class='co'># get a learner which breaks with 50% probability</span>
