@@ -283,27 +283,27 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='co'># all evaluated hyperparameter configuration</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -6.410471  0.2773438 0.0016442491            0.016 2021-10-19 16:56:57
-#&gt;  2: -5.269410  0.2656250 0.0051466475            0.016 2021-10-19 16:56:57
-#&gt;  3: -7.059103  0.2773438 0.0008595488            0.017 2021-10-19 16:56:57
-#&gt;  4: -3.730501  0.2421875 0.0239808065            0.018 2021-10-19 16:56:58
-#&gt;  5: -6.727419  0.2773438 0.0011976204            0.017 2021-10-19 16:56:58
-#&gt;  6: -6.256072  0.2773438 0.0019187674            0.016 2021-10-19 16:56:58
-#&gt;  7: -5.754732  0.2656250 0.0031677556            0.017 2021-10-19 16:56:58
-#&gt;  8: -7.431878  0.2773438 0.0005920747            0.016 2021-10-19 16:56:58
-#&gt;  9: -4.523676  0.2265625 0.0108490725            0.018 2021-10-19 16:56:58
-#&gt; 10: -4.350720  0.2265625 0.0128975237            0.021 2021-10-19 16:56:58
+#&gt;  1: -6.410471  0.2773438 0.0016442491            0.009 2021-10-19 17:00:54
+#&gt;  2: -5.269410  0.2656250 0.0051466475            0.012 2021-10-19 17:00:54
+#&gt;  3: -7.059103  0.2773438 0.0008595488            0.009 2021-10-19 17:00:54
+#&gt;  4: -3.730501  0.2421875 0.0239808065            0.009 2021-10-19 17:00:54
+#&gt;  5: -6.727419  0.2773438 0.0011976204            0.008 2021-10-19 17:00:54
+#&gt;  6: -6.256072  0.2773438 0.0019187674            0.010 2021-10-19 17:00:54
+#&gt;  7: -5.754732  0.2656250 0.0031677556            0.009 2021-10-19 17:00:54
+#&gt;  8: -7.431878  0.2773438 0.0005920747            0.009 2021-10-19 17:00:54
+#&gt;  9: -4.523676  0.2265625 0.0108490725            0.009 2021-10-19 17:00:54
+#&gt; 10: -4.350720  0.2265625 0.0128975237            0.009 2021-10-19 17:00:55
 #&gt;     batch_nr      resample_result
-#&gt;  1:        1 &lt;ResampleResult[22]&gt;
-#&gt;  2:        2 &lt;ResampleResult[22]&gt;
-#&gt;  3:        3 &lt;ResampleResult[22]&gt;
-#&gt;  4:        4 &lt;ResampleResult[22]&gt;
-#&gt;  5:        5 &lt;ResampleResult[22]&gt;
-#&gt;  6:        6 &lt;ResampleResult[22]&gt;
-#&gt;  7:        7 &lt;ResampleResult[22]&gt;
-#&gt;  8:        8 &lt;ResampleResult[22]&gt;
-#&gt;  9:        9 &lt;ResampleResult[22]&gt;
-#&gt; 10:       10 &lt;ResampleResult[22]&gt;</div><div class='input'>
+#&gt;  1:        1 &lt;ResampleResult[20]&gt;
+#&gt;  2:        2 &lt;ResampleResult[20]&gt;
+#&gt;  3:        3 &lt;ResampleResult[20]&gt;
+#&gt;  4:        4 &lt;ResampleResult[20]&gt;
+#&gt;  5:        5 &lt;ResampleResult[20]&gt;
+#&gt;  6:        6 &lt;ResampleResult[20]&gt;
+#&gt;  7:        7 &lt;ResampleResult[20]&gt;
+#&gt;  8:        8 &lt;ResampleResult[20]&gt;
+#&gt;  9:        9 &lt;ResampleResult[20]&gt;
+#&gt; 10:       10 &lt;ResampleResult[20]&gt;</div><div class='input'>
 <span class='co'># fit final model on complete data set</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
