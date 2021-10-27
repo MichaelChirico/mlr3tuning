@@ -186,7 +186,6 @@ section on parallelization for more details).</p>
 
     
 
-
 <p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
 <a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
 Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
@@ -283,16 +282,16 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='co'># all evaluated hyperparameter configuration</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -6.410471  0.2773438 0.0016442491            0.009 2021-10-27 04:25:29
-#&gt;  2: -5.269410  0.2656250 0.0051466475            0.013 2021-10-27 04:25:29
-#&gt;  3: -7.059103  0.2773438 0.0008595488            0.011 2021-10-27 04:25:29
-#&gt;  4: -3.730501  0.2421875 0.0239808065            0.010 2021-10-27 04:25:29
-#&gt;  5: -6.727419  0.2773438 0.0011976204            0.010 2021-10-27 04:25:29
-#&gt;  6: -6.256072  0.2773438 0.0019187674            0.011 2021-10-27 04:25:29
-#&gt;  7: -5.754732  0.2656250 0.0031677556            0.011 2021-10-27 04:25:29
-#&gt;  8: -7.431878  0.2773438 0.0005920747            0.011 2021-10-27 04:25:29
-#&gt;  9: -4.523676  0.2265625 0.0108490725            0.009 2021-10-27 04:25:29
-#&gt; 10: -4.350720  0.2265625 0.0128975237            0.010 2021-10-27 04:25:30
+#&gt;  1: -6.410471  0.2773438 0.0016442491            0.011 2021-10-27 11:57:25
+#&gt;  2: -5.269410  0.2656250 0.0051466475            0.012 2021-10-27 11:57:25
+#&gt;  3: -7.059103  0.2773438 0.0008595488            0.013 2021-10-27 11:57:26
+#&gt;  4: -3.730501  0.2421875 0.0239808065            0.013 2021-10-27 11:57:26
+#&gt;  5: -6.727419  0.2773438 0.0011976204            0.012 2021-10-27 11:57:26
+#&gt;  6: -6.256072  0.2773438 0.0019187674            0.011 2021-10-27 11:57:26
+#&gt;  7: -5.754732  0.2656250 0.0031677556            0.014 2021-10-27 11:57:26
+#&gt;  8: -7.431878  0.2773438 0.0005920747            0.013 2021-10-27 11:57:26
+#&gt;  9: -4.523676  0.2265625 0.0108490725            0.012 2021-10-27 11:57:26
+#&gt; 10: -4.350720  0.2265625 0.0128975237            0.013 2021-10-27 11:57:26
 #&gt;     batch_nr      resample_result
 #&gt;  1:        1 &lt;ResampleResult[20]&gt;
 #&gt;  2:        2 &lt;ResampleResult[20]&gt;

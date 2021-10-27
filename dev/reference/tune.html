@@ -178,7 +178,8 @@ Task to operate on.</p></td>
     </tr>
     <tr>
       <th>learner</th>
-      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>).</p></td>
+      <td><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
+Learner to tune.</p></td>
     </tr>
     <tr>
       <th>resampling</th>
@@ -187,15 +188,14 @@ Resampling that is used to evaluated the performance of the hyperparameter
 configurations. Uninstantiated resamplings are instantiated during
 construction so that all configurations are evaluated on the same data
 splits. Already instantiated resamplings are kept unchanged. Specialized
-<a href='Tuner.html'>Tuner</a> change the resampling e.g. to evaluate a hyperparameter configuration
-on different data splits. This field, however, always returns the resampling
-passed in construction.</p></td>
+<a href='Tuner.html'>Tuner</a> change the resampling e.g. to evaluate a hyperparameter
+configuration on different data splits. This field, however, always returns
+the resampling passed in construction.</p></td>
     </tr>
     <tr>
       <th>measures</th>
       <td><p>(list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
-Measures to optimize.
-If <code>NULL</code>, <a href='https://CRAN.R-project.org/package=mlr3'><span class="pkg">mlr3</span></a>'s default measure is used.</p></td>
+Measures to optimize.</p></td>
     </tr>
     <tr>
       <th>term_evals</th>
@@ -210,16 +210,17 @@ Maximum allowed time in seconds.</p></td>
     <tr>
       <th>search_space</th>
       <td><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space. If <code>NULL</code>, the search space is constructed from
-the TuneToken in the <code>ParamSet</code> of the learner.</p></td>
+Hyperparameter search space. If <code>NULL</code> (default), the search space is
+constructed from the TuneToken of the learner's parameter set
+(learner$param_set).</p></td>
     </tr>
     <tr>
       <th>store_models</th>
       <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>FALSE</code> (default), the fitted models are not stored in the
-<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. If <code>store_benchmark_result = FALSE</code>, the models are
-only stored temporarily and not accessible after the tuning. This combination
-might be useful for measures that require a model.</p></td>
+If <code>TRUE</code>, fitted models are stored in the benchmark result
+(<code>archive$benchmark_result</code>). If <code>store_benchmark_result = FALSE</code>, models
+are only stored temporarily and not accessible after the tuning. This
+combination is needed for measures that require a model.</p></td>
     </tr>
     <tr>
       <th>...</th>
