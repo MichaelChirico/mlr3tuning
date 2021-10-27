@@ -260,12 +260,7 @@ Score hyperparameter configurations on additional measures.</p></li>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  <span class='va'>search_space</span>,
-  <span class='va'>codomain</span>,
-  check_values <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  store_x_domain <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>search_space</span>, <span class='va'>codomain</span>, check_values <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -281,11 +276,6 @@ measures. Internally created from provided <a href='https://mlr3.mlr-org.com/ref
 <dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code> (default), hyperparameter configurations are check for
 validity.</p></dd>
-
-<dt><code>store_x_domain</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), (transformed) hyperparameter values are stored
-in archive as list items. Values are transformed if search space
-(<code>$search_space</code>) has a transformation function.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
