@@ -195,6 +195,7 @@ List of param values for the optimal learner call.</p></dd>
 
 <ul>
 <li><p><a href='#method-new'><code>TuningInstanceMultiCrit$new()</code></a></p></li>
+<li><p><a href='#method-resolve_promise'><code>TuningInstanceMultiCrit$resolve_promise()</code></a></p></li>
 <li><p><a href='#method-assign_result'><code>TuningInstanceMultiCrit$assign_result()</code></a></p></li>
 <li><p><a href='#method-clone'><code>TuningInstanceMultiCrit$clone()</code></a></p></li>
 </ul>
@@ -206,7 +207,6 @@ List of param values for the optimal learner call.</p></dd>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="format"><a href='../../bbotk/html/OptimInstance.html#method-format'><code>bbotk::OptimInstance$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="objective_function"><a href='../../bbotk/html/OptimInstance.html#method-objective_function'><code>bbotk::OptimInstance$objective_function()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="print"><a href='../../bbotk/html/OptimInstance.html#method-print'><code>bbotk::OptimInstance$print()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="resolve_promise"><a href='../../bbotk/html/OptimInstance.html#method-resolve_promise'><code>bbotk::OptimInstance$resolve_promise()</code></a></span></p></li>
 </ul>
 </details>
 
@@ -279,6 +279,22 @@ Allow to hotstart learners with previously fitted models. See also
 
 </dl><p></div></p>
 <p><hr>
+<a id="method-resolve_promise"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>resolve_promise()</code></h3>
+<p>Retrieve outcome, runtime and resample result of resolved futures and
+add them to the archive table. If hotstarting is enabled, learners of
+the resample results are added to the hotstart stack.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceMultiCrit</span><span class='op'>$</span><span class='fu'>resolve_promise</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
+Row ids of archive table for which values are retrieved. If <code>NULL</code>
+(default), retrieve values from all futures which are resolved.</p></dd>
+
+</dl><p></div></p>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> (invisibly).</p>
+<p><hr>
 <a id="method-assign_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found points
 and estimated performance values here. For internal use.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -340,11 +356,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span>
 </div><div class='output co'>#&gt; &lt;ArchiveTuning&gt;
 #&gt;      cp minsplit classif.ce classif.acc runtime_learners           timestamp
-#&gt; 1: 0.05        5        0.1         0.9            0.011 2021-10-27 15:53:56
-#&gt; 2: 0.01        3        0.1         0.9            0.017 2021-10-27 15:53:56
-#&gt;    batch_nr      resample_result
-#&gt; 1:        1 &lt;ResampleResult[22]&gt;
-#&gt; 2:        1 &lt;ResampleResult[22]&gt;</div></pre>
+#&gt; 1: 0.05        5       0.04        0.96            0.013 2021-10-27 18:17:45
+#&gt; 2: 0.01        3       0.04        0.96            0.007 2021-10-27 18:17:45
+#&gt;    batch_nr    status      resample_result
+#&gt; 1:        1 evaluated &lt;ResampleResult[22]&gt;
+#&gt; 2:        1 evaluated &lt;ResampleResult[22]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
