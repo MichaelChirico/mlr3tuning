@@ -163,7 +163,7 @@ hyperparameter configurations and performance scores.</p>
 <li><p>One column for each hyperparameter of the search space (<code>$search_space</code>).</p></li>
 <li><p>One column for each performance measure (<code>$codomain</code>).</p></li>
 <li><p><code>x_domain</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
-Lists of (transformed) hyperparameter values that are passed to the learner.</p></li>
+Lists of transformed hyperparameter values that are passed to the learner.</p></li>
 <li><p><code>runtime_learners</code> (<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
 Sum of training and predict times logged in learners per
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> / evaluation. This does not include potential
@@ -178,8 +178,7 @@ Connects each hyperparameter configuration to the resampling experiment
 stored in the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p></li>
 </ul>
 
-<p>Each row corresponds to a single evaluation of a hyperparameter
-configuration.</p>
+<p>Each row corresponds to a single evaluation of a hyperparameter configuration.</p>
 <p>The archive stores additionally a <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>
 (<code>$benchmark_result</code>) that records the resampling experiments. Each
 experiment corresponds to to a single evaluation of a hyperparameter
@@ -192,9 +191,8 @@ viewed with <code>as.data.table()</code>, both are joined automatically.</p>
 
 
 <p>For analyzing the tuning results, it is recommended to pass the archive to
-<code>as.data.table()</code>. The returned data table is joined with the benchmark
-result which adds the <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> for each hyperparameter
-evaluation.</p>
+<code>as.data.table()</code>. The returned data table is joined with the benchmark result
+which adds the <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> for each hyperparameter evaluation.</p>
 <p>The archive provides various getters (e.g. <code>$learners()</code>) to ease the access.
 All getters extract by position (<code>i</code>) or unique hash (<code>uhash</code>). For a
 complete list of all getters see the methods section.</p>
@@ -217,7 +215,7 @@ should be unnested.</p></li>
 <li><p><code>exclude_columns</code> (<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Exclude columns from table. Set to <code>NULL</code> if no column should be
 excluded.</p></li>
-<li><p><code>measures</code> (List of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+<li><p><code>measures</code> (list of <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
 Score hyperparameter configurations on additional measures.</p></li>
 </ul></li>
 </ul>
@@ -228,7 +226,8 @@ Score hyperparameter configurations on additional measures.</p></li>
     <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
 
     <p><div class="r6-fields"></p><dl>
-<dt><code>benchmark_result</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>).</p></dd>
+<dt><code>benchmark_result</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>)<br />
+Stores benchmark result.</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -237,7 +236,6 @@ Score hyperparameter configurations on additional measures.</p></li>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>ArchiveTuning$new()</code></a></p></li>
 <li><p><a href='#method-learner'><code>ArchiveTuning$learner()</code></a></p></li>
 <li><p><a href='#method-learners'><code>ArchiveTuning$learners()</code></a></p></li>
 <li><p><a href='#method-learner_param_vals'><code>ArchiveTuning$learner_param_vals()</code></a></p></li>
@@ -246,49 +244,19 @@ Score hyperparameter configurations on additional measures.</p></li>
 <li><p><a href='#method-print'><code>ArchiveTuning$print()</code></a></p></li>
 <li><p><a href='#method-clone'><code>ArchiveTuning$clone()</code></a></p></li>
 </ul>
-<p><details open ><summary>Inherited methods</summary>
+<p><details ><summary>Inherited methods</summary>
 <ul>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="add_evals"><a href='../../bbotk/html/Archive.html#method-add_evals'><code>bbotk::Archive$add_evals()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="best"><a href='../../bbotk/html/Archive.html#method-best'><code>bbotk::Archive$best()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="clear"><a href='../../bbotk/html/Archive.html#method-clear'><code>bbotk::Archive$clear()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="format"><a href='../../bbotk/html/Archive.html#method-format'><code>bbotk::Archive$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="initialize"><a href='../../bbotk/html/Archive.html#method-initialize'><code>bbotk::Archive$initialize()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="nds_selection"><a href='../../bbotk/html/Archive.html#method-nds_selection'><code>bbotk::Archive$nds_selection()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="Archive" data-id="resolve_promise"><a href='../../bbotk/html/Archive.html#method-resolve_promise'><code>bbotk::Archive$resolve_promise()</code></a></span></p></li>
 </ul>
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>ArchiveTuning</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  <span class='va'>search_space</span>,
-  <span class='va'>codomain</span>,
-  check_values <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  store_x_domain <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span></pre><p></div></p>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
-<p><div class="arguments"></p><dl>
-<dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Hyperparameter search space. If <code>NULL</code> (default), the search space is
-constructed from the TuneToken of the learner's parameter set
-(learner$param_set).</p></dd>
-
-<dt><code>codomain</code></dt><dd><p>(<a href='https://bbotk.mlr-org.com/reference/Codomain.html'>bbotk::Codomain</a>)<br />
-Specifies codomain of objective function i.e. a set of performance
-measures. Internally created from provided <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>s.</p></dd>
-
-<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), hyperparameter configurations are check for
-validity.</p></dd>
-
-<dt><code>store_x_domain</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
-If <code>TRUE</code> (default), (transformed) hyperparameter values are stored
-in archive as list items. Values are transformed if search space
-(<code>$search_space</code>) has a transformation function.</p></dd>
-
-</dl><p></div></p>
-<p><hr>
 <a id="method-learner"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>learner()</code></h3>
 <p>Retrieve <a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> of the i-th evaluation, by position
 or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are mutually exclusive.

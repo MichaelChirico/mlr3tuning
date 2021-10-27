@@ -182,6 +182,7 @@ section on parallelization for more details).</p>
 
     
 
+
 <p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
 <a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
 Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
@@ -282,11 +283,11 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='co'># all evaluated hyperparameter configuration</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;           cp classif.ce x_domain_cp runtime_learners           timestamp
-#&gt; 1: -2.302585  0.3203125        0.10            0.013 2021-10-27 11:57:15
-#&gt; 2: -4.605170  0.2578125        0.01            0.014 2021-10-27 11:57:15
+#&gt; 1: -2.302585  0.3203125        0.10            0.019 2021-10-27 12:01:12
+#&gt; 2: -4.605170  0.2578125        0.01            0.018 2021-10-27 12:01:12
 #&gt;    batch_nr      resample_result
-#&gt; 1:        1 &lt;ResampleResult[20]&gt;
-#&gt; 2:        2 &lt;ResampleResult[20]&gt;</div><div class='input'>
+#&gt; 1:        1 &lt;ResampleResult[22]&gt;
+#&gt; 2:        2 &lt;ResampleResult[22]&gt;</div><div class='input'>
 <span class='co'># fit final model on complete data set</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
