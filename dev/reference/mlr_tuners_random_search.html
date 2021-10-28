@@ -242,7 +242,7 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>TunerRandomSearch</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
@@ -282,27 +282,27 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='co'># all evaluated hyperparameter configuration</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -6.410471  0.2773438 0.0016442491            0.016 2021-10-27 18:46:08
-#&gt;  2: -5.269410  0.2656250 0.0051466475            0.015 2021-10-27 18:46:08
-#&gt;  3: -7.059103  0.2773438 0.0008595488            0.016 2021-10-27 18:46:08
-#&gt;  4: -3.730501  0.2421875 0.0239808065            0.016 2021-10-27 18:46:09
-#&gt;  5: -6.727419  0.2773438 0.0011976204            0.016 2021-10-27 18:46:09
-#&gt;  6: -6.256072  0.2773438 0.0019187674            0.016 2021-10-27 18:46:09
-#&gt;  7: -5.754732  0.2656250 0.0031677556            0.016 2021-10-27 18:46:09
-#&gt;  8: -7.431878  0.2773438 0.0005920747            0.022 2021-10-27 18:46:09
-#&gt;  9: -4.523676  0.2265625 0.0108490725            0.015 2021-10-27 18:46:09
-#&gt; 10: -4.350720  0.2265625 0.0128975237            0.021 2021-10-27 18:46:09
-#&gt;     batch_nr    status      resample_result
-#&gt;  1:        1 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  2:        2 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  3:        3 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  4:        4 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  5:        5 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  6:        6 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  7:        7 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  8:        8 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  9:        9 evaluated &lt;ResampleResult[22]&gt;
-#&gt; 10:       10 evaluated &lt;ResampleResult[22]&gt;</div><div class='input'>
+#&gt;  1: -6.410471  0.2773438 0.0016442491            0.015 2021-10-28 04:23:33
+#&gt;  2: -5.269410  0.2656250 0.0051466475            0.014 2021-10-28 04:23:33
+#&gt;  3: -7.059103  0.2773438 0.0008595488            0.016 2021-10-28 04:23:33
+#&gt;  4: -3.730501  0.2421875 0.0239808065            0.014 2021-10-28 04:23:33
+#&gt;  5: -6.727419  0.2773438 0.0011976204            0.015 2021-10-28 04:23:33
+#&gt;  6: -6.256072  0.2773438 0.0019187674            0.016 2021-10-28 04:23:33
+#&gt;  7: -5.754732  0.2656250 0.0031677556            0.015 2021-10-28 04:23:33
+#&gt;  8: -7.431878  0.2773438 0.0005920747            0.015 2021-10-28 04:23:33
+#&gt;  9: -4.523676  0.2265625 0.0108490725            0.015 2021-10-28 04:23:34
+#&gt; 10: -4.350720  0.2265625 0.0128975237            0.015 2021-10-28 04:23:34
+#&gt;     batch_nr      resample_result
+#&gt;  1:        1 &lt;ResampleResult[22]&gt;
+#&gt;  2:        2 &lt;ResampleResult[22]&gt;
+#&gt;  3:        3 &lt;ResampleResult[22]&gt;
+#&gt;  4:        4 &lt;ResampleResult[22]&gt;
+#&gt;  5:        5 &lt;ResampleResult[22]&gt;
+#&gt;  6:        6 &lt;ResampleResult[22]&gt;
+#&gt;  7:        7 &lt;ResampleResult[22]&gt;
+#&gt;  8:        8 &lt;ResampleResult[22]&gt;
+#&gt;  9:        9 &lt;ResampleResult[22]&gt;
+#&gt; 10:       10 &lt;ResampleResult[22]&gt;</div><div class='input'>
 <span class='co'># fit final model on complete data set</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
