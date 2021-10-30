@@ -176,7 +176,7 @@ doi: <a href='https://doi.org/10.1016/j.orp.2016.09.002'>10.1016/j.orp.2016.09.0
     
 
 <dl>
-<dt><code>n_instances</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+<dt><code>n_instances</code></dt><dd><p><code>integer(1)</code><br />
 Number of resampling instances.</p></dd>
 
 </dl>
@@ -190,13 +190,13 @@ with <code>TunerIrace</code>.</p>
     
 
 <p>The <a href='ArchiveTuning.html'>ArchiveTuning</a> holds the following additional columns:</p><ul>
-<li><p><code>"race"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>"race"</code> (<code>integer(1)</code>)<br />
 Race iteration.</p></li>
-<li><p><code>"step"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>"step"</code> (<code>integer(1)</code>)<br />
 Step number of race.</p></li>
-<li><p><code>"instance"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>"instance"</code> (<code>integer(1)</code>)<br />
 Identifies resampling instances across races and steps.</p></li>
-<li><p><code>"configuration"</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>"configuration"</code> (<code>integer(1)</code>)<br />
 Identifies configurations across races and steps.</p></li>
 </ul>
 
@@ -221,7 +221,7 @@ combined with a Terminator. Simply wrap the function in
 
 <p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
 <a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
-Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
+Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Tuner: 
@@ -285,197 +285,200 @@ result is returned.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' hr
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># retrieve task</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
-
-<span class='co'># load learner and set search space</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># hyperparameter tuning on the pima indians diabetes data set</span>
-<span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span>
-  method <span class='op'>=</span> <span class='st'>"irace"</span>,
-  task <span class='op'>=</span> <span class='va'>task</span>,
-  learner <span class='op'>=</span> <span class='va'>learner</span>,
-  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  term_evals <span class='op'>=</span> <span class='fl'>42</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; # 2021-10-29 12:06:30 UTC: Initialization
-#&gt; # Elitist race
-#&gt; # Elitist new instances: 1
-#&gt; # Elitist limit: 2
-#&gt; # nbIterations: 2
-#&gt; # minNbSurvival: 2
-#&gt; # nbParameters: 1
-#&gt; # seed: 983633176
-#&gt; # confidence level: 0.95
-#&gt; # budget: 42
-#&gt; # mu: 5
-#&gt; # deterministic: FALSE
-#&gt; 
-#&gt; # 2021-10-29 12:06:30 UTC: Iteration 1 of 2
-#&gt; # experimentsUsedSoFar: 0
-#&gt; # remainingBudget: 42
-#&gt; # currentBudget: 21
-#&gt; # nbConfigurations: 3
-#&gt; # Markers:
-#&gt;      x No test is performed.
-#&gt;      c Configurations are discarded only due to capping.
-#&gt;      - The test is performed and some configurations are discarded.
-#&gt;      = The test is performed but no configuration is discarded.
-#&gt;      ! The test is performed and configurations could be discarded but elite configurations are preserved.
-#&gt;      . All alive configurations are elite and nothing is discarded
-#&gt; 
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; |x|          1|          3|          3|   0.2578125000|          3|00:00:00|   NA|  NA|    NA|
-#&gt; |x|          2|          3|          3|   0.2656250000|          6|00:00:00|+0.86|0.93|0.1627|
-#&gt; |x|          3|          3|          3|   0.2513020833|          9|00:00:00|+0.90|0.93|0.1085|
-#&gt; |x|          4|          3|          3|   0.2529296875|         12|00:00:00|+0.90|0.93|0.1165|
-#&gt; |-|          5|          1|          3|   0.2437500000|         15|00:00:00|   NA|  NA|    NA|
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; Best-so-far configuration:           3    mean value:    0.2437500000
-#&gt; Description of the best-so-far configuration:
-#&gt;   .ID.     cp .PARENT.
-#&gt; 3    3 -3.696       NA
-#&gt; 
-#&gt; # 2021-10-29 12:06:31 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
-#&gt;       cp
-#&gt; 3 -3.696
-#&gt; # 2021-10-29 12:06:32 UTC: Iteration 2 of 2
-#&gt; # experimentsUsedSoFar: 15
-#&gt; # remainingBudget: 27
-#&gt; # currentBudget: 27
-#&gt; # nbConfigurations: 4
-#&gt; # Markers:
-#&gt;      x No test is performed.
-#&gt;      c Configurations are discarded only due to capping.
-#&gt;      - The test is performed and some configurations are discarded.
-#&gt;      = The test is performed but no configuration is discarded.
-#&gt;      ! The test is performed and configurations could be discarded but elite configurations are preserved.
-#&gt;      . All alive configurations are elite and nothing is discarded
-#&gt; 
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; |x|          6|          4|          3|   0.2812500000|          4|00:00:00|   NA|  NA|    NA|
-#&gt; |x|          1|          4|          3|   0.2695312500|          7|00:00:00|+0.00|0.50|0.3750|
-#&gt; |x|          5|          4|          3|   0.2486979167|         10|00:00:00|+0.50|0.67|0.2500|
-#&gt; |x|          4|          4|          3|   0.2509765625|         13|00:00:00|+0.33|0.50|0.2500|
-#&gt; |=|          2|          4|          4|   0.2507812500|         16|00:00:00|+0.06|0.24|0.4250|
-#&gt; |=|          3|          4|          4|   0.2460937500|         19|00:00:00|+0.04|0.20|0.3583|
-#&gt; |=|          7|          4|          3|   0.2522321429|         23|00:00:00|+0.00|0.14|0.4286|
-#&gt; +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
-#&gt; Best-so-far configuration:           3    mean value:    0.2522321429
-#&gt; Description of the best-so-far configuration:
-#&gt;   .ID.     cp .PARENT.
-#&gt; 3    3 -3.696       NA
-#&gt; 
-#&gt; # 2021-10-29 12:06:33 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
-#&gt;        cp
-#&gt; 3 -3.6960
-#&gt; 4 -3.2257
-#&gt; # 2021-10-29 12:06:33 UTC: Stopped because there is not enough budget left to race more than the minimum (2)
-#&gt; # You may either increase the budget or set 'minNbSurvival' to a lower value
-#&gt; # Iteration: 3
-#&gt; # nbIterations: 3
-#&gt; # experimentsUsedSoFar: 38
-#&gt; # timeUsed: 0
-#&gt; # remainingBudget: 4
-#&gt; # currentBudget: 4
-#&gt; # number of elites: 2
-#&gt; # nbConfigurations: 2</div><div class='input'>
-<span class='co'># best performing hyperparameter configuration</span>
-<span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;        cp configuration learner_param_vals  x_domain classif.ce
-#&gt; 1: -3.696             3          &lt;list[2]&gt; &lt;list[1]&gt;  0.2522321</div><div class='input'>
-<span class='co'># all evaluated hyperparameter configuration</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -7.2126  0.2617188 0.0007372378            0.019 2021-10-29 12:06:31
-#&gt;  2: -5.1415  0.2617188 0.0058489098            0.014 2021-10-29 12:06:31
-#&gt;  3: -3.6960  0.2578125 0.0248226186            0.020 2021-10-29 12:06:31
-#&gt;  4: -7.2126  0.2851562 0.0007372378            0.012 2021-10-29 12:06:31
-#&gt;  5: -5.1415  0.2773438 0.0058489098            0.014 2021-10-29 12:06:31
-#&gt;  6: -3.6960  0.2734375 0.0248226186            0.013 2021-10-29 12:06:31
-#&gt;  7: -7.2126  0.2695312 0.0007372378            0.013 2021-10-29 12:06:31
-#&gt;  8: -5.1415  0.2695312 0.0058489098            0.013 2021-10-29 12:06:31
-#&gt;  9: -3.6960  0.2226562 0.0248226186            0.012 2021-10-29 12:06:31
-#&gt; 10: -7.2126  0.2851562 0.0007372378            0.018 2021-10-29 12:06:31
-#&gt; 11: -5.1415  0.2656250 0.0058489098            0.014 2021-10-29 12:06:31
-#&gt; 12: -3.6960  0.2578125 0.0248226186            0.015 2021-10-29 12:06:31
-#&gt; 13: -7.2126  0.2539062 0.0007372378            0.019 2021-10-29 12:06:31
-#&gt; 14: -5.1415  0.2343750 0.0058489098            0.013 2021-10-29 12:06:31
-#&gt; 15: -3.6960  0.2070312 0.0248226186            0.014 2021-10-29 12:06:31
-#&gt; 16: -3.6960  0.2812500 0.0248226186            0.016 2021-10-29 12:06:32
-#&gt; 17: -3.2257  0.2812500 0.0397279623            0.012 2021-10-29 12:06:32
-#&gt; 18: -2.5684  0.2812500 0.0766581003            0.014 2021-10-29 12:06:32
-#&gt; 19: -3.3355  0.2812500 0.0355967834            0.014 2021-10-29 12:06:32
-#&gt; 20: -3.2257  0.2578125 0.0397279623            0.013 2021-10-29 12:06:32
-#&gt; 21: -2.5684  0.3085938 0.0766581003            0.013 2021-10-29 12:06:32
-#&gt; 22: -3.3355  0.2578125 0.0355967834            0.012 2021-10-29 12:06:32
-#&gt; 23: -3.2257  0.2070312 0.0397279623            0.014 2021-10-29 12:06:32
-#&gt; 24: -2.5684  0.2656250 0.0766581003            0.013 2021-10-29 12:06:32
-#&gt; 25: -3.3355  0.2070312 0.0355967834            0.013 2021-10-29 12:06:32
-#&gt; 26: -3.2257  0.2578125 0.0397279623            0.013 2021-10-29 12:06:32
-#&gt; 27: -2.5684  0.2578125 0.0766581003            0.018 2021-10-29 12:06:32
-#&gt; 28: -3.3355  0.2578125 0.0355967834            0.013 2021-10-29 12:06:32
-#&gt; 29: -3.2257  0.2500000 0.0397279623            0.020 2021-10-29 12:06:33
-#&gt; 30: -2.5684  0.2500000 0.0766581003            0.014 2021-10-29 12:06:33
-#&gt; 31: -3.3355  0.2500000 0.0355967834            0.013 2021-10-29 12:06:33
-#&gt; 32: -3.2257  0.2226562 0.0397279623            0.015 2021-10-29 12:06:33
-#&gt; 33: -2.5684  0.2226562 0.0766581003            0.012 2021-10-29 12:06:33
-#&gt; 34: -3.3355  0.2226562 0.0355967834            0.019 2021-10-29 12:06:33
-#&gt; 35: -3.6960  0.2656250 0.0248226186            0.013 2021-10-29 12:06:33
-#&gt; 36: -3.2257  0.2890625 0.0397279623            0.020 2021-10-29 12:06:33
-#&gt; 37: -2.5684  0.2890625 0.0766581003            0.012 2021-10-29 12:06:33
-#&gt; 38: -3.3355  0.2890625 0.0355967834            0.013 2021-10-29 12:06:33
-#&gt;          cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;     batch_nr    status race step instance configuration      resample_result
-#&gt;  1:        1 evaluated    1    1        8             1 &lt;ResampleResult[22]&gt;
-#&gt;  2:        1 evaluated    1    1        8             2 &lt;ResampleResult[22]&gt;
-#&gt;  3:        1 evaluated    1    1        8             3 &lt;ResampleResult[22]&gt;
-#&gt;  4:        2 evaluated    1    1        2             1 &lt;ResampleResult[22]&gt;
-#&gt;  5:        2 evaluated    1    1        2             2 &lt;ResampleResult[22]&gt;
-#&gt;  6:        2 evaluated    1    1        2             3 &lt;ResampleResult[22]&gt;
-#&gt;  7:        3 evaluated    1    1        3             1 &lt;ResampleResult[22]&gt;
-#&gt;  8:        3 evaluated    1    1        3             2 &lt;ResampleResult[22]&gt;
-#&gt;  9:        3 evaluated    1    1        3             3 &lt;ResampleResult[22]&gt;
-#&gt; 10:        4 evaluated    1    1        5             1 &lt;ResampleResult[22]&gt;
-#&gt; 11:        4 evaluated    1    1        5             2 &lt;ResampleResult[22]&gt;
-#&gt; 12:        4 evaluated    1    1        5             3 &lt;ResampleResult[22]&gt;
-#&gt; 13:        5 evaluated    1    1        6             1 &lt;ResampleResult[22]&gt;
-#&gt; 14:        5 evaluated    1    1        6             2 &lt;ResampleResult[22]&gt;
-#&gt; 15:        5 evaluated    1    1        6             3 &lt;ResampleResult[22]&gt;
-#&gt; 16:        6 evaluated    2    1        1             3 &lt;ResampleResult[22]&gt;
-#&gt; 17:        6 evaluated    2    1        1             4 &lt;ResampleResult[22]&gt;
-#&gt; 18:        6 evaluated    2    1        1             5 &lt;ResampleResult[22]&gt;
-#&gt; 19:        6 evaluated    2    1        1             6 &lt;ResampleResult[22]&gt;
-#&gt; 20:        7 evaluated    2    1        8             4 &lt;ResampleResult[22]&gt;
-#&gt; 21:        7 evaluated    2    1        8             5 &lt;ResampleResult[22]&gt;
-#&gt; 22:        7 evaluated    2    1        8             6 &lt;ResampleResult[22]&gt;
-#&gt; 23:        8 evaluated    2    1        6             4 &lt;ResampleResult[22]&gt;
-#&gt; 24:        8 evaluated    2    1        6             5 &lt;ResampleResult[22]&gt;
-#&gt; 25:        8 evaluated    2    1        6             6 &lt;ResampleResult[22]&gt;
-#&gt; 26:        9 evaluated    2    1        5             4 &lt;ResampleResult[22]&gt;
-#&gt; 27:        9 evaluated    2    1        5             5 &lt;ResampleResult[22]&gt;
-#&gt; 28:        9 evaluated    2    1        5             6 &lt;ResampleResult[22]&gt;
-#&gt; 29:       10 evaluated    2    1        2             4 &lt;ResampleResult[22]&gt;
-#&gt; 30:       10 evaluated    2    1        2             5 &lt;ResampleResult[22]&gt;
-#&gt; 31:       10 evaluated    2    1        2             6 &lt;ResampleResult[22]&gt;
-#&gt; 32:       11 evaluated    2    1        3             4 &lt;ResampleResult[22]&gt;
-#&gt; 33:       11 evaluated    2    1        3             5 &lt;ResampleResult[22]&gt;
-#&gt; 34:       11 evaluated    2    1        3             6 &lt;ResampleResult[22]&gt;
-#&gt; 35:       12 evaluated    2    1        7             3 &lt;ResampleResult[22]&gt;
-#&gt; 36:       12 evaluated    2    1        7             4 &lt;ResampleResult[22]&gt;
-#&gt; 37:       12 evaluated    2    1        7             5 &lt;ResampleResult[22]&gt;
-#&gt; 38:       12 evaluated    2    1        7             6 &lt;ResampleResult[22]&gt;
-#&gt;     batch_nr    status race step instance configuration      resample_result</div><div class='input'>
-<span class='co'># fit final model on complete data set</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># retrieve task</span></span>
+<span class='r-in'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># load learner and set search space</span></span>
+<span class='r-in'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># hyperparameter tuning on the pima indians diabetes data set</span></span>
+<span class='r-in'><span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span></span>
+<span class='r-in'>  method <span class='op'>=</span> <span class='st'>"irace"</span>,</span>
+<span class='r-in'>  task <span class='op'>=</span> <span class='va'>task</span>,</span>
+<span class='r-in'>  learner <span class='op'>=</span> <span class='va'>learner</span>,</span>
+<span class='r-in'>  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  term_evals <span class='op'>=</span> <span class='fl'>42</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:20 UTC: Initialization</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Elitist race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Elitist new instances: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Elitist limit: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbIterations: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # minNbSurvival: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbParameters: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # seed: 983633176</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # confidence level: 0.95</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # budget: 42</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # mu: 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # deterministic: FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:20 UTC: Iteration 1 of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # experimentsUsedSoFar: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # remainingBudget: 42</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # currentBudget: 21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbConfigurations: 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Markers:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      x No test is performed.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      c Configurations are discarded only due to capping.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      - The test is performed and some configurations are discarded.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      = The test is performed but no configuration is discarded.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ! The test is performed and configurations could be discarded but elite configurations are preserved.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      . All alive configurations are elite and nothing is discarded</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          1|          3|          3|   0.2578125000|          3|00:00:00|   NA|  NA|    NA|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          2|          3|          3|   0.2656250000|          6|00:00:00|+0.86|0.93|0.1627|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          3|          3|          3|   0.2513020833|          9|00:00:00|+0.90|0.93|0.1085|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          4|          3|          3|   0.2529296875|         12|00:00:00|+0.90|0.93|0.1165|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |-|          5|          1|          3|   0.2437500000|         15|00:00:00|   NA|  NA|    NA|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Best-so-far configuration:           3    mean value:    0.2437500000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description of the best-so-far configuration:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   .ID.     cp .PARENT.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    3 -3.696       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:21 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       cp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 -3.696</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:21 UTC: Iteration 2 of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # experimentsUsedSoFar: 15</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # remainingBudget: 27</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # currentBudget: 27</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbConfigurations: 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Markers:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      x No test is performed.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      c Configurations are discarded only due to capping.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      - The test is performed and some configurations are discarded.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      = The test is performed but no configuration is discarded.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ! The test is performed and configurations could be discarded but elite configurations are preserved.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      . All alive configurations are elite and nothing is discarded</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> | |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          6|          4|          3|   0.2812500000|          4|00:00:00|   NA|  NA|    NA|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          1|          4|          3|   0.2695312500|          7|00:00:00|+0.00|0.50|0.3750|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          5|          4|          3|   0.2486979167|         10|00:00:00|+0.50|0.67|0.2500|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |x|          4|          4|          3|   0.2509765625|         13|00:00:00|+0.33|0.50|0.2500|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |=|          2|          4|          4|   0.2507812500|         16|00:00:00|+0.06|0.24|0.4250|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |=|          3|          4|          4|   0.2460937500|         19|00:00:00|+0.04|0.20|0.3583|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> |=|          7|          4|          3|   0.2522321429|         23|00:00:00|+0.00|0.14|0.4286|</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> +-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Best-so-far configuration:           3    mean value:    0.2522321429</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description of the best-so-far configuration:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   .ID.     cp .PARENT.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    3 -3.696       NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:23 UTC: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        cp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 -3.6960</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 -3.2257</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # 2021-10-30 04:27:23 UTC: Stopped because there is not enough budget left to race more than the minimum (2)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # You may either increase the budget or set 'minNbSurvival' to a lower value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # Iteration: 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbIterations: 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # experimentsUsedSoFar: 38</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # timeUsed: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # remainingBudget: 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # currentBudget: 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # number of elites: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # nbConfigurations: 2</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># best performing hyperparameter configuration</span></span>
+<span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        cp configuration learner_param_vals  x_domain classif.ce</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -3.696             3          &lt;list[2]&gt; &lt;list[1]&gt;  0.2522321</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># all evaluated hyperparameter configuration</span></span>
+<span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          cp classif.ce  x_domain_cp runtime_learners           timestamp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1: -7.2126  0.2617188 0.0007372378            0.014 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2: -5.1415  0.2617188 0.0058489098            0.016 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3: -3.6960  0.2578125 0.0248226186            0.013 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4: -7.2126  0.2851562 0.0007372378            0.015 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5: -5.1415  0.2773438 0.0058489098            0.014 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6: -3.6960  0.2734375 0.0248226186            0.015 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7: -7.2126  0.2695312 0.0007372378            0.020 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8: -5.1415  0.2695312 0.0058489098            0.015 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9: -3.6960  0.2226562 0.0248226186            0.039 2021-10-30 04:27:20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10: -7.2126  0.2851562 0.0007372378            0.015 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11: -5.1415  0.2656250 0.0058489098            0.013 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12: -3.6960  0.2578125 0.0248226186            0.015 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13: -7.2126  0.2539062 0.0007372378            0.015 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14: -5.1415  0.2343750 0.0058489098            0.014 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15: -3.6960  0.2070312 0.0248226186            0.014 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16: -3.6960  0.2812500 0.0248226186            0.014 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17: -3.2257  0.2812500 0.0397279623            0.013 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18: -2.5684  0.2812500 0.0766581003            0.015 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19: -3.3355  0.2812500 0.0355967834            0.013 2021-10-30 04:27:21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20: -3.2257  0.2578125 0.0397279623            0.018 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21: -2.5684  0.3085938 0.0766581003            0.015 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22: -3.3355  0.2578125 0.0355967834            0.020 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23: -3.2257  0.2070312 0.0397279623            0.014 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24: -2.5684  0.2656250 0.0766581003            0.014 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25: -3.3355  0.2070312 0.0355967834            0.013 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26: -3.2257  0.2578125 0.0397279623            0.040 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27: -2.5684  0.2578125 0.0766581003            0.015 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28: -3.3355  0.2578125 0.0355967834            0.015 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29: -3.2257  0.2500000 0.0397279623            0.014 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30: -2.5684  0.2500000 0.0766581003            0.012 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31: -3.3355  0.2500000 0.0355967834            0.014 2021-10-30 04:27:22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32: -3.2257  0.2226562 0.0397279623            0.015 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33: -2.5684  0.2226562 0.0766581003            0.040 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34: -3.3355  0.2226562 0.0355967834            0.014 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35: -3.6960  0.2656250 0.0248226186            0.014 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36: -3.2257  0.2890625 0.0397279623            0.015 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37: -2.5684  0.2890625 0.0766581003            0.013 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38: -3.3355  0.2890625 0.0355967834            0.015 2021-10-30 04:27:23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          cp classif.ce  x_domain_cp runtime_learners           timestamp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     batch_nr race step instance configuration      resample_result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:        1    1    1        8             1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:        1    1    1        8             2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:        1    1    1        8             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:        2    1    1        2             1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:        2    1    1        2             2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:        2    1    1        2             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:        3    1    1        3             1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:        3    1    1        3             2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:        3    1    1        3             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:        4    1    1        5             1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11:        4    1    1        5             2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12:        4    1    1        5             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13:        5    1    1        6             1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14:        5    1    1        6             2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15:        5    1    1        6             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16:        6    2    1        1             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17:        6    2    1        1             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18:        6    2    1        1             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19:        6    2    1        1             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20:        7    2    1        8             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21:        7    2    1        8             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22:        7    2    1        8             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23:        8    2    1        6             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24:        8    2    1        6             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25:        8    2    1        6             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26:        9    2    1        5             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27:        9    2    1        5             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28:        9    2    1        5             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29:       10    2    1        2             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30:       10    2    1        2             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31:       10    2    1        2             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32:       11    2    1        3             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33:       11    2    1        3             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34:       11    2    1        3             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35:       12    2    1        7             3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36:       12    2    1        7             4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37:       12    2    1        7             5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38:       12    2    1        7             6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     batch_nr race step instance configuration      resample_result</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># fit final model on complete data set</span></span>
+<span class='r-in'><span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span></span>
+<span class='r-in'><span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

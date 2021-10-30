@@ -156,7 +156,7 @@ called with store_models = TRUE." />
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> and <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>. The function iterates
 over the <a href='AutoTuner.html'>AutoTuner</a> objects and binds the tuning archives to a
 <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>. <a href='AutoTuner.html'>AutoTuner</a> must be initialized with
-<code>store_tuning_instance = TRUE</code> and <code>resample()</code> or <code>benchmark()</code> must be
+<code>store_tuning_instance = TRUE</code> and <code><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample()</a></code> or <code><a href='https://mlr3.mlr-org.com/reference/benchmark.html'>benchmark()</a></code> must be
 called with <code>store_models = TRUE</code>.</p>
     </div>
 
@@ -202,13 +202,13 @@ Index, giving the according row number in the original benchmark grid.</p></li>
 Iteration of the outer resampling.</p></li>
 <li><p>One column for each hyperparameter of the search spaces.</p></li>
 <li><p>One column for each performance measure.</p></li>
-<li><p><code>runtime_learners</code> (<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+<li><p><code>runtime_learners</code> (<code>numeric(1)</code>)<br />
 Sum of training and predict times logged in learners per
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> / evaluation. This does not include potential
 overhead time.</p></li>
 <li><p><code>timestamp</code> (<code>POSIXct</code>)<br />
 Time stamp when the evaluation was logged into the archive.</p></li>
-<li><p><code>batch_nr</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>batch_nr</code> (<code>integer(1)</code>)<br />
 Hyperparameters are evaluated in batches. Each batch has a unique batch
 number.</p></li>
 <li><p><code>x_domain</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
@@ -218,53 +218,54 @@ unnested.</p></li>
 Separate column for each transformed hyperparameter.</p></li>
 <li><p><code>resample_result</code> (<a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a>)<br />
 Resample result of the inner resampling.</p></li>
-<li><p><code>task_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
-<li><p><code>learner_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
-<li><p><code>resampling_id</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></li>
+<li><p><code>task_id</code> (<code>character(1)</code>).</p></li>
+<li><p><code>learner_id</code> (<code>character(1)</code>).</p></li>
+<li><p><code>resampling_id</code> (<code>character(1)</code>).</p></li>
 </ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>at</span> <span class='op'>=</span> <span class='fu'><a href='auto_tuner.html'>auto_tuner</a></span><span class='op'>(</span>
-  method <span class='op'>=</span> <span class='st'>"grid_search"</span>,
-  learner <span class='op'>=</span> <span class='va'>learner</span>,
-  resampling <span class='op'>=</span> <span class='fu'>rsmp</span> <span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  term_evals <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
-
-<span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>rr</span> <span class='op'>=</span> <span class='fu'>resample</span><span class='op'>(</span><span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='fu'>extract_inner_tuning_archives</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    iteration        cp classif.ce  x_domain_cp runtime_learners
-#&gt; 1:         1 -6.140227       0.04 0.0021544347            0.009
-#&gt; 2:         1 -4.605170       0.04 0.0100000000            0.007
-#&gt; 3:         1 -7.675284       0.04 0.0004641589            0.008
-#&gt; 4:         1 -8.442812       0.04 0.0002154435            0.008
-#&gt; 5:         2 -6.140227       0.04 0.0021544347            0.007
-#&gt; 6:         2 -3.070113       0.04 0.0464158883            0.008
-#&gt; 7:         2 -2.302585       0.04 0.1000000000            0.008
-#&gt; 8:         2 -4.605170       0.04 0.0100000000            0.007
-#&gt;              timestamp batch_nr    status      resample_result task_id
-#&gt; 1: 2021-10-29 12:06:21        1 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 2: 2021-10-29 12:06:21        2 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 3: 2021-10-29 12:06:21        3 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 4: 2021-10-29 12:06:21        4 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 5: 2021-10-29 12:06:22        1 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 6: 2021-10-29 12:06:22        2 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 7: 2021-10-29 12:06:22        3 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt; 8: 2021-10-29 12:06:22        4 evaluated &lt;ResampleResult[22]&gt;    iris
-#&gt;             learner_id resampling_id
-#&gt; 1: classif.rpart.tuned            cv
-#&gt; 2: classif.rpart.tuned            cv
-#&gt; 3: classif.rpart.tuned            cv
-#&gt; 4: classif.rpart.tuned            cv
-#&gt; 5: classif.rpart.tuned            cv
-#&gt; 6: classif.rpart.tuned            cv
-#&gt; 7: classif.rpart.tuned            cv
-#&gt; 8: classif.rpart.tuned            cv</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>at</span> <span class='op'>=</span> <span class='fu'><a href='auto_tuner.html'>auto_tuner</a></span><span class='op'>(</span></span>
+<span class='r-in'>  method <span class='op'>=</span> <span class='st'>"grid_search"</span>,</span>
+<span class='r-in'>  learner <span class='op'>=</span> <span class='va'>learner</span>,</span>
+<span class='r-in'>  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span> <span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  term_evals <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>resampling_outer</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"cv"</span>, folds <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>rr</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/resample.html'>resample</a></span><span class='op'>(</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>, <span class='va'>at</span>, <span class='va'>resampling_outer</span>, store_models <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>extract_inner_tuning_archives</span><span class='op'>(</span><span class='va'>rr</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    iteration        cp classif.ce  x_domain_cp runtime_learners</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:         1 -6.140227       0.04 0.0021544347            0.008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:         1 -4.605170       0.04 0.0100000000            0.007</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3:         1 -7.675284       0.04 0.0004641589            0.009</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4:         1 -8.442812       0.04 0.0002154435            0.008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5:         2 -6.140227       0.04 0.0021544347            0.009</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6:         2 -3.070113       0.04 0.0464158883            0.008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7:         2 -2.302585       0.04 0.1000000000            0.008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8:         2 -4.605170       0.04 0.0100000000            0.008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              timestamp batch_nr      resample_result task_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: 2021-10-30 04:27:09        1 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: 2021-10-30 04:27:09        2 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3: 2021-10-30 04:27:09        3 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4: 2021-10-30 04:27:10        4 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5: 2021-10-30 04:27:10        1 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6: 2021-10-30 04:27:10        2 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7: 2021-10-30 04:27:10        3 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8: 2021-10-30 04:27:10        4 &lt;ResampleResult[22]&gt;    iris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             learner_id resampling_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7: classif.rpart.tuned            cv</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8: classif.rpart.tuned            cv</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

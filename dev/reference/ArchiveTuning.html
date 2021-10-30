@@ -164,16 +164,16 @@ hyperparameter configurations and performance scores.</p>
 <li><p>One column for each performance measure (<code>$codomain</code>).</p></li>
 <li><p><code>x_domain</code> (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 Lists of (transformed) hyperparameter values that are passed to the learner.</p></li>
-<li><p><code>runtime_learners</code> (<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+<li><p><code>runtime_learners</code> (<code>numeric(1)</code>)<br />
 Sum of training and predict times logged in learners per
 <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> / evaluation. This does not include potential
 overhead time.</p></li>
 <li><p><code>timestamp</code> (<code>POSIXct</code>)<br />
 Time stamp when the evaluation was logged into the archive.</p></li>
-<li><p><code>batch_nr</code> (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<li><p><code>batch_nr</code> (<code>integer(1)</code>)<br />
 Hyperparameters are evaluated in batches. Each batch has a unique batch
 number.</p></li>
-<li><p><code>uhash</code> (<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+<li><p><code>uhash</code> (<code>character(1)</code>)<br />
 Connects each hyperparameter configuration to the resampling experiment
 stored in the <a href='https://mlr3.mlr-org.com/reference/BenchmarkResult.html'>mlr3::BenchmarkResult</a>.</p></li>
 </ul>
@@ -185,14 +185,14 @@ configuration.</p>
 experiment corresponds to to a single evaluation of a hyperparameter
 configuration. The table (<code>$data</code>) and the benchmark result
 (<code>$benchmark_result</code>) are linked by the <code>uhash</code> column. If the results are
-viewed with <code>as.data.table()</code>, both are joined automatically.</p>
+viewed with <code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>, both are joined automatically.</p>
     <h2 class="hasAnchor" id="analysis"><a class="anchor" href="#analysis"></a>Analysis</h2>
 
     
 
 
 <p>For analyzing the tuning results, it is recommended to pass the archive to
-<code>as.data.table()</code>. The returned data table is joined with the benchmark
+<code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>. The returned data table is joined with the benchmark
 result which adds the <a href='https://mlr3.mlr-org.com/reference/ResampleResult.html'>mlr3::ResampleResult</a> for each hyperparameter
 evaluation.</p>
 <p>The archive provides various getters (e.g. <code>$learners()</code>) to ease the access.
@@ -200,7 +200,7 @@ All getters extract by position (<code>i</code>) or unique hash (<code>uhash</co
 complete list of all getters see the methods section.</p>
 <p>The benchmark result (<code>$benchmark_result</code>) allows to score the hyperparameter
 configurations again on a different measure. Alternatively, measures can be
-supplied to <code>as.data.table()</code>.</p>
+supplied to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table()</a></code>.</p>
 <p>The <a href='https://CRAN.R-project.org/package=mlr3viz'><span class="pkg">mlr3viz</span></a> package provides visualizations for tuning results.</p>
     <h2 class="hasAnchor" id="s-methods"><a class="anchor" href="#s-methods"></a>S3 Methods</h2>
 
@@ -265,14 +265,14 @@ Score hyperparameter configurations on additional measures.</p></li>
 <p><div class="arguments"></p><dl>
 <dt><code>search_space</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Hyperparameter search space. If <code>NULL</code> (default), the search space is
-constructed from the TuneToken of the learner's parameter set
+constructed from the <a href='https://paradox.mlr-org.com/reference/to_tune.html'>TuneToken</a> of the learner's parameter set
 (learner$param_set).</p></dd>
 
 <dt><code>codomain</code></dt><dd><p>(<a href='https://bbotk.mlr-org.com/reference/Codomain.html'>bbotk::Codomain</a>)<br />
 Specifies codomain of objective function i.e. a set of performance
 measures. Internally created from provided <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>s.</p></dd>
 
-<dt><code>check_values</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>check_values</code></dt><dd><p>(<code>logical(1)</code>)<br />
 If <code>TRUE</code> (default), hyperparameter configurations are check for
 validity.</p></dd>
 
@@ -287,10 +287,10 @@ models.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#argumen
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<dt><code>i</code></dt><dd><p>(<code>integer(1)</code>)<br />
 The iteration value to filter for.</p></dd>
 
-<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>uhash</code></dt><dd><p>(<code>logical(1)</code>)<br />
 The <code>uhash</code> value to filter for.</p></dd>
 
 </dl><p></div></p>
@@ -303,10 +303,10 @@ exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#argu
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<dt><code>i</code></dt><dd><p>(<code>integer(1)</code>)<br />
 The iteration value to filter for.</p></dd>
 
-<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>uhash</code></dt><dd><p>(<code>logical(1)</code>)<br />
 The <code>uhash</code> value to filter for.</p></dd>
 
 </dl><p></div></p>
@@ -318,10 +318,10 @@ or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are 
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<dt><code>i</code></dt><dd><p>(<code>integer(1)</code>)<br />
 The iteration value to filter for.</p></dd>
 
-<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>uhash</code></dt><dd><p>(<code>logical(1)</code>)<br />
 The <code>uhash</code> value to filter for.</p></dd>
 
 </dl><p></div></p>
@@ -334,10 +334,10 @@ exclusive.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#argu
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<dt><code>i</code></dt><dd><p>(<code>integer(1)</code>)<br />
 The iteration value to filter for.</p></dd>
 
-<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>uhash</code></dt><dd><p>(<code>logical(1)</code>)<br />
 The <code>uhash</code> value to filter for.</p></dd>
 
 </dl><p></div></p>
@@ -349,10 +349,10 @@ or by unique hash <code>uhash</code>. <code>i</code> and <code>uhash</code> are 
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+<dt><code>i</code></dt><dd><p>(<code>integer(1)</code>)<br />
 The iteration value to filter for.</p></dd>
 
-<dt><code>uhash</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+<dt><code>uhash</code></dt><dd><p>(<code>logical(1)</code>)<br />
 The <code>uhash</code> value to filter for.</p></dd>
 
 </dl><p></div></p>

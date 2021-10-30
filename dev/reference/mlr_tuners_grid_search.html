@@ -177,12 +177,12 @@ random order.</p>
     
 
 <dl>
-<dt><code>resolution</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+<dt><code>resolution</code></dt><dd><p><code>integer(1)</code><br />
 Resolution of the grid, see <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.</p></dd>
 <dt><code>param_resolutions</code></dt><dd><p>named <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code><br />
 Resolution per parameter, named by parameter ID, see
 <code><a href='https://paradox.mlr-org.com/reference/generate_design_grid.html'>paradox::generate_design_grid()</a></code>.</p></dd>
-<dt><code>batch_size</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+<dt><code>batch_size</code></dt><dd><p><code>integer(1)</code><br />
 Maximum number of points to try in a batch.</p></dd>
 
 </dl>
@@ -213,7 +213,7 @@ section on parallelization for more details).</p>
 
 <p>All <a href='Tuner.html'>Tuner</a>s use a logger (as implemented in <a href='https://CRAN.R-project.org/package=lgr'><span class="pkg">lgr</span></a>) from package
 <a href='https://CRAN.R-project.org/package=bbotk'><span class="pkg">bbotk</span></a>.
-Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr::get_logger("bbotk")</a></code> to access and control the logger.</p>
+Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Package <a href='https://CRAN.R-project.org/package=mlr3hyperband'><span class="pkg">mlr3hyperband</span></a> for hyperband tuning.</p>
@@ -263,54 +263,56 @@ Use <code><a href='https://s-fleck.github.io/lgr/reference/get_logger.html'>lgr:
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># retrieve task</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>tsk</span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
-
-<span class='co'># load learner and set search space</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>lrn</span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'>to_tune</span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># hyperparameter tuning on the pima indians diabetes data set</span>
-<span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span>
-  method <span class='op'>=</span> <span class='st'>"grid_search"</span>,
-  task <span class='op'>=</span> <span class='va'>task</span>,
-  learner <span class='op'>=</span> <span class='va'>learner</span>,
-  resampling <span class='op'>=</span> <span class='fu'>rsmp</span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'>msr</span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,
-  term_evals <span class='op'>=</span> <span class='fl'>10</span>
-<span class='op'>)</span>
-
-<span class='co'># best performing hyperparameter configuration</span>
-<span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span>
-</div><div class='output co'>#&gt;           cp learner_param_vals  x_domain classif.ce
-#&gt; 1: -2.302585          &lt;list[2]&gt; &lt;list[1]&gt;  0.2578125</div><div class='input'>
-<span class='co'># all evaluated hyperparameter configuration</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;            cp classif.ce  x_domain_cp runtime_learners           timestamp
-#&gt;  1: -5.372699  0.3164062 0.0046415888            0.017 2021-10-29 12:06:28
-#&gt;  2: -7.675284  0.3203125 0.0004641589            0.014 2021-10-29 12:06:28
-#&gt;  3: -2.302585  0.2578125 0.1000000000            0.015 2021-10-29 12:06:28
-#&gt;  4: -3.837642  0.2695312 0.0215443469            0.015 2021-10-29 12:06:28
-#&gt;  5: -9.210340  0.3203125 0.0001000000            0.016 2021-10-29 12:06:28
-#&gt;  6: -6.140227  0.3164062 0.0021544347            0.017 2021-10-29 12:06:28
-#&gt;  7: -6.907755  0.3203125 0.0010000000            0.014 2021-10-29 12:06:28
-#&gt;  8: -8.442812  0.3203125 0.0002154435            0.023 2021-10-29 12:06:28
-#&gt;  9: -3.070113  0.2578125 0.0464158883            0.013 2021-10-29 12:06:28
-#&gt; 10: -4.605170  0.2968750 0.0100000000            0.015 2021-10-29 12:06:29
-#&gt;     batch_nr    status      resample_result
-#&gt;  1:        1 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  2:        2 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  3:        3 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  4:        4 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  5:        5 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  6:        6 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  7:        7 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  8:        8 evaluated &lt;ResampleResult[22]&gt;
-#&gt;  9:        9 evaluated &lt;ResampleResult[22]&gt;
-#&gt; 10:       10 evaluated &lt;ResampleResult[22]&gt;</div><div class='input'>
-<span class='co'># fit final model on complete data set</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># retrieve task</span></span>
+<span class='r-in'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># load learner and set search space</span></span>
+<span class='r-in'><span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span>, cp <span class='op'>=</span> <span class='fu'><a href='https://paradox.mlr-org.com/reference/to_tune.html'>to_tune</a></span><span class='op'>(</span><span class='fl'>1e-04</span>, <span class='fl'>1e-1</span>, logscale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># hyperparameter tuning on the pima indians diabetes data set</span></span>
+<span class='r-in'><span class='va'>instance</span> <span class='op'>=</span> <span class='fu'><a href='tune.html'>tune</a></span><span class='op'>(</span></span>
+<span class='r-in'>  method <span class='op'>=</span> <span class='st'>"grid_search"</span>,</span>
+<span class='r-in'>  task <span class='op'>=</span> <span class='va'>task</span>,</span>
+<span class='r-in'>  learner <span class='op'>=</span> <span class='va'>learner</span>,</span>
+<span class='r-in'>  resampling <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  measure <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>msr</a></span><span class='op'>(</span><span class='st'>"classif.ce"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  term_evals <span class='op'>=</span> <span class='fl'>10</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># best performing hyperparameter configuration</span></span>
+<span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -2.302585          &lt;list[2]&gt; &lt;list[1]&gt;  0.2578125</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># all evaluated hyperparameter configuration</span></span>
+<span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            cp classif.ce  x_domain_cp runtime_learners           timestamp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1: -5.372699  0.3164062 0.0046415888            0.016 2021-10-30 04:27:16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2: -7.675284  0.3203125 0.0004641589            0.015 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3: -2.302585  0.2578125 0.1000000000            0.015 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4: -3.837642  0.2695312 0.0215443469            0.019 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5: -9.210340  0.3203125 0.0001000000            0.015 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6: -6.140227  0.3164062 0.0021544347            0.016 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7: -6.907755  0.3203125 0.0010000000            0.016 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8: -8.442812  0.3203125 0.0002154435            0.016 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9: -3.070113  0.2578125 0.0464158883            0.015 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10: -4.605170  0.2968750 0.0100000000            0.014 2021-10-30 04:27:17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     batch_nr      resample_result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:        1 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:        2 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:        3 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:        4 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:        5 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:        6 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:        7 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:        8 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:        9 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:       10 &lt;ResampleResult[22]&gt;</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># fit final model on complete data set</span></span>
+<span class='r-in'><span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span></span>
+<span class='r-in'><span class='va'>learner</span><span class='op'>$</span><span class='fu'>train</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

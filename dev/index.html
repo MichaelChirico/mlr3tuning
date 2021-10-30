@@ -150,18 +150,18 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3tuning.mlr-org.com">"mlr3tuning"</a></span><span class="op">)</span>
 
 <span class="co"># retrieve task</span>
-<span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 
 <span class="co"># load learner and set search space</span>
-<span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># hyperparameter tuning on the pima indians diabetes data set</span>
 <span class="va">instance</span> <span class="op">=</span> <span class="fu"><a href="reference/tune.html">tune</a></span><span class="op">(</span>
   method <span class="op">=</span> <span class="st">"random_search"</span>,
   task <span class="op">=</span> <span class="va">task</span>,
   learner <span class="op">=</span> <span class="va">learner</span>,
-  resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-  measure <span class="op">=</span> <span class="fu">msr</span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
+  resampling <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
   term_evals <span class="op">=</span> <span class="fl">10</span>,
   batch_size <span class="op">=</span> <span class="fl">5</span>
 <span class="op">)</span>
@@ -172,7 +172,7 @@
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1: -2.774656          &lt;list[2]&gt; &lt;list[1]&gt;  0.2617188</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># all evaluated hyperparameter configuration</span>
-<span class="fu">as.data.table</span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">##            cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">##  1: -6.355096  0.2786458 0.0017378683            0.032 2021-10-27 14:24:43        1 &lt;ResampleResult[22]&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co">##  2: -5.937751  0.2799479 0.0026379549            0.035 2021-10-27 14:24:43        1 &lt;ResampleResult[22]&gt;</span></span>
@@ -194,14 +194,14 @@
 <a href="#automatic-tuning" class="anchor"></a>Automatic tuning</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># retrieve task</span>
-<span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 
 <span class="co"># construct auto tuner</span>
 <span class="va">at</span> <span class="op">=</span> <span class="fu"><a href="reference/auto_tuner.html">auto_tuner</a></span><span class="op">(</span>
   method <span class="op">=</span> <span class="st">"random_search"</span>,
-  learner <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
-  resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-  measure <span class="op">=</span> <span class="fu">msr</span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
+  learner <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
+  resampling <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
   term_evals <span class="op">=</span> <span class="fl">10</span>,
   batch_size <span class="op">=</span> <span class="fl">5</span>
 <span class="op">)</span>
@@ -219,7 +219,7 @@
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">## 1: -4.159136          &lt;list[2]&gt; &lt;list[1]&gt;  0.2590228</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># all evaluated hyperparameter configuration</span>
-<span class="fu">as.data.table</span><span class="op">(</span><span class="va">at</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">at</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">##            cp classif.ce  x_domain_cp runtime_learners           timestamp batch_nr      resample_result</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">##  1: -6.469604  0.2671051 0.0015498397            0.037 2021-10-27 14:24:44        1 &lt;ResampleResult[22]&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co">##  2: -5.975552  0.2671051 0.0025400997            0.034 2021-10-27 14:24:44        1 &lt;ResampleResult[22]&gt;</span></span>
@@ -249,19 +249,19 @@
 <a href="#nested-resampling" class="anchor"></a>Nested resampling</h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># retrieve task</span>
-<span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 
 <span class="co"># load learner and set search space</span>
-<span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span>, cp <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">1e-04</span>, <span class="fl">1e-1</span>, logscale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># nested resampling</span>
 <span class="va">rr</span> <span class="op">=</span> <span class="fu"><a href="reference/tune_nested.html">tune_nested</a></span><span class="op">(</span>
   method <span class="op">=</span> <span class="st">"random_search"</span>,
   task <span class="op">=</span>  <span class="va">task</span>,
   learner <span class="op">=</span> <span class="va">learner</span>,
-  inner_resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"holdout"</span><span class="op">)</span>,
-  outer_resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-  measure <span class="op">=</span> <span class="fu">msr</span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
+  inner_resampling <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"holdout"</span><span class="op">)</span>,
+  outer_resampling <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
   term_evals <span class="op">=</span> <span class="fl">10</span>,
   batch_size <span class="op">=</span> <span class="fl">5</span>
 <span class="op">)</span>
@@ -325,15 +325,15 @@
 <a href="#hotstart" class="anchor"></a>Hotstart</h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3tuning.mlr-org.com">"mlr3tuning"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"mlr3learners"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3learners.mlr-org.com">"mlr3learners"</a></span><span class="op">)</span>
 
 <span class="co"># retrieve task</span>
-<span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 
 <span class="co"># load learner and set search space</span>
-<span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.xgboost"</span>,
-  eta <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="op">)</span>,
-  nrounds <span class="op">=</span> <span class="fu">to_tune</span><span class="op">(</span><span class="fl">500</span>, <span class="fl">2500</span><span class="op">)</span>,
+<span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.xgboost"</span>,
+  eta <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="op">)</span>,
+  nrounds <span class="op">=</span> <span class="fu"><a href="https://paradox.mlr-org.com/reference/to_tune.html">to_tune</a></span><span class="op">(</span><span class="fl">500</span>, <span class="fl">2500</span><span class="op">)</span>,
   eval_metric <span class="op">=</span> <span class="st">"logloss"</span>
 <span class="op">)</span>
 
@@ -342,8 +342,8 @@
   method <span class="op">=</span> <span class="st">"grid_search"</span>,
   task <span class="op">=</span> <span class="va">task</span>,
   learner <span class="op">=</span> <span class="va">learner</span>,
-  resampling <span class="op">=</span> <span class="fu">rsmp</span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-  measure <span class="op">=</span> <span class="fu">msr</span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
+  resampling <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"cv"</span>, folds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+  measure <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span>,
   allow_hotstart <span class="op">=</span> <span class="cn">TRUE</span>,
   resolution <span class="op">=</span> <span class="fl">5</span>,
   batch_size <span class="op">=</span> <span class="fl">5</span>
@@ -355,7 +355,7 @@
 <span id="cb23-2"><a href="#cb23-2"></a><span class="co">## 1:    1500 0.5          &lt;list[5]&gt; &lt;list[2]&gt;  0.1302083</span></span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># all evaluated hyperparameter configuration</span>
-<span class="fu">as.data.table</span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">##     nrounds  eta classif.ce x_domain_nrounds x_domain_eta runtime_learners           timestamp batch_nr      resample_result</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co">##  1:     500 0.00  0.4843750              500         0.00            1.426 2021-10-27 14:24:54        1 &lt;ResampleResult[22]&gt;</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co">##  2:     500 0.25  0.2682292              500         0.25            0.890 2021-10-27 14:24:54        1 &lt;ResampleResult[22]&gt;</span></span>
