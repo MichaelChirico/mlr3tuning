@@ -312,20 +312,20 @@ The result will be written into the instance object.</p><h4 class='hasAnchor' id
 <span class='r-in'><span class='co'># modifies the instance by reference</span></span>
 <span class='r-in'><span class='va'>tuner</span><span class='op'>$</span><span class='fu'>optimize</span><span class='op'>(</span><span class='va'>instance</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -3.265874          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -2.866816          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># returns best configuration and best performance</span></span>
 <span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -3.265874          &lt;list[2]&gt; &lt;list[1]&gt;       0.04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -2.866816          &lt;list[2]&gt; &lt;list[1]&gt;       0.08</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># allows access of data.table of full path of all evaluations</span></span>
 <span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;ArchiveTuning&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      cp classif.ce runtime_learners           timestamp batch_nr</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -3.3       0.04            0.006 2021-11-02 04:25:20        1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: -4.9       0.04            0.006 2021-11-02 04:25:20        2</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 3: -2.9       0.04            0.007 2021-11-02 04:25:20        3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      cp classif.ce runtime_learners           timestamp batch_nr    status</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -2.9       0.08            0.009 2021-11-02 22:21:12        1 evaluated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: -6.3       0.08            0.009 2021-11-02 22:21:12        2 evaluated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3: -4.8       0.08            0.009 2021-11-02 22:21:12        3 evaluated</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>         resample_result</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 1: &lt;ResampleResult[22]&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2: &lt;ResampleResult[22]&gt;</span>
