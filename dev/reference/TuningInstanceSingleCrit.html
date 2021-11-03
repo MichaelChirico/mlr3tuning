@@ -195,7 +195,6 @@ Param values for the optimal learner call.</p></dd>
 
 <ul>
 <li><p><a href='#method-new'><code>TuningInstanceSingleCrit$new()</code></a></p></li>
-<li><p><a href='#method-resolve_promise'><code>TuningInstanceSingleCrit$resolve_promise()</code></a></p></li>
 <li><p><a href='#method-assign_result'><code>TuningInstanceSingleCrit$assign_result()</code></a></p></li>
 <li><p><a href='#method-clone'><code>TuningInstanceSingleCrit$clone()</code></a></p></li>
 </ul>
@@ -207,6 +206,7 @@ Param values for the optimal learner call.</p></dd>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="format"><a href='../../bbotk/html/OptimInstance.html#method-format'><code>bbotk::OptimInstance$format()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="objective_function"><a href='../../bbotk/html/OptimInstance.html#method-objective_function'><code>bbotk::OptimInstance$objective_function()</code></a></span></p></li>
 <li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="print"><a href='../../bbotk/html/OptimInstance.html#method-print'><code>bbotk::OptimInstance$print()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="bbotk" data-topic="OptimInstance" data-id="resolve_promise"><a href='../../bbotk/html/OptimInstance.html#method-resolve_promise'><code>bbotk::OptimInstance$resolve_promise()</code></a></span></p></li>
 </ul>
 </details>
 
@@ -279,22 +279,6 @@ Allow to hotstart learners with previously fitted models. See also
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-resolve_promise"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>resolve_promise()</code></h3>
-<p>Retrieve outcome, runtime and resample result of resolved futures and
-add them to the archive table. If hotstarting is enabled, learners of
-the resample results are added to the hotstart stack.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>resolve_promise</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
-<p><div class="arguments"></p><dl>
-<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
-Row ids of archive table for which values are retrieved. If <code>NULL</code>
-(default), retrieve values from all futures which are resolved.</p></dd>
-
-</dl><p></div></p>
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> (invisibly).</p>
-<p><hr>
 <a id="method-assign_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found point
 and estimated performance value here. For internal use.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -356,11 +340,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;ArchiveTuning&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>      cp minsplit classif.ce runtime_learners           timestamp batch_nr</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: 0.05        5       0.04            0.009 2021-11-02 22:21:14        1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: 0.01        3       0.04            0.009 2021-11-02 22:21:14        1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       status      resample_result</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: evaluated &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: 0.05        5       0.06            0.026 2021-11-03 04:26:15        1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: 0.01        3       0.04            0.011 2021-11-03 04:26:15        1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         resample_result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: &lt;ResampleResult[22]&gt;</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'>### error handling</span></span>
 <span class='r-in'></span>
