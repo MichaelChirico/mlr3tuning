@@ -10,7 +10,13 @@
     <loc>https://mlr3tuning.mlr-org.com/reference/AutoTuner.html</loc>
   </url>
   <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/HotstartStackDB.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/ObjectiveTuning.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3tuning.mlr-org.com/reference/ObjectiveTuningAsync.html</loc>
   </url>
   <url>
     <loc>https://mlr3tuning.mlr-org.com/reference/Tuner.html</loc>
