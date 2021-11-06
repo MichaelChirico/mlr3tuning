@@ -161,7 +161,6 @@
   search_space <span class='op'>=</span> <span class='cn'>NULL</span>,
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
   allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  keep_hotstart_stack <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -230,12 +229,6 @@ combination is needed for measures that require a model.</p></td>
 Allow to hotstart learners with previously fitted models. See also
 <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a>. The learner must support hotstarting. Sets
 <code>store_models = TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>keep_hotstart_stack</th>
-      <td><p>(<code>logical(1)</code>)<br />
-If <code>TRUE</code>, <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a> is kept in <code>$objective$hotstart_stack</code>
-after tuning.</p></td>
     </tr>
     <tr>
       <th>...</th>
