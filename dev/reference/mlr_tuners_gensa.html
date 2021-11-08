@@ -289,32 +289,32 @@ combined with a <a href='https://bbotk.mlr-org.com/reference/Terminator.html'>Te
 <span class='r-in'><span class='co'># best performing hyperparameter configuration</span></span>
 <span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>result</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -4.930703          &lt;list[2]&gt; &lt;list[1]&gt;  0.2851562</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: -4.341268          &lt;list[2]&gt; &lt;list[1]&gt;  0.2578125</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># all evaluated hyperparameter configuration</span></span>
 <span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>            cp classif.ce  x_domain_cp runtime_learners           timestamp</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  1: -5.550318  0.3046875 0.0038862207            0.018 2021-11-08 04:25:16</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  2: -2.679990  0.3164062 0.0685638304            0.016 2021-11-08 04:25:16</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  3: -7.398271  0.3242188 0.0006123106            0.039 2021-11-08 04:25:16</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  4: -5.550318  0.3046875 0.0038862207            0.015 2021-11-08 04:25:16</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  5: -5.550317  0.3046875 0.0038862246            0.014 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  6: -5.550319  0.3046875 0.0038862168            0.015 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  7: -4.930703  0.2851562 0.0072214248            0.015 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  8: -4.090849  0.2890625 0.0167250258            0.014 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  9: -4.930703  0.2851562 0.0072214248            0.016 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 10: -4.930702  0.2851562 0.0072214320            0.015 2021-11-08 04:25:17</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     batch_nr      resample_result</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:        1 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:        2 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:        3 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:        4 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:        5 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:        6 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:        7 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:        8 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:        9 &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:       10 &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            cp classif.ce x_domain_cp runtime_learners           timestamp</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1: -6.373105  0.2812500 0.001706851            0.015 2021-11-08 15:30:52</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2: -3.502777  0.2773438 0.030113642            0.014 2021-11-08 15:30:52</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3: -4.960883  0.2656250 0.007006737            0.035 2021-11-08 15:30:52</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4: -4.960883  0.2656250 0.007006737            0.013 2021-11-08 15:30:52</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5: -4.960882  0.2656250 0.007006744            0.016 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6: -4.960884  0.2656250 0.007006730            0.014 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7: -4.341268  0.2578125 0.013020008            0.014 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8: -3.501414  0.2773438 0.030154711            0.015 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9: -4.341268  0.2578125 0.013020008            0.013 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10: -4.341267  0.2578125 0.013020021            0.019 2021-11-08 15:30:53</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     batch_nr    status      resample_result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:        1 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:        2 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:        3 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:        4 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:        5 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:        6 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:        7 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:        8 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:        9 evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:       10 evaluated &lt;ResampleResult[22]&gt;</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># fit final model on complete data set</span></span>
 <span class='r-in'><span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='va'>values</span> <span class='op'>=</span> <span class='va'>instance</span><span class='op'>$</span><span class='va'>result_learner_param_vals</span></span>
