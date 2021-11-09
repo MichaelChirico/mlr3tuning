@@ -187,6 +187,11 @@ values, by calling the method <code>instance$assign_result</code>.</p>
 <dt><code>result_learner_param_vals</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 Param values for the optimal learner call.</p></dd>
 
+<dt><code>async</code></dt><dd><p>(<code>logical(1)</code>)<br />
+If <code>TRUE</code>, <a href='ObjectiveTuningAsync.html'>ObjectiveTuningAsync</a> is used to evaluate configurations.
+Usually automatically set by <a href='Tuner.html'>Tuner</a>s that support asynchronous
+evaluations.</p></dd>
+
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
@@ -195,6 +200,7 @@ Param values for the optimal learner call.</p></dd>
 
 <ul>
 <li><p><a href='#method-new'><code>TuningInstanceSingleCrit$new()</code></a></p></li>
+<li><p><a href='#method-resolve_promise'><code>TuningInstanceSingleCrit$resolve_promise()</code></a></p></li>
 <li><p><a href='#method-assign_result'><code>TuningInstanceSingleCrit$assign_result()</code></a></p></li>
 <li><p><a href='#method-clone'><code>TuningInstanceSingleCrit$clone()</code></a></p></li>
 </ul>
@@ -224,7 +230,9 @@ and a termination criterion.</p><h4 class='hasAnchor' id='arguments'><a class='a
   store_benchmark_result <span class='op'>=</span> <span class='cn'>TRUE</span>,
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
   check_values <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>
+  allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  keep_hotstart_stack <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  learner_limit <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
@@ -275,7 +283,31 @@ Allow to hotstart learners with previously fitted models. See also
 <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a>. The learner must support hotstarting. Sets
 <code>store_models = TRUE</code>.</p></dd>
 
+<dt><code>keep_hotstart_stack</code></dt><dd><p>(<code>logical(1)</code>)<br />
+If <code>TRUE</code>, <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a> is kept in <code>$objective$hotstart_stack</code>
+after tuning.</p></dd>
+
+<dt><code>learner_limit</code></dt><dd><p>(<code>logical(1)</code>)<br />
+If set, <a href='HotstartStackDB.html'>HotstartStackDB</a> only keeps the newest <code>learner_limit</code>
+learners.</p></dd>
+
 </dl><p></div></p>
+<p><hr>
+<a id="method-resolve_promise"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>resolve_promise()</code></h3>
+<p>Retrieve outcome, runtime and resample result of resolved futures and
+add them to the archive table. If hotstarting is enabled, learners of
+the resample results are added to the hotstart stack.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>TuningInstanceSingleCrit</span><span class='op'>$</span><span class='fu'>resolve_promise</span><span class='op'>(</span>i <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>i</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
+Row ids of archive table for which values are retrieved. If <code>NULL</code>
+(default), retrieve values from all futures which are resolved.</p></dd>
+
+</dl><p></div></p>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> (invisibly).</p>
 <p><hr>
 <a id="method-assign_result"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>assign_result()</code></h3>
 <p>The <a href='Tuner.html'>Tuner</a> object writes the best found point
@@ -338,11 +370,11 @@ Fixed parameter values of the learner that are neither part of the</p></dd>
 <span class='r-in'><span class='va'>instance</span><span class='op'>$</span><span class='va'>archive</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;ArchiveTuning&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>      cp minsplit classif.ce runtime_learners           timestamp batch_nr</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: 0.05        5       0.06            0.009 2021-11-09 04:25:52        1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: 0.01        3       0.04            0.008 2021-11-09 04:25:52        1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         resample_result</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: &lt;ResampleResult[22]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: 0.05        5       0.08            0.009 2021-11-09 21:56:08        1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: 0.01        3       0.04            0.008 2021-11-09 21:56:08        1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       status      resample_result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: evaluated &lt;ResampleResult[22]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2: evaluated &lt;ResampleResult[22]&gt;</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'>### error handling</span></span>
 <span class='r-in'></span>
