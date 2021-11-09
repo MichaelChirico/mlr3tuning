@@ -180,8 +180,6 @@ by the <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> / <a
 
 <dt><code>allow_hotstart</code></dt><dd><p>(<code>logical(1)</code>).</p></dd>
 
-<dt><code>keep_hotstart_stack</code></dt><dd><p>(<code>logical(1)</code>).</p></dd>
-
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
@@ -214,7 +212,6 @@ by the <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> / <a
   store_models <span class='op'>=</span> <span class='cn'>FALSE</span>,
   check_values <span class='op'>=</span> <span class='cn'>TRUE</span>,
   allow_hotstart <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  keep_hotstart_stack <span class='op'>=</span> <span class='cn'>FALSE</span>,
   archive <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre><p></div></p>
 
@@ -257,10 +254,6 @@ computational overhead is reduced.</p></dd>
 Allow to hotstart learners with previously fitted models. See also
 <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a>. The learner must support hotstarting. Sets
 <code>store_models = TRUE</code>.</p></dd>
-
-<dt><code>keep_hotstart_stack</code></dt><dd><p>(<code>logical(1)</code>)<br />
-If <code>TRUE</code>, <a href='https://mlr3.mlr-org.com/reference/HotstartStack.html'>mlr3::HotstartStack</a> is kept in <code>$objective$hotstart_stack</code>
-after tuning.</p></dd>
 
 <dt><code>archive</code></dt><dd><p>(<a href='ArchiveTuning.html'>ArchiveTuning</a>)<br />
 Reference to archive of <a href='TuningInstanceSingleCrit.html'>TuningInstanceSingleCrit</a> |
