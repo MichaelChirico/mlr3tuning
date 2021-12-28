@@ -149,8 +149,8 @@ Named arguments to be set as parameters of the tuner.</p></dd>
 <span class="r-in"><span class="co"># retrieve inner tuning results.</span></span>
 <span class="r-in"><span class="fu"><a href="extract_inner_tuning_results.html">extract_inner_tuning_results</a></span><span class="op">(</span><span class="va">rr</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    iteration        cp classif.ce learner_param_vals  x_domain task_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:         1 -5.218083  0.2500000          &lt;list[2]&gt; &lt;list[1]&gt;    pima</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:         2 -3.182590  0.2734375          &lt;list[2]&gt; &lt;list[1]&gt;    pima</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:         1 -7.525211  0.3203125          &lt;list[2]&gt; &lt;list[1]&gt;    pima</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:         2 -5.913164  0.3125000          &lt;list[2]&gt; &lt;list[1]&gt;    pima</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             learner_id resampling_id</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: classif.rpart.tuned            cv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: classif.rpart.tuned            cv</span>
@@ -164,13 +164,13 @@ Named arguments to be set as parameters of the tuner.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: &lt;ResamplingCV[19]&gt;            cv         1 &lt;PredictionClassif[20]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: &lt;ResamplingCV[19]&gt;            cv         2 &lt;PredictionClassif[20]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  0.2916667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  0.2578125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  0.2968750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  0.2473958</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># unbiased performance of the final model trained on the full data set</span></span>
 <span class="r-in"><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2747396 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2721354 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
