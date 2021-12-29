@@ -228,21 +228,21 @@ Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
 <span class="r-in"><span class="co"># best performing hyperparameter configuration</span></span>
 <span class="r-in"><span class="va">instance</span><span class="op">$</span><span class="va">result</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          cp learner_param_vals  x_domain classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -9.21034          &lt;list[2]&gt; &lt;list[1]&gt;  0.2304688</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -4.60517          &lt;list[2]&gt; &lt;list[1]&gt;  0.2148438</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># all evaluated hyperparameter configuration</span></span>
 <span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            cp classif.ce  x_domain_cp runtime_learners           timestamp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -2.302585  0.2539062 0.1000000000            0.031 2021-12-28 04:28:19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -9.210340  0.2304688 0.0001000000            0.018 2021-12-28 04:28:19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -3.070113  0.2539062 0.0464158883            0.016 2021-12-28 04:28:19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -6.140227  0.2304688 0.0021544347            0.034 2021-12-28 04:28:19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -5.372699  0.2343750 0.0046415888            0.015 2021-12-28 04:28:19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -8.442812  0.2304688 0.0002154435            0.015 2021-12-28 04:28:20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -4.605170  0.2421875 0.0100000000            0.017 2021-12-28 04:28:20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -3.837642  0.2578125 0.0215443469            0.016 2021-12-28 04:28:20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -6.907755  0.2304688 0.0010000000            0.017 2021-12-28 04:28:20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -7.675284  0.2304688 0.0004641589            0.031 2021-12-28 04:28:20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -6.907755  0.2265625 0.0010000000            0.017 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -9.210340  0.2265625 0.0001000000            0.016 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -3.837642  0.2500000 0.0215443469            0.017 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -4.605170  0.2148438 0.0100000000            0.019 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -2.302585  0.2500000 0.1000000000            0.015 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -6.140227  0.2265625 0.0021544347            0.017 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -7.675284  0.2265625 0.0004641589            0.035 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -5.372699  0.2265625 0.0046415888            0.016 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -3.070113  0.2500000 0.0464158883            0.015 2021-12-29 04:27:19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -8.442812  0.2265625 0.0002154435            0.017 2021-12-29 04:27:20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     batch_nr      resample_result</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:        1 &lt;ResampleResult[22]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2:        2 &lt;ResampleResult[22]&gt;</span>
