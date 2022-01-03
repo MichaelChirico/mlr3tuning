@@ -285,20 +285,20 @@ The result will be written into the instance object.</p><div class="section">
 <span class="r-in"><span class="co"># modifies the instance by reference</span></span>
 <span class="r-in"><span class="va">tuner</span><span class="op">$</span><span class="fu">optimize</span><span class="op">(</span><span class="va">instance</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -7.688575          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -6.368691          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># returns best configuration and best performance</span></span>
 <span class="r-in"><span class="va">instance</span><span class="op">$</span><span class="va">result</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           cp learner_param_vals  x_domain classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -7.688575          &lt;list[2]&gt; &lt;list[1]&gt;        0.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -6.368691          &lt;list[2]&gt; &lt;list[1]&gt;       0.06</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># allows access of data.table of full path of all evaluations</span></span>
 <span class="r-in"><span class="va">instance</span><span class="op">$</span><span class="va">archive</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;ArchiveTuning&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      cp classif.ce runtime_learners           timestamp batch_nr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -7.7        0.1            0.008 2022-01-02 04:25:03        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: -8.0        0.1            0.007 2022-01-02 04:25:03        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3: -3.6        0.1            0.008 2022-01-02 04:25:03        3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -6.4       0.06            0.028 2022-01-03 04:28:08        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: -4.1       0.06            0.009 2022-01-03 04:28:08        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: -2.5       0.06            0.008 2022-01-03 04:28:08        3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         resample_result</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: &lt;ResampleResult[22]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: &lt;ResampleResult[22]&gt;</span>
