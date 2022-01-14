@@ -19,7 +19,7 @@ from package adagio."><meta name="robots" content="noindex"><!-- mathjax --><scr
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -211,33 +211,33 @@ Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># best performing hyperparameter configuration</span></span>
 <span class="r-in"><span class="va">instance</span><span class="op">$</span><span class="va">result</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           cp minsplit minbucket learner_param_vals  x_domain classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -4.492964 53.98904        64          &lt;list[4]&gt; &lt;list[3]&gt;    0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          cp minsplit minbucket learner_param_vals  x_domain classif.ce</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -9.21034        2  9.488978          &lt;list[4]&gt; &lt;list[3]&gt;  0.2226562</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># all evaluated hyperparameter configuration</span></span>
 <span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            cp  minsplit minbucket classif.ce  x_domain_cp x_domain_minsplit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -4.492964  53.98904  64.00000  0.2187500 0.0111874371                53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -5.316928  24.81577  64.00000  0.2187500 0.0049078097                24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -2.302585  67.09763  64.00000  0.2617188 0.1000000000                67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -3.762880  91.54343  63.76119  0.2617188 0.0232167890                91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -9.210340 108.13921  40.92543  0.2500000 0.0001000000               108</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -2.302585  44.47905  55.11877  0.2617188 0.1000000000                44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -9.210340  61.39913  64.00000  0.2187500 0.0001000000                61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -2.302585  63.99051   1.00000  0.2617188 0.1000000000                63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -8.040368  71.56114  34.06865  0.2617188 0.0003221905                71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -6.304285  94.95687  48.19938  0.2500000 0.0018284529                94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            cp   minsplit minbucket classif.ce  x_domain_cp x_domain_minsplit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -5.107751  94.191885  2.679898  0.2617188 0.0060496746                94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -9.210340   2.000000  9.488978  0.2226562 0.0001000000                 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -8.197205  28.064828  1.000000  0.2265625 0.0002754222                28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -9.210340  13.863890  1.000000  0.2656250 0.0001000000                13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -5.469199 115.187142  1.000000  0.3242188 0.0042146060               115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -2.302585  27.439607  1.000000  0.3164062 0.1000000000                27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -9.210340  34.288477  9.491643  0.2343750 0.0001000000                34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -6.805054   8.254301  1.000000  0.2812500 0.0011081601                 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -9.210340  21.116464 49.874936  0.2773438 0.0001000000                21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -6.331907   2.000000  1.092751  0.3007812 0.0017786387                 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     x_domain_minbucket runtime_learners           timestamp batch_nr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                 64            0.012 2022-01-13 04:27:02        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                 64            0.013 2022-01-13 04:27:02        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                 64            0.013 2022-01-13 04:27:02        3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                 63            0.013 2022-01-13 04:27:02        4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                 40            0.013 2022-01-13 04:27:02        5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                 55            0.013 2022-01-13 04:27:02        6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                 64            0.011 2022-01-13 04:27:02        7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                  1            0.013 2022-01-13 04:27:03        8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                 34            0.012 2022-01-13 04:27:03        9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                 48            0.012 2022-01-13 04:27:03       10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                  2            0.016 2022-01-14 04:30:36        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                  9            0.016 2022-01-14 04:30:36        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                  1            0.017 2022-01-14 04:30:36        3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                  1            0.017 2022-01-14 04:30:36        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                  1            0.016 2022-01-14 04:30:37        5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                  1            0.016 2022-01-14 04:30:37        6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                  9            0.016 2022-01-14 04:30:37        7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                  1            0.016 2022-01-14 04:30:37        8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                 49            0.016 2022-01-14 04:30:37        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                  1            0.018 2022-01-14 04:30:37       10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          resample_result</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1: &lt;ResampleResult[22]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2: &lt;ResampleResult[22]&gt;</span>
@@ -264,7 +264,7 @@ Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>
