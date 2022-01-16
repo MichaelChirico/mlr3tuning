@@ -211,33 +211,33 @@ Use <code>lgr::get_logger("bbotk")</code> to access and control the logger.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># best performing hyperparameter configuration</span></span>
 <span class="r-in"><span class="va">instance</span><span class="op">$</span><span class="va">result</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          cp minsplit minbucket learner_param_vals  x_domain classif.ce</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -4.74752 28.36233         1          &lt;list[4]&gt; &lt;list[3]&gt;  0.2265625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           cp minsplit minbucket learner_param_vals  x_domain classif.ce</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: -2.831632 73.39498         1          &lt;list[4]&gt; &lt;list[3]&gt;  0.2929688</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># all evaluated hyperparameter configuration</span></span>
 <span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">instance</span><span class="op">$</span><span class="va">archive</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            cp  minsplit minbucket classif.ce  x_domain_cp x_domain_minsplit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -4.152281 128.00000 18.539096  0.2578125 0.0157284911               128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -9.210340 128.00000 24.345547  0.2578125 0.0001000000               128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -7.403860  90.84560 62.227068  0.2578125 0.0006088979                90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -6.062755   2.00000 12.239220  0.2343750 0.0023279780                 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -5.227455 128.00000  1.000000  0.2343750 0.0053671663               128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -4.256526 109.36927  6.836283  0.2382812 0.0141714486               109</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -7.206858 128.00000 64.000000  0.2578125 0.0007414832               128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -2.413487  89.36668  1.000000  0.2734375 0.0895026896                89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -4.747520  28.36233  1.000000  0.2265625 0.0086731750                28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -7.852456 119.75181 22.683069  0.2382812 0.0003887961               119</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            cp  minsplit minbucket classif.ce x_domain_cp x_domain_minsplit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1: -2.831632  73.39498   1.00000  0.2929688  0.05891663                73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2: -2.302585  78.18308  64.00000  0.2929688  0.10000000                78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3: -3.747095 128.00000  37.80078  0.2929688  0.02358617               128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4: -2.302585 128.00000  42.50610  0.2929688  0.10000000               128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5: -3.270287 128.00000  28.00080  0.2929688  0.03799553               128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: -2.302585  39.24331  28.11313  0.2929688  0.10000000                39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7: -2.302585 128.00000   1.00000  0.2929688  0.10000000               128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8: -2.644314  68.16803  27.79933  0.2929688  0.07105411                68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: -2.358716   2.00000  38.19822  0.2929688  0.09454155                 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: -2.302585  85.77581  35.55378  0.2929688  0.10000000                85</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     x_domain_minbucket runtime_learners           timestamp batch_nr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                 18            0.011 2022-01-15 04:22:29        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                 24            0.012 2022-01-15 04:22:29        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                 62            0.013 2022-01-15 04:22:29        3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                 12            0.013 2022-01-15 04:22:29        4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                  1            0.012 2022-01-15 04:22:29        5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                  6            0.013 2022-01-15 04:22:29        6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                 64            0.014 2022-01-15 04:22:29        7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                  1            0.012 2022-01-15 04:22:29        8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                  1            0.013 2022-01-15 04:22:29        9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                 22            0.028 2022-01-15 04:22:29       10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                  1            0.013 2022-01-16 04:22:35        1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                 64            0.012 2022-01-16 04:22:36        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                 37            0.011 2022-01-16 04:22:36        3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                 42            0.012 2022-01-16 04:22:36        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                 28            0.012 2022-01-16 04:22:36        5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                 28            0.013 2022-01-16 04:22:36        6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                  1            0.011 2022-01-16 04:22:36        7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                 27            0.011 2022-01-16 04:22:36        8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                 38            0.011 2022-01-16 04:22:36        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                 35            0.012 2022-01-16 04:22:36       10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          resample_result</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1: &lt;ResampleResult[22]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2: &lt;ResampleResult[22]&gt;</span>
